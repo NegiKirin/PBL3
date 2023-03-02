@@ -10,14 +10,6 @@
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/index.css">
 </head>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
-    <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./signin.css">
-</head>
 <body>
     <div id="main">
         <div id="header">
@@ -43,7 +35,7 @@
                     <p class="signin-remember">Lưu tài khoản</p>
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
-                <p class="login-signup">Bạn đã có tài khoản? <a href="../pbl3.html">Đăng nhập</a></p>
+                <p class="login-signup">Bạn đã có tài khoản? <a href="./login.jsp">Đăng nhập</a></p>
             </div>
         </div>
     </div>
