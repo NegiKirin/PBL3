@@ -33,10 +33,6 @@
                     <li class="signin-icon"> <i class="fa-brands fa-google"></i> </li>
                 
                 </div>
-                <div id = "error_email">
-                	<%=error_email %></div>
-                <div id = "error_password">
-                	<%=error_password %></div>
                 <form action="register"  method ="get">
                 	
                     <input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
@@ -46,12 +42,10 @@
                     
                     <input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
-                    <label for = "re_password"><span id = "msg"></span> </label>
-                    <label class="toggle" for="toggle">
-                        <input type="checkbox" id="toggle">
-                        <div class="slider"></div>
-                    </label>
-                    <p class="signin-remember">Lưu tài khoản</p>
+                    <div id = "error_email">
+                	<%=error_email %></div>
+                    <div id = "error_password">
+                	<%=error_password %></div>
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
                 <p class="login-signup">Bạn đã có tài khoản? <a href="./login.jsp">Đăng nhập</a></p>
