@@ -1,0 +1,159 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-image: url(../image/anh.png);
+    background-size: 110%;
+    background-repeat: no-repeat;
+    background-color: #8a8a8a;
+}
+
+.clear{
+    clear: both;
+}
+
+.text-white{
+    color: #fff !important;
+}
+
+#header {
+    height: 46px;
+    background-color: #8a8a8a;
+    opacity: 80%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+
+#header li{
+    position: relative;
+    list-style: none;
+    display: inline;
+    height: 100%;
+    line-height: 46px;
+    margin: 0 30px;
+}
+
+#header li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+}
+
+
+
+#header li a:hover{
+    color: #4b4b4b;
+}
+
+#header i{
+    margin: 5px;
+}
+
+#content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#content .content-slogan{
+    height: 100%;
+    width: 60%;
+    min-width: 400px;
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+    padding: 150px 100px 0 100px;
+    display: block;
+}
+
+#content .content-login{
+    width: 30%;
+    min-width: 400px;
+    float: left;
+    display: inline;
+    height: auto ;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 120px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+#content .content-login-title{
+    background-color: #16c0e8;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    margin: -50px auto 0;
+    font-size: 15px;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 3px 3px 5px 0px #9a9a9a;
+}
+
+#content .content-login-title li{
+    list-style: none;
+    display: inline;
+    padding: 8px;
+    font-size: 30px;
+    color: #fff;
+}
+
+#content .content-login-title li:hover{
+    font-size: 35px;
+    transition-duration: 1s;
+}
+
+#content .content-login-title h1{
+    margin-bottom: 10px;
+}
+
+#content img{
+    margin: 30px auto;
+    display: block;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#content .content-prelogin{
+    text-align: center;
+}
+
+#content .content-prelogin li{
+    list-style: none;
+    display: inline-block;
+}
+
+#content .content-prelogin button{
+    height: 50px;
+    width: 150px;
+    color: #fff;
+    background-color: #16c0e8;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+    margin: 30px 10px;
+}
+
+#content .content-prelogin button:hover{
+    background-color: #0fb8de;
+    box-shadow: 3px 3px 5px 0px #787878;
+}
+
+#content a{
+    text-decoration: none;
+    color:#fff;
+    font-size: 15px;
+    font-weight: bold;
+
+}
