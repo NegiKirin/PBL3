@@ -9,8 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.studywithme.model.User;
-import com.studywithme.util.HibernateUtil;
+import model.User;
+import util.HibernateUtil;
 
 public class UserDAO implements DAOInterface<User>{
 

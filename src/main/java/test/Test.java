@@ -3,12 +3,12 @@ package test;
 import java.sql.Date;
 import java.sql.Time;
 
-import com.studywithme.dao.AppointmentDAO;
-import com.studywithme.dao.SchoolDAO;
-import com.studywithme.dao.UserDAO;
-import com.studywithme.model.Appointment;
-import com.studywithme.model.School;
-import com.studywithme.model.User;
+import dao.AppointmentDAO;
+import dao.SchoolDAO;
+import dao.UserDAO;
+import model.Appointment;
+import model.School;
+import model.User;
 
 public class Test {
 	public static void main(String[] args) {

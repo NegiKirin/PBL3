@@ -14,9 +14,9 @@
         <property name="show_sql">true</property>
         
         <!-- Mapping -->
-        <mapping class="com.studywithme.model.School"/>
-        <mapping class="com.studywithme.model.User"/>
-        <mapping class="com.studywithme.model.Appointment"/> 
+        <mapping class="model.School"/>
+        <mapping class="model.User"/>
+        <mapping class="model.Appointment"/> 
         
     </session-factory>
 </hibernate-configuration>

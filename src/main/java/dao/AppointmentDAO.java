@@ -9,8 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.studywithme.model.Appointment;
-import com.studywithme.util.HibernateUtil;
+import model.Appointment;
+import util.HibernateUtil;
 
 public class AppointmentDAO implements DAOInterface<Appointment>{
 

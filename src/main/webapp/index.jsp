@@ -32,16 +32,16 @@
                     <li class="signin-icon"> <i class="fa-brands fa-github"></i> </li>
                     <li class="signin-icon"> <i class="fa-brands fa-google"></i> </li>
                 </div>
-                <form action="">
-                    <input class="signin-submit" name="Email" type="email" placeholder="Email">
+                <form action="dang-ki"  method ="post">
+                    <input class="signin-submit" name="email" type="email" placeholder="Email">
                     <input class="signin-submit" name="password" type="password" placeholder="Mật khẩu">
-                    <input class="signin-submit" name="password" type="password" placeholder="Nhập lại mật khẩu">
+                    <input class="signin-submit" name="re_password" id ="re_password" type="password" placeholder="Nhập lại mật khẩu">
                     <label class="toggle" for="toggle">
                         <input type="checkbox" id="toggle">
                         <div class="slider"></div>
                     </label>
                     <p class="signin-remember">Lưu tài khoản</p>
-                    <input class="signin-submit-button" type="submit" value="ĐĂNG KÍ">
+                    <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
                 <p class="login-signup">Bạn đã có tài khoản? <a href="../pbl3.html">Đăng nhập</a></p>
             </div>
