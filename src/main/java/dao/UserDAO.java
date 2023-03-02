@@ -61,6 +61,66 @@ public class UserDAO implements DAOInterface<User>{
 		}
 		return null;
 	}
+	
+public boolean checkEmail(String email) {
+		
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				
+				String hql = "from User u where u.email =: user_email";
+				Query query = session.createQuery(hql);
+				query.setParameter("user_email", email);
+				List<User> results = null;
+				results = query.getResultList();
+				
+				if(results.isEmpty()) {
+					tr.commit();
+					session.close();
+					return false;
+				}else {
+					tr.commit();
+					session.close();
+					return true;
+				}
+				
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return false;
+	}
+
+public User selectByEmailAndPassword(User t) {
+	
+	try {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		if(sessionFactory!=null) {
+			Session session = sessionFactory.openSession();
+			Transaction tr = session.beginTransaction();
+			
+			String hql = "from User u where u.email =: user_email and u.password =: user_password";
+			Query query = session.createQuery(hql);
+			query.setParameter("user_email", t.getEmail());
+			query.setParameter("user_password", t.getPassword());
+			
+			List<User> results = null;
+			results = query.getResultList();
+			
+			tr.commit();
+			session.close();
+			return results.get(0);
+		}
+	}catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	return null;
+}
 
 	@Override
 	public boolean insert(User t) {

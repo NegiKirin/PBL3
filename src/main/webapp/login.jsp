@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +12,16 @@
     <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
+<%
+	String email = (request.getAttribute("email")+"").equals("null")?"":request.getAttribute("email")+"";
+	String error = (request.getAttribute("error")+"").equals("null")?"":request.getAttribute("error")+"";
+	Object obj = session.getAttribute("user");
+	if(obj != null){
+		response.sendRedirect("thanhcong.jsp");
+	}
+	
+%>
+
     <div id="main">
         <div id="header">
             <li><a href="">Thông tin về chúng tôi <i class="fa-sharp fa-solid fa-caret-down"></i></a></li>
@@ -27,9 +38,10 @@
                     <li class="login-icon"> <i class="fa-brands fa-github"></i> </li>
                     <li class="login-icon"> <i class="fa-brands fa-google"></i> </li>
                 </div>
-                <form action="">
-                    <input class="login-submit" name="email" type="email" placeholder="Email">
-                    <input class="login-submit-pwd" name="password" type="password" placeholder="Mật khẩu" required>
+                <form action="login" method = "post">
+                	<div><%=error %></div>
+                    <input class="login-submit" name="email" id = "email" type="email" required="required" placeholder="Email" value = "<%= email%>">
+                    <input class="login-submit-pwd" name="password" id = "password" type="password" required="required" placeholder="Mật khẩu" required>
                     <label class="toggle" for="toggle">
                         <input type="checkbox" id="toggle">
                         <div class="slider"></div>
@@ -37,11 +49,9 @@
                     <p class="login-remember"> Ghi nhớ đăng nhập</p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
-                <p class="login-signup">Bạn chưa có tài khoản? <a href="./index.jsp">Đăng kí</a></p>
+                <p class="login-signup">Bạn chưa có tài khoản? <a href="./register.jsp">Đăng kí</a></p>
             </div>
         </div>
     </div>
-</body>
-
 </body>
 </html>
