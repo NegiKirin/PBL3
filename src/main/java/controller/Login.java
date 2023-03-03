@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import model.User;
+import util.maHoa;
 
 /**
  * Servlet implementation class Login
@@ -51,6 +52,7 @@ public class Login extends HttpServlet {
 
 		User user = new User();
 		user.setEmail(email);
+		password = maHoa.toSHA1(password);
 		user.setPassword(password);
 		String url ="";
 		User u1 = userDao.selectByEmailAndPassword(user);

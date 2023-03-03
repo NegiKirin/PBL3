@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/register.css">
 </head>
 <body>
 
@@ -44,9 +44,9 @@
                     <input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
                     <label for = "re_password"><span id = "msg"></span> </label>
-                    
                     <div id = "error_password">
                 	<%=error_password %></div>
+                    
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
                 <p class="login-signup">Bạn đã có tài khoản? <a href="./login.jsp">Đăng nhập</a></p>

@@ -211,3 +211,42 @@ body{
 .toggle input[type="checkbox"]:checked + .slider:before {
     transform: translateX(10px);
 }
+#content .content-login img{
+    margin: 30px auto;
+    display: block;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#content .content-login .content-prelogin{
+    text-align: center;
+}
+
+#content .content-login .content-prelogin li{
+    list-style: none;
+    display: inline-block;
+}
+
+#content .content-login .content-prelogin button{
+    height: 50px;
+    width: 150px;
+    color: #fff;
+    background-color: #16c0e8;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+    margin: 30px 10px;
+}
+
+#content .content-login .content-prelogin button:hover{
+    background-color: #0fb8de;
+    box-shadow: 3px 3px 5px 0px #787878;
+}
+
+#content .content-login a{
+    text-decoration: none;
+    color:#fff;
+    font-size: 15px;
+    font-weight: bold;
+
+}

@@ -10,9 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import model.User;
+import util.maHoa;
 
 /**
  * Servlet implementation class Register
@@ -52,7 +54,10 @@ public class Register extends HttpServlet {
 		}
 		if(!password.equals(re_password)) {
 			error_password +="Mật khẩu không khớp";
-		}else {
+		}else if((password.indexOf(' ')!=-1)) {
+			error_password+="Mật khẩu không có khoảng trắng";
+		}
+		else {
 			if(password.length()<8) {
 				error_password += "Mật khẩu phải có ít nhất 8 kí tự";
 			}
@@ -72,10 +77,13 @@ public class Register extends HttpServlet {
 			} while (userDao.selectById(user)!=null);
 			
 			user.setEmail(email);
+			password = maHoa.toSHA1(password);
 			user.setPassword(password);
 			user.setDateRegister(new Date(System.currentTimeMillis()));
 			userDao.insert(user);
 			url = "/thanhcong.jsp";
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
 		}
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
