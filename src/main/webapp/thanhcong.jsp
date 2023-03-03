@@ -21,6 +21,8 @@
 		}else{
 		%>
 			<h1>xin chao <%=user.getEmail() %></h1>
+			<br>
+			<a href="logout">Đăng xuất</a>
 		<%} %>
 
 	<h1>Thanh Cong roi đó</h1>

@@ -34,7 +34,8 @@
                 
                 </div>
                 <form action="register"  method ="get">
-                	
+                	<div id = "error_email">
+                	<%=error_email %></div>
                     <input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
                     required="required" value = "<%=email %>">
           
@@ -42,8 +43,8 @@
                     
                     <input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
-                    <div id = "error_email">
-                	<%=error_email %></div>
+                    <label for = "re_password"><span id = "msg"></span> </label>
+                    
                     <div id = "error_password">
                 	<%=error_password %></div>
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
@@ -68,6 +69,5 @@
 			return true;
 			}
 		}
-
 </script>
 </html>
