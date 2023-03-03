@@ -44,7 +44,7 @@
                 </div>
                 <%if(user == null){ %>
                 <form action="login" method = "post">
-                	<div><%=error %></div>
+                	
                     <input class="login-submit" name="email" id = "email" type="email" required="required" placeholder="Email" value = "<%= email%>">
                     <input class="login-submit-pwd" name="password" id = "password" type="password" required="required" placeholder="Mật khẩu" required>
                     <!--  <label class="toggle" for="toggle">
@@ -52,11 +52,11 @@
                         <div class="slider"></div>
                         <p class="login-remember"> Ghi nhớ đăng nhập</p>
                     </label>-->
-                    
+                    <p class="error"><%=error %></p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
                 <%}else{ %>
-                	<div class="content-prelogin">
+                <div id="content-prelogin">
                     <img src="./image/ava.png" alt="">
                     <h1 class="user-name">Ho Va Ten</h1>
                     <li>

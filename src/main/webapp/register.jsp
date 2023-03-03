@@ -39,16 +39,15 @@
                 
                 </div>
                 <form action="register"  method ="get">
-                	<div id = "error_email">
-                	<%=error_email %></div>
+                	
                     <input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
                     required="required" value = "<%=email %>">
-          
+                    <div id = "error_email"><%=error_email %></div>
                     <input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
                     
                     <input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
-                    <label for = "re_password"><span id = "msg"></span> </label>
+                    <label class="pwd-not-same" for = "re_password"><span id = "msg"></span> </label>
                     <div id = "error_password">
                 	<%=error_password %></div>
                     
