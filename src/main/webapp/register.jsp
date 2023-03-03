@@ -13,6 +13,11 @@
 <body>
 
 	<%
+		Object obj = session.getAttribute("user");
+		if(obj != null){
+			response.sendRedirect("thanhcong.jsp");
+		}
+	
 		String error_email = (request.getAttribute("error_email")+"").equals("null")?"":request.getAttribute("error_email")+"";
 		String error_password = (request.getAttribute("error_password")+"").equals("null")?"":request.getAttribute("error_password")+"";
 		String email = (request.getAttribute("email")+"").equals("null")?"":request.getAttribute("email")+"";
