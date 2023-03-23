@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study with me | Đăng ký</title>
+    <title>Đăng ký</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/register.css">
 </head>
@@ -39,16 +40,15 @@
                 
                 </div>
                 <form action="register"  method ="get">
-                	<div id = "error_email">
-                	<%=error_email %></div>
+                	
                     <input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
                     required="required" value = "<%=email %>">
-          
+                    <div id = "error_email"><%=error_email %></div>
                     <input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
                     
                     <input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
-                    <label for = "re_password"><span id = "msg"></span> </label>
+                    <label class="pwd-not-same" for = "re_password"><span id = "msg"></span> </label>
                     <div id = "error_password">
                 	<%=error_password %></div>
                     
