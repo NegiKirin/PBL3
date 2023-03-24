@@ -215,6 +215,7 @@ body{
 #content form .error{
 	color: #bb1b1b;
     margin: 10px 0;
+    padding: 0px 5px;
     font-style: italic;
     font-weight: 100;
 }
