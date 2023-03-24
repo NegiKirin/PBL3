@@ -55,10 +55,11 @@
                     <p class="error"><%=error %></p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
+                <p class="login-signup">Bạn chưa có tài khoản? <a href="./register.jsp">Đăng kí</a></p>
                 <%}else{ %>
-                <div id="content-prelogin">
+                <div id="content-user">
                     <img src="./image/ava.png" alt="">
-                    <h1 class="user-name">Ho Va Ten</h1>
+                    <h1 class="user-name"><%=user.getFirstName() %> <%=user.getLastName() %></h1>
                     <li>
                         <button class="button-cont">
                             <a href="thanhcong.jsp">Tiếp tục đăng nhập</a> 
@@ -71,7 +72,7 @@
                     </li>
                 </div>
                 <%} %>
-                <p class="login-signup">Bạn chưa có tài khoản? <a href="./register.jsp">Đăng kí</a></p>
+                
             </div>
         </div>
     </div>

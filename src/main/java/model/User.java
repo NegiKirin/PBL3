@@ -24,7 +24,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
-	private boolean sex;
+	private byte sex;
 	private Date dateRegister;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -53,7 +53,7 @@ public class User {
 	
 	
 public User(String id, String email, String password, String firstName, String lastName, Date dateOfBirth,
-		boolean sex, Date dateRegister, School school) {
+		byte sex, Date dateRegister, School school) {
 	this.id = id;
 	this.email = email;
 	this.password = password;
@@ -126,12 +126,12 @@ public void setDateOfBirth(Date dateOfBirth) {
 }
 
 
-public boolean isSex() {
+public byte isSex() {
 	return sex;
 }
 
 
-public void setSex(boolean sex) {
+public void setSex(byte sex) {
 	this.sex = sex;
 }
 

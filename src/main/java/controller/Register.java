@@ -39,9 +39,12 @@ public class Register extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String re_password = request.getParameter("re_password");
-		
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String sex = request.getParameter("sex");
 		request.setAttribute("email", email);
-		
+		request.setAttribute("firstName", firstName);
+		request.setAttribute("lastName", lastName);
 		
 		UserDAO userDao = new UserDAO();
 		String error_password = "";
@@ -80,6 +83,13 @@ public class Register extends HttpServlet {
 			password = maHoa.toSHA1(password);
 			user.setPassword(password);
 			user.setDateRegister(new Date(System.currentTimeMillis()));
+			user.setFirstName(firstName);
+			user.setLastName(lastName);
+			if(sex.equals("male")) {
+				user.setSex((byte) 0);
+			}else if(sex.equals("female")) {
+				user.setSex((byte) 1);
+			}
 			userDao.insert(user);
 			url = "/thanhcong.jsp";
 			HttpSession session = request.getSession();

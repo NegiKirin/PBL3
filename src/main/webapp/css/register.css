@@ -159,19 +159,12 @@ body{
     background-color: #0fb8de;
 }
 
-#error_email, #error_password, #msg{
+div#error_email, div#error_password, #msg{
     color: #bb1b1b;
-    padding: 0 5px;
+    padding: 0px 5px;
     font-style: italic;
     margin-top: 10px;
 }
-
-#content form .pwd-not-same{
-	margin-top: 10px;
+#password{
+	margin-top: 30px;
 }
-
-#re_password{
-	margin-bottom:10px;
-}
-
-

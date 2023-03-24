@@ -22,7 +22,9 @@
 		String error_email = (request.getAttribute("error_email")+"").equals("null")?"":request.getAttribute("error_email")+"";
 		String error_password = (request.getAttribute("error_password")+"").equals("null")?"":request.getAttribute("error_password")+"";
 		String email = (request.getAttribute("email")+"").equals("null")?"":request.getAttribute("email")+"";
-	
+		String firstName = (request.getAttribute("firstName")+"").equals("null")?"":request.getAttribute("firstName")+"";
+		String lastName = (request.getAttribute("lastName")+"").equals("null")?"":request.getAttribute("lastName")+"";
+		
 	%>
 
     <div id="main">
@@ -39,21 +41,36 @@
                     <li class="signin-icon"> <i class="fa-brands fa-google"></i> </li>
                 
                 </div>
+                <div>
                 <form action="register"  method ="get">
+                	<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="<%=firstName%>">
+                	<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="<%=lastName%>">
+                	<input name="sex" id="male" type="radio" required="required" value="male">
+                	<label for="male">Nam</label>
+                	<input name="sex" id="female" type="radio" required="required" value="female">
+                	<label for="female">Nữ</label>
                 	
                     <input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
                     required="required" value = "<%=email %>">
+                    <%
+                    if(error_email==""){
+                    %>
+                    <%}else{
+                    %>
                     <div id = "error_email"><%=error_email %></div>
+                    <%} %>
                     <input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
                     
                     <input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
-                    <label class="pwd-not-same" for = "re_password"><span id = "msg"></span> </label>
-                    <div id = "error_password">
-                	<%=error_password %></div>
+                    
+                    <label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label>
+                    <div id = "error_password"><%=error_password%></div>
                     
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
+                    
                 </form>
+                </div>
                 <p class="login-signup">Bạn đã có tài khoản? <a href="./login.jsp">Đăng nhập</a></p>
             </div>
         </div>
@@ -66,7 +83,7 @@
 		re_password = document.getElementById("re_password").value;
 
 		if(password!=re_password){
-			document.getElementById("msg").innerHTML = "Mật khẩu không khớp!";
+			document.getElementById("msg").innerHTML = "Mật khẩu không khớp";
 			return false;
 		}
 		else{
