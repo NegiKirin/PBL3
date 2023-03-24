@@ -65,7 +65,7 @@ body{
 }
 
 #header .header-main button{
-    padding: 8px 25px 8px 25px;
+    padding: 10px 30px 9px 30px;
     border-radius: 5px;
     border: 0px;
     margin-top: 4px;
@@ -78,7 +78,7 @@ body{
 
 #header .header-main .header-main-mainbutton{
     margin: 0 100px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 #header .header-noti {
@@ -186,7 +186,7 @@ body{
     display: block;
     text-align: center;
     margin-top: 25px;
-    margin-left: 10px;
+    margin-left: 45px;
     font-size: 18px;
 }
 
@@ -196,6 +196,7 @@ body{
     width: 300px;
     border-radius: 50px;
     margin-left: auto;
+    margin-right: 30px;
     margin-top: 20px;
 }
 
@@ -212,7 +213,7 @@ body{
 #content .content-main .content-main-item{
     display: inline-block;
     height: 300px;
-    width: 250px;
+    width: 280px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 3px 3px 5px 0px #aaaaaa;
@@ -285,3 +286,134 @@ body{
     font-weight: bold;
 }
 
+#content .content-right {
+    height: 100%;
+    width: 259px;
+}
+
+#content .content-right .list-friends{
+    height: 50%;
+    width: 100%;
+}
+
+#content .content-right .list-friends .list-friends-title{
+    font-weight: bold;
+    color: #000;
+    margin: 10px 0;
+}
+
+#content .content-right .list-friends .list-friends-item{
+    height: 46px;
+    border-bottom: 1px #8a8a8a;
+    margin: 10px 0;
+}
+
+#content .content-right .list-friends .list-friends-item img{
+    float: left;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+#content .content-right .list-friends .list-friends-item .name{
+    display: inline;
+    padding-bottom: 10px;
+    line-height: 46px;
+    margin-left: 20px;
+}
+
+#content .content-right .list-friends .list-friends-item a{
+    text-decoration:  none;
+    color: #000;
+    font-weight: bold;
+}
+
+#content .content-right .list-friends .list-friends-item i{
+    float: right;
+    margin-right: 20px;
+    line-height: 46px;
+    color: #333333;
+}
+
+#content .content-right .your-profile{
+    height: 50%;
+    width: 100%;
+}
+
+#content .content-right .your-profile .title{
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#content .content-right .your-profile-main{
+    height: 80%;
+    width: 98%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow:  3px 3px 5px 0px #aaaaaa;
+}
+
+#content .content-right .your-profile-main .profile{
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+
+#content .content-right .your-profile-main .profile .background{
+    width: 100%;
+    border-radius: 8px;
+}
+
+#content .content-right .your-profile-main .profile .avatar{
+    width: 80px;
+    height: 80px;
+    margin-top: -50px;
+    border-radius: 50%;
+}
+
+#content .content-right .your-profile-main .profile .name{
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#content .content-right .your-profile-main .item{
+    height: 80px;
+}
+
+#content .content-right .your-profile-main .item .time{
+    background-color: #75ba80;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 10px;
+    margin: 10px;
+}
+
+#content .content-right .your-profile-main .item .address{
+    font-size: 15px;
+    display: inline;
+}
+
+#content .content-right .your-profile-main .item i{
+    margin-right: 5px;
+}
+
+#content .content-right .your-profile-main a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#content .content-right .your-profile-main .add{
+    background-color: #75ba80;
+    display: block;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
