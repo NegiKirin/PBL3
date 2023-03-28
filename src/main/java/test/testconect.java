@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 
 import com.studywithme.util.HibernateUtil;
 
+import model.User;
+
 public class testconect {
 	public static void main(String[] args) {
 		try {
@@ -16,6 +18,8 @@ public class testconect {
 			if(sessionFactory!=null) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
+				
+				
 				
 				tr.commit();
 				session.close();

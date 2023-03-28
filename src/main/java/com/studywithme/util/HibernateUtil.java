@@ -7,10 +7,12 @@ public class HibernateUtil {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
 	private static SessionFactory buildSessionFactory() {
+//		return new Configuration().configure().buildSessionFactory();
 		try {
 			return new Configuration().configure().buildSessionFactory();
 		} catch (Exception e) {
 			System.out.println("Loi khong the tao SessionFactory");
+			e.printStackTrace();
 			return null;
 		}
 	}

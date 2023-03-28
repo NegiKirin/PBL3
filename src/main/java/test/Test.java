@@ -23,15 +23,22 @@ public class Test {
 //		User u4 = new User("SWM4", "abc@gmail.com", "qweqwe", "Leo", "Messi", new Date(103, 2, 27), true,new Date(System.currentTimeMillis()),s1);
 //		User u5 = new User("SWM5", "abc@gmail.com", "zxczxczxc", "Nguyen", "Van A", new Date(105, 6, 30), true,new Date(System.currentTimeMillis()),s2);
 //		
+		User u1 = new User();
+		u1.setid("SWM1679657157190176");
+		u1.setFirstName("f");
+		u1.setLastName("l");
 		
-		Appointment a1 = new Appointment("001", new Time(7, 30, 0), new Time(8, 30, 0), "73 Nguyen Luong Bang", 10);
-		Appointment a2 = new Appointment("002", new Time(13, 30, 0), new Time(17, 30, 0), "123 Tran Cao Van", 7);
-		Appointment a3 = new Appointment("003", new Time(11, 30, 0), new Time(15, 30, 0), "11 Au CO", 10);
-		Appointment a4 = new Appointment("004", new Time(17, 30, 0), new Time(20, 30, 0), "12 Lac Long Quan", 10);
+//		Appointment a1 = new Appointment("001", new Time(7, 30, 0), new Time(8, 30, 0), "73 Nguyen Luong Bang", 10);
+//		Appointment a2 = new Appointment("002", new Time(13, 30, 0), new Time(17, 30, 0), "123 Tran Cao Van", 7);
+//		Appointment a3 = new Appointment("003", new Time(11, 30, 0), new Time(15, 30, 0), "11 Au CO", 10);
+//		Appointment a4 = new Appointment("004", new Time(17, 30, 0), new Time(20, 30, 0), "12 Lac Long Quan", 10);
 		
 		UserDAO userDAO = new UserDAO();
 		SchoolDAO schoolDAO = new SchoolDAO();
 		AppointmentDAO appointmentDAO = new AppointmentDAO();
+		
+		
+		userDAO.update(u1);
 		
 //		userDAO.insert(u1);
 //		userDAO.insert(u2);

@@ -1,5 +1,9 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +41,25 @@ public class UserDAO implements DAOInterface<User>{
 		}
 		return list;
 	}
+	public static void maxAllowedPacket() {
+		String hql = "SET GLOBAL max_allowed_packet=15728640";
+		try {
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
+		String url1 = "jdbc:mysql://localhost:3306/studywithme";
+        Connection conn;
+		try {
+			conn = DriverManager.getConnection(url1,"root","");
+
+       Statement stmt = conn.createStatement();
+       stmt.execute(hql)			;
+       } catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public User selectById(User t) {
 		
@@ -108,12 +130,15 @@ public User selectByEmailAndPassword(User t) {
 			query.setParameter("user_email", t.getEmail());
 			query.setParameter("user_password", t.getPassword());
 			
-			List<User> results = null;
-			results = query.getResultList();
+//			List<User> results = null;
+//			results = query.getResultList();
+			
+			Object results = new User();
+			results = query.getSingleResult();
 			
 			tr.commit();
 			session.close();
-			return results.get(0);
+			return (User)results;
 		}
 	}catch (Exception e) {
 		e.printStackTrace();
@@ -150,6 +175,32 @@ public User selectByEmailAndPassword(User t) {
 		
 	}
 
+	public boolean updateAvatar(User t) {
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				
+//				session.saveOrUpdate(t);
+				String hql = "UPDATE User u set u.avatar = :avatar " +
+							"WHERE u.id = :id";
+				Query query = session.createQuery(hql);
+				query.setParameter("avatar", t.getAvatar());
+				query.setParameter("id", t.getId());
+				
+				query.executeUpdate();
+				tr.commit();
+				session.close();
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	@Override
 	public boolean update(User t) {
 		try {
@@ -159,8 +210,16 @@ public User selectByEmailAndPassword(User t) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
 				
-				session.saveOrUpdate(t);
+//				session.saveOrUpdate(t);
+				String hql = "UPDATE User u set u.firstName = :firstName , u.lastName = :lastName , u.dateOfBirth = :dateOfBirth " +
+							"WHERE u.id = :id";
+				Query query = session.createQuery(hql);
+				query.setParameter("firstName", t.getFirstName());
+				query.setParameter("lastName", t.getLastName());
+				query.setParameter("dateOfBirth", t.getDateOfBirth());
+				query.setParameter("id", t.getId());
 				
+				query.executeUpdate();
 				tr.commit();
 				session.close();
 				return true;

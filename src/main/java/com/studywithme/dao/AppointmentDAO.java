@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import com.studywithme.model.Appointment;
 import com.studywithme.util.HibernateUtil;
 
+
 public class AppointmentDAO implements DAOInterface<Appointment>{
 
 	@Override

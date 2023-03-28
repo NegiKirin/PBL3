@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -26,6 +27,9 @@ public class User {
 	private Date dateOfBirth;
 	private byte sex;
 	private Date dateRegister;
+	
+	@Lob
+	private byte[] avatar;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "school_id")
@@ -63,6 +67,16 @@ public User(String id, String email, String password, String firstName, String l
 	this.sex = sex;
 	this.dateRegister = dateRegister;
 	this.school = school;
+}
+
+
+public byte[] getAvatar() {
+	return avatar;
+}
+
+
+public void setAvatar(byte[] avatar) {
+	this.avatar = avatar;
 }
 
 

@@ -9,10 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.studywithme.model.Appointment;
-import com.studywithme.model.School;
 import com.studywithme.model.School;
 import com.studywithme.util.HibernateUtil;
+
 
 public class SchoolDAO implements DAOInterface<School>{
 

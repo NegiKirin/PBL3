@@ -1,3 +1,6 @@
+<%@page import="java.util.Base64"%>
+<%@page import="model.User"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +14,23 @@
     <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
-    <div id="main">
+<%
+	String email = (request.getAttribute("email")+"").equals("null")?"":request.getAttribute("email")+"";
+	String error = (request.getAttribute("error")+"").equals("null")?"":request.getAttribute("error")+"";
+	Object obj = session.getAttribute("user");
+	User user = null;
+	if(obj != null){
+		user = (User)obj;
+		String base64Image = Base64.getEncoder().encodeToString(user.getAvatar());
+	}
+	//if(obj != null){
+	//	response.sendRedirect("thanhcong.jsp");
+	//}
+	
+	
+%>
+
+   <div id="main">
         <div id="header">
             <li><a href="">Thông tin về chúng tôi <i class="fa-sharp fa-solid fa-caret-down"></i></a></li>
             <li><a href="">Đóng góp <i class="fa-sharp fa-solid fa-caret-down"></i></a></li>
@@ -27,21 +46,40 @@
                     <li class="login-icon"> <i class="fa-brands fa-github"></i> </li>
                     <li class="login-icon"> <i class="fa-brands fa-google"></i> </li>
                 </div>
-                <form action="">
-                    <input class="login-submit" name="email" type="email" placeholder="Email">
-                    <input class="login-submit-pwd" name="password" type="password" placeholder="Mật khẩu" required>
-                    <label class="toggle" for="toggle">
+                <%if(user == null){ %>
+                <form action="login" method = "post">
+                	
+                    <input class="login-submit" name="email" id = "email" type="email" required="required" placeholder="Email" value = "<%= email%>">
+                    <input class="login-submit-pwd" name="password" id = "password" type="password" required="required" placeholder="Mật khẩu" required>
+                    <!--  <label class="toggle" for="toggle">
                         <input type="checkbox" id="toggle">
                         <div class="slider"></div>
-                    </label>
-                    <p class="login-remember"> Ghi nhớ đăng nhập</p>
+                        <p class="login-remember"> Ghi nhớ đăng nhập</p>
+                    </label>-->
+                    <p class="error"><%=error %></p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
-                <p class="login-signup">Bạn chưa có tài khoản? <a href="./index.jsp">Đăng kí</a></p>
+                <p class="login-signup">Bạn chưa có tài khoản? <a href="./register.jsp">Đăng kí</a></p>
+                <%}else{ %>
+                <div id="content-user">
+                    <!--  <img src="./image/ava.png" alt="">-->
+                    <img alt="" src="data.image/jpg;base64,${base64Image}">
+                    <h1 class="user-name"><%=user.getFirstName() %> <%=user.getLastName() %></h1>
+                    <li>
+                        <button class="button-cont">
+                            <a href="thanhcong.jsp">Tiếp tục đăng nhập</a> 
+                        </button>
+                    </li>
+                    <li class="last-list">
+                        <button class="button-logout">
+                            <a href="logout">Đăng xuất </a> 
+                        </button>
+                    </li>
+                </div>
+                <%} %>
+                
             </div>
         </div>
     </div>
-</body>
-
 </body>
 </html>
