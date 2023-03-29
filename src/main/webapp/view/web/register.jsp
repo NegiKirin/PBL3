@@ -1,6 +1,6 @@
+<%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,42 +34,40 @@
                 </div>
                 <div>
                 <form action="/PBL3/register"  method ="post">
-                	<table>
-                		<tr>
-                			<td><input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }"></td>
-                			<td><input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }"></td>
-                		</tr>
-                		<tr>
-                			<td><input name="sex" id="male" type="radio" required="required" value="male">
-                			<label for="male">Nam</label></td>
-                			<td><input name="sex" id="female" type="radio" required="required" value="female">
-                			<label for="female">Nữ</label></td>
-                		</tr>
-                		<tr>
+                			<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
+                			<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }">
+                		
+                		
+                			<input name="sex" id="male" type="radio" required="required" value="male" class="sex">
+                			<label for="male">Nam</label>
+                			<input name="sex" id="female" type="radio" required="required" value="female" class="sex">
+                			<label for="female">Nữ</label>
+                		    <input name="sex" id="another" type="radio" required="required" value="another" class="sex">
+                			<label for="another">Khác</label>
+                		
                 			<td colspan="2"><input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
-                    		required="required" value = "${email }"></td>
-                		</tr>
+                    		required="required" value = "${email }">
+                		
                 		
                 		<c:if test="${error_email!= null }">
-                			<tr>
-                				<td><div id = "error_email">${error_email }</div></td>
-                			</tr>
+                			
+                				<div id = "error_email">${error_email }</div>
+                			
                 		</c:if>
                 		
-                		<tr>
-                			<td colspan="2"><input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()"></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"><input class="signin-submit" name="re_password" id ="re_password" type="password" 
-                    placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()"></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"><label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"> <div id = "error_password">${error_password }</div></td>
-                		</tr>
-                	</table>
+                		
+                			<input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
+                		
+                		
+                			<input class="signin-submit" name="re_password" id ="re_password" type="password" 
+                    placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
+                		
+                		
+                			<label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label>
+                		
+                		
+                			<div id = "error_password">${error_password }</div>
+
                 	
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
