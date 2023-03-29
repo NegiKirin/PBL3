@@ -37,7 +37,7 @@ public class EditProfile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+		var url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
 		String dateOfBirth = request.getParameter("dateOfBirth");

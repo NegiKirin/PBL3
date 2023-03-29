@@ -1,5 +1,6 @@
 package com.studywithme.model;
 
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -72,8 +73,8 @@ public User(String id, String email, String password, String firstName, String l
 	this.school = school;
 }
 
-public byte[] getBackgroud() {
-	return backgroud;
+public String getBackgroud() {
+	return Base64.getEncoder().encodeToString(backgroud);
 }
 
 
@@ -81,8 +82,8 @@ public void setBackgroud(byte[] backgroud) {
 	this.backgroud = backgroud;
 }
 
-public byte[] getAvatar() {
-	return avatar;
+public String getAvatar() {
+	return Base64.getEncoder().encodeToString(avatar);
 }
 
 

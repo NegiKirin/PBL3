@@ -3,15 +3,9 @@
 <jsp:include page="/common/taglib.jsp"></jsp:include>
 <c:url value="/template" var="url"></c:url>
 
-<%
-Object obj = session.getAttribute("user");
-User user = null;
-user = (User) obj;
-String avatar = Base64.getEncoder().encodeToString(user.getAvatar());
-%>
 <div id="header">
 	<div class="header-info-user">
-	<img src="data:image/jpeg;base64,<%=avatar%>" alt="" id="u_avatar">
+	<img src="data:image/jpeg;base64,${user.avatar }" alt="" id="u_avatar">
 	<a href=""><p class="header-info-user-name">${user.firstName}
 			${user.lastName}</p></a> <i class="fa-solid fa-user-pen"></i>
 	</div>

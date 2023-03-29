@@ -39,6 +39,15 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/register.jsp");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String re_password = request.getParameter("re_password");
@@ -102,7 +111,7 @@ public class Register extends HttpServlet {
 			
 			userDao.insert(user);
 			userDao.setImageDefault(user);
-			url = "/view/web/thanhcong.jsp";
+			url = "/view/web/home.jsp";
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 		}
@@ -110,13 +119,6 @@ public class Register extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
 	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
 	}
 
 }

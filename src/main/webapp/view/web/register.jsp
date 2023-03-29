@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +14,9 @@
     <link rel="stylesheet" href="/PBL3/template/css/register.css">
 </head>
 <body>
-
-	<%
-		Object obj = session.getAttribute("user");
-		if(obj != null){
-			response.sendRedirect("thanhcong.jsp");
-		}
-	
-		String error_email = (request.getAttribute("error_email")+"").equals("null")?"":request.getAttribute("error_email")+"";
-		String error_password = (request.getAttribute("error_password")+"").equals("null")?"":request.getAttribute("error_password")+"";
-		String email = (request.getAttribute("email")+"").equals("null")?"":request.getAttribute("email")+"";
-		String firstName = (request.getAttribute("firstName")+"").equals("null")?"":request.getAttribute("firstName")+"";
-		String lastName = (request.getAttribute("lastName")+"").equals("null")?"":request.getAttribute("lastName")+"";
-		
-	%>
+	<c:if test="${user!=null }">
+		<c:redirect url="/login"/>
+	</c:if>
 
     <div id="main">
         <div id="header">
@@ -42,11 +33,11 @@
                 
                 </div>
                 <div>
-                <form action="/PBL3/register"  method ="get">
+                <form action="/PBL3/register"  method ="post">
                 	<table>
                 		<tr>
-                			<td><input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="<%=firstName%>"></td>
-                			<td><input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="<%=lastName%>"></td>
+                			<td><input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }"></td>
+                			<td><input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }"></td>
                 		</tr>
                 		<tr>
                 			<td><input name="sex" id="male" type="radio" required="required" value="male">
@@ -56,15 +47,14 @@
                 		</tr>
                 		<tr>
                 			<td colspan="2"><input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
-                    		required="required" value = "<%=email %>"></td>
+                    		required="required" value = "${email }"></td>
                 		</tr>
-                		<%
-                    	if(error_email!=""){
-                    	%>
-                		<tr>
-                			<td><div id = "error_email"><%=error_email %></div></td>
-                		</tr>
-                		<%} %>
+                		
+                		<c:if test="${error_email!= null }">
+                			<tr>
+                				<td><div id = "error_email">${error_email }</div></td>
+                			</tr>
+                		</c:if>
                 		
                 		<tr>
                 			<td colspan="2"><input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()"></td>
@@ -77,14 +67,14 @@
                 			<td colspan="2"><label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label></td>
                 		</tr>
                 		<tr>
-                			<td colspan="2"> <div id = "error_password"><%=error_password%></div></td>
+                			<td colspan="2"> <div id = "error_password">${error_password }</div></td>
                 		</tr>
                 	</table>
                 	
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
                 </div>
-                <p class="login-signup">Bạn đã có tài khoản? <a href="login.jsp">Đăng nhập</a></p>
+                <p class="login-signup">Bạn đã có tài khoản? <a href="/PBL3/login">Đăng nhập</a></p>
             </div>
         </div>
     </div>

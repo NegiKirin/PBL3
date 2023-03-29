@@ -35,7 +35,9 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/login.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -63,11 +65,9 @@ public class Login extends HttpServlet {
 		
 		if(u1!=null) {
 			
-			String qr2 = "SET GLOBAL max_allowed_packet=15728640";
 			HttpSession session = request.getSession();
-			
 			session.setAttribute("user", u1);
-			url = "/view/web/thanhcong.jsp";
+			url = "/view/web/home.jsp";
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);
@@ -93,23 +93,4 @@ public class Login extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-//	public void maxAllowedPacket() {
-//		String hql = "SET GLOBAL max_allowed_packet=15728640";
-//		try {
-//			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		String url1 = "jdbc:mysql://localhost:3306/studywithme";
-//        Connection conn;
-//		try {
-//			conn = DriverManager.getConnection(url1,"root","");
-//
-//       Statement stmt = conn.createStatement();
-//       stmt.execute(hql)			;
-//       } catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
 }
