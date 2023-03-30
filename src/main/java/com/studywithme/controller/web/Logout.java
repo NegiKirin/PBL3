@@ -35,7 +35,7 @@ public class Logout extends HttpServlet {
 		String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 		+ request.getContextPath();
 		
-		response.sendRedirect(url+"/view/web/login.jsp");
+		response.sendRedirect(url+"/login");
 	}
 
 	/**

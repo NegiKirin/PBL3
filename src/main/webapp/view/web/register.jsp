@@ -45,7 +45,7 @@
                 		    <input name="sex" id="another" type="radio" required="required" value="another" class="sex">
                 			<label for="another">Khác</label>
                 		
-                			<td colspan="2"><input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
+                			<input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
                     		required="required" value = "${email }">
                 		
                 		

@@ -20,7 +20,7 @@ import com.studywithme.model.User;
  * Servlet implementation class EditProfile
  */
 
-@WebServlet("/EditProfile")
+@WebServlet("/edit-profile")
 public class EditProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,6 +36,15 @@ public class EditProfile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		var url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 		String lastName = request.getParameter("lastName");
@@ -69,16 +78,8 @@ public class EditProfile extends HttpServlet {
 		
 		userDAO.update(user);
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/thanhcong.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url+"/home");
 		rd.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

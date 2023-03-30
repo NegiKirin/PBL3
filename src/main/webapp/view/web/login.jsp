@@ -39,12 +39,17 @@
                     <p class="error">${error }</p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
-                <p class="login-signup">Bạn chưa có tài khoản? <a href="/PBL3/view/web/register.jsp">Đăng kí</a></p>
+                <p class="login-signup">Bạn chưa có tài khoản? <a href="/PBL3/register">Đăng kí</a></p>
 			</c:if>
 			
 			<c:if test="${user!=null}">
 				<div id="content-user">
-                    <img alt="" src="data:image/jpeg;base64,${user.avatar}">
+					<c:if test="${user.avatar==null}">
+						<img src="./template/image/avatarDefault.jpg">
+					</c:if>
+					<c:if test="${user.avatar!=null }">
+						<img alt="" src="data:image/jpeg;base64,${user.avatar}">
+					</c:if>
                     <h1 class="user-name">${user.firstName} ${user.lastName}</h1>
                     <li>
                         <button class="button-cont">

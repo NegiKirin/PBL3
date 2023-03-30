@@ -25,7 +25,7 @@ import com.studywithme.model.User;
 				maxFileSize=1024*1024*50,      	// 50 MB
 				maxRequestSize=1024*1024*100	// 100 MB
 ) 
-@WebServlet("/uploadAvatar")
+@WebServlet("/upload-avatar")
 public class UploadAvatar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,45 +42,7 @@ public class UploadAvatar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Part file = request.getPart("avatar");
-		
-		// Lấy name file
-//		String imgfile = file.getSubmittedFileName();
-		
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User user = null;
-		user = (User)obj;
-		try {
-			InputStream is = file.getInputStream();
-			byte[] data = new byte[is.available()];
-			is.read(data);
-			is.close();
-			user.setAvatar(data);
-		} catch (Exception e) {
-		}
-		
-		UserDAO userDAO = new UserDAO();
-		
-		userDAO.updateAvatar(user);
-		
-//		try {
-//			InputStream is = file.getInputStream();
-//			
-//			byte[] data = new byte[is.available()];
-//			is.read(data);
-//			user.setAvatar(data);
-//			
-//			UserDAO userDAO = new UserDAO();
-//			
-//			user.setFirstName("Load");
-//			userDAO.update(user);
-//			
-//			System.out.println("upload img");
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/thanhcong.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -127,7 +89,7 @@ public class UploadAvatar extends HttpServlet {
 //		} catch (Exception e) {
 //			// TODO: handle exception
 //		}
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/thanhcong.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
 		rd.forward(request, response);
 	}
 

@@ -1,13 +1,15 @@
-<%@page import="com.studywithme.model.User"%>
-<%@page import="java.util.Base64"%>
-<jsp:include page="/common/taglib.jsp"></jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/template" var="url"></c:url>
 
 <div id="header">
 	<div class="header-info-user">
-	<img src="data:image/jpeg;base64,${user.avatar }" alt="" id="u_avatar">
-	<a href=""><p class="header-info-user-name">${user.firstName}
-			${user.lastName}</p></a> <i class="fa-solid fa-user-pen"></i>
+	<c:if test="${user.avatar == null}">
+		<img src="./template/image/avatarDefault.jpg">
+	</c:if>
+	<c:if test="${user.avatar!=null}">
+		<img alt="" src="data:image/jpeg;base64,${user.avatar}">
+	</c:if>
+	<a href="/PBL3/edit-profile"><p class="header-info-user-name">${user.firstName} ${user.lastName}</p></a> <i class="fa-solid fa-user-pen"></i>
 	</div>
 
 <div class="header-main">

@@ -74,7 +74,11 @@ public User(String id, String email, String password, String firstName, String l
 }
 
 public String getBackgroud() {
-	return Base64.getEncoder().encodeToString(backgroud);
+	if(backgroud==null){
+		return null;
+	}else {
+		return Base64.getEncoder().encodeToString(backgroud);
+	}
 }
 
 
@@ -83,7 +87,11 @@ public void setBackgroud(byte[] backgroud) {
 }
 
 public String getAvatar() {
-	return Base64.getEncoder().encodeToString(avatar);
+	if(avatar==null){
+		return null;
+	}else {
+		return Base64.getEncoder().encodeToString(avatar);
+	}
 }
 
 

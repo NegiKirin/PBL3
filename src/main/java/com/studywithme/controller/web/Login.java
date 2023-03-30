@@ -67,11 +67,11 @@ public class Login extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", u1);
-			url = "/view/web/home.jsp";
+			url = "/home";
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);
-			url = "/view/web/login.jsp";
+			url = "/login";
 		}
 //		if(u1.getEmail()!=null) {
 //			if(u1.getPassword()!=null) {
@@ -89,8 +89,9 @@ public class Login extends HttpServlet {
 //			url = "/login.jsp";
 //		}
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-		rd.forward(request, response);
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+//		rd.forward(request, response);
+		response.sendRedirect("/PBL3/home");
 	}
 
 }

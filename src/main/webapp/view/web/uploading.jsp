@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/PBL3/uploadAvatar" method="post" enctype="multipart/form-data">
+	<form action="/PBL3/upload-avatar" method="post" enctype="multipart/form-data">
 		<input type="file" name="avatar" value="Upload" id="avatar" accept="image/*"/>
 		<input type="submit" value="Submit" name="usubmit">
 	</form>
 	
-	<form action="/PBL3/EditProfile" method="get"> <br><br>
+	<form action="/PBL3/edit-profile" method="get"> <br><br>
 <table>
   <tr>
              <td>Upload: </td>
