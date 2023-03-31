@@ -72,6 +72,8 @@ public class Login extends HttpServlet {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);
 			url = "/login";
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+			rd.forward(request, response);
 		}
 //		if(u1.getEmail()!=null) {
 //			if(u1.getPassword()!=null) {

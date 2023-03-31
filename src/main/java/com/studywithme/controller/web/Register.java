@@ -1,9 +1,6 @@
 package com.studywithme.controller.web;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.sql.Date;
 import java.util.Random;
 
@@ -48,6 +45,7 @@ public class Register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String re_password = request.getParameter("re_password");
@@ -82,6 +80,8 @@ public class Register extends HttpServlet {
 			url = "/view/web/register.jsp";
 			request.setAttribute("error_email", error_email);
 			request.setAttribute("error_password", error_password);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+			rd.forward(request, response);
 		}else {
 			User user = new User();
 			
@@ -110,15 +110,13 @@ public class Register extends HttpServlet {
 
 			
 			userDao.insert(user);
-			userDao.setImageDefault(user);
-			url = "/view/web/home.jsp";
+//			userDao.setImageDefault(user);
+//			url = "/view/web/home.jsp";
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 		}
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-		rd.forward(request, response);
-	
+		response.sendRedirect("/PBL3/home");
 	}
 
 }
