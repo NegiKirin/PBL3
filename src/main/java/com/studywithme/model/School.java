@@ -3,58 +3,52 @@ package com.studywithme.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class School {
+public class School extends AbstractModel{
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
-	private String shool;
+	private String id;
+	private String nameSchool;
 	
 	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<User> listUser = new HashSet<>();
 	
-	public School(Integer id, String shool) {
+	public School(String id, String shool) {
 		this.id = id;
-		this.shool = shool;
+		this.nameSchool = shool;
 	}
-
 	
-
-	public School(String shool) {
-		this.shool = shool;
+	public School(String nameSchool) {
+		this.nameSchool = nameSchool;
 	}
-
 
 
 	public School() {
 	}
 
-
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
 
-	public String getShool() {
-		return shool;
+	public String getNameSchool() {
+		return nameSchool;
 	}
 
 
-	public void setShool(String shool) {
-		this.shool = shool;
+	public void setNameSchool(String nameSchool) {
+		this.nameSchool = nameSchool;
 	}
 	
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +13,19 @@
 		<input type="submit" value="Submit" name="usubmit">
 	</form>
 	
-	<form action="/PBL3/edit-profile" method="get"> <br><br>
+	<form action="/PBL3/edit-profile" method="post"> <br><br>
 <table>
   <tr>
-             <td>Upload: </td>
+             <td>Update: </td>
              <td width='10px'></td>
-             <td><input type="text" name="firstName"> </td>    
-             <td><input type="text" name="lastName"> </td>    
-             <td><input type="date" name="dateOfBirth"> </td>
+             <td>First Name:  <input type="text" name="firstName"> </td>    
+             <td>Last Name<input type="text" name="lastName"> </td>    
+             <td>Date: <input type="date" name="dateOfBirth"> </td>
+             <td>School: <select name="school_id">
+             	<c:forEach items="${listSchool}" var="item">
+             		<option value="${item.id}">${item.nameSchool} </option>
+             	</c:forEach>
+             </select> </td>
   </tr>
   <tr>
       <td><input type="submit" value="Submit" name="usubmit"></td>

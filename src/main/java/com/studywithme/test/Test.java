@@ -1,39 +1,55 @@
 package com.studywithme.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-
-import com.studywithme.dao.UserDAO;
+import com.studywithme.dao.impl.UserDAO;
+import com.studywithme.model.School;
 import com.studywithme.model.User;
 
-public class test {
-	public static void main(String[] args) throws MalformedURLException {
-		File file =new File("src/main/webapp/template/image/ava.png");
-		URI fileUri = file.toURI();
-		System.out.println("URI:" + fileUri);
-		URL fileUrl = file.toURI().toURL();
-		System.out.println("URL:" + fileUrl);
-		byte[] bFile = new byte[(int) file.length()];
-        
-        try {
-	     FileInputStream fileInputStream = new FileInputStream(file);
-	     //convert file into array of bytes
-	     fileInputStream.read(bFile);
-	     fileInputStream.close();
-        } catch (Exception e) {
-	     e.printStackTrace();
-        }
-        
-//        User user = new User();
-//        
-//        user.setid("SWM1679943989574788");
-//        
-//        user.setAvatar(bFile);
-//        
-//        UserDAO Userdao = new UserDAO();
-//        Userdao.updateAvatar(user);
+public class Test {
+	public static void main(String[] args){
+		User u1 = new User();
+//		u1.setid("1");
+//		u1.setFirstName("test");
+//		u1.setLastName("test");
+//		
+		School school = new School();
+//		
+//		school.setId("1");
+//		school.setNameSchool("BK");
+//		
+//		u1.setSchool(school);
+//
+		UserDAO userDAO = new UserDAO();
+		
+//		userDAO.insert(u1);
+		
+		u1 = userDAO.findOne("1");
+//		school = u1.getSchool();
+		System.out.println(u1);
+		System.out.println();
+		
+		school.setId("2");
+		school.setNameSchool("SP");
+		
+		u1.setSchool(school);
+		
+		userDAO.update(u1);
+		
+//		try {
+//			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//			
+//			if(sessionFactory!=null) {
+//				Session session = sessionFactory.openSession();
+//				Transaction tr = session.beginTransaction();
+//				
+//				// lấy ra user có c
+//				School result = session.get(School.class, t.getId());
+//				
+//				tr.commit();
+//				session.close();
+//			}
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
 	}
 }

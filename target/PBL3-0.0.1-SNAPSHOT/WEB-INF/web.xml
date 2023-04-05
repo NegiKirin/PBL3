@@ -9,9 +9,11 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
- <!--  <error-page>
+  	<listener>
+   		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+	<error-page>
   	<error-code>404</error-code>
   	<location>/error/bug404.jsp</location>
-  </error-page> -->
+  </error-page>
 </web-app>

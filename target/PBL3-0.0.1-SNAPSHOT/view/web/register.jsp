@@ -1,5 +1,7 @@
+<%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +14,9 @@
     <link rel="stylesheet" href="/PBL3/template/css/register.css">
 </head>
 <body>
-
-	<%
-		Object obj = session.getAttribute("user");
-		if(obj != null){
-			response.sendRedirect("thanhcong.jsp");
-		}
-	
-		String error_email = (request.getAttribute("error_email")+"").equals("null")?"":request.getAttribute("error_email")+"";
-		String error_password = (request.getAttribute("error_password")+"").equals("null")?"":request.getAttribute("error_password")+"";
-		String email = (request.getAttribute("email")+"").equals("null")?"":request.getAttribute("email")+"";
-		String firstName = (request.getAttribute("firstName")+"").equals("null")?"":request.getAttribute("firstName")+"";
-		String lastName = (request.getAttribute("lastName")+"").equals("null")?"":request.getAttribute("lastName")+"";
-		
-	%>
+	<c:if test="${user!=null }">
+		<c:redirect url="/login"/>
+	</c:if>
 
     <div id="main">
         <div id="header">
@@ -42,49 +33,46 @@
                 
                 </div>
                 <div>
-                <form action="/PBL3/register"  method ="get">
-                	<table>
-                		<tr>
-                			<td><input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="<%=firstName%>"></td>
-                			<td><input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="<%=lastName%>"></td>
-                		</tr>
-                		<tr>
-                			<td><input name="sex" id="male" type="radio" required="required" value="male">
-                			<label for="male">Nam</label></td>
-                			<td><input name="sex" id="female" type="radio" required="required" value="female">
-                			<label for="female">Nữ</label></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"><input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
-                    		required="required" value = "<%=email %>"></td>
-                		</tr>
-                		<%
-                    	if(error_email!=""){
-                    	%>
-                		<tr>
-                			<td><div id = "error_email"><%=error_email %></div></td>
-                		</tr>
-                		<%} %>
+                <form action="/PBL3/register"  method ="post">
+                			<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
+                			<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }">
                 		
-                		<tr>
-                			<td colspan="2"><input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()"></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"><input class="signin-submit" name="re_password" id ="re_password" type="password" 
-                    placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()"></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"><label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label></td>
-                		</tr>
-                		<tr>
-                			<td colspan="2"> <div id = "error_password"><%=error_password%></div></td>
-                		</tr>
-                	</table>
+                		
+                			<input name="sex" id="male" type="radio" required="required" value="male" class="sex">
+                			<label for="male">Nam</label>
+                			<input name="sex" id="female" type="radio" required="required" value="female" class="sex">
+                			<label for="female">Nữ</label>
+                		    <input name="sex" id="another" type="radio" required="required" value="another" class="sex">
+                			<label for="another">Khác</label>
+                		
+                			<input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
+                    		required="required" value = "${email }">
+                		
+                		
+                		<c:if test="${error_email!= null }">
+                			
+                				<div id = "error_email">${error_email }</div>
+                			
+                		</c:if>
+                		
+                		
+                			<input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
+                		
+                		
+                			<input class="signin-submit" name="re_password" id ="re_password" type="password" 
+                    placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
+                		
+                		
+                			<label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label>
+                		
+                		
+                			<div id = "error_password">${error_password }</div>
+
                 	
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
                 </div>
-                <p class="login-signup">Bạn đã có tài khoản? <a href="/view/web/login.jsp">Đăng nhập</a></p>
+                <p class="login-signup">Bạn đã có tài khoản? <a href="/PBL3/login">Đăng nhập</a></p>
             </div>
         </div>
     </div>

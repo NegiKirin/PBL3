@@ -12,6 +12,7 @@
 </head>
 <body>
 	<%
+		String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 		Object obj = session.getAttribute("user");
 		User user = null;
 		if(obj != null){
@@ -38,7 +39,7 @@
 			</p>
 			<br>
 			<a href="/PBL3/logout">Đăng xuất</a>
-			<a href="/view/web/uploadimg.jsp">edit avatar</a>
+			<a href="<%=url %>/view/web/uploadimg.jsp">edit avatar</a>
 		<%} %>
 
 	<h1>Thanh Cong roi đó</h1>

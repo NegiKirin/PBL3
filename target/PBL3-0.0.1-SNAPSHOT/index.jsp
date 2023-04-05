@@ -1,6 +1,4 @@
-<%@page import="com.studywithme.dao.UserDAO"%>
-<%@page import="com.studywithme.model.User"%>
-<%@page import="org.hibernate.internal.build.AllowSysOut"%>
+<%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,17 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-	Object obj = session.getAttribute("user");
-	User user = (User)obj;
-	String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-	UserDAO.maxAllowedPacket();
-	if(user!=null){
-		url += "/view/web/home.jsp";
-	}else{
-		url+= "/view/web/login.jsp";
-	}
-	response.sendRedirect(url);
-	%>
+	
+	<c:if test="${user!=null}">
+		<c:redirect url="/home"></c:redirect>
+	</c:if>
+	<c:if test="${user==null }">
+		<c:redirect url="/login"></c:redirect>
+	</c:if>
 </body>
 </html>

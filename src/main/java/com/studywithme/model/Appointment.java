@@ -4,24 +4,23 @@ import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Appointment {
+public class Appointment extends AbstractModel{
 	
 	@Id
 	private String id;
 	private Time starting_time;
 	private Time ending_time;
-	
 	private String address;
-	private int maximum;
+	private Integer maximum;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "appointment_user",
@@ -31,7 +30,6 @@ public class Appointment {
 	
 	public Appointment() {
 	}
-	
 	
 	public Appointment(String id, Time starting_time, Time ending_time, String address, int maximum) {
 		this.id = id;

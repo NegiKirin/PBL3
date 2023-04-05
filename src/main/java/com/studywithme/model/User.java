@@ -1,22 +1,21 @@
 package com.studywithme.model;
 
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class User {
+public class User extends AbstractModel{
 	
 	@Id
 	private String id;
@@ -25,15 +24,14 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
-	private byte sex;
-	private Date dateRegister;
+	private Integer sex;
+	private Integer status;
 	
 	@Lob
-	private byte[] avatar;
+	private String avatar;
 	
 	@Lob
-	private byte[] backgroud;
-	
+	private String backgroud;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "school_id")
@@ -61,7 +59,7 @@ public class User {
 	
 	
 public User(String id, String email, String password, String firstName, String lastName, Date dateOfBirth,
-		byte sex, Date dateRegister, School school) {
+		Integer sex, School school) {
 	this.id = id;
 	this.email = email;
 	this.password = password;
@@ -69,33 +67,24 @@ public User(String id, String email, String password, String firstName, String l
 	this.lastName = lastName;
 	this.dateOfBirth = dateOfBirth;
 	this.sex = sex;
-	this.dateRegister = dateRegister;
 	this.school = school;
 }
 
 public String getBackgroud() {
-	if(backgroud==null){
-		return null;
-	}else {
-		return Base64.getEncoder().encodeToString(backgroud);
-	}
+	return backgroud;
 }
 
 
-public void setBackgroud(byte[] backgroud) {
+public void setBackgroud(String backgroud) {
 	this.backgroud = backgroud;
 }
 
 public String getAvatar() {
-	if(avatar==null){
-		return null;
-	}else {
-		return Base64.getEncoder().encodeToString(avatar);
-	}
+	return avatar;
 }
 
 
-public void setAvatar(byte[] avatar) {
+public void setAvatar(String avatar) {
 	this.avatar = avatar;
 }
 
@@ -160,27 +149,44 @@ public void setDateOfBirth(Date dateOfBirth) {
 }
 
 
-public byte isSex() {
+public Integer getSex() {
 	return sex;
 }
 
 
-public void setSex(byte sex) {
+public void setSex(Integer sex) {
 	this.sex = sex;
 }
 
 
-public Date getDateRegister() {
-	return dateRegister;
+public School getSchool() {
+	return school;
 }
 
 
-public void setDateRegister(Date dateRegister) {
-	this.dateRegister = dateRegister;
+public void setSchool(School school) {
+	this.school = school;
 }
-	
+
+
+@Override
+public String toString() {
+	return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+			+ ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", sex=" + sex + ", dateRegister="
+			 + "]";
+}
 //public void addFriend(User t) {
 //	this.listFriend.add(t);
 //}
+
+
+public Integer getStatus() {
+	return status;
+}
+
+
+public void setStatus(Integer status) {
+	this.status = status;
+}
 	
 }

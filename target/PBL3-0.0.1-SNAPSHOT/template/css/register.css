@@ -168,3 +168,20 @@ div#error_email, div#error_password, #msg{
 #password{
 	margin-top: 30px;
 }
+
+#content .content-signin #firstName{
+    width: 40%;
+    margin-right: 3%;
+}
+
+#content .content-signin #lastName{
+    width: 55%;
+    display: inline;
+}
+
+#content .content-signin .sex{
+    box-shadow: none;
+    width: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+}
