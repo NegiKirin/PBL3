@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/PBL3/home.html">
+                    <a href="../home/home.html">
                         <button class="header-main-mainbutton">
                             <i class="fa-solid fa-globe"></i>
                         </button>
@@ -66,44 +66,44 @@
                     <div class="edit-ava">
                         <p class="title-edit">Ảnh đại diện</p>
                         <a href=""><i class="fa-solid fa-user-pen"></i></a>
-                        <img class="ava" src="/PBL3/image/avatarDefault.png" alt="">
+                        <img class="ava" src="../image/ava1.png" alt="">
                     </div>
                     <div class="edit-background">
                         <p class="title-edit">Ảnh bìa</p>
                         <a href=""><i class="fa-solid fa-user-pen"></i></a>
-                        <img class="background" src="/PBL3/image/backgroundDefault.png" alt="">
+                        <img class="background" src="../image/background.png" alt="">
                     </div>
                     <div class="edit-name">
                         <p class="title-edit">Họ tên</p>
-                        <input type="text" value="Lê Việt Thanh" class="name_user">
+                        <input type="text" value="Lê Việt" class="first-name-user">
+                        <input type="text" value="Thanh" class="last-name-user">
                     </div>
                     <div class="edit-infor">
                         <p class="title-edit">Thông tin cá nhân</p>
                         <div class="list">
                             <i class="fa-solid fa-heart"></i>
                             <p class="content">Giới tính:</p>
-                            <p class="infor">Nam</p>
+                            <select class="list-sex" name="" id="">
+                                <option selected>Nam</option>
+                                <option>Nữ</option>
+                                <option>Khác</option>
+                            </select>
                         </div>
                         <div class="list">
                             <i class="fa-solid fa-school"></i>
                             <p class="content">Trường học:</p>
-                            <input type="text" value="Trường Đại học Bách khoa, Đại học Đà Nẵng" class="infor">
+                            <input placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice">
+
+                            <datalist id="list-school">
+                                <option value="Trường Đại học Bách khoa, Đại học Đà Nẵng">
+                                <option value="Trường Đại học Kinh tế, Đại học Đà Nẵng">
+                                <option value="Trường Đại học Kiến trúc Đà Nẵng">
+                            </datalist>
                         </div>
                         <div class="list">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p class="content">Địa chỉ:</p>
-                            <input type="text" value="60 Nguyễn Lương Bằng, Hòa Khánh Bắc" class="infor">
-                        </div>
-                    </div>
-                    <div class="edit-infor-account">
-                        <p class="title-edit">Thông tin tài khoản</p>
-                        <div class="list">
-                            <p class="content">Email:</p>
-                            <input type="text" value="thanhleviet723@gmail.com" class="infor">
-                        </div>
-                        <div class="list">
-                            <p class="content">Mật khẩu:</p>
-                            <input type="text" value="********" class="infor">
+                            <i class="fa-solid fa-cake-candles"></i>
+                            <p class="content">Ngày sinh:</p>
+                            <input type="date" value="none" class="date">
                         </div>
                     </div>
                     <input type="submit" value="Xác nhận thay đổi" class="submit">

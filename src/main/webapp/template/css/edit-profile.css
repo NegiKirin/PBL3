@@ -188,11 +188,19 @@ body{
 
 .edit-name input{
     border-color: #f0f7ff;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
     font-weight: bold;
-    text-align: center;
-    font-size: 30px
+
+    font-size: 20px;
+}
+
+.edit-name .first-name-user{
+    width: 250px;
+}
+
+.edit-name .last-name-user{
+    width: 150px;
 }
 
 .edit-infor .title-edit, 
@@ -217,13 +225,29 @@ body{
 
 .content-main-edit-infor .content{
     font-weight: bold;
-    width: 100px;
+    width: 150px;
 }
 
-.content-main-edit-infor .infor{
-    width: 400px;
+.content-main-edit-infor select{
+    border: #8a8a8a;
+    font-size: 20px;
+    margin-top: -5px;
+    font-style: italic;
+}
+
+.content-main-edit-infor #school-choice{
     border: none;
-    font-size: 15px;
+    font-size: 20px;
+    margin-top: -5px;
+    font-style: italic;
+    width: 500px;
+}
+
+.content-main-edit-infor .date{
+    border: none;
+    font-size: 20px;
+    margin-top: -5px;
+    font-style: italic;
 }
 
 .content-main-edit-infor .submit{
