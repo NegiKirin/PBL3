@@ -37,7 +37,6 @@
                 			<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
                 			<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }">
                 		
-                		
                 			<input name="sex" id="male" type="radio" required="required" value="male" class="sex">
                 			<label for="male">Nam</label>
                 			<input name="sex" id="female" type="radio" required="required" value="female" class="sex">
@@ -50,14 +49,9 @@
                 		
                 		
                 		<c:if test="${error_email!= null }">
-                			
                 				<div id = "error_email">${error_email }</div>
-                			
                 		</c:if>
-                		
-                		
                 			<input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
-                		
                 		
                 			<input class="signin-submit" name="re_password" id ="re_password" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">

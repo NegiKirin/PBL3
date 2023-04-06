@@ -63,7 +63,6 @@
                     </li>
                 </div>
 			</c:if>
-
             </div>
         </div>
     </div>
