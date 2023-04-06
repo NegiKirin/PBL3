@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/PBL3/template/css/edit-profile.css">
+    <link rel="stylesheet" href="./edit-infor.css">
 </head>
 <body>
     <div id="main">
@@ -63,15 +63,13 @@
             <div class="content-main">
                 <h1 class="content-main-title">Chỉnh sửa thông tin cá nhân</h1>
                 <form class="content-main-edit-infor">
-                    <div class="edit-ava">
-                        <p class="title-edit">Ảnh đại diện</p>
-                        <a href=""><i class="fa-solid fa-user-pen"></i></a>
-                        <img class="ava" src="../image/ava1.png" alt="">
-                    </div>
                     <div class="edit-background">
-                        <p class="title-edit">Ảnh bìa</p>
-                        <a href=""><i class="fa-solid fa-user-pen"></i></a>
                         <img class="background" src="../image/background.png" alt="">
+                        <input type="file" name="background" id="nackground" accept="image/*" />
+                    </div>
+                    <div class="edit-ava">
+                        <img class="ava" src="../image/ava1.png" alt="">
+                        <input type="file" name="avatar" id="avatar" accept="image/*" />
                     </div>
                     <div class="edit-name">
                         <p class="title-edit">Họ tên</p>

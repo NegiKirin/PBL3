@@ -140,14 +140,12 @@ body{
     border-radius: 5px;
     box-shadow:  3px 3px 5px 0px #aaaaaa;
     margin-bottom: 50px;
-    padding-top: 30px;
     margin-top: 30px;
 }
 
 .content-main-edit-infor .edit-ava{
     display: block;
     width: 100%;
-    text-align: center;
 }
 
 .content-main-edit-infor .title-edit{
@@ -158,29 +156,73 @@ body{
     margin-top: 20px;
     font-size: 18px;
     color: #000000;
-    text-decoration:underline;
     font-style: italic;
 }
 
-.content-main-edit-infor .ava{
-    height: 200px;
-    width: 200px;
+.content-main-edit-infor .ava,
+.content-main-edit-infor .edit-ava
+{
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
-}
-
-.content-main-edit-infor .edit-background{
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin: 20px 0;
+    margin-left: calc(50% - 150px);
+    margin-top: calc(-150px / 2);
 }
 
 .content-main-edit-infor .background{
-    border-radius: 10px;
-    margin-top: 20px;
+    width: 100%;
+    border-radius: 25px;
 }
 
+.content-main-edit-infor .edit-background{
+    height: 300px;
+    position: relative;
+}
+
+.content-main-edit-infor .edit-background input{
+    position: absolute;
+    display: none; 
+    right: 15px;
+    top: 15px;
+    width: 75px;
+    padding: 5px;
+}
+
+.content-main-edit-infor .edit-background:hover
+ > .background{
+    opacity: 80%;
+ }
+
+ .content-main-edit-infor .edit-background:hover
+ > input{
+    display: block;
+ }
+
+.content-main-edit-infor .edit-ava{
+    position: relative;
+}
+
+.content-main-edit-infor .edit-ava input{
+    position: absolute;
+    display: none; 
+    top: 0px;
+    right: calc(50% - 75px / 2);
+    width: 75px;
+    padding: 5px;
+}
+
+.content-main-edit-infor .edit-ava:hover
+ > .ava{
+    box-shadow:  3px 3px 5px 0px #aaaaaa;
+ }
+
+ .content-main-edit-infor .edit-ava:hover
+ > input{
+    display: block;
+ }
+
 .content-main-edit-infor .edit-name{
+    margin-top: 30px;
     display: block;
     width: 100%;
     text-align: center;
