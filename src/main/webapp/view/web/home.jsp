@@ -86,7 +86,7 @@
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
                             </div>
                         </div>
-                        <p class="see-more"><a href="">Xem chi tiết</a></p>
+                        <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
                     </div>
                     <div class="content-main-item">
                         <div class="profile">
@@ -100,7 +100,7 @@
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
                             </div>
                         </div>
-                        <p class="see-more"><a href="">Xem chi tiết</a></p>
+                        <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
                     </div>
                     <div class="content-main-item">
                         <div class="profile">
@@ -114,7 +114,7 @@
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
                             </div>
                         </div>
-                        <p class="see-more"><a href="">Xem chi tiết</a></p>
+                        <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
                     </div>
                     <div class="content-main-item">
                         <div class="profile">
@@ -128,7 +128,7 @@
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
                             </div>
                         </div>
-                        <p class="see-more"><a href="">Xem chi tiết</a></p>
+                        <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
                     </div>
                 </div>
             </div>
@@ -170,6 +170,40 @@
                 </div>
             </div>
         </div>
+        <div class="booking-apm" id="myDIV" >
+	        <div class="content">
+	            <img src="../image/background.png" alt="" class="background">
+	            <button class="exit" onclick="myFunction()">X</button> 
+	            <img src="../image/ava1.png" alt="" class="ava">
+	            <h1 class="name">Phúc Tân</h1>
+	            <form class="infor-apm">
+	                <p class="title">Thông tin cuộc hẹn:</p>
+	                <div class="list">
+	                    <i class="fa-solid fa-clock"></i><p class="time">8 A.M - 9 A.M</p>
+	                </div>
+	                <div class="list">
+	                    <i class="fa-solid fa-store"></i><p class="type-location">Coffee</p>
+	                </div>
+	                <div class="list">
+	                    <i class="fa-solid fa-location-dot"></i><p class="address">60 Nguyen Luong Bang</p>
+	                </div>
+	                <div class="list">
+	                    <i class="fa-solid fa-users"></i><p class="number">3 người khác tham gia</p>
+	                </div>
+	                <input class="submit" type="submit" value="KẾT NỐI NGAY">
+	            </form>
+	        </div>
+	    </div>
     </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myDIV");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+    </script>
 </body>
 </html>
