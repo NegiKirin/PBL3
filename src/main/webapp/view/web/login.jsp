@@ -12,8 +12,9 @@
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/PBL3/template/css/login.css">
     <link rel="icon" href="/PBL3/template/image/Study1.png" type="image/icon type">
-        <link rel="stylesheet" href="/PBL3/template/css/register.css">
-    
+    <link rel="stylesheet" href="/PBL3/template/css/register.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="/PBL3/template/js/login.js"></script>
 </head>
 <body>
 
@@ -41,7 +42,7 @@
                     <p class="error">${error}</p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
-                <p class="login-signup">Bạn chưa có tài khoản? <a href="/PBL3/register">Đăng kí</a></p>
+                <p class="login-signup">Bạn chưa có tài khoản? <button class="button-signin">Đăng kí</button></p>
 			</c:if>
 			
 			<c:if test="${user!=null}">
@@ -108,7 +109,7 @@
                     <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
                 </form>
                 </div>
-                <p class="login-signup">Bạn đã có tài khoản? <a href="/PBL3/login">Đăng nhập</a></p>
+                <p class="login-signup">Bạn đã có tài khoản? <button class="button-login">Đăng nhập</button></p>
             </div>
         </div>
     </div>

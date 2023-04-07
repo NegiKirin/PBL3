@@ -76,8 +76,8 @@ body{
 #content .content-login{
     width: 30%;
     min-width: 400px;
-    float: left;
-    display: inline;
+    /*float: left;
+    display: inline;*/
     height: auto ;
     background-color: #fff;
     margin: 0 auto;

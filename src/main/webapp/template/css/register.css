@@ -72,7 +72,7 @@ body{
     margin: 0 auto;
     margin-top: 80px;
     border-radius: 10px;
-    opacity: 0;
+    display: none;
     /*margin-bottom: 50px;*/
 }
 
