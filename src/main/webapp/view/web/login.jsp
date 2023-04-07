@@ -12,6 +12,8 @@
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/PBL3/template/css/login.css">
     <link rel="icon" href="/PBL3/template/image/Study1.png" type="image/icon type">
+        <link rel="stylesheet" href="/PBL3/template/css/register.css">
+    
 </head>
 <body>
 
@@ -36,7 +38,7 @@
 				<form action="/PBL3/login" method = "post">
                     <input class="login-submit" name="email" id = "email" type="email" required="required" placeholder="Email" value = "${email }">
                     <input class="login-submit-pwd" name="password" id = "password" type="password" required="required" placeholder="Mật khẩu" required>
-                    <p class="error">${error }</p>
+                    <p class="error">${error}</p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
                 </form>
                 <p class="login-signup">Bạn chưa có tài khoản? <a href="/PBL3/register">Đăng kí</a></p>
@@ -63,6 +65,50 @@
                     </li>
                 </div>
 			</c:if>
+            </div>
+            <div class="content-signin">
+                <div class="content-signin-title">
+                    <h1 class="content-signin-title-text">Đăng Kí</h1>
+                    <li class="signin-icon"> <i class="fa-brands fa-facebook"></i> </li>
+                    <li class="signin-icon"> <i class="fa-brands fa-github"></i> </li>
+                    <li class="signin-icon"> <i class="fa-brands fa-google"></i> </li>
+                
+                </div>
+                <div>
+                <form action="/PBL3/register"  method ="post">
+                			<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
+                			<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }">
+                		
+                			<input name="sex" id="male" type="radio" required="required" value="male" class="sex">
+                			<label for="male">Nam</label>
+                			<input name="sex" id="female" type="radio" required="required" value="female" class="sex">
+                			<label for="female">Nữ</label>
+                		    <input name="sex" id="another" type="radio" required="required" value="another" class="sex">
+                			<label for="another">Khác</label>
+                		
+                			<input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
+                    		required="required" value = "${email }">
+                		
+                		
+                		<c:if test="${error_email!= null }">
+                				<div id = "error_email">${error_email }</div>
+                		</c:if>
+                			<input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
+                		
+                			<input class="signin-submit" name="re_password" id ="re_password" type="password" 
+                    placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
+                		
+                		
+                			<label class="pwd-not-same" for = "re_password"><p id = "msg"></p> </label>
+                		
+                		
+                			<div id = "error_password">${error_password }</div>
+
+                	
+                    <input class="signin-submit-button" type="submit" name = "dangKi" id = "dangKi" value="ĐĂNG KÍ">
+                </form>
+                </div>
+                <p class="login-signup">Bạn đã có tài khoản? <a href="/PBL3/login">Đăng nhập</a></p>
             </div>
         </div>
     </div>

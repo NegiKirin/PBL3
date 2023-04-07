@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 	<c:if test="${user!=null}">
 		<c:redirect url="/home"></c:redirect>
 	</c:if>

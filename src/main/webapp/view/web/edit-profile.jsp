@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./edit-infor.css">
+    <link rel="stylesheet" href="/PBL3/template/css/edit-profile.css">
 </head>
 <body>
     <div id="main">
