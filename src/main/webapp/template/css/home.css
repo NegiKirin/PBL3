@@ -117,6 +117,7 @@ body{
 #content .content-left .calender-title p{
     font-weight: bold;
     padding: 10px 5px;
+    
 }
 
 #content .content-left .calender-main{
@@ -177,7 +178,7 @@ body{
 
 #content .content-main{
     display: inline;
-    width: 62.5%;
+    width: 1000px;
     height: 100%;
 }
 
@@ -275,7 +276,13 @@ body{
 }
 
 #content .content-main .content-main-list .see-more{
-    text-align: center;
+    cursor:pointer;
+    width: 100px;
+    border: none;
+    background: none;
+    color: #545454;
+    font-weight:bold;
+    margin-left: calc(50% - 50px);
 }
 
 #content .content-main .content-main-list a{
@@ -415,4 +422,115 @@ body{
     text-align: center;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.booking-apm{
+    position:absolute;
+    display: none;
+    background: rgba(0,0,0, 70%);
+    top: 0px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.booking-apm .content{
+    position: relative;
+    background-color: #fff;
+    height: auto;
+    width: 500px;
+    margin-left: calc(50% - 250px);
+    margin-top: 150px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.booking-apm .content .background{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.booking-apm .content .ava{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-top: -70px;
+}
+
+.booking-apm .name{
+    margin: 20px 0;
+}
+
+.booking-apm .infor-apm{
+    text-align: left;
+    padding: 0 40px;
+}
+
+.booking-apm .infor-apm .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.booking-apm i{
+    width: 50px;
+    text-align: center;
+    margin: 7px 0;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.booking-apm .time,
+.booking-apm .type-location{
+    background-color: #75ba80;
+    display: inline;
+    margin-right: 50%;
+    padding: 6px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.booking-apm .type-location{
+    background-color: #d35800;
+}
+
+.booking-apm .address,
+.booking-apm .number{
+    display: inline;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.booking-apm .exit{
+    cursor: pointer;
+    position: absolute;
+    background-color: #aaaaaa;
+    border: none;
+    height: 30px;
+    width: 50px;
+    border-radius: 10px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    top: 5px;
+    right: 5px;
+}
+
+
+.booking-apm .submit{
+    width: 150px;
+    margin: 30px 0;
+    margin-left: calc(50% - 75px);
+    padding: 10px;
+    border: none;
+    background-color: #18C0e6;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+}
+
+.booking-apm .submit:hover{
+    background-color: #0aa0c2;
 }
