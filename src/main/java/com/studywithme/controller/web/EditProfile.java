@@ -32,7 +32,7 @@ public class EditProfile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		schoolService = new SchoolService();
 		request.setAttribute("listSchool", schoolService.findAll());
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
 

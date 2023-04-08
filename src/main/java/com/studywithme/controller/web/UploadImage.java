@@ -26,44 +26,59 @@ import com.studywithme.service.impl.UserService;
 				maxFileSize=1024*1024*50,      	// 50 MB
 				maxRequestSize=1024*1024*100	// 100 MB
 )
-@WebServlet("/upload-avatar")
-public class UploadAvatar extends HttpServlet {
+@WebServlet("/upload-image")
+public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IUserService userService;
 
 
-    public UploadAvatar() {
+    public UploadImage() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Part file = request.getPart("avatar");
-		
+		Part file1 = request.getPart("backgroud");
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("user");
 		User user = null;
 		user = (User)obj;
+//		try {
+//			
+//				
+//				InputStream is = file1.getInputStream();
+//				byte[] data = new byte[is.available()];
+//				is.read(data);
+//				System.out.println(is);
+//				is.close();
+//				user.setBackgroud(Base64.getEncoder().encodeToString(data));
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		try {
-			InputStream is = file.getInputStream();
-			byte[] data = new byte[is.available()];
-			is.read(data);
-			is.close();
-			
-			user.setAvatar(Base64.getEncoder().encodeToString(data));
+				InputStream is = file.getInputStream();
+				byte[] data = new byte[is.available()];
+				System.out.println(is);
+				is.read(data);
+				is.close();
+				
+				user.setAvatar(Base64.getEncoder().encodeToString(data));
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		userService = new UserService();
 		
 		userService.updateImage(user);
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
 

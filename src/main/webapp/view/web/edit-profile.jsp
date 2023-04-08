@@ -62,15 +62,28 @@
             </div>
             <div class="content-main">
                 <h1 class="content-main-title">Chỉnh sửa thông tin cá nhân</h1>
-                <form class="content-main-edit-infor">
+                <div class="content-main-edit-infor">
+					<form action="/PBL3/upload-image" method="post" enctype="multipart/form-data">
                     <div class="edit-background">
-                        <img class="background" src="../image/background.png" alt="">
-                        <input type="file" name="background" id="nackground" accept="image/*" />
+                        <c:if test="${user.backgroud == null}">
+							<img src="./template/image/backgroudDefault.png" class="background">
+						</c:if>
+						<c:if test="${user.backgroud!=null}">
+							<img class="background" alt="" src="data:image/jpeg;base64,${user.backgroud}">
+						</c:if>
+                        <input type="file" name="backgroud" id="backgroud" accept="image/*" />
                     </div>
                     <div class="edit-ava">
-                        <img class="ava" src="../image/ava1.png" alt="">
+                        <c:if test="${user.avatar == null}">
+							<img src="./template/image/avatarDefault.jpg" class="ava">
+						</c:if>
+						<c:if test="${user.avatar!=null}">
+							<img class="ava" alt="" src="data:image/jpeg;base64,${user.avatar}">
+						</c:if>
                         <input type="file" name="avatar" id="avatar" accept="image/*" />
                     </div>
+					<input type="submit" value="Submit" id="button-1"/>
+                  </form>
                     <div class="edit-name">
                         <p class="title-edit">Họ tên</p>
                         <input type="text" value="Lê Việt" class="first-name-user">
@@ -105,7 +118,7 @@
                         </div>
                     </div>
                     <input type="submit" value="Xác nhận thay đổi" class="submit">
-                </form>
+                </div>
             </div>
             <div class="content-right">
                 <div class="list-friends">
