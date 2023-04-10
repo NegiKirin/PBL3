@@ -49,11 +49,17 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public boolean updateImage(User user) {
+	public boolean updateAvatar(User user) {
 		userDAO = new UserDAO();
-		return userDAO.updateImage(user);
+		return userDAO.updateAvatar(user);
 	}
 
+	@Override
+	public boolean updateBackground(User user) {
+		userDAO = new UserDAO();
+		return userDAO.updateBackground(user);
+	}
+	
 	@Override
 	public boolean update(User user) {
 		userDAO = new UserDAO();

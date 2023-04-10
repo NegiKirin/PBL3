@@ -94,9 +94,9 @@
                 		<c:if test="${error_email!= null }">
                 				<div id = "error_email">${error_email }</div>
                 		</c:if>
-                			<input class="signin-submit" name="password" id = "password" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
+                			<input class="signin-submit" name="password" id = "password-register" type="password" placeholder="Mật khẩu" required="required" onkeyup = "checkPassword()">
                 		
-                			<input class="signin-submit" name="re_password" id ="re_password" type="password" 
+                			<input class="signin-submit" name="re_password" id ="re_password-register" type="password" 
                     placeholder="Nhập lại mật khẩu" required = "required" onkeyup = "checkPassword()">
                 		
                 		
@@ -114,4 +114,19 @@
         </div>
     </div>
 </body>
+<script>
+	function checkPassword(){
+		password = document.getElementById("password-register").value;
+		re_password = document.getElementById("re_password-register").value;
+
+		if(password!=re_password){
+			document.getElementById("msg").innerHTML = "Mật khẩu không khớp";
+			return false;
+		}
+		else{
+			document.getElementById("msg").innerHTML = "";
+			return true;
+			}
+		}
+</script>
 </html>

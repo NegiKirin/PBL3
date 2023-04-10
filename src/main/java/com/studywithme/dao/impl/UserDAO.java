@@ -29,10 +29,17 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO{
 	}
 
 	@Override
-	public boolean updateImage(User user) {
+	public boolean updateAvatar(User user) {
 		String hql = "UPDATE User u SET u.avatar = :avatar "
 					+ " WHERE u.id = :id";
 		return update(hql, "avatar", user.getAvatar(), "id", user.getId());
+	}
+	
+	@Override
+	public boolean updateBackground(User user) {
+		String hql = "UPDATE User u SET u.background = :background "
+					+ " WHERE u.id = :id";
+		return update(hql, "background", user.getBackground(), "id", user.getId());
 	}
 
 	@Override

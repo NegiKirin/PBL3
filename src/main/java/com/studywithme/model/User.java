@@ -1,10 +1,12 @@
 package com.studywithme.model;
 
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -27,11 +29,16 @@ public class User extends AbstractModel{
 	private Integer sex;
 	private Integer status;
 	
-	@Lob
-	private String avatar;
+//	@Lob
+//	private byte[] avatar;
+//	
+//	@Lob
+//	private byte[] backgroud;
 	
-	@Lob
-	private String backgroud;
+	@Column(length = Integer.MAX_VALUE)
+	private String avatar;
+	@Column(length = Integer.MAX_VALUE)
+	private String background;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "school_id")
@@ -70,14 +77,32 @@ public User(String id, String email, String password, String firstName, String l
 	this.school = school;
 }
 
-public String getBackgroud() {
-	return backgroud;
-}
+//public String getBackgroud() {
+//	if(backgroud==null){
+//		return null;
+//	}else {
+//		return Base64.getEncoder().encodeToString(backgroud);
+//	}
+//}
+//
+//
+//public void setBackgroud(byte[] backgroud) {
+//	this.backgroud = backgroud;
+//}
+//
+//public String getAvatar() {
+//	if(avatar==null){
+//		return null;
+//	}else {
+//		return Base64.getEncoder().encodeToString(avatar);
+//	}
+//}
+//
+//
+//public void setAvatar(byte[] avatar) {
+//	this.avatar = avatar;
+//}
 
-
-public void setBackgroud(String backgroud) {
-	this.backgroud = backgroud;
-}
 
 public String getAvatar() {
 	return avatar;
@@ -86,6 +111,16 @@ public String getAvatar() {
 
 public void setAvatar(String avatar) {
 	this.avatar = avatar;
+}
+
+
+public String getBackground() {
+	return background;
+}
+
+
+public void setBackground(String background) {
+	this.background = background;
 }
 
 

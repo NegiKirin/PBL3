@@ -44,40 +44,42 @@ public class UploadImage extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Part file = request.getPart("avatar");
-		Part file1 = request.getPart("backgroud");
+		Part file1 = request.getPart("background");
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("user");
 		User user = null;
 		user = (User)obj;
-//		try {
-//			
-//				
-//				InputStream is = file1.getInputStream();
-//				byte[] data = new byte[is.available()];
-//				is.read(data);
-//				System.out.println(is);
-//				is.close();
-//				user.setBackgroud(Base64.getEncoder().encodeToString(data));
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		userService = new UserService();
+		try {
+				InputStream is = file1.getInputStream();
+				byte[] data = new byte[is.available()];
+				is.read(data);
+				System.out.println(is);
+				is.close();
+				String base64=Base64.getEncoder().encodeToString(data);
+				if(!base64.equals("")) {
+					user.setBackground(base64);
+				}
+				userService.updateBackground(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		try {
 				InputStream is = file.getInputStream();
 				byte[] data = new byte[is.available()];
 				System.out.println(is);
 				is.read(data);
 				is.close();
-				
-				user.setAvatar(Base64.getEncoder().encodeToString(data));
+				String base64 = Base64.getEncoder().encodeToString(data);
+				if(!base64.equals("")) {
+					user.setAvatar(base64);
+				}
+				userService.updateAvatar(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		userService = new UserService();
-		
-		userService.updateImage(user);
-		
+				
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}

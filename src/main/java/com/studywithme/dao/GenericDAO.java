@@ -13,11 +13,5 @@ public interface GenericDAO<T> {
 	public boolean detele(T t);
 	
 	public int count (String hql, Object... parameters);
-//	public T selectById(T t);
-//	
-//	public boolean insert(T t);
-//	
-//	public boolean update(T t);
-//	
-//	public boolean delete(T t);
+
 }

@@ -10,6 +10,7 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/PBL3/template/css/edit-profile.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="main">
@@ -65,22 +66,22 @@
                 <div class="content-main-edit-infor">
 					<form action="/PBL3/upload-image" method="post" enctype="multipart/form-data">
                     <div class="edit-background">
-                        <c:if test="${user.backgroud == null}">
+                        <c:if test="${user.background == null}">
 							<img src="./template/image/backgroudDefault.png" class="background">
 						</c:if>
-						<c:if test="${user.backgroud!=null}">
-							<img class="background" alt="" src="data:image/jpeg;base64,${user.backgroud}">
+						<c:if test="${user.background != null}">
+							<img class="background" alt="background" src="data:image/jpeg;base64,${user.background}">
 						</c:if>
-                        <input type="file" name="backgroud" id="backgroud" accept="image/*" />
+                        <input type="file" name="background" id="background" accept="image/*" />
                     </div>
                     <div class="edit-ava">
                         <c:if test="${user.avatar == null}">
 							<img src="./template/image/avatarDefault.jpg" class="ava">
 						</c:if>
 						<c:if test="${user.avatar!=null}">
-							<img class="ava" alt="" src="data:image/jpeg;base64,${user.avatar}">
+							<div id = ""><img class="ava" alt="avatar" src="data:image/jpeg;base64,${user.avatar}"></div>
 						</c:if>
-                        <input type="file" name="avatar" id="avatar" accept="image/*" />
+                        <input type="file" name="avatar" id="avatar" accept="image/*" onchange="readURL(this);"/>
                     </div>
 					<input type="submit" value="Submit" id="button-1"/>
                   </form>
