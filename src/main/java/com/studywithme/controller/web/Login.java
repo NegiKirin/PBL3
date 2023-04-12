@@ -23,7 +23,6 @@ public class Login extends HttpServlet {
         super();
     }
     
-
     private IUserService userService;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

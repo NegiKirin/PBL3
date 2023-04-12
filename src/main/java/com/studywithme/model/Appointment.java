@@ -4,19 +4,14 @@ import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Appointment extends AbstractModel{
 	
-	@Id
-	private String id;
+/*	@Id
+	@GeneratedValue
+	private Integer id;*/
 	private Time starting_time;
 	private Time ending_time;
 	private String address;
@@ -27,11 +22,14 @@ public class Appointment extends AbstractModel{
 				joinColumns = {@JoinColumn (name = "appointment_id")},
 				inverseJoinColumns = {@JoinColumn(name = "user_id")})
 	private Set<User> listUser = new HashSet<>();
+
+/*	@OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY,mappedBy = "createdBy")
+	private Set<AbstractModel> created = new HashSet<>();*/
 	
 	public Appointment() {
 	}
 	
-	public Appointment(String id, Time starting_time, Time ending_time, String address, int maximum) {
+	public Appointment(Integer id, Time starting_time, Time ending_time, String address, int maximum) {
 		this.id = id;
 		this.starting_time = starting_time;
 		this.ending_time = ending_time;
@@ -40,14 +38,14 @@ public class Appointment extends AbstractModel{
 	}
 
 
-	public String getId() {
+/*	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
+	}*/
 
 
 	public Time getStarting_time() {

@@ -3,38 +3,42 @@ package com.studywithme.model;
 
 import java.util.Date;
 
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 
+/*@Entity
+@Inheritance(strategy = InheritanceType.JOINED)*/
 @MappedSuperclass
 public class AbstractModel {
-	private Date createdDate;
-	private Date modifiedDate;
-	private String createdBy;
-	private String modifiedBy;
-	
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	public Date getModifiedDate() {
-		return modifiedDate;
-	}
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-	public String getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Integer id;
+    protected Date createdDate;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    protected User createdBy;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
 }

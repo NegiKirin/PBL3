@@ -66,7 +66,7 @@ public class EditProfile extends HttpServlet {
 		}
 		if(!school_id.equals("null")) {
 			School school = new School();
-			school.setId(school_id);
+//			school.setId(school_id);
 			user.setSchool(school);
 		}
 		
