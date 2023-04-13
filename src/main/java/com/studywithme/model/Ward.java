@@ -39,4 +39,12 @@ public class Ward extends AbstractModel{
     public void setDistrict(District district) {
         this.district = district;
     }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
 }

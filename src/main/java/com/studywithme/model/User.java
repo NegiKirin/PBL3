@@ -250,4 +250,91 @@ public class User extends AbstractModel {
         this.status = status;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Set<Appointment> getListAppointmentsJoin() {
+        return listAppointmentsJoin;
+    }
+
+    public void setListAppointmentsJoin(Set<Appointment> listAppointmentsJoin) {
+        this.listAppointmentsJoin = listAppointmentsJoin;
+    }
+
+    public Set<Appointment> getAppointmentsOf() {
+        return appointmentsOf;
+    }
+
+    public void setAppointmentsOf(Set<Appointment> appointmentsOf) {
+        this.appointmentsOf = appointmentsOf;
+    }
+
+    public Set<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Friend> friends) {
+        this.friends = friends;
+    }
+
+    public Set<Friend> getFriendsOfs() {
+        return friendsOfs;
+    }
+
+    public void setFriendsOfs(Set<Friend> friendsOfs) {
+        this.friendsOfs = friendsOfs;
+    }
+
+    public Set<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public float getToltalRate() {
+        return toltalRate;
+    }
+
+    public void setToltalRate(float toltalRate) {
+        this.toltalRate = toltalRate;
+    }
+
+    public Set<RequestFriend> getRequestFriends() {
+        return requestFriends;
+    }
+
+    public void setRequestFriends(Set<RequestFriend> requestFriends) {
+        this.requestFriends = requestFriends;
+    }
+
+    public Set<Modify> getModifies() {
+        return modifies;
+    }
+
+    public void setModifies(Set<Modify> modifies) {
+        this.modifies = modifies;
+    }
+
+    public Set<Modify> getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(Set<Modify> modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Set<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<Report> reports) {
+        this.reports = reports;
+    }
 }

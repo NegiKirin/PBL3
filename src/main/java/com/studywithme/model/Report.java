@@ -31,4 +31,12 @@ public class Report extends AbstractModel {
     public void setReporter(User reporter) {
         this.reporter = reporter;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

@@ -38,6 +38,14 @@ public class Role extends AbstractModel{
 		this.id = id;
 	}*/
 
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
 	public String getCode() {
 		return code;
 	}

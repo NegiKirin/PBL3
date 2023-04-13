@@ -47,14 +47,27 @@ public class School extends AbstractModel{
 		this.id = id;
 	}*/
 
-
 	public String getNameSchool() {
 		return nameSchool;
 	}
 
-	
 	public void setNameSchool(String nameSchool) {
 		this.nameSchool = nameSchool;
 	}
-	
+
+	public Set<User> getListUser() {
+		return listUser;
+	}
+
+	public void setListUser(Set<User> listUser) {
+		this.listUser = listUser;
+	}
+
+	public Set<Modify> getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(Set<Modify> modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
 }

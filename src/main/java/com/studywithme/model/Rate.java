@@ -35,5 +35,12 @@ public class Rate extends AbstractModel{
 	public void setPoint(Integer point) {
 		this.point = point;
 	}
-	
+
+	public User getUserRate() {
+		return userRate;
+	}
+
+	public void setUserRate(User userRate) {
+		this.userRate = userRate;
+	}
 }

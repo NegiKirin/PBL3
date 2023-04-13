@@ -26,4 +26,12 @@ public class AddressType extends AbstractModel{
     public void setType(String type) {
         this.type = type;
     }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
 }

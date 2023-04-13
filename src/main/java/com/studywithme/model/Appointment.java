@@ -48,6 +48,49 @@ public class Appointment extends AbstractModel{
 		this.id = id;
 	}*/
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setMaximum(Integer maximum) {
+		this.maximum = maximum;
+	}
+
+	public Set<User> getParticipant() {
+		return participant;
+	}
+
+	public void setParticipant(Set<User> participant) {
+		this.participant = participant;
+	}
+
+	public User getHost() {
+		return host;
+	}
+
+	public void setHost(User host) {
+		this.host = host;
+	}
+
+	public Set<Modify> getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(Set<Modify> modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public Time getStarting_time() {
 		return starting_time;

@@ -59,5 +59,4 @@ public class Friend extends AbstractModel{
         this.friendOf = friendof;
     }
 
-
 }

@@ -62,4 +62,36 @@ public class Modify {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+
+	public User getUserModified() {
+		return userModified;
+	}
+
+	public void setUserModified(User userModified) {
+		this.userModified = userModified;
+	}
+
+	public Appointment getAppointmentModified() {
+		return appointmentModified;
+	}
+
+	public void setAppointmentModified(Appointment appointmentModified) {
+		this.appointmentModified = appointmentModified;
+	}
+
+	public School getSchoolModified() {
+		return schoolModified;
+	}
+
+	public void setSchoolModified(School schoolModified) {
+		this.schoolModified = schoolModified;
+	}
+
+	public Address getAddressModified() {
+		return addressModified;
+	}
+
+	public void setAddressModified(Address addressModified) {
+		this.addressModified = addressModified;
+	}
 }

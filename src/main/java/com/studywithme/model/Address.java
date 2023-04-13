@@ -73,4 +73,5 @@ public class Address extends AbstractModel {
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
     }
+
 }
