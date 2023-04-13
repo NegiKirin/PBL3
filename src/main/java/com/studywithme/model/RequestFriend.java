@@ -8,4 +8,15 @@ import jakarta.persistence.ManyToOne;
 public class RequestFriend extends AbstractModel{
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private User userRequested;
+
+    public RequestFriend() {
+    }
+
+    public User getUserRequested() {
+        return userRequested;
+    }
+
+    public void setUserRequested(User userRequested) {
+        this.userRequested = userRequested;
+    }
 }

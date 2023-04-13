@@ -30,13 +30,13 @@ public class Role extends AbstractModel{
 		this.name = name;
 	}
 
-	public Integer getId() {
+/*	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
+	}*/
 
 	public String getCode() {
 		return code;

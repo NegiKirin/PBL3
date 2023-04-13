@@ -42,8 +42,10 @@ public class User extends AbstractModel {
     @JoinColumn(name = "school_id")
     private School school;
 
-    @ManyToMany(mappedBy = "listUser", fetch = FetchType.LAZY)
-    private Set<Appointment> listAppointments = new HashSet<>();
+    @ManyToMany(mappedBy = "participant")
+    private Set<Appointment> listAppointmentsJoin = new HashSet<>();
+    @OneToMany(mappedBy = "host")
+    private Set<Appointment> appointmentsOf = new HashSet<>();
 
     /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "friend",
@@ -57,14 +59,14 @@ public class User extends AbstractModel {
             joinColumns = {@JoinColumn(name = "friend_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> friendOf = new HashSet<>();*/
-    
+
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "friend")
     private Set<Friend> friends = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "friendOf")
     private Set<Friend> friendsOfs = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userRate")
+    @OneToMany(mappedBy = "userRate")
     private Set<Rate> rates = new HashSet<>();
     private float toltalRate;
 
@@ -76,6 +78,12 @@ public class User extends AbstractModel {
 
     @OneToMany(mappedBy = "modifyBy")
     private Set<Modify> modifies = new HashSet<>();
+
+    @OneToMany(mappedBy = "userModified")
+    private Set<Modify> modifiedBy = new HashSet<>();
+
+    @OneToMany(mappedBy = "reporter")
+    private Set<Report> reports = new HashSet<>();
 
     public User() {
     }
@@ -140,14 +148,16 @@ public class User extends AbstractModel {
     }
 
 
+/*
     public Integer getId() {
         return id;
     }
+*/
 
 
-    public void setid(Integer id) {
+/*    public void setid(Integer id) {
         this.id = id;
-    }
+    }*/
 
 
     public String getEmail() {

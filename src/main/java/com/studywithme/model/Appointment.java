@@ -12,30 +12,31 @@ public class Appointment extends AbstractModel{
 /*	@Id
 	@GeneratedValue
 	private Integer id;*/
+
+	private String title;
 	private Time starting_time;
 	private Time ending_time;
-	private String address;
 	private Integer maximum;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "appointment_user",
-				joinColumns = {@JoinColumn (name = "appointment_id")},
-				inverseJoinColumns = {@JoinColumn(name = "user_id")})
-	private Set<User> listUser = new HashSet<>();
+			joinColumns = {@JoinColumn(name = "id_appointment")},
+			inverseJoinColumns = {@JoinColumn(name = "id_participant")})
+	private Set<User> participant = new HashSet<>();
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_host")
+	private User host;
 
 /*	@OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY,mappedBy = "createdBy")
 	private Set<AbstractModel> created = new HashSet<>();*/
-	
+	@OneToMany(mappedBy = "appointmentModified")
+	private Set<Modify> modifiedBy = new HashSet<>();
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_address")
+	private Address address;
 	public Appointment() {
 	}
-	
-	public Appointment(Integer id, Time starting_time, Time ending_time, String address, int maximum) {
-		this.id = id;
-		this.starting_time = starting_time;
-		this.ending_time = ending_time;
-		this.address = address;
-		this.maximum = maximum;
-	}
+
 
 
 /*	public Integer getId() {
@@ -68,16 +69,6 @@ public class Appointment extends AbstractModel{
 	}
 
 
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
 	public int getMaximum() {
 		return maximum;
 	}
@@ -86,8 +77,5 @@ public class Appointment extends AbstractModel{
 	public void setMaximum(int maximum) {
 		this.maximum = maximum;
 	}
-	
-	public void addUser(User t) {
-		this.listUser.add(t);
-	}
+
 }

@@ -14,16 +14,18 @@ public class Friend extends AbstractModel{
     @JoinColumn(name="friendof_id")
     private User friendOf;
 
+    private Integer status;
+
     public Friend() {
     }
 
-    public void setId(Integer id) {
+/*    public void setId(Integer id) {
         this.id = id;
     }
 
     public Integer getId() {
         return id;
-    }
+    }*/
 
     public User getFriend() {
         return friend;
@@ -31,6 +33,22 @@ public class Friend extends AbstractModel{
 
     public void setFriend(User friend) {
         this.friend = friend;
+    }
+
+    public User getFriendOf() {
+        return friendOf;
+    }
+
+    public void setFriendOf(User friendOf) {
+        this.friendOf = friendOf;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public User getFriendof() {

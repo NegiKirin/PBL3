@@ -9,7 +9,7 @@ public class Rate extends AbstractModel{
 	private Integer id;*/
 	private Integer point;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id_rate")
 	private User userRate;
 	public Rate() {
@@ -20,13 +20,13 @@ public class Rate extends AbstractModel{
 		this.point = point;
 	}
 
-	public Integer getId() {
+/*	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
+	}*/
 
 	public Integer getPoint() {
 		return point;

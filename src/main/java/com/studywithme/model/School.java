@@ -21,10 +21,12 @@ public class School extends AbstractModel{
 	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<User> listUser = new HashSet<>();
 	
-	
-	public School(Integer id, String shool) {
+	@OneToMany(mappedBy = "schoolModified")
+	private Set<Modify> modifiedBy = new HashSet<>();
+
+	public School(Integer id, String school) {
 		this.id = id;
-		this.nameSchool = shool;	
+		this.nameSchool = school;
 	}
 	
 	
@@ -36,14 +38,14 @@ public class School extends AbstractModel{
 	public School() {
 	}
 
-	public Integer getId() {
+/*	public Integer getId() {
 		return id;
 	}
 
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
+	}*/
 
 
 	public String getNameSchool() {

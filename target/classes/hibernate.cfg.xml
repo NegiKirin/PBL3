@@ -25,6 +25,11 @@
         <mapping class="com.studywithme.model.Friend"/>
         <mapping class="com.studywithme.model.RequestFriend"/>
         <mapping class="com.studywithme.model.AbstractModel"/>
+        <mapping class="com.studywithme.model.Address"/>
+        <mapping class="com.studywithme.model.AddressType"/>
+        <mapping class="com.studywithme.model.Ward"/>
+        <mapping class="com.studywithme.model.District"/>
+        <mapping class="com.studywithme.model.Report"/>
 
     </session-factory>
 </hibernate-configuration>
