@@ -19,7 +19,7 @@ public class ModifyDAO extends AbstractDAO<Modify> implements IModifyDAO {
     }
 
     @Override
-    public boolean save(Modify modify) {
+    public Modify save(Modify modify) {
         return insert(modify);
     }
 

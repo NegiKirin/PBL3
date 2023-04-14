@@ -9,7 +9,7 @@ import com.studywithme.model.User;
 public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 
 	@Override
-	public boolean save(User user) {
+	public User save(User user) {
 		return insert(user);
 	}
 

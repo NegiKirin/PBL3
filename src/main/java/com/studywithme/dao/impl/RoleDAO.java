@@ -19,7 +19,7 @@ public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO {
     }
 
     @Override
-    public boolean save(Role role) {
+    public Role save(Role role) {
         return insert(role);
     }
 

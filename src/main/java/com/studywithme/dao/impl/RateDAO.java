@@ -19,7 +19,7 @@ public class RateDAO extends AbstractDAO<Rate> implements IRateDAO {
     }
 
     @Override
-    public boolean save(Rate rate) {
+    public Rate save(Rate rate) {
         return insert(rate);
     }
 

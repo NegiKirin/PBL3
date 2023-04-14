@@ -11,7 +11,7 @@ public class SchoolService implements ISchoolService{
 
 	private ISchoolDAO schoolDAO;
 	@Override
-	public boolean save(School school) {
+	public School save(School school) {
 		schoolDAO = new SchoolDAO();
 		return schoolDAO.insert(school);
 	}

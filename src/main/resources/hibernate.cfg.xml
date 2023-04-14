@@ -22,8 +22,7 @@
         <mapping class="com.studywithme.model.Role"/>
         <mapping class="com.studywithme.model.Rate"/>
         <mapping class="com.studywithme.model.Modify"/>
-        <mapping class="com.studywithme.model.Friend"/>
-        <mapping class="com.studywithme.model.RequestFriend"/>
+        <mapping class="com.studywithme.model.Friendship"/>
         <mapping class="com.studywithme.model.AbstractModel"/>
         <mapping class="com.studywithme.model.Address"/>
         <mapping class="com.studywithme.model.AddressType"/>

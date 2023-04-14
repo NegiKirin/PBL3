@@ -19,7 +19,7 @@ public class WardDAO extends AbstractDAO<Ward> implements IWardDAO {
     }
 
     @Override
-    public boolean save(Ward ward) {
+    public Ward save(Ward ward) {
         return insert(ward);
     }
 

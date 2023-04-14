@@ -22,7 +22,6 @@ public class Register extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
     private IUserService userService;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

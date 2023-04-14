@@ -15,7 +15,7 @@ public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO {
 	}
 
 	@Override
-	public boolean save(School school) {
+	public School save(School school) {
 		return insert(school);
 	}
 

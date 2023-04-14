@@ -4,13 +4,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -18,15 +14,13 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class User extends AbstractModel {
 
-/*    @Id
-    private String id;*/
     private String email;
     private String password;
     private String firstName;
     private String lastName;
     private String fullName;
     private Date dateOfBirth;
-    private Integer sex;
+    private Integer gender;
     private Integer status;
 
 
@@ -61,18 +55,17 @@ public class User extends AbstractModel {
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> friendOf = new HashSet<>();*/
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "friend")
-    private Set<Friend> friends = new HashSet<>();
+    @OneToMany( mappedBy = "friend")
+    private Set<Friendship> friends = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "friendOf")
-    private Set<Friend> friendsOfs = new HashSet<>();
+    @OneToMany( mappedBy = "requester")
+    private Set<Friendship> friendRequests = new HashSet<>();
+
 
     @OneToMany(mappedBy = "userRate")
     private Set<Rate> rates = new HashSet<>();
     private float toltalRate;
 
-    @OneToMany(mappedBy = "userRequested")
-    private Set<RequestFriend> requestFriends = new HashSet<>();
 
 /*    @OneToMany(mappedBy = "createdBy")
     private Set<AbstractModel> created = new HashSet<>();*/
@@ -91,14 +84,14 @@ public class User extends AbstractModel {
 
 
     public User(Integer id, String email, String password, String firstName, String lastName, Date dateOfBirth,
-                Integer sex, School school) {
+                Integer gender, School school) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.sex = sex;
+        this.gender = gender;
         this.school = school;
     }
 
@@ -128,127 +121,91 @@ public class User extends AbstractModel {
 //	this.avatar = avatar;
 //}
 
-
-    public String getAvatar() {
-        return avatar;
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", sex=" + gender + ", dateRegister="
+                + "]";
     }
-
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-
-    public String getBackground() {
-        return background;
-    }
-
-
-    public void setBackground(String background) {
-        this.background = background;
-    }
-
-
-/*
-    public Integer getId() {
-        return id;
-    }
-*/
-
-
-/*    public void setid(Integer id) {
-        this.id = id;
-    }*/
-
 
     public String getEmail() {
         return email;
     }
 
-
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getPassword() {
         return password;
     }
 
-
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public String getFirstName() {
         return firstName;
     }
 
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
 
     public String getLastName() {
         return lastName;
     }
 
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-
-    public Integer getSex() {
-        return sex;
+    public Integer getGender() {
+        return gender;
     }
 
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
-
-
-    public School getSchool() {
-        return school;
-    }
-
-
-    public void setSchool(School school) {
-        this.school = school;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", sex=" + sex + ", dateRegister="
-                + "]";
-    }
-    //public void addFriend(User t) {
-    //	this.listFriend.add(t);
-    //}
-
 
     public Integer getStatus() {
         return status;
     }
 
-
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
     }
 
     public Role getRole() {
@@ -257,6 +214,14 @@ public class User extends AbstractModel {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 
     public Set<Appointment> getListAppointmentsJoin() {
@@ -275,20 +240,20 @@ public class User extends AbstractModel {
         this.appointmentsOf = appointmentsOf;
     }
 
-    public Set<Friend> getFriends() {
+    public Set<Friendship> getFriends() {
         return friends;
     }
 
-    public void setFriends(Set<Friend> friends) {
+    public void setFriends(Set<Friendship> friends) {
         this.friends = friends;
     }
 
-    public Set<Friend> getFriendsOfs() {
-        return friendsOfs;
+    public Set<Friendship> getFriendRequests() {
+        return friendRequests;
     }
 
-    public void setFriendsOfs(Set<Friend> friendsOfs) {
-        this.friendsOfs = friendsOfs;
+    public void setFriendRequests(Set<Friendship> friendRequests) {
+        this.friendRequests = friendRequests;
     }
 
     public Set<Rate> getRates() {
@@ -305,14 +270,6 @@ public class User extends AbstractModel {
 
     public void setToltalRate(float toltalRate) {
         this.toltalRate = toltalRate;
-    }
-
-    public Set<RequestFriend> getRequestFriends() {
-        return requestFriends;
-    }
-
-    public void setRequestFriends(Set<RequestFriend> requestFriends) {
-        this.requestFriends = requestFriends;
     }
 
     public Set<Modify> getModifies() {

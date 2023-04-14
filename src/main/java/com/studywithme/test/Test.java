@@ -34,8 +34,8 @@ public class Test {
 		 * tr.commit(); session.close(); } }catch (Exception e) { e.printStackTrace(); }
 		 */
 		IAddressDAO addressDAO = new AddressDAO();
-		Address address = addressDAO.update();
-		System.out.println(address.getId());
-		System.out.println(address.getDetail());
+//		Address address = addressDAO.update();
+//		System.out.println(address.getId());
+//		System.out.println(address.getDetail());
 	}
 }

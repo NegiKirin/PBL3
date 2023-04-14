@@ -19,7 +19,7 @@ public class DistrictDAO extends AbstractDAO<District> implements IDistrictDAO {
     }
 
     @Override
-    public boolean save(District district) {
+    public District save(District district) {
         return insert(district);
     }
 

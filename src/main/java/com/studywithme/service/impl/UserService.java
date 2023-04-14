@@ -1,7 +1,6 @@
 package com.studywithme.service.impl;
 
 
-
 import java.util.Date;
 import java.util.Random;
 
@@ -12,34 +11,28 @@ import com.studywithme.service.IUserService;
 import com.studywithme.util.maHoa;
 
 public class UserService implements IUserService{
-	
+
 	private IUserDAO userDAO;
 	
 	@Override
-	public User findByEmailAndPasswordAndStatus(String email, String password) {
-		password = maHoa.toSHA1(password);
+	public User findByEmailAndPassword(String email, String password) {
 		userDAO = new UserDAO();
+		password = maHoa.toSHA1(password);
 		return userDAO.findByEmailAndPasswordAndStatus(email, password);
 	}
 
 	@Override
-	public User register(String lastName, String firstName, String email, String password, Integer sex) {
-		User user = new User();
+	public User register(String lastName, String firstName, String email, String password, Integer gender) {
 		userDAO = new UserDAO();
-		String id;
-		do {
-			Random rd = new Random();
-			id = "SWM" + System.currentTimeMillis() + rd.nextInt(1000);
-			user.setid(id);
-		} while (userDAO.findOne(id)!=null);
+		User user = new User();
 		user.setEmail(email);
 		user.setPassword(maHoa.toSHA1(password));
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
+		user.setFullName(firstName+" "+lastName);
+		user.setGender(gender);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
-		user.setCreatedBy(lastName + " " + firstName);
-		userDAO.save(user);
-		return userDAO.findOne(id);
+		return userDAO.save(user);
 	}
 
 	@Override
@@ -49,22 +42,20 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public boolean updateAvatar(User user) {
+	public User updateAvatar(User user) {
 		userDAO = new UserDAO();
-		return userDAO.updateAvatar(user);
+		return userDAO.update(user);
 	}
 
 	@Override
-	public boolean updateBackground(User user) {
+	public User updateBackground(User user) {
 		userDAO = new UserDAO();
-		return userDAO.updateBackground(user);
+		return userDAO.update(user);
 	}
 	
 	@Override
-	public boolean update(User user) {
+	public User update(User user) {
 		userDAO = new UserDAO();
-		user.setModifiedDate(new Date(System.currentTimeMillis()));
-		user.setModifiedBy("");
 		return userDAO.update(user);
 	}
 

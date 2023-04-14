@@ -19,7 +19,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     }
 
     @Override
-    public boolean save(Appointment appointment) {
+    public Appointment save(Appointment appointment) {
         return insert(appointment);
     }
 

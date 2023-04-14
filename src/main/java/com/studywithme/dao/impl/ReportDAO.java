@@ -19,7 +19,7 @@ public class ReportDAO extends AbstractDAO<Report> implements IReportDAO {
     }
 
     @Override
-    public boolean save(Report report) {
+    public Report save(Report report) {
         return insert(report);
     }
 

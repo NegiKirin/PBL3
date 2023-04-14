@@ -8,7 +8,7 @@ public interface GenericDAO<T> {
 	
 	public T update (T t);
 	
-	public boolean insert (T t);
+	public T insert (T t);
 	
 	public boolean delete(T t);
 	

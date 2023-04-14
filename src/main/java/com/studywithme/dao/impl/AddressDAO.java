@@ -19,7 +19,7 @@ public class AddressDAO extends AbstractDAO<Address> implements IAddressDAO {
     }
 
     @Override
-    public boolean save(Address address) {
+    public Address save(Address address) {
         return insert(address);
     }
 

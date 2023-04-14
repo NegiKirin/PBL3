@@ -85,26 +85,22 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 	}
 
 	@Override
-	public boolean insert(T t) {
+	public T insert(T t) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 			
 			if(sessionFactory!=null) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
-				try {
-					session.save(t);
-				} catch (Exception e) {
-					return false;
-				}
+				session.save(t);
 				tr.commit();
 				session.close();
-				return true;
+				return t;
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	@Override

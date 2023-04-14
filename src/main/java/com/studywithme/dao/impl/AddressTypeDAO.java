@@ -19,7 +19,7 @@ public class AddressTypeDAO extends AbstractDAO<AddressType> implements IAddress
     }
 
     @Override
-    public boolean save(AddressType addressType) {
+    public AddressType save(AddressType addressType) {
         return save(addressType);
     }
 
