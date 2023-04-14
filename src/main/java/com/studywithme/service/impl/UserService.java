@@ -40,18 +40,6 @@ public class UserService implements IUserService{
 		userDAO = new UserDAO();
 		return userDAO.findByEmail(email);
 	}
-
-	@Override
-	public User updateAvatar(User user) {
-		userDAO = new UserDAO();
-		return userDAO.update(user);
-	}
-
-	@Override
-	public User updateBackground(User user) {
-		userDAO = new UserDAO();
-		return userDAO.update(user);
-	}
 	
 	@Override
 	public User update(User user) {
@@ -59,5 +47,4 @@ public class UserService implements IUserService{
 		return userDAO.update(user);
 	}
 
-	
 }

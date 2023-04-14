@@ -295,4 +295,10 @@ public class User extends AbstractModel {
     public void setReports(Set<Report> reports) {
         this.reports = reports;
     }
+
+
+    // Util
+/*    public void addModify(Modify modify){
+        modifies.add(modify);
+    }*/
 }

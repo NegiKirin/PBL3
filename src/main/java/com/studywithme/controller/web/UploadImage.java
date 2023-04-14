@@ -15,7 +15,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.studywithme.model.User;
+import com.studywithme.service.IModifyService;
 import com.studywithme.service.IUserService;
+import com.studywithme.service.impl.ModifyService;
 import com.studywithme.service.impl.UserService;
 
 
@@ -30,7 +32,7 @@ import com.studywithme.service.impl.UserService;
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IUserService userService;
-
+	private IModifyService modifyService;
 
     public UploadImage() {
         super();
@@ -50,6 +52,7 @@ public class UploadImage extends HttpServlet {
 		User user = null;
 		user = (User)obj;
 		userService = new UserService();
+		modifyService = new ModifyService();
 		try {
 				InputStream is = file1.getInputStream();
 				byte[] data = new byte[is.available()];
@@ -60,7 +63,8 @@ public class UploadImage extends HttpServlet {
 				if(!base64.equals("")) {
 					user.setBackground(base64);
 				}
-				userService.updateBackground(user);
+				modifyService.createModify(user,user,"Sửa đổi ảnh đại diện");
+				userService.update(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,12 +78,12 @@ public class UploadImage extends HttpServlet {
 				if(!base64.equals("")) {
 					user.setAvatar(base64);
 				}
-				userService.updateAvatar(user);
+				modifyService.createModify(user,user,"Sửa đổi ảnh nền");
+				userService.update(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-				
+
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
