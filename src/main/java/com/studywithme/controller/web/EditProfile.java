@@ -77,5 +77,4 @@ public class EditProfile extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/uploading.jsp");
 		rd.forward(request, response);
 	}
-
 }

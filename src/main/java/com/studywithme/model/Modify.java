@@ -95,4 +95,12 @@ public class Modify {
 	public void setAddressModified(Address addressModified) {
 		this.addressModified = addressModified;
 	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
 }
