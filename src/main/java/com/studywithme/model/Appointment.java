@@ -4,51 +4,93 @@ import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Appointment extends AbstractModel{
 	
-	@Id
-	private String id;
+/*	@Id
+	@GeneratedValue
+	private Integer id;*/
+
+	private String title;
 	private Time starting_time;
 	private Time ending_time;
-	private String address;
 	private Integer maximum;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "appointment_user",
-				joinColumns = {@JoinColumn (name = "appointment_id")},
-				inverseJoinColumns = {@JoinColumn(name = "user_id")})
-	private Set<User> listUser = new HashSet<>();
-	
+			joinColumns = {@JoinColumn(name = "id_appointment")},
+			inverseJoinColumns = {@JoinColumn(name = "id_participant")})
+	private Set<User> participant = new HashSet<>();
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_host")
+	private User host;
+
+/*	@OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY,mappedBy = "createdBy")
+	private Set<AbstractModel> created = new HashSet<>();*/
+	@OneToMany(mappedBy = "appointmentModified")
+	private Set<Modify> modifiedBy = new HashSet<>();
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_address")
+	private Address address;
 	public Appointment() {
 	}
-	
-	public Appointment(String id, Time starting_time, Time ending_time, String address, int maximum) {
-		this.id = id;
-		this.starting_time = starting_time;
-		this.ending_time = ending_time;
-		this.address = address;
-		this.maximum = maximum;
-	}
 
 
-	public String getId() {
+
+/*	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}*/
+
+	public String getTitle() {
+		return title;
 	}
 
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setMaximum(Integer maximum) {
+		this.maximum = maximum;
+	}
+
+	public Set<User> getParticipant() {
+		return participant;
+	}
+
+	public void setParticipant(Set<User> participant) {
+		this.participant = participant;
+	}
+
+	public User getHost() {
+		return host;
+	}
+
+	public void setHost(User host) {
+		this.host = host;
+	}
+
+	public Set<Modify> getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(Set<Modify> modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public Time getStarting_time() {
 		return starting_time;
@@ -70,16 +112,6 @@ public class Appointment extends AbstractModel{
 	}
 
 
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
 	public int getMaximum() {
 		return maximum;
 	}
@@ -88,8 +120,5 @@ public class Appointment extends AbstractModel{
 	public void setMaximum(int maximum) {
 		this.maximum = maximum;
 	}
-	
-	public void addUser(User t) {
-		this.listUser.add(t);
-	}
+
 }

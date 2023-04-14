@@ -22,8 +22,6 @@ public class Login extends HttpServlet {
     public Login() {
         super();
     }
-    
-
     private IUserService userService;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +38,7 @@ public class Login extends HttpServlet {
 		String error = "";
 		userService = new UserService();
 		String url ="";
-		User u1 = userService.findByEmailAndPasswordAndStatus(email, password);
+		User u1 = userService.findByEmailAndPassword(email, password);
 		if(u1!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", u1);

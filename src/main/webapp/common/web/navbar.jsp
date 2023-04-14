@@ -1,6 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/template" var="url"></c:url>
 
+<%--<c:if test="${user==null}">
+	<c:redirect url="/login" context=""></c:redirect>
+</c:if>--%>
+
 <div id="header">
 	<div class="header-info-user">
 	<c:if test="${user.avatar == null}">

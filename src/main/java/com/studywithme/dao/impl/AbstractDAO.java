@@ -33,6 +33,9 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 			} else if(parameter instanceof School) {
 				query.setParameter((String) parameters[i],(School) parameter);
 			}
+//			else if(parameter instanceof byte[]) {
+//				query.setParameter((String) parameters[i],(byte[]) parameter);
+//			}
 			else if(parameter == null){
 				query.setParameter((String) parameters[i], null);
 			}
@@ -61,46 +64,43 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 	}
 
 	@Override
-	public boolean update(String hql, Object... parameters) {
+	public T update(T t) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 			if(sessionFactory!=null) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
-				Query query = session.createQuery(hql);
+				/*Query query = session.createQuery(hql);
 				setParameters(query, parameters);
-				query.executeUpdate();
+				query.executeUpdate();*/
+				T t1 = session.merge(t);
 				tr.commit();
 				session.close();
-				return true;
+				return t1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	@Override
-	public boolean insert(T t) {
+	public T insert(T t) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 			
 			if(sessionFactory!=null) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
-				try {
-					session.save(t);
-				} catch (Exception e) {
-					return false;
-				}
+				session.save(t);
 				tr.commit();
 				session.close();
-				return true;
+				return t;
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	@Override
@@ -126,7 +126,25 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 	}
 
 	@Override
-	public boolean detele(T t) {
+	public T findId(Class<T> clazz,Integer id) {
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				T t = session.get(clazz,id);
+				tr.commit();
+				session.close();
+				return t;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean delete(T t) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 			if(sessionFactory!=null) {
@@ -142,6 +160,5 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 		}
 		return false;
 	}
-
 
 }

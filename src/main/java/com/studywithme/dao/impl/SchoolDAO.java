@@ -5,7 +5,7 @@ import java.util.List;
 import com.studywithme.dao.ISchoolDAO;
 import com.studywithme.model.School;
 
-public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO{
+public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO {
 
 	@Override
 	public List<School> findAll() {
@@ -15,22 +15,33 @@ public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO{
 	}
 
 	@Override
-	public boolean save(School school) {
+	public School save(School school) {
 		return insert(school);
 	}
 
 	@Override
+	public boolean deleteId(Integer id) {
+		return delete(findOne(id));
+	}
+
+
+
+/*	@Override
 	public boolean update(School school) {
 		String hql = "UPDATE School s SET s.nameSchool = :nameSchool , s.modifiedBy = :modifiedBy , s.modifiedDate = :modifiedDate"
 					+ "WHERE s.id = :id";
 		return update(hql, "nameSchool", school.getNameSchool(), "modifiedBy", school.getModifiedBy(), "modifiedDate", school.getModifiedDate(), "id", school.getId());
+	}*/
+
+
+	@Override
+	public School findOne(Integer id) {
+		return findId(School.class, id);
 	}
 
 	@Override
-	public School findOne(String id) {
-		String hql = "FROM School s WHERE s.id = :id";
-		List<School> school = query(hql, "id", id);
-		return school.isEmpty() ? null : school.get(0);
+	public List<School> findByName(String schoolName) {
+		return null;
 	}
 
 }
