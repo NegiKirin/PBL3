@@ -10,6 +10,7 @@
 		<img alt="" src="data:image/jpeg;base64,${user.avatar}">
 	</c:if>
 	<a href="/PBL3/edit-profile"><p class="header-info-user-name">${user.firstName} ${user.lastName}</p></a> <i class="fa-solid fa-user-pen"></i>
+	<a href="/PBL3/edit-profile"><p class="header-info-user-name">${user.firstName} ${user.lastName}</p><i class="fa-solid fa-user-pen"></i></a> 
 	</div>
 
 <div class="header-main">
