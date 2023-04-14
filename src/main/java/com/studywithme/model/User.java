@@ -24,6 +24,7 @@ public class User extends AbstractModel {
     private String password;
     private String firstName;
     private String lastName;
+    private String fullName;
     private Date dateOfBirth;
     private Integer sex;
     private Integer status;

@@ -14,6 +14,7 @@ public class Modify {
 	private User modifyBy;
 	private Date modifyDate;
 
+	private String detail;
 
 	// Modified
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

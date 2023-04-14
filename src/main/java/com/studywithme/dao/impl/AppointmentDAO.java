@@ -1,132 +1,32 @@
 package com.studywithme.dao.impl;
 
-import java.util.ArrayList;
+import com.studywithme.dao.IAppointmentDAO;
+import com.studywithme.model.Appointment;
+
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppointmentDAO {
+    @Override
+    public List<Appointment> findAll() {
+        String hql = "FROM Appointment";
+        List<Appointment> appointments = query(hql);
+        return appointments.isEmpty()? null : appointments;
+    }
 
-import com.studywithme.model.Appointment;
-import com.studywithme.util.HibernateUtil;
+    @Override
+    public Appointment findOne(Integer id) {
+        return findId(Appointment.class,id);
+    }
 
+    @Override
+    public boolean save(Appointment appointment) {
+        return insert(appointment);
+    }
 
-public class AppointmentDAO implements DAOInterface<Appointment>{
+    @Override
+    public boolean deleteId(Integer id) {
+        return delete(findOne(id));
+    }
 
-	@Override
-	public List<Appointment> selectAll() {
-		List<Appointment> list = new ArrayList();
-		
-		try {
-			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-			
-			if(sessionFactory!=null) {
-				Session session = sessionFactory.openSession();
-				Transaction tr = session.beginTransaction();
-				
-				String hql = "from Appointment";
-				Query query = session.createQuery(hql);
-				list = query.getResultList();
-				
-				tr.commit();
-				session.close();
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	@Override
-	public Appointment selectById(Appointment t) {
-		try {
-			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-			
-			if(sessionFactory!=null) {
-				Session session = sessionFactory.openSession();
-				Transaction tr = session.beginTransaction();
-				
-				// lấy ra user có c
-				Appointment result = session.get(Appointment.class, t.getId());
-				
-				tr.commit();
-				session.close();
-				return result;
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		return null;
-	}
-
-	@Override
-	public boolean insert(Appointment t) {
-		try {
-			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-			
-			if(sessionFactory!=null) {
-				Session session = sessionFactory.openSession();
-				Transaction tr = session.beginTransaction();
-				
-				
-				try {
-					session.save(t);
-				} catch (Exception e) {
-					return false;
-				}
-				
-				tr.commit();
-				session.close();
-				return true;
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	@Override
-	public boolean update(Appointment t) {
-		try {
-			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-			
-			if(sessionFactory!=null) {
-				Session session = sessionFactory.openSession();
-				Transaction tr = session.beginTransaction();
-				
-				session.saveOrUpdate(t);
-				
-				tr.commit();
-				session.close();
-				return true;
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	@Override
-	public boolean delete(Appointment t) {
-		try {
-			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-			
-			if(sessionFactory!=null) {
-				Session session = sessionFactory.openSession();
-				Transaction tr = session.beginTransaction();
-				
-				session.delete(t);
-				
-				tr.commit();
-				session.close();
-				return true;
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
 
 }

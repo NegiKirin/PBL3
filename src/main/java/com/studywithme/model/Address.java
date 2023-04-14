@@ -74,4 +74,7 @@ public class Address extends AbstractModel {
         this.appointments = appointments;
     }
 
+    public void addModify(Modify modify){
+        modifiedBy.add(modify);
+    }
 }
