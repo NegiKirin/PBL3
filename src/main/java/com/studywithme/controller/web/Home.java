@@ -1,5 +1,8 @@
 package com.studywithme.controller.web;
 
+import com.studywithme.service.IAppointmentService;
+import com.studywithme.service.impl.AppointmentService;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -9,35 +12,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Home
- */
 @WebServlet("/home")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public Home() {
         super();
-        // TODO Auto-generated constructor stub
     }
+	private IAppointmentService appointmentService;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		appointmentService = new AppointmentService();
+		request.setAttribute("appointments",appointmentService.pagingAppointment(1,6));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");
 		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
