@@ -21,23 +21,54 @@ body{
     background-color: #18C0e6;
 }
 
+#header .header-info-user{
+    display: inline-block;
+    height: 46px;
+    background-color: #fff;
+    width: 260px;
+}
+
+#header .header-info-user img{
+    float:left;
+    border-radius: 50%;
+    height: 38px;
+    margin: 5px 10px 5px 20px;
+}
+
+#header .header-info-user a{
+    height: 46px;
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    line-height: 46px;
+    font-weight: bold;
+}
+
+#header .header-info-user i{
+    float: right;
+    line-height: 46px;
+    padding-right: 15px;
+}
+
 #header .header-main{
     height: 46px;
-    width: 100%;
+    display: inline-flex;
+    width: 65%;
     text-align: center;
     position:absolute;
+    padding: 0 20%;
 }
 
 #header .header-main li{
     list-style: none;
-    display: inline-block;
-    margin-top: -17px;
+    display: inline-flex;
 }
 
 #header .header-main button{
     padding: 10px 30px 9px 30px;
     border-radius: 5px;
     border: 0px;
+    margin-top: 4px;
     background-color: #fff;
 }
 
@@ -47,7 +78,7 @@ body{
 
 #header .header-main .header-main-mainbutton{
     margin: 0 100px;
-    margin-top: 20px;
+    margin-top: 4px;
 }
 
 #header .header-noti {
@@ -121,12 +152,14 @@ body{
     font-weight: bold;
 }
 
+.vice-main,
 #content .content-main{
     display: inline;
     width: 1000px;
     height: auto;
 }
 
+.vice-main .edit-infor-title,
 #content .content-main .content-main-title{
     display: block;
     text-align: center;
@@ -134,186 +167,214 @@ body{
     font-size: 18px;
 }
 
+.vice-main .edit-infor,
 #content .content-main .content-main-edit-infor{
     background-color: #fff;
     margin: 20px;
-    border-radius: 25px;
+    border-radius: 5px;
     box-shadow:  3px 3px 5px 0px #aaaaaa;
     margin-bottom: 50px;
-    margin-top: 30px;
-}
-
-.content-main-edit-infor .edit-ava{
-    display: block;
-    width: 100%;
-}
-
-.content-main-edit-infor .title-edit{
-    font-weight: bold;
-    display: inline-block;
-    width: 90%;
-    text-align: left;
     margin-top: 20px;
-    font-size: 18px;
-    color: #000000;
-    font-style: italic;
 }
 
-.content-main-edit-infor .ava,
-.content-main-edit-infor .edit-ava
+.content-main-edit-infor .ava
 {
     height: 300px;
     width: 300px;
     border-radius: 50%;
     margin-left: calc(50% - 150px);
-    margin-top: calc(-150px / 2);
-}
-
-.content-main-edit-infor .ava{
-	background-color: grey;
+    margin-top: -150px;
+    border: 1px solid #c4c4c4;
 }
 
 .content-main-edit-infor .background{
-    width: auto;
-    height: 100%;
-    border-radius: 25px;
-    margin-left: calc(50% - 150px);
-}
-
-.content-main-edit-infor .edit-background{
+    width: 100%;
     height: 300px;
-    position: relative;
-    width: auto;
-    background: linear-gradient(to right, #89c4f0, #1473aa);
     border-radius: 25px;
+    object-fit: cover;
 }
 
-.content-main-edit-infor .edit-background input{
-    position: absolute;
-    display: none; 
-    right: 15px;
-    top: 15px;
-    width: 75px;
-    padding: 5px;
-}
-
-.content-main-edit-infor .edit-background:hover
- > .background{
-    opacity: 80%;
- }
-
- .content-main-edit-infor .edit-background:hover
- > input{
-    display: block;
- }
-
-.content-main-edit-infor .edit-ava{
-    position: relative;
-}
-
-.content-main-edit-infor .edit-ava input{
-    position: absolute;
-    display: none; 
-    top: 0px;
-    right: calc(50% - 75px / 2);
-    width: 75px;
-    padding: 5px;
-}
-
-.content-main-edit-infor .edit-ava:hover
- > .ava{
-    box-shadow:  3px 3px 5px 0px #aaaaaa;
- }
-
- .content-main-edit-infor .edit-ava:hover
- > input{
-    display: block;
- }
-
-.content-main-edit-infor .edit-name{
-    margin-top: 30px;
+.content-main-edit-infor .name{
     display: block;
     width: 100%;
     text-align: center;
+    margin-top: 20px;
 }
 
-.edit-name input{
-    border-color: #f0f7ff;
-    border-radius: 5px;
-    padding: 5px;
-    font-weight: bold;
-
-    font-size: 20px;
+.infor-user{
+    position: relative;
 }
 
-.edit-name .first-name-user{
-    width: 250px;
-}
-
-.edit-name .last-name-user{
-    width: 150px;
-}
-
-.edit-infor .title-edit, 
-.edit-infor-account .title-edit{
+.vice-main .edit-infor .title-edit,
+.infor-user .title-infor-user,
+.list-apm .title-list-apm
+{
     display: block;
     width: 100%;
     margin-left: 45px;
     margin-top: 40px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.content-main-edit-infor .list{
+.vice-main .edit-infor .list,
+.content-main-edit-infor .item{
     display: flex;
     margin: 20px 0;
     margin-left: 100px;
 }
 
-.content-main-edit-infor .list i{
+.vice-main .edit-infor .list i,
+.content-main-edit-infor .item .icon-infor{
     width: 30px;
     text-align: center;
     margin-right: 5px;
 }
 
-.content-main-edit-infor .content{
+.vice-main .edit-infor .list .content,
+.content-main-edit-infor .item .title{
     font-weight: bold;
     width: 150px;
 }
 
-.content-main-edit-infor select{
-    border: #8a8a8a;
-    font-size: 20px;
-    margin-top: -5px;
-    font-style: italic;
-}
-
-.content-main-edit-infor #school-choice{
+.vice-main .edit-infor .list .date,
+.content-main-edit-infor .item .date{
+    background-color: #fff;
     border: none;
-    font-size: 20px;
-    margin-top: -5px;
-    font-style: italic;
-    width: 500px;
-}
-
-.content-main-edit-infor .date{
-    border: none;
-    font-size: 20px;
-    margin-top: -5px;
-    font-style: italic;
-}
-
-.content-main-edit-infor .submit{
-    width: 200px;
-    font-weight: bold;
-    border: none;
-    background-color: #18C0e6;
-    box-shadow:  3px 3px 5px 0px #aaaaaa;
-    color: #fff;
+    color: #000;
     font-size: 15px;
-    margin: 20px 0;
-    margin-bottom: 50px;
-    margin-left: calc(50% - 100px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content-main-edit-infor .edit{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    background-color: #e7e7e7;
+    border: none;
+    padding: 5px 15px;
+    font-weight: bold;
+    color: #000000;
     border-radius: 5px;
-    padding: 10px;
+    font-size: 16px;
+}
+
+.vice-main .edit-infor i,
+.content-main-edit-infor .edit i{
+    margin-right: 5px;
+}
+
+.content-main-edit-infor .edit:hover{
+    background-color: #d5d5d5;
+}
+
+.content-main-edit-infor .edit:active{
+    font-size: 15px;
+}
+
+.content-main-edit-infor .list-apm{
+    display: flow-root;
+    padding-bottom: 30px;
+
+}
+
+.list-apm .item-apm{
+    background-color: #f5f5f5;
+    height: 46px;
+    width: 80%;
+    margin-left: 100px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.list-apm .item-apm img{
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    margin: 4px 10px;
+    display: inline-block;
+    float: left;
+}
+
+.list-apm .item-apm .content-apm{
+    display: inline-block;
+    width: 100%;
+}
+
+.list-apm .item-apm .list,
+.list-apm .item-apm .text
+{
+    width: fit-content;
+    display: inline-block;
+    margin-top: 0;
+    line-height: 46px;
+}
+
+.list-apm .item-apm .title{
+    font-weight: bold;
+}
+
+.list-apm .item-apm .user{
+    width: 220px;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.list-apm .item-apm .time{
+    width: 200px;
+}
+
+.list-apm .item-apm .date{
+    font-size: 16px;
+    border: none;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.list-apm .item-apm .list-rate{
+    cursor: pointer;
+    float:right;
+    margin-right: 20px;
+}
+
+.list-apm .item-apm .list-rate i{
+    margin: 0 5px;
+}
+
+.list-apm .item-apm .list-rate:hover{
+    color: #333333;
+}
+
+.list-rate-apm .item{
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+.list-rate-apm .name{
+    font-weight: bold;
+}
+
+i.checked{
+    color: orange;
+}
+
+.rate-star{
+    line-height: 46px;
+    margin-left: 20px;
+}
+
+.rate-star .rate-star-title{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
+    color: #8a8a8a;
+}
+
+.rate-star form{
+    display: inline-block;
 }
 
 #content .content-right {
@@ -364,4 +425,134 @@ body{
     margin-right: 20px;
     line-height: 46px;
     color: #333333;
+}
+
+.vice-main{
+    display: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0, 70%);
+    width: 100%;
+}
+
+.vice-main .edit-infor {
+    width: 900px;
+    margin-left: calc(50% - 450px);
+    margin-top: 60px;
+    padding: 50px;
+    margin-bottom: 20%;
+    position: relative;
+}
+
+.vice-main .edit-infor-title{
+    font-size: 25px;
+    padding-bottom: 20px;
+    margin-top: -20px;
+    border-bottom: solid 2px #979797;
+    margin-bottom: 100px;
+}
+
+.vice-main .edit-infor .edit-background img{
+    display: block;
+    width: 500px;
+    margin-left: calc(50% - 250px);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.vice-main .edit-infor .edit-ava img{
+    display: block;
+    width: 200px;
+    height: 200px;  
+    margin-left: calc(50% - 100px);
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.vice-main .edit-infor .list .list-school,
+.vice-main .edit-infor .list .list-sex{
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    color: #000;
+    width: 500px;
+}
+
+.vice-main .edit-infor .submit{
+    cursor: pointer;
+    margin-left: calc(100% - 200px);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #18C0e6;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.vice-main .edit-infor .submit:hover{
+    background-color: #31a7c2;
+}
+
+.vice-main .edit-infor .edit-background,
+.vice-main .edit-infor .edit-ava{
+    position: relative;
+}
+
+.vice-main .edit-infor .input-img{
+    width: 70px;
+    position: absolute;
+}
+
+.vice-main .edit-infor .edit-background .input-img{
+    display: none;
+    top: 10px;
+    right: 160px;
+}
+
+.vice-main .edit-infor .edit-ava .input-img{
+    display: none;
+    top: 20px;
+    right: calc(50% - 35px);
+}
+
+.vice-main .edit-infor .edit-ava:hover
+ >.input-img,
+.vice-main .edit-infor .edit-background:hover
+ >.input-img{
+    display: block;
+}
+
+.vice-main .edit-infor .edit-ava:hover
+ >img
+.vice-main .edit-infor .edit-background:hover
+ >img{
+    opacity: 80%;
+}
+
+.vice-main .edit-infor .exit{
+    cursor: pointer;
+    position: absolute;
+    background-color: #aaaaaa;
+    border: none;
+    height: 30px;
+    width: 50px;
+    border-radius: 10px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+}
+@media only screen and (max-width:63.9375em){
+	#content .content-left{
+	display: none;}
+	#content .content-right{
+	display: none;}
+	#header .header-info-user{
+	display: none;}
+
 }

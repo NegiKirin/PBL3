@@ -13,5 +13,3 @@ $(function(){
 		$('.content-login').animate({opacity:1,marginLeft:0})
 	});
 });
-
-

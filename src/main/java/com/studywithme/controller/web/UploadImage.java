@@ -21,9 +21,6 @@ import com.studywithme.service.impl.ModifyService;
 import com.studywithme.service.impl.UserService;
 
 
-/**
- * Servlet implementation class uploadimg
- */
 @MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB 
 				maxFileSize=1024*1024*50,      	// 50 MB
 				maxRequestSize=1024*1024*100	// 100 MB
@@ -39,7 +36,7 @@ public class UploadImage extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
