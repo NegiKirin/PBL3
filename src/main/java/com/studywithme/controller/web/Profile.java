@@ -1,40 +1,39 @@
 package com.studywithme.controller.web;
 
+import com.studywithme.service.ISchoolService;
+import com.studywithme.service.IUserService;
+import com.studywithme.service.impl.SchoolService;
+import com.studywithme.service.impl.UserService;
+import jakarta.persistence.Id;
+
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Profile
- */
-@WebServlet("/Profile")
+@WebServlet("/profile")
 public class Profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
+	private IUserService userService;
+	private ISchoolService schoolService;
     public Profile() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		userService = new UserService();
+		schoolService = new SchoolService();
+		request.setAttribute("listSchool", schoolService.findAll());
+		request.setAttribute("profileUser",userService.findById(Integer.parseInt(request.getParameter("id"))));
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
+		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

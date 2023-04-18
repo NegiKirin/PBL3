@@ -84,5 +84,4 @@ public class UploadImage extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
-
 }

@@ -28,8 +28,7 @@ public class UpdateProfile extends HttpServlet {
 	private ISchoolService schoolService;
 	private IUserService userService;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		schoolService = new SchoolService();
-		request.setAttribute("listSchool", schoolService.findAll());
+
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
