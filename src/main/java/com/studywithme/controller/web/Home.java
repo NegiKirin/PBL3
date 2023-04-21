@@ -48,7 +48,7 @@ public class Home extends HttpServlet {
 		} else {
 			maxPageItemAppointment = 6;
 		}
-		Integer totalPages = appointmentService.totalItem() / maxPageItemAppointment;
+		Integer totalPages = (int) Math.ceil(appointmentService.totalItem() / maxPageItemAppointment) ;
 		Integer showPages = totalPages>=6?6:totalPages;
 		String listFriendStr = request.getParameter("listFriend");
 		Integer listFriend;
@@ -66,9 +66,7 @@ public class Home extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");
 		rd.forward(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
