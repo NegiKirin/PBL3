@@ -46,7 +46,7 @@ public class Home extends HttpServlet {
 		if(maxPageItemAppointmentStr!=null){
 			maxPageItemAppointment = Integer.parseInt(maxPageItemAppointmentStr);
 		} else {
-			maxPageItemAppointment = 1;
+			maxPageItemAppointment = 6;
 		}
 
 

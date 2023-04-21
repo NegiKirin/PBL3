@@ -174,6 +174,7 @@
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
                     </form>
             </div>
+            </div>
             <div class="content-right">
                 <%--<div class="list-friends">
                     <p class="list-friends-title">Danh sách bạn bè</p>
@@ -212,7 +213,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
         <div class="booking-apm" id="myDIV">
             <div class="content">
                 <img src="../image/background.png" alt="" class="background">
