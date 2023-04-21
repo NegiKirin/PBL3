@@ -19,7 +19,7 @@ body{
 }
 
 #main{
-    height: 100%;
+    height: calc(100% - 46px);
 }
 
 #header {
@@ -174,8 +174,9 @@ body{
 #content .content-left .content-left-item .time-date{
     font-weight: bold;
     font-size: 13px;
-    padding: 10px 0px 5px 30px ;
+    padding: 8px 0px 0px 30px;
     color: #8a8a8a;
+    margin-bottom: 0;
 }
 
 #content .content-left .content-left-item .with{
@@ -192,6 +193,7 @@ body{
     display: inline;
     width: 1000px;
     height: 100%;
+    background-color: #f5f5f5;
 }
 
 #content .content-main .content-main-title{
@@ -231,6 +233,20 @@ body{
     box-shadow: 3px 3px 5px 0px #aaaaaa;
     margin: 20px;
     
+}
+
+#content .content-main .content-main-list{
+	position: relative;
+	height: calc(100% - 21.6px - 35px);
+
+}
+
+#content .content-main .content-main-list form{
+	position: absolute;
+    display: flex;
+    bottom: 50px;
+    justify-content: center;
+    width: 100%;
 }
 
 #content .content-main .content-main-list .profile{
@@ -307,6 +323,7 @@ body{
 #content .content-right {
     height: 100%;
     width: 259px;
+    background-color: #f5f5f5;
 }
 
 #content .content-right .list-friends{
