@@ -1,12 +1,18 @@
 	package com.studywithme.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.studywithme.dao.IUserDAO;
 import com.studywithme.model.School;
 import com.studywithme.model.User;
+import com.studywithme.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-public class UserDAO extends AbstractDAO<User> implements IUserDAO {
+	public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 
 	@Override
 	public User save(User user) {
@@ -65,6 +71,28 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 		String hql = "from User u where u.email =:email and u.password =:password";
 		List<User> user = query(hql, "email", email, "password", password);
 		return user.isEmpty() ? null : user.get(0);
+	}
+
+	@Override
+	public User findById(Integer id) {
+		List<User> results = new ArrayList();
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				String hql = "from User u where u.id = :id";
+				Query query = session.createQuery(hql);
+				results = query.getResultList();
+				session.get(School.class,results.get(0).getSchool().getId());
+				tr.commit();
+				session.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return results.isEmpty()?null:results.get(0);
 	}
 
 	@Override

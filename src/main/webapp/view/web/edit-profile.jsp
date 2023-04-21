@@ -67,11 +67,13 @@
                                     <p class="content">Khác</p>
                                 </c:if>
                             </div>
-                            <div class="item">
-                                <i class="icon-infor fa-solid fa-school"></i>
-                                <p class="title">Trường học: </p>
-                                <p class="content">${profileUser.school.nameSchool}</p>
-                            </div>
+                            <c:if test="${profileUser.school!=null}">
+                                <div class="item">
+                                    <i class="icon-infor fa-solid fa-school"></i>
+                                    <p class="title">Trường học: </p>
+                                    <p class="content">${profileUser.school.nameSchool}</p>
+                                </div>
+                            </c:if>
                             <div class="item">
                                 <i class="icon-infor fa-solid fa-cake-candles"></i>
                                 <p class="title">Ngày sinh:</p>
@@ -288,7 +290,7 @@
                     }
                   </script>
             </form>
-            <form action="UpdateProfile" method="post" enctype='multipart/form-data'>
+            <form action="UpdateProfile" method="post" >
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
                     <i class="fa-solid fa-heart"></i>

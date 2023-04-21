@@ -59,4 +59,10 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
         }
         return results;
     }
+
+    @Override
+    public Integer count() {
+        String hql = "select count(*) from Appointment";
+        return count(hql);
+    }
 }

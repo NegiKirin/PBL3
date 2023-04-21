@@ -44,7 +44,7 @@ public class UserService implements IUserService {
 	@Override
 	public User findById(Integer id) {
 		userDAO = new UserDAO();
-		return userDAO.findOne(id);
+		return userDAO.findById(id);
 	}
 
 	@Override

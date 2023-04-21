@@ -14,4 +14,10 @@ public class AppointmentService implements IAppointmentService {
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.pagingAppointment(index,limit);
     }
+
+    @Override
+    public Integer totalItem() {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.count();
+    }
 }

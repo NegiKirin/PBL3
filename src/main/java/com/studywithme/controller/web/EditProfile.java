@@ -14,8 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import com.studywithme.model.School;
 import com.studywithme.model.User;
+import com.studywithme.service.IFriendshipService;
 import com.studywithme.service.ISchoolService;
 import com.studywithme.service.IUserService;
+import com.studywithme.service.impl.FriendshipService;
 import com.studywithme.service.impl.SchoolService;
 import com.studywithme.service.impl.UserService;
 
@@ -25,12 +27,14 @@ public class EditProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IUserService userService;
     private ISchoolService schoolService;
+	private IFriendshipService friendshipService;
     public EditProfile() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		schoolService = new SchoolService();
+		friendshipService = new FriendshipService();
 		request.setAttribute("listSchool", schoolService.findAll());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);

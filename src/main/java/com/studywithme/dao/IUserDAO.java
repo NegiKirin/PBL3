@@ -10,5 +10,6 @@ public interface IUserDAO extends GenericDAO<User>, InterfaceDAO<User> {
 /*	public boolean updateAvatar(User user);
 	public boolean updateBackground(User user);*/
 	public int getTotalItem();
-	public User findByEmailAndPasswordAndStatus(String email, String password); 
+	public User findByEmailAndPasswordAndStatus(String email, String password);
+	public User findById(Integer id);
 }

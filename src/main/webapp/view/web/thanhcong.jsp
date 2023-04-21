@@ -12,11 +12,7 @@
     <script src="/PBL3/template/paging/jquery.twbsPagination.js" type="text/javascript"></script>
 </head>
 <body>
-<div class="container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination" id="pagination"></ul>
-    </nav>
-</div>
+<ul class="pagination" id="pagination"></ul>
 <script type="text/javascript">
     $(function () {
         window.pagObj = $('#pagination').twbsPagination({

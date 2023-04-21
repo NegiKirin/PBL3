@@ -12,13 +12,13 @@
     <p class="list-friends-title">Danh sách bạn bè</p>
     <c:forEach items="${listFriend}" var="friend">
         <div class="list-friends-item">
-            <c:if test="${friend.avatar==null}">
+            <c:if test="${friend.requester.avatar==null}">
                 <img src="/PBL3/template/image/avatarDefault.jpg" alt="avatar">
             </c:if>
-            <c:if test="${friend.avatar!=null}">
-                <img src="data:image/jpeg;base64,${friend.avatar}" alt="avatar">
+            <c:if test="${friend.requester.avatar!=null}">
+                <img src="data:image/jpeg;base64,${friend.requester.avatar}" alt="avatar">
             </c:if>
-            <p class="name"><a href=""> ${friend.fullName} </a></p>
+            <p class="name"><a href="<c:url value="/profile?id=${friend.requester.id}"/>"> ${friend.requester.fullName} </a></p>
             <i class="fa-solid fa-mug-saucer"></i>
         </div>
     </c:forEach>

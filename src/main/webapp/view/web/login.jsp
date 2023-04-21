@@ -35,7 +35,7 @@
                 </div>
                 
 			<c:if test="${user==null}">
-				<form action="/PBL3/login" method = "post">
+				<form action="login" method = "post">
                     <input class="login-submit" name="email" id = "email" type="email" required="required" placeholder="Email" value = "${email }">
                     <input class="login-submit-pwd" name="password" id = "password" type="password" required="required" placeholder="Mật khẩu" required>
                     <p class="error">${error}</p>
@@ -55,7 +55,7 @@
                     <h1 class="user-name">${user.firstName} ${user.lastName}</h1>
                     <li>
                         <button class="button-cont">
-                            <a href="/PBL3/home">Tiếp tục đăng nhập</a> 
+                            <a href="<c:url value="/home"/> ">Tiếp tục đăng nhập</a>
                         </button>
                     </li>
                     <li class="last-list">
@@ -75,7 +75,7 @@
                 
                 </div>
                 <div>
-                <form action="/PBL3/register"  method ="post">
+                <form action="register"  method ="post">
                 			<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
                 			<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }">
                 		
@@ -87,7 +87,7 @@
                 			<label for="another">Khác</label>
                 		
                 			<input class="signin-submit" name="email" id = "email" type="email" placeholder="Email" 
-                    		required="required" value = "${email }">
+                    		required="required" value = "${email}">
                 		
                 		
                 		<c:if test="${error_email!= null }">
