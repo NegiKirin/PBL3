@@ -194,6 +194,7 @@ body{
     width: 100%;
     border-radius: 25px;
     object-fit: cover;
+    height: 300px;
 }
 
 .content-main-edit-infor .name{

@@ -38,7 +38,7 @@
                 <h1 class="content-main-title">Xem thông tin cá nhân</h1>
                 <div class="content-main-edit-infor">
                     <c:if test="${profileUser.background==null}">
-                        <img class="background" src="/PBL3/template/image/backgroudDefault.png" alt="background">
+                        <img class="background" src="/PBL3/template/image/backgroundDefault.png" alt="background">
                     </c:if>
                     <c:if test="${profileUser.background!=null}">
                         <img src="data:image/jpeg;base64,${profileUser.background}" class="background" alt="background">
@@ -253,7 +253,7 @@
             <p class="title-edit">Ảnh bìa</p>
             <form class="edit-background" runat="server" action="upload-image" method="post">
                 <c:if test="${profileUser.background==null}">
-                    <img id="blah1" src="/PBL3/template/image/backgroudDefault.png" alt="your image">
+                    <img id="blah1" src="/PBL3/template/image/backgroundDefault.png" alt="your image">
                 </c:if>
                 <c:if test="${profileUser.background!=null}">
                 <img src="data:image/jpeg;base64,${profileUser.background}" alt="your image">
