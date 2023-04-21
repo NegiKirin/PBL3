@@ -15,4 +15,5 @@ public interface GenericDAO<T> {
 	public int count (String hql, Object... parameters);
 
 	public T findId(Class<T> clazz ,Integer id);
+
 }

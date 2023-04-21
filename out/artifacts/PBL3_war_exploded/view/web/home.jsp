@@ -9,13 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="/PBL3/template/image/Study1.png" type="image/icon type">
-    <link rel="stylesheet" href="/PBL3/template/css/home.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="icon" href="<c:url value="/template/image/Study1.png"/>" type="image/icon type">
+    <link rel="stylesheet" href="<c:url value="/template/css/home.css"/>">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="/PBL3/template/paging/jquery.twbsPagination.js" type="text/javascript"></script>
 </head>
 <body>
     <jsp:include page="/common/web/navbar.jsp"></jsp:include>
     <div id="main">
-
         <div id="content">
             <div class="content-left">
                 <div class="content-calender">
@@ -75,7 +79,7 @@
                     <input type="text" placeholder="Gõ gì đó để tìm kiếm ...">
                 </div>
                 <div class="content-main-list">
-                    <div class="content-main-item">
+                    <%--<div class="content-main-item">
                         <div class="profile">
                             <img class="background" src="./image/background.png" alt="">
                             <img class="avatar" src="./image/ava1.png" alt="">
@@ -131,7 +135,34 @@
                         </div>
                         <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
                     </div>
-                </div>
+                </div>--%>
+                <c:forEach items="${appointments}" var="appointment">
+                    <div class="content-main-item">
+                        <div class="profile">
+                            <c:if test="${appointment.host.background!=null}">
+                                <img src="data:image/jpeg;base64,${appointment.host.background}" class="background">
+                            </c:if>
+                            <c:if test="${appointment.host.background==null}">
+                                <img class="background" src="<c:url value="/template/image/backgroundDefault.png"/>" alt="">
+                            </c:if>
+                            <c:if test="${appointment.host.avatar!=null}">
+                                <img src="data:image/jpeg;base64,${appointment.host.avatar}" class="avatar">
+                            </c:if>
+                            <c:if test="${appointment.host.avatar==null}">
+                                <img class="avatar" src="<c:url value="/template/image/avatarDefault.jpg"/>" alt="">
+                            </c:if>
+                            <p class="name">${appointment.host.fullName}</p>
+                        </div>
+                        <div class="content">
+                            <div class="item">
+                                <p class="time">8 A.M - 9 A.M</p>
+                                <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
+                            </div>
+                        </div>
+                        <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                    </div>
+                </c:forEach>
+                <%--<ul class="pagination" id="pagination"></ul>--%>
             </div>
             <div class="content-right">
                 <div class="list-friends">
@@ -205,6 +236,19 @@
             x.style.display = "none";
           }
         }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            window.pagObj = $('#pagination').twbsPagination({
+                totalPages: 35,
+                visiblePages: 10,
+                onPageClick: function (event, page) {
+                    console.info(page + ' (from options)');
+                }
+            }).on('page', function (event, page) {
+                console.info(page + ' (from event listening)');
+            });
+        });
     </script>
 </body>
 </html>

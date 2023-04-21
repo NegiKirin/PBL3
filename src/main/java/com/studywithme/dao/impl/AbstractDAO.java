@@ -15,7 +15,7 @@ import com.studywithme.dao.GenericDAO;
 import com.studywithme.model.School;
 import com.studywithme.util.HibernateUtil;
 
-public class AbstractDAO<T> implements GenericDAO<T>{
+public class AbstractDAO<T> implements GenericDAO<T> {
 
 	private void setParameters(Query query,Object...parameters) {
 		for(int i = 0; i < parameters.length; i+=2) {
@@ -161,4 +161,25 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 		return false;
 	}
 
+
+	/*@Override
+	public <T> List<T> paging(String hql, Integer index, Integer limit,Object...parameters) {
+		List<T> results = new ArrayList();
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				Query query = session.createQuery(hql);
+				setParameters(query, parameters);
+				results = query.setFirstResult((index-1)*limit).setMaxResults(limit).getResultList();
+				tr.commit();
+				session.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return results;
+	}*/
 }

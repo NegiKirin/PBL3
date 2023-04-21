@@ -6,6 +6,7 @@
 
 html{
     font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
 }
 
 ul{
@@ -14,9 +15,15 @@ ul{
 
 body{
     background-color: #f5f5f5;
+    height: 100%;
+}
+
+#main{
+    height: 100%;
 }
 
 #header {
+    
     height: 46px;
     background-color: #18C0e6;
 }
@@ -53,8 +60,10 @@ body{
 #header .header-main{
     height: 46px;
     display: inline-flex;
-    width: 65%;
-    text-align: center;
+    justify-content: center;
+    width: calc(100% - 260px - 259px );
+    min-width: 65%;
+    
     position:absolute;
     padding: 0 20%;
 }
@@ -83,6 +92,7 @@ body{
 
 #header .header-noti {
     display: inline-block;
+    width: 259px;
     float: right;
     line-height: 46px;
     margin: 0 20px;
@@ -90,13 +100,15 @@ body{
 
 #header .header-noti a{
     text-decoration: none;
+    float: right;
     color: #000;
     font-weight: bold;
 }
 
 #content {
-    height: 746px;
-    display: inline-flex;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 #content .content-left{
@@ -178,7 +190,7 @@ body{
 
 #content .content-main{
     display: inline;
-    min-width: 62,5%;
+    width: 1000px;
     height: 100%;
 }
 
@@ -186,7 +198,7 @@ body{
     display: block;
     text-align: center;
     margin-top: 25px;
-    margin-left: 45px;
+    
     font-size: 18px;
 }
 
@@ -438,8 +450,9 @@ body{
     position: relative;
     background-color: #fff;
     height: auto;
-    width: 500px;
-    margin-left: calc(50% - 250px);
+    width: 800px;
+    margin-left: calc(50% - 400px);
+
     margin-top: 150px;
     border-radius: 10px;
     text-align: center;
@@ -464,6 +477,11 @@ body{
 .booking-apm .infor-apm{
     text-align: left;
     padding: 0 40px;
+}
+
+.booking-apm .infor-apm iframe{
+    height: 400px;
+    width: 400px;
 }
 
 .booking-apm .infor-apm .title{
@@ -541,4 +559,12 @@ body{
 	display: none;}
 	#header .header-info-user{
 	display: none;}
+    #header .header-noti {
+        display: none;
+        
+    }
+    #header .header-main{
+        width: 100%;
+    }
+    
 }

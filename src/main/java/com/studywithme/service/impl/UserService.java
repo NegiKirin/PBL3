@@ -10,7 +10,7 @@ import com.studywithme.model.User;
 import com.studywithme.service.IUserService;
 import com.studywithme.util.maHoa;
 
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
 	private IUserDAO userDAO;
 	
@@ -40,7 +40,13 @@ public class UserService implements IUserService{
 		userDAO = new UserDAO();
 		return userDAO.findByEmail(email);
 	}
-	
+
+	@Override
+	public User findById(Integer id) {
+		userDAO = new UserDAO();
+		return userDAO.findOne(id);
+	}
+
 	@Override
 	public User update(User user) {
 		userDAO = new UserDAO();

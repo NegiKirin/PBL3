@@ -1,6 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:url value="/template" var="url"></c:url>
-
 <%--<c:if test="${user==null}">
 	<c:redirect url="/login" context=""></c:redirect>
 </c:if>--%>
@@ -13,7 +11,7 @@
 	<c:if test="${user.avatar!=null}">
 		<img alt="" src="data:image/jpeg;base64,${user.avatar}">
 	</c:if>
-	<a href="/PBL3/edit-profile"><p class="header-info-user-name">${user.firstName} ${user.lastName}</p></a> <i class="fa-solid fa-user-pen"></i>
+	<a href="<c:url value="/profile?id=${user.id}"/>"><p class="header-info-user-name"> ${user.fullName} </p><i class="fa-solid fa-user-pen"></i></a>
 	</div>
 
 <div class="header-main">
