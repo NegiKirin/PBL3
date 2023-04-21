@@ -46,10 +46,10 @@ public class Home extends HttpServlet {
 		if(maxPageItemAppointmentStr!=null){
 			maxPageItemAppointment = Integer.parseInt(maxPageItemAppointmentStr);
 		} else {
-			maxPageItemAppointment = 1;
+			maxPageItemAppointment = 6;
 		}
-
-
+		Integer totalPages = appointmentService.totalItem() / maxPageItemAppointment;
+		Integer showPages = totalPages>=6?6:totalPages;
 		String listFriendStr = request.getParameter("listFriend");
 		Integer listFriend;
 		if(listFriendStr==null){
@@ -57,6 +57,10 @@ public class Home extends HttpServlet {
 		} else {
 			listFriend = Integer.parseInt(listFriendStr);
 		}
+		request.setAttribute("showPages",showPages);
+		request.setAttribute("totalPages",totalPages);
+		request.setAttribute("maxPageItem",maxPageItemAppointment);
+		request.setAttribute("page",pageAppointment);
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("appointments",appointmentService.pagingAppointment(pageAppointment,maxPageItemAppointment));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");

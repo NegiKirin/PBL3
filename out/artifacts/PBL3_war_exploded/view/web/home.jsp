@@ -253,33 +253,29 @@
         }
     </script>
     <%--<script type="text/javascript">
+        $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: 35,
+            visiblePages: 10,
+            startPage: 1,
+            onPageClick: function (event, page) {
+                console.info(page + ' (from options)');
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
+    </script>--%>
+    <script type="text/javascript">
         var totalPages = ${totalPages};
         var currentPage = ${page};
-        var limit = 10;
+        var limit = 6;
+        var showPages = ${showPages};
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
-                visiblePages: 5,
+                visiblePages: showPages,
                 startPage: currentPage,
-                onPageClick: function (event, page) {
-                    $('#maxPageItem').val(limit);
-                    $('#page').val(page);
-                    $('#formPaging').submit();
-                }
-            }).on('page', function (event, page) {
-                console.info(page + ' (from event listening)');
-            });
-        });
-    </script>--%>
-    <script type="text/javascript">
-        <%--var totalPages = ${page};--%>
-        var currentPage = ${page};
-        var limit = 6;
-        $(function () {
-            window.pagObj = $('#pagination').twbsPagination({
-                totalPages: 10,
-                visiblePages: 5,
-                startPage: 1,
                 onPageClick: function (event, page) {
                     if(currentPage !== page){
                         $('#maxPageItem').val(limit);

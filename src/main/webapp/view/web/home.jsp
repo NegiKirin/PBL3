@@ -174,6 +174,7 @@
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
                     </form>
             </div>
+            </div>
             <div class="content-right">
                 <%--<div class="list-friends">
                     <p class="list-friends-title">Danh sách bạn bè</p>
@@ -212,7 +213,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
         <div class="booking-apm" id="myDIV">
             <div class="content">
                 <img src="../image/background.png" alt="" class="background">
@@ -252,7 +253,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         $(function () {
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: 35,
@@ -265,16 +266,17 @@
             console.info(page + ' (from event listening)');
         });
     });
-    </script>
-    <%--<script type="text/javascript">
-        &lt;%&ndash;var totalPages = ${totalPages};&ndash;%&gt;
+    </script>--%>
+    <script type="text/javascript">
+        var totalPages = ${totalPages};
         var currentPage = ${page};
         var limit = 6;
+        var showPages = ${showPages};
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
-                totalPages: 10,
-                visiblePages: 5,
-                startPage: 1,
+                totalPages: totalPages,
+                visiblePages: showPages,
+                startPage: currentPage,
                 onPageClick: function (event, page) {
                     if(currentPage !== page){
                         $('#maxPageItem').val(limit);
@@ -286,6 +288,6 @@
                 console.info(page + ' (from event listening)');
             });
         });
-    </script>--%>
+    </script>
 </body>
 </html>
