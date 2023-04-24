@@ -161,11 +161,42 @@
                         </div>
                         <div class="content">
                             <div class="item">
-                                <p class="time">8 A.M - 9 A.M</p>
-                                <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
+                                <p class="time">
+                                    <input type="time" value="${appointment.starting_time}" disabled="disabled">
+                                    <input type="time" value="${appointment.ending_time}" disabled="disabled">
+                                </p>
+                                <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                             </div>
                         </div>
                         <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                    </div>
+                    <div class="booking-apm" id="myDIV">
+                        <div class="content">
+                            <img src="../image/background.png" alt="" class="background">
+                            <button class="exit" onclick="myFunction()">X</button>
+                            <img src="../image/ava1.png" alt="" class="ava">
+                            <h1 class="name">Phúc Tân</h1>
+                            <form class="infor-apm">
+                                <p class="title">Thông tin cuộc hẹn:</p>
+                                <div class="list">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <p class="time">8 A.M - 9 A.M</p>
+                                </div>
+                                <div class="list">
+                                    <i class="fa-solid fa-store"></i>
+                                    <p class="type-location">Coffee</p>
+                                </div>
+                                <div class="list">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p class="address">60 Nguyen Luong Bang</p>
+                                </div>
+                                <div class="list">
+                                    <i class="fa-solid fa-users"></i>
+                                    <p class="number">3 người khác tham gia</p>
+                                </div>
+                                <input class="submit" type="submit" value="KẾT NỐI NGAY">
+                            </form>
+                        </div>
                     </div>
                 </c:forEach>
                     <form action="<c:url value="/home"/> " id="formPaging" method="get">
@@ -199,22 +230,38 @@
                     <p class="title">Lịch đặt hẹn của bạn</p>
                     <div class="your-profile-main">
                         <div class="profile">
-                            <img class="background" src="./image/background.png" alt="">
-                            <img class="avatar" src="./image/ava1.png" alt="">
-                            <p class="name">Phúc Tân</p>
+                            <c:if test="${user.background!=null}">
+                                <img src="data:image/jpeg;base64,${user.background}" class="background" alt="background">
+                            </c:if>
+                            <c:if test="${user.background==null}">
+                                <img class="background" src="<c:url value="/template/image/backgroundDefault.png"/>"
+                                     alt="background">
+                            </c:if>
+                            <c:if test="${user.avatar!=null}">
+                                <img src="data:image/jpeg;base64,${user.avatar}" class="avatar" alt="avatar">
+                            </c:if>
+                            <c:if test="${user.avatar==null}">
+                                <img class="avatar" src="<c:url value="/template/image/avatarDefault.jpg"/>" alt="avatar">
+                            </c:if>
+                            <p class="name">${user.fullName}</p>
                         </div>
                         <div class="content">
-                            <div class="item">
-                                <p class="time">8 A.M - 9 A.M</p>
-                                <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
-                            </div>
+                            <%--<c:forEach items="${appointmentOf}" var="appointment">
+                                <div class="item">
+                                    <p class="time" id="start">
+                                        <input type="time" value="${appointment.starting_time}" disabled="disabled">
+                                        <input type="time" value="${appointment.ending_time}" disabled="disabled">
+                                    </p>
+                                    <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.detail}</p>
+                                </div>
+                            </c:forEach>--%>
                         </div>
                         <p class="add"><a href="">+</a></p>
                     </div>
                 </div>
             </div>
         
-        <div class="booking-apm" id="myDIV">
+        <%--<div class="booking-apm" id="myDIV">
             <div class="content">
                 <img src="../image/background.png" alt="" class="background">
                 <button class="exit" onclick="myFunction()">X</button>
@@ -241,7 +288,7 @@
                     <input class="submit" type="submit" value="KẾT NỐI NGAY">
                 </form>
             </div>
-        </div>
+        </div>--%>
     </div>
     <script type="text/javascript">
         function myFunction() {
@@ -254,18 +301,7 @@
         }
     </script>
     <%--<script type="text/javascript">
-        $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: 35,
-            visiblePages: 10,
-            startPage: 1,
-            onPageClick: function (event, page) {
-                console.info(page + ' (from options)');
-            }
-        }).on('page', function (event, page) {
-            console.info(page + ' (from event listening)');
-        });
-    });
+
     </script>--%>
     <script type="text/javascript">
         var totalPages = ${totalPages};
@@ -275,7 +311,7 @@
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
-                visiblePages: showPages,
+                visiblePages: 10,
                 startPage: currentPage,
                 onPageClick: function (event, page) {
                     if(currentPage !== page){

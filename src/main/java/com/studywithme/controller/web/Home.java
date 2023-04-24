@@ -37,7 +37,7 @@ public class Home extends HttpServlet {
 
 		String pageAppointmentStr = request.getParameter("page");
 		String maxPageItemAppointmentStr = request.getParameter("maxPageItem");
-		Integer pageAppointment, maxPageItemAppointment;
+		int pageAppointment, maxPageItemAppointment = 6;
 		if(pageAppointmentStr!=null){
 			pageAppointment = Integer.parseInt(pageAppointmentStr);
 		} else {
@@ -45,24 +45,21 @@ public class Home extends HttpServlet {
 		}
 		if(maxPageItemAppointmentStr!=null){
 			maxPageItemAppointment = Integer.parseInt(maxPageItemAppointmentStr);
-		} else {
-			maxPageItemAppointment = 6;
 		}
-		Integer totalPages = (int) Math.ceil(appointmentService.totalItem() / maxPageItemAppointment) ;
-		Integer showPages = totalPages>=6?6:totalPages;
+		int totalPages =(int) Math.ceil((double) appointmentService.totalItem() / maxPageItemAppointment) ;
 		String listFriendStr = request.getParameter("listFriend");
-		Integer listFriend;
+		int listFriend;
 		if(listFriendStr==null){
 			listFriend = 1;
 		} else {
 			listFriend = Integer.parseInt(listFriendStr);
 		}
-		request.setAttribute("showPages",showPages);
-		request.setAttribute("totalPages",totalPages);
+		request.setAttribute("totalPages",totalPages==1?0:totalPages);
 		request.setAttribute("maxPageItem",maxPageItemAppointment);
 		request.setAttribute("page",pageAppointment);
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("appointments",appointmentService.pagingAppointment(pageAppointment,maxPageItemAppointment));
+		request.setAttribute("appointmentOf",appointmentService.findByHost(user));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");
 		rd.forward(request, response);
 	}

@@ -271,7 +271,7 @@
                   </script>
             </form>
             <p class="title-edit">Ảnh đại diện</p>
-            <form class="edit-ava" runat="server" action="upload-image" method="post" enctype='multipart/form-data'>
+            <form class="edit-ava" action="upload-image" method="post" enctype='multipart/form-data'>
                 <c:if test="${profileUser.avatar==null}">
                     <img src="/PBL3/template/image/avatarDefault.jpg" alt="your image" id="blah2">
                 </c:if>
@@ -305,12 +305,13 @@
                     <i class="fa-solid fa-school"></i>
                     <p class="content">Trường học:</p>
                     <input class="list-school" placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice"/>
-
-                    <datalist id="list-school">
-                        <c:forEach items="${listSchool}" var="school">
-                            <option value="${school.nameSchool}"/>
-                        </c:forEach>
-                    </datalist>
+                    <c:if test="${listSchool!=null}">
+                        <datalist id="list-school">
+                            <c:forEach items="${listSchool}" var="school">
+                                <option value="${school.nameSchool}"/>
+                            </c:forEach>
+                        </datalist>
+                    </c:if>
                 </div>
                 <div class="list">
                     <i class="fa-solid fa-cake-candles"></i>

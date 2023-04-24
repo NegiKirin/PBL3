@@ -397,6 +397,7 @@ body{
 #content .content-right .your-profile-main .profile .background{
     width: 100%;
     border-radius: 8px;
+    height: 6rem;
 }
 
 #content .content-right .your-profile-main .profile .avatar{
