@@ -38,7 +38,7 @@
                 <h1 class="content-main-title">Xem thông tin cá nhân</h1>
                 <div class="content-main-edit-infor">
                     <c:if test="${profileUser.background==null}">
-                        <img class="background" src="/PBL3/template/image/backgroudDefault.png" alt="background">
+                        <img class="background" src="/PBL3/template/image/backgroundDefault.png" alt="background">
                     </c:if>
                     <c:if test="${profileUser.background!=null}">
                         <img src="data:image/jpeg;base64,${profileUser.background}" class="background" alt="background">
@@ -253,7 +253,7 @@
             <p class="title-edit">Ảnh bìa</p>
             <form class="edit-background" runat="server" action="upload-image" method="post">
                 <c:if test="${profileUser.background==null}">
-                    <img id="blah1" src="/PBL3/template/image/backgroudDefault.png" alt="your image">
+                    <img id="blah1" src="/PBL3/template/image/backgroundDefault.png" alt="your image">
                 </c:if>
                 <c:if test="${profileUser.background!=null}">
                 <img src="data:image/jpeg;base64,${profileUser.background}" alt="your image">
@@ -271,7 +271,7 @@
                   </script>
             </form>
             <p class="title-edit">Ảnh đại diện</p>
-            <form class="edit-ava" runat="server" action="upload-image" method="post" enctype='multipart/form-data'>
+            <form class="edit-ava" action="upload-image" method="post" enctype='multipart/form-data'>
                 <c:if test="${profileUser.avatar==null}">
                     <img src="/PBL3/template/image/avatarDefault.jpg" alt="your image" id="blah2">
                 </c:if>
@@ -305,12 +305,13 @@
                     <i class="fa-solid fa-school"></i>
                     <p class="content">Trường học:</p>
                     <input class="list-school" placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice"/>
-
-                    <datalist id="list-school">
-                        <c:forEach items="${listSchool}" var="school">
-                            <option value="${school.nameSchool}"/>
-                        </c:forEach>
-                    </datalist>
+                    <c:if test="${listSchool!=null}">
+                        <datalist id="list-school">
+                            <c:forEach items="${listSchool}" var="school">
+                                <option value="${school.nameSchool}"/>
+                            </c:forEach>
+                        </datalist>
+                    </c:if>
                 </div>
                 <div class="list">
                     <i class="fa-solid fa-cake-candles"></i>

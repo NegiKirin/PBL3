@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.studywithme.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,12 +27,12 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 				query.setParameter((String) parameters[i],(String) parameter);
 			} else if (parameter instanceof Integer) {
 				query.setParameter((String) parameters[i],(Integer) parameter);
-			} else if (parameter instanceof Timestamp) {
-				query.setParameter((String) parameters[i],(Timestamp) parameter);
 			} else if (parameter instanceof Time) {
 				query.setParameter((String) parameters[i],(Time) parameter);
 			} else if(parameter instanceof School) {
 				query.setParameter((String) parameters[i],(School) parameter);
+			} else if(parameter instanceof User) {
+				query.setParameter((String) parameters[i],(User) parameter);
 			}
 //			else if(parameter instanceof byte[]) {
 //				query.setParameter((String) parameters[i],(byte[]) parameter);
