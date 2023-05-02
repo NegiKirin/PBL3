@@ -7,7 +7,7 @@
     <packaging>war</packaging>
 
     <properties>
-      <apache.tomcat.version>9.0.65</apache.tomcat.version>
+      <apache.tomcat.version>9.0.73</apache.tomcat.version>
     </properties>
 
     <dependencies>
@@ -174,7 +174,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
@@ -208,6 +208,12 @@
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
             <version>2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
         </dependency>
     </dependencies>
     <build>
