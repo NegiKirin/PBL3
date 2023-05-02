@@ -33,7 +33,7 @@
                         var month = dt.getMonth(); // read the current month
                         var year = dt.getFullYear(); // read the current year
 
-                        dt = new Date(year, month, 01);//Year , month,date format
+                        dt = new Date(year, month, 1);//Year , month,date format
 
                         var first_day = dt.getDay(); //, first day of present month
                         //document.write("first_day=" + first_day + "<br><br>");
@@ -144,27 +144,13 @@
                 <c:forEach items="${appointments}" var="appointment">
                     <div class="content-main-item">
                         <div class="profile">
-                            <c:if test="${appointment.host.background!=null}">
-                                <img src="data:image/jpeg;base64,${appointment.host.background}" class="background">
-                            </c:if>
-                            <c:if test="${appointment.host.background==null}">
-                                <img class="background" src="<c:url value="/template/image/backgroundDefault.png"/>"
-                                     alt="">
-                            </c:if>
-                            <c:if test="${appointment.host.avatar!=null}">
-                                <img src="data:image/jpeg;base64,${appointment.host.avatar}" class="avatar">
-                            </c:if>
-                            <c:if test="${appointment.host.avatar==null}">
-                                <img class="avatar" src="<c:url value="/template/image/avatarDefault.jpg"/>" alt="">
-                            </c:if>
+                            <img src="data:image/jpeg;base64,${appointment.host.background}" class="background" alt="background"/>
+                            <img src="data:image/jpeg;base64,${appointment.host.avatar}" class="avatar" alt="avatar"/>
                             <p class="name">${appointment.host.fullName}</p>
                         </div>
                         <div class="content">
                             <div class="item">
-                                <p class="time">
-                                    <input type="time" value="${appointment.starting_time}" disabled="disabled">
-                                    <input type="time" value="${appointment.ending_time}" disabled="disabled">
-                                </p>
+                                <p class="time" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                             </div>
                         </div>
@@ -230,19 +216,8 @@
                     <p class="title">Lịch đặt hẹn của bạn</p>
                     <div class="your-profile-main">
                         <div class="profile">
-                            <c:if test="${user.background!=null}">
-                                <img src="data:image/jpeg;base64,${user.background}" class="background" alt="background">
-                            </c:if>
-                            <c:if test="${user.background==null}">
-                                <img class="background" src="<c:url value="/template/image/backgroundDefault.png"/>"
-                                     alt="background">
-                            </c:if>
-                            <c:if test="${user.avatar!=null}">
-                                <img src="data:image/jpeg;base64,${user.avatar}" class="avatar" alt="avatar">
-                            </c:if>
-                            <c:if test="${user.avatar==null}">
-                                <img class="avatar" src="<c:url value="/template/image/avatarDefault.jpg"/>" alt="avatar">
-                            </c:if>
+                            <img src="data:image/jpeg;base64,${user.background}" class="background" alt="background"/>
+                            <img src="data:image/jpeg;base64,${user.avatar}" class="avatar" alt="avatar"/>
                             <p class="name">${user.fullName}</p>
                         </div>
                         <div class="content">
@@ -290,16 +265,7 @@
             </div>
         </div>--%>
     </div>
-    <script type="text/javascript">
-        function myFunction() {
-            var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
+    <script src="<c:url value="/template/js/Home.js"/>"></script>
     <%--<script type="text/javascript">
 
     </script>--%>

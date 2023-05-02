@@ -27,8 +27,9 @@ public class Profile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		userService = new UserService();
 		schoolService = new SchoolService();
+		String id = request.getParameter("id");
 		request.setAttribute("listSchool", schoolService.findAll());
-		request.setAttribute("profileUser",userService.findById(Integer.parseInt(request.getParameter("id"))));
+		request.setAttribute("profileUser",userService.findById(Integer.parseInt(id)));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
@@ -36,5 +37,4 @@ public class Profile extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

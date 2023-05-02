@@ -46,12 +46,7 @@
 			
 			<c:if test="${user!=null}">
 				<div id="content-user">
-					<c:if test="${user.avatar==null}">
-						<img src="./template/image/avatarDefault.jpg">
-					</c:if>
-					<c:if test="${user.avatar!=null }">
-						<img alt="" src="data:image/jpeg;base64,${user.avatar}">
-					</c:if>
+                    <img src="data:image/jpeg;base64,${user.avatar}"/>
                     <h1 class="user-name">${user.firstName} ${user.lastName}</h1>
                     <li>
                         <button class="button-cont">

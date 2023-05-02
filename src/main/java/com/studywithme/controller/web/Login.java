@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);
-			url = "/view/web/login.jsp";
+			url = "/login";
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 		}

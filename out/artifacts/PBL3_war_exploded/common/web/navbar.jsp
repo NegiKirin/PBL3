@@ -5,12 +5,7 @@
 
 <div id="header">
     <div class="header-info-user">
-        <c:if test="${user.avatar == null}">
-            <img src="./template/image/avatarDefault.jpg">
-        </c:if>
-        <c:if test="${user.avatar!=null}">
-            <img alt="" src="data:image/jpeg;base64,${user.avatar}">
-        </c:if>
+        <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar"/>
         <a href="<c:url value="/profile?id=${user.id}"/>"><p class="header-info-user-name"> ${user.fullName} </p><i
                 class="fa-solid fa-user-pen"></i></a>
     </div>
@@ -22,13 +17,13 @@
             </button>
         </a>
         </li>
-        <li><a href="">
+        <li><a href="<c:url value="/home?listFriend=1"/>">
             <button class="header-main-mainbutton">
                 <i class="fa-solid fa-globe"></i>
             </button>
         </a>
         </li>
-        <li><a href="">
+        <li><a href="<c:url value="/Q&A?listFriend=1"/>">
             <button>
                 <i class="fa-solid fa-book"></i>
             </button>

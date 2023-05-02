@@ -68,7 +68,7 @@ public class Register extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			User user = new User();
-			user = userService.register(lastName, firstName, email, password, sex.equals("male") ? 0 : 1);
+			user = userService.register(lastName, firstName, email, password, sex.equals("male") ? 0 : (sex.equals("female") ? 1:2));
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			response.sendRedirect("/PBL3/home");

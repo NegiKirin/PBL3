@@ -42,6 +42,7 @@ public class UploadImage extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		Part file = request.getPart("avatar");
 		Part file1 = request.getPart("background");
 		HttpSession session = request.getSession();
@@ -50,36 +51,39 @@ public class UploadImage extends HttpServlet {
 		user = (User)obj;
 		userService = new UserService();
 		modifyService = new ModifyService();
-		try {
-				InputStream is = file1.getInputStream();
-				byte[] data = new byte[is.available()];
-				is.read(data);
-				System.out.println(is);
-				is.close();
-				String base64=Base64.getEncoder().encodeToString(data);
-				if(!base64.equals("")) {
-					user.setBackground(base64);
-				}
-				modifyService.createModify(user,user,"Sửa đổi ảnh đại diện");
-				userService.update(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-				InputStream is = file.getInputStream();
-				byte[] data = new byte[is.available()];
-				System.out.println(is);
-				is.read(data);
-				is.close();
-				String base64 = Base64.getEncoder().encodeToString(data);
-				if(!base64.equals("")) {
-					user.setAvatar(base64);
-				}
-				modifyService.createModify(user,user,"Sửa đổi ảnh nền");
-				userService.update(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+
+
+//		try {
+//				InputStream is = file1.getInputStream();
+//				byte[] data = new byte[is.available()];
+//				is.read(data);
+//				System.out.println(is);
+//				is.close();
+//				String base64=Base64.getEncoder().encodeToString(data);
+//				if(!base64.equals("")) {
+//					user.setBackground(base64);
+//				}
+//				modifyService.createModify(user,user,"Sửa đổi ảnh đại diện");
+//				userService.update(user);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		try {
+//				InputStream is = file.getInputStream();
+//				byte[] data = new byte[is.available()];
+//				System.out.println(is);
+//				is.read(data);
+//				is.close();
+//				String base64 = Base64.getEncoder().encodeToString(data);
+//				if(!base64.equals("")) {
+//					user.setAvatar(base64);
+//				}
+//				modifyService.createModify(user,user,"Sửa đổi ảnh nền");
+//				userService.update(user);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
