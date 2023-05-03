@@ -1,10 +1,14 @@
 package com.studywithme.controller.web;
 
 import com.studywithme.model.User;
+import com.studywithme.paging.PageRequest;
+import com.studywithme.paging.Pageble;
 import com.studywithme.service.IAppointmentService;
 import com.studywithme.service.IFriendshipService;
 import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.FriendshipService;
+import com.studywithme.sort.Sorter;
+import com.studywithme.util.FormUtil;
 
 import java.io.IOException;
 
@@ -35,18 +39,11 @@ public class Home extends HttpServlet {
 		User user = null;
 		user = (User)obj;
 
-		String pageAppointmentStr = request.getParameter("page");
-		String maxPageItemAppointmentStr = request.getParameter("maxPageItem");
-		int pageAppointment, maxPageItemAppointment = 6;
-		if(pageAppointmentStr!=null){
-			pageAppointment = Integer.parseInt(pageAppointmentStr);
-		} else {
-			pageAppointment = 1;
-		}
-		if(maxPageItemAppointmentStr!=null){
-			maxPageItemAppointment = Integer.parseInt(maxPageItemAppointmentStr);
-		}
-		int totalPages =(int) Math.ceil((double) appointmentService.totalItem() / maxPageItemAppointment) ;
+		Pageble pageble = new PageRequest();
+		pageble = FormUtil.toModel(PageRequest.class, request);
+		pageble.setSorter(FormUtil.toModel(Sorter.class,request));
+
+		int totalPages = (int) Math.ceil((double) appointmentService.totalItem() / pageble.getMaxPageItem()) ;
 		String listFriendStr = request.getParameter("listFriend");
 		int listFriend;
 		if(listFriendStr==null){
@@ -55,10 +52,10 @@ public class Home extends HttpServlet {
 			listFriend = Integer.parseInt(listFriendStr);
 		}
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
-		request.setAttribute("maxPageItem",maxPageItemAppointment);
-		request.setAttribute("page",pageAppointment);
+		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
+		request.setAttribute("page",pageble.getPage());
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
-		request.setAttribute("appointments",appointmentService.pagingAppointment(pageAppointment,maxPageItemAppointment));
+		request.setAttribute("appointments",appointmentService.pagingAppointment(pageble));
 		request.setAttribute("appointmentOf",appointmentService.findByHost(user));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");
 		rd.forward(request, response);
