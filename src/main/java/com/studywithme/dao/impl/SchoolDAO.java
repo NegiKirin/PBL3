@@ -40,8 +40,9 @@ public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO {
 	}
 
 	@Override
-	public List<School> findByName(String schoolName) {
-		return null;
+	public School findByName(String schoolName) {
+		String hql = "from School where nameSchool =: nameSchool";
+		List<School> school = query(hql,"nameSchool",schoolName);
+		return school.isEmpty() ? null : school.get(0);
 	}
-
 }

@@ -83,8 +83,11 @@ import org.hibernate.query.Query;
 				Transaction tr = session.beginTransaction();
 				String hql = "from User u where u.id = :id";
 				Query query = session.createQuery(hql);
+				query.setParameter("id",id);
 				results = query.getResultList();
-				session.get(School.class,results.get(0).getSchool().getId());
+				if(results.get(0).getSchool()!=null) {
+					session.get(School.class, results.get(0).getSchool().getId());
+				}
 				tr.commit();
 				session.close();
 			}

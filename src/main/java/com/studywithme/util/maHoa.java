@@ -19,9 +19,7 @@ public class maHoa {
 	        byte[] dataBytes = toEncrypt.getBytes(encoding);
 	        MessageDigest md = MessageDigest.getInstance("SHA-1");
 	        res = Base64.encodeBase64String(md.digest(dataBytes));
-	    } catch (NoSuchAlgorithmException e) {
-	        e.printStackTrace();
-	    } catch (UnsupportedEncodingException e) {
+	    } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 	        e.printStackTrace();
 	    }
 	    return res;

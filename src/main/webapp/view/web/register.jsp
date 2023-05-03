@@ -11,8 +11,8 @@ CH
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="/PBL3/template/image/Study1.png" type="image/icon type">
-    <link rel="stylesheet" href="/PBL3/template/css/register.css">
+    <link rel="icon" href="<c:url value="/template/image/Study1.png"/> " type="image/icon type">
+    <link rel="stylesheet" href="<c:url value="/template/css/register.css"/>">
 </head>
 <body>
 <c:if test="${user!=null }">

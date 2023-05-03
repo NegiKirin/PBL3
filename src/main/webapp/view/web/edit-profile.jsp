@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/PBL3/template/css/edit-profile.css">
+    <link rel="stylesheet" href="<c:url value="/template/css/edit-profile.css"/>">
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -37,20 +37,9 @@
             <div class="content-main">
                 <h1 class="content-main-title">Xem thông tin cá nhân</h1>
                 <div class="content-main-edit-infor">
-                    <c:if test="${profileUser.background==null}">
-                        <img class="background" src="/PBL3/template/image/backgroundDefault.png" alt="background">
-                    </c:if>
-                    <c:if test="${profileUser.background!=null}">
-                        <img src="data:image/jpeg;base64,${profileUser.background}" class="background" alt="background">
-                    </c:if>
-                    <c:if test="${profileUser.avatar==null}">
-                        <img class="ava" src="/PBL3/template/image/avatarDefault.jpg" alt="avatar">
-                    </c:if>
-                    <c:if test="${profileUser.avatar!=null}">
-                        <img src="data:image/jpeg;base64,${profileUser.avatar}" class="ava" alt="avatar">
-                    </c:if>
+                    <img src="data:image/jpeg;base64,${profileUser.background}" class="background" alt="background"/>
+                    <img src="data:image/jpeg;base64,${profileUser.avatar}" class="ava" alt="avatar" loading="lazy"/>
                     <h1 class="name">${profileUser.fullName}</h1>
-
                     <div class="infor-user">
                         <p class="title-infor-user">Thông tin cá nhân</p>
                         <div class="content-infor-user">
@@ -77,10 +66,10 @@
                             <div class="item">
                                 <i class="icon-infor fa-solid fa-cake-candles"></i>
                                 <p class="title">Ngày sinh:</p>
-                                <input type="date" value="${profileUser.dateOfBirth}" class="date" disabled="disabled">
+                                <input type="date" date="${profileUser.dateOfBirth}" class="date" disabled="disabled" id="dateOfBirth">
                             </div>
                         </div>
-                        <button onclick="myFunction()" class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
+                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
                     </div>
                     <%--Kết thúc thông tin chính--%>
 
@@ -89,12 +78,7 @@
                         <div class="item-apm">
                             <div class="content-apm">
                                 <div class="user list">
-                                    <c:if test="${user.avatar==null}">
-                                        <img src="/PBL3/template/image/avatarDefault.jpg" alt="avatar">
-                                    </c:if>
-                                    <c:if test="${user.avatar!=null}">
-                                        <img alt="avatar" src="data:image/jpeg;base64,${user.avatar}">
-                                    </c:if>
+                                    <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar"/>
                                     <p class="name text">${user.fullName}</p>
                                 </div>
                                 <div class="time list">
@@ -116,7 +100,7 @@
                                     <div class="rate-star">
                                         <p class="rate-star-title">Đánh giá:</p>
                                         <form>
-                                            <div class="form-group">
+                                            <div class="form-group" value="4">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -125,24 +109,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <script>
-                                        document.addEventListener(
-                                            "DOMContentLoaded",
-                                            function (event) {
-                                            // Lấy danh sách các phần tử <i> có lớp "a fa fa-star"
-                                                const stars = document.querySelectorAll(".a1 i.fa.fa-star");
-                                            // Lấy số lượng phần tử cần được check
-                                                const n = 3;
-
-                                            // Duyệt qua các phần tử và thêm thuộc tính "checked" cho n phần tử đầu tiên
-                                                for (let i = 0; i < n; i++) {
-                                                    if (stars[i]) {
-                                                        stars[i].classList.add("checked");
-                                                    }
-                                                }
-                                            }
-                                        );
-                                    </script>
                                 </div>
                                 <div class="item a2">
                                     <img src="/PBL3/template/image/avatarDefault.jpg" alt="">
@@ -150,7 +116,7 @@
                                     <div class="rate-star">
                                         <p class="rate-star-title">Đánh giá:</p>
                                         <form>
-                                            <div class="form-group">
+                                            <div class="form-group" value="3">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -159,24 +125,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <script>
-                                        document.addEventListener(
-                                            "DOMContentLoaded",
-                                            function (event) {
-                                            // Lấy danh sách các phần tử <i> có lớp "a fa fa-star"
-                                                const stars = document.querySelectorAll(".a2 i.fa.fa-star");
-                                            // Lấy số lượng phần tử cần được check
-                                                const n = 2;
-
-                                            // Duyệt qua các phần tử và thêm thuộc tính "checked" cho n phần tử đầu tiên
-                                                for (let i = 0; i < n; i++) {
-                                                    if (stars[i]) {
-                                                        stars[i].classList.add("checked");
-                                                    }
-                                                }
-                                            }
-                                        );
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -204,7 +152,7 @@
                                         <div class="rate-star">
                                             <p class="rate-star-title">Đánh giá:</p>
                                             <form>
-                                                <div class="form-group">
+                                                <div class="form-group" value="5">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -213,25 +161,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <script>
-                                            document.addEventListener(
-                                                "DOMContentLoaded",
-                                                function (event) {
-                                                // Lấy danh sách các phần tử <i> có lớp "a fa fa-star"
-                                                    const stars = document.querySelectorAll(".b1 i.fa.fa-star");
-
-                                                // Lấy số lượng phần tử cần được check
-                                                    const n = 4;
-
-                                                // Duyệt qua các phần tử và thêm thuộc tính "checked" cho n phần tử đầu tiên
-                                                    for (let i = 0; i < n; i++) {
-                                                        if (stars[i]) {
-                                                            stars[i].classList.add("checked");
-                                                        }
-                                                    }
-                                                }
-                                            );
-                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -247,18 +176,12 @@
 
 
     <%--div chỉnh sửa--%>
-    <div class="vice-main" id="myDIV">
+    <div class="vice-main">
         <div class="edit-infor">
             <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
             <p class="title-edit">Ảnh bìa</p>
-            <form class="edit-background" runat="server" action="upload-image" method="post">
-                <c:if test="${profileUser.background==null}">
-                    <img id="blah1" src="/PBL3/template/image/backgroundDefault.png" alt="your image">
-                </c:if>
-                <c:if test="${profileUser.background!=null}">
-                <img src="data:image/jpeg;base64,${profileUser.background}" alt="your image">
-                </c:if>
-                <%--<img id="blah1" src="./image/background.png" alt="your image" />--%>
+            <form class="edit-background" runat="server" action="edit-profile" method="post">
+                <img id="blah1" src="data:image/jpeg;base64,${profileUser.background}" alt="your image" />
                 <input class="input-img" accept="image/*" type='file' id="imgInp1" name="background"/>
                 <button class="submit">Xác nhận thay đổi</button>
                 <script>
@@ -269,18 +192,14 @@
                         }
                     }
                   </script>
+                <input type="hidden" value="editBackground" name="action">
+                <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
             <p class="title-edit">Ảnh đại diện</p>
-            <form class="edit-ava" runat="server" action="upload-image" method="post" enctype='multipart/form-data'>
-                <c:if test="${profileUser.avatar==null}">
-                    <img src="/PBL3/template/image/avatarDefault.jpg" alt="your image" id="blah2">
-                </c:if>
-                <c:if test="${profileUser.avatar!=null}">
-                    <img src="data:image/jpeg;base64,${profileUser.avatar}" alt="your image" id="blah2">
-                </c:if>
-                <%--<img id="blah2" src="/PBL3/template/image/avatarDefault.jpg" alt="your image" />--%>
+            <form class="edit-ava" action="edit-profile" method="post" enctype='multipart/form-data'>
+                <img src="data:image/jpeg;base64,${profileUser.avatar}" id="blah2">
                 <input class="input-img" accept="image/*" type='file' id="imgInp2" name="avatar"/>
-                <button class="submit">Xác nhận thay đổi</button>
+                <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
                 <script>
                     imgInp2.onchange = evt => {
                         const [file] = imgInp2.files
@@ -289,48 +208,45 @@
                         }
                     }
                   </script>
+                <input type="hidden" value="editAvatar" name="action">
+                <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
-            <form action="UpdateProfile" method="post" >
+            <form action="edit-profile" method="post" enctype='multipart/form-data'>
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
                     <i class="fa-solid fa-heart"></i>
                     <p class="content">Giới tính:</p>
-                    <select class="list-sex" name="" id="">
-                        <option selected>Nam</option>
-                        <option>Nữ</option>
-                        <option>Khác</option>
+                    <select class="list-sex" name="gender" id="gender">
+                        <option selected>None</option>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
                     </select>
                 </div>
                 <div class="list">
                     <i class="fa-solid fa-school"></i>
                     <p class="content">Trường học:</p>
                     <input class="list-school" placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice"/>
-
-                    <datalist id="list-school">
-                        <c:forEach items="${listSchool}" var="school">
-                            <option value="${school.nameSchool}"/>
-                        </c:forEach>
-                    </datalist>
+                    <c:if test="${listSchool!=null}">
+                        <datalist id="list-school">
+                            <c:forEach items="${listSchool}" var="school">
+                                <option>${school.nameSchool} </option>
+                            </c:forEach>
+                        </datalist>
+                    </c:if>
                 </div>
                 <div class="list">
                     <i class="fa-solid fa-cake-candles"></i>
                     <p class="content">Ngày sinh:</p>
-                    <input type="date" value="2023-02-02" class="date" name="dateOfBirth"/>
+                    <input type="date" date="${profileUser.dateOfBirth}" class="date" name="dateOfBirth"/>
                 </div>
+                <input type="hidden" value="editProfile" name="action">
+                <input type="hidden" value="${profileUser.id}" name="profileUserId">
                 <button class="submit">Xác nhận thay đổi</button>
             </form>
-            <button class="exit" onclick="myFunction()">X</button>
+            <button class="exit">X</button>
         </div>
     </div>
-    <script>
-        function myFunction() {
-          var x = document.getElementById("myDIV");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-    </script>
+    <script src="<c:url value="/template/js/Profile.js"/>"></script>
 </body>
 </html>

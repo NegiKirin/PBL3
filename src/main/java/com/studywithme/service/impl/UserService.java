@@ -1,14 +1,18 @@
 package com.studywithme.service.impl;
 
 
+import java.io.*;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.Date;
-import java.util.Random;
 
 import com.studywithme.dao.IUserDAO;
 import com.studywithme.dao.impl.UserDAO;
 import com.studywithme.model.User;
 import com.studywithme.service.IUserService;
 import com.studywithme.util.maHoa;
+
+import javax.servlet.http.Part;
 
 public class UserService implements IUserService {
 
@@ -32,6 +36,23 @@ public class UserService implements IUserService {
 		user.setFullName(firstName+" "+lastName);
 		user.setGender(gender);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
+		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
+		try {
+			File avatar = new File(path + File.separator + "avatarDefault.png");
+			byte[] dataAvatar = Files.readAllBytes(avatar.toPath());
+			String base64 = Base64.getEncoder().encodeToString(dataAvatar);
+			user.setAvatar(base64);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			File avatar = new File(path + File.separator + "backgroundDefault.png");
+			byte[] dataBackground = Files.readAllBytes(avatar.toPath());
+			String base64 = Base64.getEncoder().encodeToString(dataBackground);
+			user.setBackground(base64);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return userDAO.save(user);
 	}
 
@@ -53,4 +74,25 @@ public class UserService implements IUserService {
 		return userDAO.update(user);
 	}
 
+	@Override
+	public User updateImg(User user, Part filePart, String img) {
+		userDAO = new UserDAO();
+		InputStream fileContent = null;
+		try {
+			fileContent = filePart.getInputStream();
+			final byte[] bytes = new byte[fileContent.available()];
+			fileContent.read(bytes);
+			if(img.equals("avatar")){
+				String base64 = Base64.getEncoder().encodeToString(bytes);
+				user.setAvatar(base64);
+			} else if (img.equals("background")) {
+				String base64 = Base64.getEncoder().encodeToString(bytes);
+				user.setBackground(base64);
+			}
+			fileContent.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return userDAO.update(user);
+	}
 }

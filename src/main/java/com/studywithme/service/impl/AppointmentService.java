@@ -3,6 +3,8 @@ package com.studywithme.service.impl;
 import com.studywithme.dao.IAppointmentDAO;
 import com.studywithme.dao.impl.AppointmentDAO;
 import com.studywithme.model.Appointment;
+import com.studywithme.model.User;
+import com.studywithme.paging.Pageble;
 import com.studywithme.service.IAppointmentService;
 
 import java.util.List;
@@ -10,14 +12,20 @@ import java.util.List;
 public class AppointmentService implements IAppointmentService {
     private IAppointmentDAO appointmentDAO;
     @Override
-    public List<Appointment> pagingAppointment(Integer index, Integer limit) {
+    public List<Appointment> pagingAppointment(Pageble pageble) {
         appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.pagingAppointment(index,limit);
+        return appointmentDAO.pagingAppointment(pageble);
     }
 
     @Override
     public Integer totalItem() {
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.count();
+    }
+
+    @Override
+    public List<Appointment> findByHost(User host) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.findByHost(host);
     }
 }

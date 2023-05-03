@@ -7,4 +7,5 @@ import com.studywithme.model.School;
 public interface ISchoolService {
 	public School save(School school);
 	public List<School> findAll();
+	public School findByName(String schoolName);
 }

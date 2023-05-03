@@ -1,8 +1,10 @@
 package com.studywithme.dao.impl;
 
 import com.studywithme.dao.IAppointmentDAO;
+import com.studywithme.model.Address;
 import com.studywithme.model.Appointment;
 import com.studywithme.model.User;
+import com.studywithme.paging.Pageble;
 import com.studywithme.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,18 +39,22 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
 
     @Override
-    public List<Appointment> pagingAppointment(Integer index, Integer limit) {
+    public List<Appointment> pagingAppointment(Pageble pageble) {
         List<Appointment> results = new ArrayList<>();
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from  Appointment a order by  a.createdDate asc ";
-                Query query = session.createQuery(hql);
-                results = query.setFirstResult((index-1)*limit).setMaxResults(limit).getResultList();
-                for(int i = 0; i<results.size(); i++){
+                StringBuilder hql = new StringBuilder("from  Appointment a");
+                if(pageble.getSorter()!=null){
+                    hql.append(" order by a." + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy()+ "");
+                }
+                Query query = session.createQuery(hql.toString());
+                results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
+                for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getHost().getId());
+                    session.get(Address.class,results.get(i).getAddress().getId());
                 }
                 tr.commit();
                 session.close();
@@ -64,5 +70,12 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     public Integer count() {
         String hql = "select count(*) from Appointment";
         return count(hql);
+    }
+
+    @Override
+    public List<Appointment> findByHost(User host) {
+        String hql = "from Appointment a where a.host = :host";
+        List<Appointment> appointments = query(hql,"host",host);
+        return appointments.isEmpty()?null:appointments;
     }
 }

@@ -173,10 +173,10 @@ body{
 #content .content-main .content-main-edit-infor{
     background-color: #fff;
     margin: 20px;
-    border-radius: 5px;
     box-shadow:  3px 3px 5px 0px #aaaaaa;
     margin-bottom: 50px;
     margin-top: 20px;
+    border-radius: 25px;
 }
 
 .content-main-edit-infor .ava
@@ -194,6 +194,7 @@ body{
     width: 100%;
     border-radius: 25px;
     object-fit: cover;
+    height: 300px;
 }
 
 .content-main-edit-infor .name{
@@ -485,21 +486,23 @@ i.checked{
 }
 
 .vice-main .edit-infor .submit{
-    cursor: pointer;
     margin-left: calc(100% - 200px);
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #18C0e6;
+    background-color: gray;
     padding: 8px 20px;
     border: none;
     border-radius: 5px;
     font-weight: bold;
     color: #fff;
+    opacity: 0.6;
 }
 
 .vice-main .edit-infor .submit:hover{
-    background-color: #31a7c2;
+    opacity: 1;
 }
+
+
 
 .vice-main .edit-infor .edit-background,
 .vice-main .edit-infor .edit-ava{
