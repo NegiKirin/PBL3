@@ -69,7 +69,7 @@
                                 <input type="date" date="${profileUser.dateOfBirth}" class="date" disabled="disabled" id="dateOfBirth">
                             </div>
                         </div>
-                        <button onclick="myFunction()" class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
+                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
                     </div>
                     <%--Kết thúc thông tin chính--%>
 
@@ -100,7 +100,7 @@
                                     <div class="rate-star">
                                         <p class="rate-star-title">Đánh giá:</p>
                                         <form>
-                                            <div class="form-group">
+                                            <div class="form-group" value="4">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -109,24 +109,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <script>
-                                        document.addEventListener(
-                                            "DOMContentLoaded",
-                                            function (event) {
-                                            // Lấy danh sách các phần tử <i> có lớp "a fa fa-star"
-                                                const stars = document.querySelectorAll(".a1 i.fa.fa-star");
-                                            // Lấy số lượng phần tử cần được check
-                                                const n = 3;
-
-                                            // Duyệt qua các phần tử và thêm thuộc tính "checked" cho n phần tử đầu tiên
-                                                for (let i = 0; i < n; i++) {
-                                                    if (stars[i]) {
-                                                        stars[i].classList.add("checked");
-                                                    }
-                                                }
-                                            }
-                                        );
-                                    </script>
                                 </div>
                                 <div class="item a2">
                                     <img src="/PBL3/template/image/avatarDefault.jpg" alt="">
@@ -134,7 +116,7 @@
                                     <div class="rate-star">
                                         <p class="rate-star-title">Đánh giá:</p>
                                         <form>
-                                            <div class="form-group">
+                                            <div class="form-group" value="3">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -143,24 +125,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <script>
-                                        document.addEventListener(
-                                            "DOMContentLoaded",
-                                            function (event) {
-                                            // Lấy danh sách các phần tử <i> có lớp "a fa fa-star"
-                                                const stars = document.querySelectorAll(".a2 i.fa.fa-star");
-                                            // Lấy số lượng phần tử cần được check
-                                                const n = 2;
-
-                                            // Duyệt qua các phần tử và thêm thuộc tính "checked" cho n phần tử đầu tiên
-                                                for (let i = 0; i < n; i++) {
-                                                    if (stars[i]) {
-                                                        stars[i].classList.add("checked");
-                                                    }
-                                                }
-                                            }
-                                        );
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +152,7 @@
                                         <div class="rate-star">
                                             <p class="rate-star-title">Đánh giá:</p>
                                             <form>
-                                                <div class="form-group">
+                                                <div class="form-group" value="5">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -197,25 +161,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <script>
-                                            document.addEventListener(
-                                                "DOMContentLoaded",
-                                                function (event) {
-                                                // Lấy danh sách các phần tử <i> có lớp "a fa fa-star"
-                                                    const stars = document.querySelectorAll(".b1 i.fa.fa-star");
-
-                                                // Lấy số lượng phần tử cần được check
-                                                    const n = 4;
-
-                                                // Duyệt qua các phần tử và thêm thuộc tính "checked" cho n phần tử đầu tiên
-                                                    for (let i = 0; i < n; i++) {
-                                                        if (stars[i]) {
-                                                            stars[i].classList.add("checked");
-                                                        }
-                                                    }
-                                                }
-                                            );
-                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +176,7 @@
 
 
     <%--div chỉnh sửa--%>
-    <div class="vice-main" id="myDIV">
+    <div class="vice-main">
         <div class="edit-infor">
             <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
             <p class="title-edit">Ảnh bìa</p>
@@ -299,7 +244,7 @@
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
                 <button class="submit">Xác nhận thay đổi</button>
             </form>
-            <button class="exit" onclick="myFunction()">X</button>
+            <button class="exit">X</button>
         </div>
     </div>
     <script src="<c:url value="/template/js/Profile.js"/>"></script>

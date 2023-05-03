@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", u1);
 			url = "/home";
-			response.sendRedirect("/PBL3/home?listFriend=1");
+			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);
