@@ -1,6 +1,6 @@
 package com.studywithme.model;
 
-import java.util.Date;
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,10 +14,10 @@ public class Appointment extends AbstractModel{
 	private Integer id;*/
 
 	private String title;
-	private Date starting_time;
-	private Date ending_time;
+	private Time starting_time;
+	private Time ending_time;
 	private Integer maximum;
-
+	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "appointment_user",
 			joinColumns = {@JoinColumn(name = "id_appointment")},
@@ -92,22 +92,22 @@ public class Appointment extends AbstractModel{
 		this.address = address;
 	}
 
-	public Date getStarting_time() {
+	public Time getStarting_time() {
 		return starting_time;
 	}
 
 
-	public void setStarting_time(Date starting_time) {
+	public void setStarting_time(Time starting_time) {
 		this.starting_time = starting_time;
 	}
 
 
-	public Date getEnding_time() {
+	public Time getEnding_time() {
 		return ending_time;
 	}
 
 
-	public void setEnding_time(Date ending_time) {
+	public void setEnding_time(Time ending_time) {
 		this.ending_time = ending_time;
 	}
 
