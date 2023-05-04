@@ -20,9 +20,8 @@ function myFunction() {
 var inputAvatar = document.querySelector('.vice-main .edit-infor .edit-ava .input-img');
 inputAvatar.oninput = function (e) {
     e.target.nextElementSibling.removeAttribute('disabled');
-<<<<<<< HEAD
-<<<<<<< HEAD
 };
+
 
 var groupStar = document.querySelectorAll('.form-group');
 var length = groupStar.length;
@@ -32,9 +31,3 @@ for(var j = 0; j < length; j++){
         groupStar[j].childNodes[i].classList.add('checked');
     };
 }
-=======
-}
->>>>>>> parent of 400d694 (commit)
-=======
-}
->>>>>>> parent of 400d694 (commit)
