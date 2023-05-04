@@ -20,14 +20,4 @@ function myFunction() {
 var inputAvatar = document.querySelector('.vice-main .edit-infor .edit-ava .input-img');
 inputAvatar.oninput = function (e) {
     e.target.nextElementSibling.removeAttribute('disabled');
-};
-
-
-var groupStar = document.querySelectorAll('.form-group');
-var length = groupStar.length;
-for(var j = 0; j < length; j++){
-    var noStar = Number.parseInt(groupStar[j].getAttribute('value'));
-    for(var i = 1; i < noStar*2; i+=2){
-        groupStar[j].childNodes[i].classList.add('checked');
-    };
 }

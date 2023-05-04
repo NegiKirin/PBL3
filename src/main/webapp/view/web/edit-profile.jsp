@@ -100,7 +100,7 @@
                                     <div class="rate-star">
                                         <p class="rate-star-title">Đánh giá:</p>
                                         <form>
-                                            <div class="form-group" value="1">
+                                            <div class="form-group" value="4">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
