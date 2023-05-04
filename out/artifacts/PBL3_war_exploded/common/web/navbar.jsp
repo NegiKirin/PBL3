@@ -1,8 +1,8 @@
 <%@include file="/common/taglib.jsp" %>
-
 <%--<c:if test="${user==null}">
 	<c:redirect url="/login"></c:redirect>
 </c:if>--%>
+
 <div id="header">
     <div class="header-info-user">
         <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar"/>
@@ -17,7 +17,7 @@
             </button>
         </a>
         </li>
-        <li><a href="<c:url value="/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc"/>">
+        <li><a href="<c:url value="/home?listFriend=1"/>">
             <button class="header-main-mainbutton">
                 <i class="fa-solid fa-globe"></i>
             </button>

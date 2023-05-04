@@ -84,6 +84,63 @@
                 <input type="text" placeholder="Gõ gì đó để tìm kiếm ...">
             </div>
             <div class="content-main-list">
+                <%--<div class="content-main-item">
+                    <div class="profile">
+                        <img class="background" src="./image/background.png" alt="">
+                        <img class="avatar" src="./image/ava1.png" alt="">
+                        <p class="name">Phúc Tân</p>
+                    </div>
+                    <div class="content">
+                        <div class="item">
+                            <p class="time">8 A.M - 9 A.M</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
+                        </div>
+                    </div>
+                    <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                </div>
+                <div class="content-main-item">
+                    <div class="profile">
+                        <img class="background" src="./image/background.png" alt="">
+                        <img class="avatar" src="./image/ava1.png" alt="">
+                        <p class="name">Phúc Tân</p>
+                    </div>
+                    <div class="content">
+                        <div class="item">
+                            <p class="time">8 A.M - 9 A.M</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
+                        </div>
+                    </div>
+                    <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                </div>
+                <div class="content-main-item">
+                    <div class="profile">
+                        <img class="background" src="./image/background.png" alt="">
+                        <img class="avatar" src="./image/ava1.png" alt="">
+                        <p class="name">Phúc Tân</p>
+                    </div>
+                    <div class="content">
+                        <div class="item">
+                            <p class="time">8 A.M - 9 A.M</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
+                        </div>
+                    </div>
+                    <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                </div>
+                <div class="content-main-item">
+                    <div class="profile">
+                        <img class="background" src="./image/background.png" alt="">
+                        <img class="avatar" src="./image/ava1.png" alt="">
+                        <p class="name">Phúc Tân</p>
+                    </div>
+                    <div class="content">
+                        <div class="item">
+                            <p class="time">8 A.M - 9 A.M</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i>60 Nguyen Luong...</p>
+                        </div>
+                    </div>
+                    <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                </div>
+            </div>--%>
                 <c:forEach items="${appointments}" var="appointment">
                     <div class="content-main-item">
                         <div class="profile">
@@ -132,12 +189,28 @@
                         <ul class="pagination" id="pagination"></ul>
                         <input type="hidden" value="" id="page" name="page"/>
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
-                        <input type="hidden" value="" id="sortName" name="sortName">
-                        <input type="hidden" value="" id="sortBy" name="sortBy">
                     </form>
             </div>
             </div>
             <div class="content-right">
+                <%--<div class="list-friends">
+                    <p class="list-friends-title">Danh sách bạn bè</p>
+                    <div class="list-friends-item">
+                        <img src="../image/ava.png" alt="">
+                        <p class="name"><a href=""> Ho va ten </a></p>
+                        <i class="fa-solid fa-mug-saucer"></i>
+                    </div>
+                    <div class="list-friends-item">
+                        <img src="../image/ava.png" alt="">
+                        <p class="name"><a href=""> Ho va ten </a></p>
+                        <i class="fa-solid fa-mug-saucer"></i>
+                    </div>
+                    <div class="list-friends-item">
+                        <img src="../image/ava.png" alt="">
+                        <p class="name"><a href=""> Ho va ten </a></p>
+                        <i class="fa-solid fa-mug-saucer"></i>
+                    </div>
+                </div>--%>
                 <jsp:include page="/common/web/ListFriend.jsp"/>
                 <div class="your-profile">
                     <p class="title">Lịch đặt hẹn của bạn</p>
@@ -157,12 +230,6 @@
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.detail}</p>
                                 </div>
                             </c:forEach>--%>
-                                <div class="item">
-                                    <p class="time" id="start">
-
-                                    </p>
-                                    <p class="address"><i class="fa-solid fa-location-dot"></i>asdd</p>
-                                </div>
                         </div>
                         <p class="add"><a href="">+</a></p>
                     </div>
@@ -199,13 +266,14 @@
         </div>--%>
     </div>
     <script src="<c:url value="/template/js/Home.js"/>"></script>
-<%--    <script type="text/javascript">
+    <%--<script type="text/javascript">
 
     </script>--%>
     <script type="text/javascript">
         var totalPages = ${totalPages};
         var currentPage = ${page};
         var limit = 6;
+        var showPages = ${showPages};
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
@@ -215,8 +283,6 @@
                     if(currentPage !== page){
                         $('#maxPageItem').val(limit);
                         $('#page').val(page);
-                        $('#sortName').val('createdDate');
-                        $('#sortBy').val('desc');
                         $('#formPaging').submit();
                     }
                 }

@@ -5,17 +5,7 @@ var dateOfBirth2 = document.querySelector(".vice-main .edit-infor .list .date");
 var date2 = dateOfBirth2.getAttribute('date');
 dateOfBirth2.defaultValue = date2.slice(0,10);
 
-var buttonEdit = document.querySelector('.content-main-edit-infor .edit');
-buttonEdit.onclick = function (e){
-    var div = document.querySelector('.vice-main');
-    div.style.display = 'block';
-};
 
-var buttonExit = document.querySelector('.vice-main .edit-infor .exit');
-buttonExit.onclick = function (e) {
-    var div = document.querySelector('.vice-main');
-    div.style.display = 'none';
-}
 
 function myFunction() {
     var x = document.getElementById("myDIV");
@@ -26,13 +16,12 @@ function myFunction() {
     }
 }
 
+
 var inputAvatar = document.querySelector('.vice-main .edit-infor .edit-ava .input-img');
 inputAvatar.oninput = function (e) {
-    Object.assign(e.target.nextElementSibling.style, {
-        cursor: 'pointer',
-        backgroundColor: '#18C0e6'
-    });
     e.target.nextElementSibling.removeAttribute('disabled');
+<<<<<<< HEAD
+<<<<<<< HEAD
 };
 
 var groupStar = document.querySelectorAll('.form-group');
@@ -43,3 +32,9 @@ for(var j = 0; j < length; j++){
         groupStar[j].childNodes[i].classList.add('checked');
     };
 }
+=======
+}
+>>>>>>> parent of 400d694 (commit)
+=======
+}
+>>>>>>> parent of 400d694 (commit)
