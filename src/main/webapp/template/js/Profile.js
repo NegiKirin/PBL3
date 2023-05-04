@@ -35,7 +35,6 @@ inputAvatar.oninput = function (e) {
     e.target.nextElementSibling.removeAttribute('disabled');
 };
 
-
 var groupStar = document.querySelectorAll('.form-group');
 var length = groupStar.length;
 for(var j = 0; j < length; j++){
