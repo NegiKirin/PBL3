@@ -1,5 +1,6 @@
 package com.studywithme.controller.web;
 
+import com.studywithme.model.Appointment;
 import com.studywithme.model.User;
 import com.studywithme.paging.PageRequest;
 import com.studywithme.paging.Pageble;
@@ -11,6 +12,7 @@ import com.studywithme.sort.Sorter;
 import com.studywithme.util.FormUtil;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,7 +45,8 @@ public class Home extends HttpServlet {
 		pageble = FormUtil.toModel(PageRequest.class, request);
 		pageble.setSorter(FormUtil.toModel(Sorter.class,request));
 
-		int totalPages = (int) Math.ceil((double) appointmentService.totalItem() / pageble.getMaxPageItem()) ;
+		List<Appointment> appointmentList = appointmentService.pagingAppointment(pageble);
+		int totalPages = (int) Math.ceil((double) appointmentList.size() / pageble.getMaxPageItem()) ;
 		String listFriendStr = request.getParameter("listFriend");
 		int listFriend;
 		if(listFriendStr==null){

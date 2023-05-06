@@ -6,15 +6,13 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 
-/*@Entity
-@Inheritance(strategy = InheritanceType.JOINED)*/
 @MappedSuperclass
 public class AbstractModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected Date createdDate;
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     protected User createdBy;
 
     public Integer getId() {

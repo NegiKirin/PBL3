@@ -12,10 +12,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class School extends AbstractModel{
-	
-/*	@Id
-	@GeneratedValue
-	private Integer id;*/
+
 	private String nameSchool;
 	
 	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -38,14 +35,6 @@ public class School extends AbstractModel{
 	public School() {
 	}
 
-/*	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
 
 	public String getNameSchool() {
 		return nameSchool;

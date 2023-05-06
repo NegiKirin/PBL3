@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Report extends AbstractModel {
-
     private String detail;
-
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User reporter;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

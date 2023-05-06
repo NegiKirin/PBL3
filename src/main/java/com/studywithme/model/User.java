@@ -23,7 +23,6 @@ public class User extends AbstractModel {
     private Integer gender;
     private Integer status;
 
-
     @Column(length = Integer.MAX_VALUE)
     private String avatar;
     @Column(length = Integer.MAX_VALUE)
@@ -42,19 +41,6 @@ public class User extends AbstractModel {
     @OneToMany(mappedBy = "host")
     private Set<Appointment> appointmentsOf = new HashSet<>();
 
-    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "friend",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "friend_id")})
-    private Set<User> friend = new HashSet<>();
-
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "friend",
-            joinColumns = {@JoinColumn(name = "friend_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private Set<User> friendOf = new HashSet<>();*/
-
     @OneToMany( mappedBy = "friend")
     private Set<Friendship> friends = new HashSet<>();
 
@@ -62,13 +48,12 @@ public class User extends AbstractModel {
     private Set<Friendship> friendRequests = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "userRate")
-    private Set<Rate> rates = new HashSet<>();
+    @OneToMany(mappedBy = "rateBy")
+    private Set<Rate> rateBy = new HashSet<>();
+
+    @OneToMany(mappedBy = "rated")
+    private Set<Rate> rated = new HashSet<>();
     private float toltalRate;
-
-
-/*    @OneToMany(mappedBy = "createdBy")
-    private Set<AbstractModel> created = new HashSet<>();*/
 
     @OneToMany(mappedBy = "modifyBy")
     private Set<Modify> modifies = new HashSet<>();
@@ -95,31 +80,6 @@ public class User extends AbstractModel {
         this.school = school;
     }
 
-//public String getBackgroud() {
-//	if(backgroud==null){
-//		return null;
-//	}else {
-//		return Base64.getEncoder().encodeToString(backgroud);
-//	}
-//}
-//
-//
-//public void setBackgroud(byte[] backgroud) {
-//	this.backgroud = backgroud;
-//}
-//
-//public String getAvatar() {
-//	if(avatar==null){
-//		return null;
-//	}else {
-//		return Base64.getEncoder().encodeToString(avatar);
-//	}
-//}
-//
-//
-//public void setAvatar(byte[] avatar) {
-//	this.avatar = avatar;
-//}
 
     @Override
     public String toString() {
@@ -256,14 +216,6 @@ public class User extends AbstractModel {
         this.friendRequests = friendRequests;
     }
 
-    public Set<Rate> getRates() {
-        return rates;
-    }
-
-    public void setRates(Set<Rate> rates) {
-        this.rates = rates;
-    }
-
     public float getToltalRate() {
         return toltalRate;
     }
@@ -296,9 +248,19 @@ public class User extends AbstractModel {
         this.reports = reports;
     }
 
+    public Set<Rate> getRateBy() {
+        return rateBy;
+    }
 
-    // Util
-/*    public void addModify(Modify modify){
-        modifies.add(modify);
-    }*/
+    public void setRateBy(Set<Rate> rateBy) {
+        this.rateBy = rateBy;
+    }
+
+    public Set<Rate> getRated() {
+        return rated;
+    }
+
+    public void setRated(Set<Rate> rated) {
+        this.rated = rated;
+    }
 }

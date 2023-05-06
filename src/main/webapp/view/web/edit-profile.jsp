@@ -183,7 +183,7 @@
             <form class="edit-background" runat="server" action="edit-profile" method="post">
                 <img id="blah1" src="data:image/jpeg;base64,${profileUser.background}" alt="your image" />
                 <input class="input-img" accept="image/*" type='file' id="imgInp1" name="background"/>
-                <button class="submit">Xác nhận thay đổi</button>
+                <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
                 <script>
                     imgInp1.onchange = evt => {
                         const [file] = imgInp1.files
@@ -211,13 +211,12 @@
                 <input type="hidden" value="editAvatar" name="action">
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
-            <form action="edit-profile" method="post" enctype='multipart/form-data'>
+            <form action="edit-profile" method="post" enctype='multipart/form-data' id="editProfile">
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
                     <i class="fa-solid fa-heart"></i>
                     <p class="content">Giới tính:</p>
-                    <select class="list-sex" name="gender" id="gender">
-                        <option selected>None</option>
+                    <select class="list-sex" name="gender" id="gender" value="${profileUser.gender}">
                         <option value="male">Nam</option>
                         <option value="female">Nữ</option>
                         <option value="other">Khác</option>
@@ -226,14 +225,11 @@
                 <div class="list">
                     <i class="fa-solid fa-school"></i>
                     <p class="content">Trường học:</p>
-                    <input class="list-school" placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice"/>
-                    <c:if test="${listSchool!=null}">
-                        <datalist id="list-school">
-                            <c:forEach items="${listSchool}" var="school">
-                                <option>${school.nameSchool} </option>
-                            </c:forEach>
-                        </datalist>
-                    </c:if>
+                    <select class="list-school" id="list-school" name="school" idSchool="${profileUser.school.id}">
+                        <c:forEach items="${listSchool}" var="school">
+                            <option idSchool="${school.id}">${school.nameSchool}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="list">
                     <i class="fa-solid fa-cake-candles"></i>
@@ -242,7 +238,7 @@
                 </div>
                 <input type="hidden" value="editProfile" name="action">
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
-                <button class="submit">Xác nhận thay đổi</button>
+                <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
             </form>
             <button class="exit">X</button>
         </div>

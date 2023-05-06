@@ -8,16 +8,12 @@ import jakarta.persistence.*;
 
 @Entity
 public class Appointment extends AbstractModel{
-	
-/*	@Id
-	@GeneratedValue
-	private Integer id;*/
 
 	private String title;
 	private Date starting_time;
 	private Date ending_time;
 	private Integer maximum;
-
+	private Integer status;
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "appointment_user",
 			joinColumns = {@JoinColumn(name = "id_appointment")},
@@ -26,9 +22,8 @@ public class Appointment extends AbstractModel{
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_host")
 	private User host;
-
-/*	@OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY,mappedBy = "createdBy")
-	private Set<AbstractModel> created = new HashSet<>();*/
+	@OneToMany(mappedBy = "appointment")
+	private Set<Rate> rates = new HashSet<>();
 	@OneToMany(mappedBy = "appointmentModified")
 	private Set<Modify> modifiedBy = new HashSet<>();
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -37,16 +32,6 @@ public class Appointment extends AbstractModel{
 	public Appointment() {
 	}
 
-
-
-/*	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
 
 	public String getTitle() {
 		return title;
@@ -121,4 +106,11 @@ public class Appointment extends AbstractModel{
 		this.maximum = maximum;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }

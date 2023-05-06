@@ -33,6 +33,8 @@
         <mapping class="com.studywithme.model.Ward"/>
         <mapping class="com.studywithme.model.District"/>
         <mapping class="com.studywithme.model.Report"/>
+        <mapping class="com.studywithme.model.Test1"/>
+        <mapping class="com.studywithme.model.Test2"/>
 
     </session-factory>
 </hibernate-configuration>
