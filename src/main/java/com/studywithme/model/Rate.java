@@ -6,15 +6,15 @@ import jakarta.persistence.*;
 public class Rate extends AbstractModel{
 	private Integer point;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "rate_by")
 	private User rateBy;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "appointment_id")
 	private Appointment appointment;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "reted")
 	private User rated;
 	public Rate() {
@@ -41,4 +41,19 @@ public class Rate extends AbstractModel{
 		this.point = point;
 	}
 
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+	public User getRated() {
+		return rated;
+	}
+
+	public void setRated(User rated) {
+		this.rated = rated;
+	}
 }

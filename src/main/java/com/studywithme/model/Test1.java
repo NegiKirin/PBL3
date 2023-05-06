@@ -9,7 +9,12 @@ public class Test1{
     @Id
     private Integer id;
     private String detail;
-    @OneToMany(mappedBy = "test1", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(name = "test1_test2",
+//                joinColumns = {@JoinColumn(name = "id_test1")},
+//                inverseJoinColumns = {@JoinColumn(name = "id_test2")})
+//    private Set<Test2> test2s = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "test1")
     private Set<Test2> test2s = new HashSet<>();
 
     public Test1() {
@@ -44,7 +49,13 @@ public class Test1{
 
     }
 
+//    public void removeTest2(Test2 test2) {
+//        this.test2s.remove(test2);
+//        test2.getTest1s().remove(this);
+//    }
+
     public void removeTest2(Test2 test2) {
-        this.test2s.remove(test2);
+//        this.test2s.remove(test2);
+        test2.setTest1(null);
     }
 }

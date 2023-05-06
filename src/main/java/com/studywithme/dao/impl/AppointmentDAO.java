@@ -97,7 +97,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 results = query.setFirstResult(0).setMaxResults(maxItem).getResultList();
                 for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getHost().getId());
-                    for (User u : results.get(i).getParticipant()) {
+                    for (User u : results.get(i).getParticipants()) {
                         session.get(User.class,u.getId());
                     }
                 }

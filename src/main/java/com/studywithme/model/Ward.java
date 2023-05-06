@@ -9,11 +9,11 @@ import java.util.Set;
 public class Ward extends AbstractModel{
 
     private String ward;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_district")
     private District district;
 
-    @OneToMany(mappedBy = "ward")
+    @OneToMany(mappedBy = "ward", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Address> addresses = new HashSet<>();
 
     public Ward() {

@@ -36,7 +36,7 @@
                 
 			<c:if test="${user==null}">
 				<form action="login" method = "post">
-                    <input class="login-submit" name="email" id = "email" type="email" required="required" placeholder="Email" value = "${email }">
+                    <input class="login-submit" name="email" id = "email-login" type="email" required="required" placeholder="Email" value = "${email }">
                     <input class="login-submit-pwd" name="password" id = "password" type="password" required="required" placeholder="Mật khẩu" required>
                     <p class="error">${error}</p>
                     <input class="login-submit-button" type="submit" value="ĐĂNG NHẬP">
@@ -71,7 +71,7 @@
                 </div>
                 <div>
                 <form action="register"  method ="post">
-                			<input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
+                			<%--@declare id="re_password"--%><input class="signin-submit" name="firstName" id="firstName" type="text" placeholder="Họ" required="required" value="${firstName }">
                 			<input class="signin-submit" name="lastName" id="lastName" type="text" placeholder="Tên" required="required" value="${lastName }">
                 		
                 			<input name="sex" id="male" type="radio" required="required" value="male" class="sex">

@@ -42,12 +42,11 @@ public class Login extends HttpServlet {
 		if(u1!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", u1);
-			url = "/home";
 			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);
-			url = "/login";
+			url = "/view/web/login.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 		}

@@ -1,8 +1,6 @@
 package com.studywithme.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +9,7 @@ import java.util.Set;
 public class District extends AbstractModel{
 
     private String district;
-    @OneToMany(mappedBy = "district")
+    @OneToMany(mappedBy = "district",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Ward> wards = new HashSet<>();
 
     public District() {
