@@ -6,8 +6,6 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 
-/*@Entity
-@Inheritance(strategy = InheritanceType.JOINED)*/
 @MappedSuperclass
 public class AbstractModel {
     @Id

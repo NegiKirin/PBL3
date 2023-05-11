@@ -62,8 +62,7 @@ body{
     display: inline-flex;
     justify-content: center;
     width: calc(100% - 260px - 259px );
-    min-width: 65%;
-    
+    min-width: 65%;    
     position:absolute;
     padding: 0 20%;
 }
@@ -79,7 +78,13 @@ body{
     border: 0px;
     margin-top: 4px;
     background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    transform-origin: center top;
 }
+#header .header-main button:hover{    
+    transform: scale(1.2);
+}
+
 
 #header .header-main i{
     font-size: 20px;
@@ -103,6 +108,11 @@ body{
     float: right;
     color: #000;
     font-weight: bold;
+    transition: transform 0.2s ease;
+}
+#header .header-noti a:hover{
+    transform: scale(1.5);
+    color: white;
 }
 
 #content {

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 
 @Entity
 public class Friendship extends AbstractModel {
-/*    @Id
-    private Integer id;*/
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name="friend_id")
     private User friend;

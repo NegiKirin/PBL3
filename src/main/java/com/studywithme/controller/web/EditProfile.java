@@ -46,12 +46,20 @@ public class EditProfile extends HttpServlet {
 		User user = null;
 		user = (User)obj;
 		String listFriendStr = request.getParameter("listFriend");
+		String listAppointmentStr = request.getParameter("listAppointment");
 		Integer listFriend;
 		if(listFriendStr==null){
 			listFriend = 1;
 		} else {
 			listFriend = Integer.parseInt(listFriendStr);
 		}
+		Integer listAppointment;
+		if(listAppointmentStr==null){
+			listAppointment = 1;
+		} else {
+			listAppointment = Integer.parseInt(listAppointmentStr);
+		}
+
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("listSchool", schoolService.findAll());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
@@ -73,15 +81,14 @@ public class EditProfile extends HttpServlet {
 		User user = null;
 		user = (User)obj;
 		if (action.equals("editAvatar")) {
-			modifyService.createModify(user,user,"Chỉnh sửa ảnh đại diên");
 			user = userService.updateImg(user,filePart,"avatar");
+			modifyService.createModify(user,user,"Chỉnh sửa ảnh đại diên");
 		} else if (action.equals("editBackground")) {
-			modifyService.createModify(user,user,"Chỉnh sửa ảnh bìa");
 			user = userService.updateImg(user,filePart1,"background");
+			modifyService.createModify(user,user,"Chỉnh sửa ảnh bìa");
 		} else if (action.equals("editProfile")) {
-			modifyService.createModify(user,user,"Chỉnh sửa thông tin cá nhân");
 			String gender = request.getParameter("gender");
-			String school = request.getParameter("school-choice");
+			String school = request.getParameter("school");
 			String dateOfBirth = request.getParameter("dateOfBirth");
 			user.setGender(gender.equals("male")?0:gender.equals("female")?1:2);
 			user.setSchool(schoolService.findByName(school));
@@ -91,6 +98,7 @@ public class EditProfile extends HttpServlet {
 				throw new RuntimeException(e);
 			}
 			userService.update(user);
+			modifyService.createModify(user,user,"Chỉnh sửa thông tin cá nhân");
 		}
 		response.sendRedirect("/PBL3/profile?id=" +user.getId());
 	}

@@ -35,6 +35,43 @@ inputAvatar.oninput = function (e) {
     e.target.nextElementSibling.removeAttribute('disabled');
 };
 
+var inputBackground = document.querySelector('.vice-main .edit-infor .edit-background .input-img');
+inputBackground.oninput = function (e) {
+    Object.assign(e.target.nextElementSibling.style, {
+        cursor: 'pointer',
+        backgroundColor: '#18C0e6'
+    });
+    e.target.nextElementSibling.removeAttribute('disabled');
+};
+
+var divEditProfile = document.getElementById('editProfile');
+divEditProfile.onchange = function (e) {
+    Object.assign(divEditProfile.lastElementChild.style, {
+        cursor: 'pointer',
+        backgroundColor: '#18C0e6'
+    });
+    divEditProfile.lastElementChild.removeAttribute('disabled');
+};
+
+var selectGender = document.querySelector(' .vice-main .edit-infor .list .list-sex');
+if (selectGender.getAttribute('value')==='0'){
+    selectGender.childNodes[1].setAttribute('selected','selected');
+} else if (selectGender.getAttribute('value')==='1'){
+    selectGender.childNodes[3].setAttribute('selected','selected');
+} else {
+    selectGender.childNodes[5].setAttribute('selected','selected');
+}
+
+var selectSchool = document.querySelector('.vice-main .edit-infor .list .list-school');
+var lengthSchool = selectSchool.children.length;
+var idSchool = selectSchool.getAttribute('idSchool');
+for(var i = 0; i < lengthSchool; i++) {
+    if (selectSchool.children[i].getAttribute('idSchool') === idSchool){
+        selectSchool.children[i].setAttribute('selected','selected');
+    }
+}
+
+
 
 var groupStar = document.querySelectorAll('.form-group');
 var length = groupStar.length;
@@ -42,5 +79,5 @@ for(var j = 0; j < length; j++){
     var noStar = Number.parseInt(groupStar[j].getAttribute('value'));
     for(var i = 1; i < noStar*2; i+=2){
         groupStar[j].childNodes[i].classList.add('checked');
-    };
+    }
 }

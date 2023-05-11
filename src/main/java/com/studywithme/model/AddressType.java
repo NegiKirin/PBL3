@@ -1,6 +1,8 @@
 package com.studywithme.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 
 import java.util.HashSet;
@@ -9,7 +11,7 @@ import java.util.Set;
 @Entity
 public class AddressType extends AbstractModel{
     private String type;
-    @OneToMany(mappedBy = "addressType")
+    @OneToMany(mappedBy = "addressType", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Address>  addresses = new HashSet<>();
 
     public AddressType() {
@@ -33,5 +35,9 @@ public class AddressType extends AbstractModel{
 
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public void removeAddress(Address address){
+        address.setAddressType(null);
     }
 }

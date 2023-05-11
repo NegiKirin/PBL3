@@ -8,28 +8,23 @@ import jakarta.persistence.*;
 
 @Entity
 public class Appointment extends AbstractModel{
-	
-/*	@Id
-	@GeneratedValue
-	private Integer id;*/
 
 	private String title;
 	private Date starting_time;
 	private Date ending_time;
 	private Integer maximum;
-
+	private Integer status;
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "appointment_user",
 			joinColumns = {@JoinColumn(name = "id_appointment")},
 			inverseJoinColumns = {@JoinColumn(name = "id_participant")})
-	private Set<User> participant = new HashSet<>();
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<User> participants = new HashSet<>();
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_host")
 	private User host;
-
-/*	@OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY,mappedBy = "createdBy")
-	private Set<AbstractModel> created = new HashSet<>();*/
-	@OneToMany(mappedBy = "appointmentModified")
+	@OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Rate> rates = new HashSet<>();
+	@OneToMany(mappedBy = "appointmentModified", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Modify> modifiedBy = new HashSet<>();
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_address")
@@ -37,16 +32,6 @@ public class Appointment extends AbstractModel{
 	public Appointment() {
 	}
 
-
-
-/*	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
 
 	public String getTitle() {
 		return title;
@@ -60,12 +45,12 @@ public class Appointment extends AbstractModel{
 		this.maximum = maximum;
 	}
 
-	public Set<User> getParticipant() {
-		return participant;
+	public Set<User> getParticipants() {
+		return participants;
 	}
 
-	public void setParticipant(Set<User> participant) {
-		this.participant = participant;
+	public void setParticipants(Set<User> participants) {
+		this.participants = participants;
 	}
 
 	public User getHost() {
@@ -121,4 +106,16 @@ public class Appointment extends AbstractModel{
 		this.maximum = maximum;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public void removeParticipant(User user){
+		this.participants.remove(user);
+		user.getListAppointmentsJoin().remove(this);
+	}
 }

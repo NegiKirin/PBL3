@@ -4,29 +4,34 @@ import jakarta.persistence.*;
 
 @Entity
 public class Rate extends AbstractModel{
-/*	@Id
-	@GeneratedValue
-	private Integer id;*/
 	private Integer point;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id_rate")
-	private User userRate;
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "rate_by")
+	private User rateBy;
+
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "appointment_id")
+	private Appointment appointment;
+
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "reted")
+	private User rated;
 	public Rate() {
+	}
+
+	public User getRateBy() {
+		return rateBy;
+	}
+
+	public void setRateBy(User rateBy) {
+		this.rateBy = rateBy;
 	}
 
 	public Rate(Integer id, Integer point) {
 		this.id = id;
 		this.point = point;
 	}
-
-/*	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
 
 	public Integer getPoint() {
 		return point;
@@ -36,11 +41,19 @@ public class Rate extends AbstractModel{
 		this.point = point;
 	}
 
-	public User getUserRate() {
-		return userRate;
+	public Appointment getAppointment() {
+		return appointment;
 	}
 
-	public void setUserRate(User userRate) {
-		this.userRate = userRate;
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+	public User getRated() {
+		return rated;
+	}
+
+	public void setRated(User rated) {
+		this.rated = rated;
 	}
 }

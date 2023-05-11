@@ -12,16 +12,13 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class School extends AbstractModel{
-	
-/*	@Id
-	@GeneratedValue
-	private Integer id;*/
+
 	private String nameSchool;
 	
-	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "school", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Set<User> listUser = new HashSet<>();
 	
-	@OneToMany(mappedBy = "schoolModified")
+	@OneToMany(mappedBy = "schoolModified", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Modify> modifiedBy = new HashSet<>();
 
 	public School(Integer id, String school) {
@@ -38,14 +35,6 @@ public class School extends AbstractModel{
 	public School() {
 	}
 
-/*	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
 
 	public String getNameSchool() {
 		return nameSchool;
@@ -69,5 +58,9 @@ public class School extends AbstractModel{
 
 	public void setModifiedBy(Set<Modify> modifiedBy) {
 		this.modifiedBy = modifiedBy;
+	}
+
+	public void removeUser(User user) {
+		user.setSchool(null);
 	}
 }

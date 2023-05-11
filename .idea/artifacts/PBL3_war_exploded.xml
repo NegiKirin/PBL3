@@ -65,8 +65,6 @@
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="PBL3/web/Web3" />
-      <element id="javaee-facet-resources" facet="PBL3/web/Web2" />
       <element id="javaee-facet-resources" facet="PBL3/web/Web" />
     </root>
   </artifact>

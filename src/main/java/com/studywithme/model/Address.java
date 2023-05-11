@@ -9,18 +9,18 @@ import java.util.Set;
 public class Address extends AbstractModel {
 
     private String detail;
-    @OneToMany(mappedBy = "addressModified")
+    @OneToMany(mappedBy = "addressModified",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Modify> modifiedBy = new HashSet<>();
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_ward")
     private Ward ward;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_type_address")
     private AddressType addressType;
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Report> reports = new HashSet<>();
 
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Appointment> appointments = new HashSet<>();
 
     public Address() {
@@ -76,5 +76,9 @@ public class Address extends AbstractModel {
 
     public void addModify(Modify modify){
         modifiedBy.add(modify);
+    }
+
+    public void removeAppointment(Appointment appointment){
+        appointment.setAddress(null);
     }
 }

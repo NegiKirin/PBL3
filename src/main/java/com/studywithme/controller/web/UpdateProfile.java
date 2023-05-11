@@ -34,14 +34,10 @@ public class UpdateProfile extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//		var url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String school_id = request.getParameter("school_id");
-		// Lấy name file
-//		String imgfile = file.getSubmittedFileName();
-
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("user");
 		User user = null;
@@ -63,14 +59,10 @@ public class UpdateProfile extends HttpServlet {
 		}
 		if(!school_id.equals("null")) {
 			School school = new School();
-//			school.setId(school_id);
 			user.setSchool(school);
 		}
-
 		userService = new UserService();
-
 		userService.update(user);
-
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}

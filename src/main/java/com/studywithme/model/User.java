@@ -4,12 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class User extends AbstractModel {
@@ -23,60 +18,44 @@ public class User extends AbstractModel {
     private Integer gender;
     private Integer status;
 
-
     @Column(length = Integer.MAX_VALUE)
     private String avatar;
     @Column(length = Integer.MAX_VALUE)
     private String background;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "school_id")
     private School school;
 
-    @ManyToMany(mappedBy = "participant")
+    @ManyToMany(mappedBy = "participant", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Appointment> listAppointmentsJoin = new HashSet<>();
-    @OneToMany(mappedBy = "host")
+    @OneToMany(mappedBy = "host", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Appointment> appointmentsOf = new HashSet<>();
 
-    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "friend",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "friend_id")})
-    private Set<User> friend = new HashSet<>();
-
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "friend",
-            joinColumns = {@JoinColumn(name = "friend_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private Set<User> friendOf = new HashSet<>();*/
-
-    @OneToMany( mappedBy = "friend")
+    @OneToMany( mappedBy = "friend", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Friendship> friends = new HashSet<>();
 
-    @OneToMany( mappedBy = "requester")
+    @OneToMany( mappedBy = "requester", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Friendship> friendRequests = new HashSet<>();
 
+    @OneToMany(mappedBy = "rateBy", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Rate> rateBy = new HashSet<>();
 
-    @OneToMany(mappedBy = "userRate")
-    private Set<Rate> rates = new HashSet<>();
+    @OneToMany(mappedBy = "rated", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Rate> rated = new HashSet<>();
     private float toltalRate;
 
-
-/*    @OneToMany(mappedBy = "createdBy")
-    private Set<AbstractModel> created = new HashSet<>();*/
-
-    @OneToMany(mappedBy = "modifyBy")
+    @OneToMany(mappedBy = "modifyBy", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Modify> modifies = new HashSet<>();
 
-    @OneToMany(mappedBy = "userModified")
+    @OneToMany(mappedBy = "userModified", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Modify> modifiedBy = new HashSet<>();
 
-    @OneToMany(mappedBy = "reporter")
+    @OneToMany(mappedBy = "reporter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Report> reports = new HashSet<>();
 
     public User() {
@@ -95,31 +74,6 @@ public class User extends AbstractModel {
         this.school = school;
     }
 
-//public String getBackgroud() {
-//	if(backgroud==null){
-//		return null;
-//	}else {
-//		return Base64.getEncoder().encodeToString(backgroud);
-//	}
-//}
-//
-//
-//public void setBackgroud(byte[] backgroud) {
-//	this.backgroud = backgroud;
-//}
-//
-//public String getAvatar() {
-//	if(avatar==null){
-//		return null;
-//	}else {
-//		return Base64.getEncoder().encodeToString(avatar);
-//	}
-//}
-//
-//
-//public void setAvatar(byte[] avatar) {
-//	this.avatar = avatar;
-//}
 
     @Override
     public String toString() {
@@ -256,14 +210,6 @@ public class User extends AbstractModel {
         this.friendRequests = friendRequests;
     }
 
-    public Set<Rate> getRates() {
-        return rates;
-    }
-
-    public void setRates(Set<Rate> rates) {
-        this.rates = rates;
-    }
-
     public float getToltalRate() {
         return toltalRate;
     }
@@ -296,9 +242,24 @@ public class User extends AbstractModel {
         this.reports = reports;
     }
 
+    public Set<Rate> getRateBy() {
+        return rateBy;
+    }
 
-    // Util
-/*    public void addModify(Modify modify){
-        modifies.add(modify);
-    }*/
+    public void setRateBy(Set<Rate> rateBy) {
+        this.rateBy = rateBy;
+    }
+
+    public Set<Rate> getRated() {
+        return rated;
+    }
+
+    public void setRated(Set<Rate> rated) {
+        this.rated = rated;
+    }
+
+    public void removeAppointmentsJoin(Appointment appointment) {
+        this.listAppointmentsJoin.remove(appointment);
+        appointment.getParticipants().remove(this);
+    }
 }

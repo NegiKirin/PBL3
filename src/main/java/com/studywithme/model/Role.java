@@ -12,13 +12,10 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Role extends AbstractModel{
-/*	@Id
-	@GeneratedValue
-	private Integer id;*/
 	private String code;
 	private String name;
 	
-	@OneToMany(mappedBy = "role", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "role", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Set<User> users= new HashSet<>();
 
 	public Role() {
@@ -29,14 +26,6 @@ public class Role extends AbstractModel{
 		this.code = code;
 		this.name = name;
 	}
-
-/*	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
 
 	public Set<User> getUsers() {
 		return users;
@@ -61,6 +50,8 @@ public class Role extends AbstractModel{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
+	public void removeUser(User user) {
+		user.setRole(null);
+	}
 }
