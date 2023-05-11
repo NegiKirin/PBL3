@@ -71,7 +71,7 @@ public class Register extends HttpServlet {
 			user = userService.register(lastName, firstName, email, password, sex.equals("male") ? 0 : (sex.equals("female") ? 1:2));
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			response.sendRedirect("/PBL3/home");
+			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
 		}
 	}
 }
