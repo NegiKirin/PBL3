@@ -10,4 +10,5 @@ public interface IAppointmentService {
     public List<Appointment> pagingAppointment(Pageble pageble);
     public Integer totalItem();
     public List<Appointment> findByHost(User host);
+    public List<Appointment> findByParticipants(User participant,String maxItem);
 }

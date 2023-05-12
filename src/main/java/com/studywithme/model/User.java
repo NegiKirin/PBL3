@@ -31,7 +31,7 @@ public class User extends AbstractModel {
     @JoinColumn(name = "school_id")
     private School school;
 
-    @ManyToMany(mappedBy = "participant", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "participants", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Appointment> listAppointmentsJoin = new HashSet<>();
     @OneToMany(mappedBy = "host", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Appointment> appointmentsOf = new HashSet<>();

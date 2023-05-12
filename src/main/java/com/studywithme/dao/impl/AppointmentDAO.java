@@ -90,7 +90,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from Appointment a left join a.participant p where a.ending_time < :today and (p = :participant or a.host = :participant)";
+                String hql = "from Appointment a left join a.participants p where a.ending_time < :today and (p = :participant or a.host = :participant) order by a.createdDate asc";
                 Query query = session.createQuery(hql);
                 query.setParameter("today",new Date(System.currentTimeMillis()));
                 query.setParameter("participant",participant);
@@ -99,6 +99,9 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                     session.get(User.class,results.get(i).getHost().getId());
                     for (User u : results.get(i).getParticipants()) {
                         session.get(User.class,u.getId());
+                    }
+                    for (Rate r: results.get(i).getRates()) {
+                        session.get(Rate.class,r.getId());
                     }
                 }
                 tr.commit();

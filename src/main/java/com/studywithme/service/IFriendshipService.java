@@ -6,5 +6,5 @@ import com.studywithme.model.User;
 import java.util.List;
 
 public interface IFriendshipService {
-    public List<Friendship> listFriend(Integer index, User user);
+    public List<Friendship> listFriend(String index, User user);
 }

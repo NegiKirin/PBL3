@@ -71,7 +71,26 @@ for(var i = 0; i < lengthSchool; i++) {
     }
 }
 
+function timeStr(t) {
+    var temp = t.split(' ');
+    var time = temp[1].split(':');
+    var hour = Number.parseInt(time[0]);
+    var minute = Number.parseInt(time[1]);
+    var timestr = '';
+    if (hour >= 0 && hour <= 12) {
+        return `${hour}:${minute} AM`;
+    }
+    if (hour >= 12 && hour <= 24) {
+        return `${hour}:${minute} PM`;
+    }
+    return timestr;
+}
 
+var time = document.querySelectorAll(".list-apm .item-apm .times");
+console.log(time);
+time.forEach(function (element) {
+    element.innerHTML = timeStr(element.getAttribute("startTime")) + ' - ' + timeStr(element.getAttribute("endTime"));
+})
 
 var groupStar = document.querySelectorAll('.form-group');
 var length = groupStar.length;

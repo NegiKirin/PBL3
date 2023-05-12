@@ -11,9 +11,14 @@ import java.util.List;
 public class FriendshipService implements IFriendshipService {
     private IFriendshipDAO friendshipDAO;
     @Override
-    public List<Friendship> listFriend(Integer index, User user) {
+    public List<Friendship> listFriend(String index, User user) {
         friendshipDAO = new FriendshipDAO();
-        List<Friendship> friendships = friendshipDAO.listFriend(index,user);
-        return friendships.isEmpty()?null:friendships;
+        if(index == null) {
+            List<Friendship> friendships = friendshipDAO.listFriend(1,user);
+            return friendships.isEmpty()?null:friendships;
+        } else {
+            List<Friendship> friendships = friendshipDAO.listFriend(Integer.parseInt(index),user);
+            return friendships.isEmpty()?null:friendships;
+        }
     }
 }

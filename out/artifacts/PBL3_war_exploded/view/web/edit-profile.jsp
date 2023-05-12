@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value="/template/css/edit-profile.css"/>">
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src='<c:url value="/template/js/JQProfile.js"/>'> </script>
 </head>
 <body>
     <div id="main">
@@ -69,13 +70,126 @@
                                 <input type="date" date="${profileUser.dateOfBirth}" class="date" disabled="disabled" id="dateOfBirth">
                             </div>
                         </div>
-                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
+                        <c:if test="${user.id == profileUser.id}">
+                            <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
+                        </c:if>
+                        <c:if test="${user.id != profileUser.id}">
+                            <c:forEach var="friend" items="${listFriend}">
+                                <c:if test="${profileUser.id == friend.requester.id or profileUser.id == friend.friend.id}">
+                                    <c:if test="${friend.status == 0}">
+                                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Bạn bè</button>
+                                    </c:if>
+                                    <c:if test="${friend.status == 1}">
+                                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Đã gửi lời </button>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+                            <c:if test="${listFriend == null}">
+                                <form>
+                                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Kết bạn</button>
+                                </form>
+                            </c:if>
+                        </c:if>
                     </div>
                     <%--Kết thúc thông tin chính--%>
 
                     <div class="list-apm">
                         <p class="title-list-apm">Danh sách cuộc hẹn đã tham gia</p>
-                        <div class="item-apm">
+
+                        <c:forEach items="${listAppointment}" var="appointment">
+                            <div class="item-apm">
+                                <div class="content-apm">
+                                    <div class="user list">
+                                        <img src="data:image/jpeg;base64,${appointment.host.avatar}" alt="avatar"/>
+                                        <p class="name text">${appointment.host.fullName}</p>
+                                    </div>
+                                    <div class="time list">
+                                        <p class="title text">Thời gian:</p>
+                                        <p class="content text times" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
+                                    </div>
+                                    <div class="date list">
+                                        <p class="title text">Ngày:</p>
+                                        <input type="date" class="date" disabled="disabled" value="${appointment.createdDate}" >
+                                    </div>
+                                    <div class="list-rate list text">
+                                        <p class="title">Đánh giá<i class="fa-solid fa-chevron-down"></i></p>
+                                    </div>
+                                </div>
+                                <div class="list-rate-apm">
+                                    <div class="item">
+                                        <img src="data:image/jpeg;base64,${appointment.host.avatar}" alt="avatar">
+                                        <p class="name text">${appointment.host.fullName}</p>
+                                        <div class="rate-star">
+                                            <c:if test="${appointment.host.id != profileUser.id}">
+                                                <p class="rate-star-title">Đánh giá:</p>
+                                                <form>
+                                                <c:forEach items="${appointment.rates}" var="rate">
+                                                    <c:if test="${rate.rated.id == profileUser.id and rate.rateBy.id == appointment.host.id}">
+                                                        <div class="form-group" value="${rate.point}">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    </c:if>
+                                                </c:forEach>
+                                                </form>
+                                            </c:if>
+                                            <c:if test="${appointment.host.id == profileUser.id}">
+                                                <div class="rate-star">
+                                                    <p class="rate-star-title">Bạn</p>
+                                                </div>
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                    <c:forEach items="${appointment.participants}" var="participant">
+                                        <div class="item">
+                                            <img src="data:image/jpeg;base64,${participant.avatar}" alt="avatar">
+                                            <p class="name text">${participant.fullName}</p>
+                                            <c:if test="${participant.id != profileUser.id}">
+                                                <div class="rate-star">
+                                                    <p class="rate-star-title">Đánh giá:</p>
+                                                    <form>
+                                                        <c:forEach items="${appointment.rates}" var="rate">
+                                                            <c:if test="${rate.rated.id == profileUser.id and rate.rateBy.id == participant.id}">
+                                                                <div class="form-group" value="${rate.point}">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <c:if test="${fn:length(appointment.rates) == 0}">
+                                                            <div class="form-group" value="">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </c:if>
+                                                    </form>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${participant.id == profileUser.id}">
+                                                <div class="rate-star">
+                                                    <p class="rate-star-title">Bạn</p>
+                                                </div>
+                                            </c:if>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </c:forEach>
+                        <c:if test="${fn:length(listAppointment) == 0}">
+                            <div>
+                                Trống
+                            </div>
+                        </c:if>
+                        <%--<div class="item-apm">
                             <div class="content-apm">
                                 <div class="user list">
                                     <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar"/>
@@ -127,8 +241,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item-apm">
+                        </div>--%>
+                        <%--<div class="item-apm">
                             <div class="content-apm">
                                 <div class="user list">
                                     <img src="/PBL3/template/image/avatarDefault.jpg" alt="">
@@ -164,7 +278,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
             </div>

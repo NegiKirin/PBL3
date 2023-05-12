@@ -28,4 +28,15 @@ public class AppointmentService implements IAppointmentService {
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.findByHost(host);
     }
+
+    @Override
+    public List<Appointment> findByParticipants(User participant, String maxItem) {
+        appointmentDAO = new AppointmentDAO();
+        if (maxItem == null) {
+            return appointmentDAO.findByParticipants(participant,5);
+        } else {
+            return appointmentDAO.findByParticipants(participant,Integer.parseInt(maxItem));
+        }
+
+    }
 }

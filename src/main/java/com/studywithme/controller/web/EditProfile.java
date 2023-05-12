@@ -12,14 +12,8 @@ import javax.servlet.http.*;
 
 import com.studywithme.model.School;
 import com.studywithme.model.User;
-import com.studywithme.service.IFriendshipService;
-import com.studywithme.service.IModifyService;
-import com.studywithme.service.ISchoolService;
-import com.studywithme.service.IUserService;
-import com.studywithme.service.impl.FriendshipService;
-import com.studywithme.service.impl.ModifyService;
-import com.studywithme.service.impl.SchoolService;
-import com.studywithme.service.impl.UserService;
+import com.studywithme.service.*;
+import com.studywithme.service.impl.*;
 
 
 @WebServlet("/edit-profile")
@@ -33,6 +27,7 @@ public class EditProfile extends HttpServlet {
     private ISchoolService schoolService;
 	private IFriendshipService friendshipService;
 	private IModifyService modifyService;
+	private IAppointmentService appointmentService;
     public EditProfile() {
         super();
     }
@@ -40,27 +35,15 @@ public class EditProfile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		schoolService = new SchoolService();
 		friendshipService = new FriendshipService();
-
+		appointmentService = new AppointmentService();
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("user");
 		User user = null;
 		user = (User)obj;
 		String listFriendStr = request.getParameter("listFriend");
-		String listAppointmentStr = request.getParameter("listAppointment");
-		Integer listFriend;
-		if(listFriendStr==null){
-			listFriend = 1;
-		} else {
-			listFriend = Integer.parseInt(listFriendStr);
-		}
-		Integer listAppointment;
-		if(listAppointmentStr==null){
-			listAppointment = 1;
-		} else {
-			listAppointment = Integer.parseInt(listAppointmentStr);
-		}
-
-		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
+//		String listAppointmentStr = request.getParameter("listAppointment");
+//		request.setAttribute("listAppointment", appointmentService.findByParticipants(user,5));
+		request.setAttribute("listFriend",friendshipService.listFriend(listFriendStr,user));
 		request.setAttribute("listSchool", schoolService.findAll());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);

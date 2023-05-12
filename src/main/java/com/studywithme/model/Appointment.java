@@ -14,6 +14,7 @@ public class Appointment extends AbstractModel{
 	private Date ending_time;
 	private Integer maximum;
 	private Integer status;
+	private Integer totalParticipant;
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "appointment_user",
 			joinColumns = {@JoinColumn(name = "id_appointment")},
@@ -112,6 +113,22 @@ public class Appointment extends AbstractModel{
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Set<Rate> getRates() {
+		return rates;
+	}
+
+	public void setRates(Set<Rate> rates) {
+		this.rates = rates;
+	}
+
+	public Integer getTotalParticipant() {
+		return totalParticipant;
+	}
+
+	public void setTotalParticipant(Integer totalParticipant) {
+		this.totalParticipant = totalParticipant;
 	}
 
 	public void removeParticipant(User user){

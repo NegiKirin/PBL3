@@ -20,7 +20,7 @@ function timeStr(t) {
         return `${hour}:${minute} PM`;
     }
     return timestr;
-};
+}
 
 var time = document.querySelectorAll("#content .content-main .content-main-list .content .item .time");
 time.forEach(function (element) {
