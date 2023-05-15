@@ -46,7 +46,7 @@ public class Home extends HttpServlet {
 		pageble.setSorter(FormUtil.toModel(Sorter.class,request));
 
 		List<Appointment> appointmentList = appointmentService.pagingAppointment(pageble);
-		int totalPages = (int) Math.ceil((double) appointmentList.size() / pageble.getMaxPageItem()) ;
+		int totalPages = (int) Math.ceil((double) appointmentService.totalItem() / pageble.getMaxPageItem()) ;
 		String listFriend = request.getParameter("listFriend");
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
 		request.setAttribute("maxPageItem",pageble.getMaxPageItem());

@@ -162,7 +162,7 @@
                                                                 </div>
                                                             </c:if>
                                                         </c:forEach>
-                                                        <c:if test="${fn:length(appointment.rates) == 0}">
+                                                            <c:if test="${fn:length(appointment.rates) == 0}">
                                                             <div class="form-group" value="">
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
