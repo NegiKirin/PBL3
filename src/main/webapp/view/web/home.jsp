@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="content-main">
-            <h1 class="content-main-title">Cộng đồng</h1>
+
             <div class="content-main-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Gõ gì đó để tìm kiếm ...">

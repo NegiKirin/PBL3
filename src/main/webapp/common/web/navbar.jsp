@@ -24,7 +24,7 @@
         </a>
         </li>
         <li><a href="<c:url value="/Q&A?listFriend=1"/>">
-            <button>
+            <button class = "header-main-rightbutton">
                 <i class="fa-solid fa-book"></i>
             </button>
         </a></li>
