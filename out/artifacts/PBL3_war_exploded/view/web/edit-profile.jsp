@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="date list">
                                         <p class="title text">Ngày:</p>
-                                        <input type="date" class="date" disabled="disabled" value="${appointment.createdDate}" >
+                                        <input type="date" class="date" disabled="disabled" value="" dateTime="${appointment.createdDate}">
                                     </div>
                                     <div class="list-rate list text">
                                         <p class="title">Đánh giá<i class="fa-solid fa-chevron-down"></i></p>
