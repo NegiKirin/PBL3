@@ -13,9 +13,9 @@ ul{
     list-style: none;
 }
 
-body{
+html body{
     background-color: #f5f5f5;
-    height: 100%;
+    height: 100vh;
 }
 
 #main{
@@ -247,8 +247,6 @@ body{
 
 #content .content-main .content-main-list{
 	position: relative;
-	height: calc(100% - 21.6px - 35px);
-
 }
 
 #content .content-main .content-main-list form{
@@ -290,7 +288,14 @@ body{
 }
 
 #content .content-main .content-main-list .content .item{
-    display: inline;
+    margin: 0 15px;
+}
+
+#content .content-main .content-main-list .content .item .date{
+    font-weight: bold;
+    font-size: 13px;
+    color: #8A8a8a;
+    margin-bottom: 5px;
 }
 
 #content .content-main .content-main-list .content .item .time{
@@ -300,17 +305,16 @@ body{
     padding: 5px;
     font-weight: bold;
     font-size: 10px;
-    margin: 10px;
+    margin-bottom: 5px;
 }
 
 #content .content-main .content-main-list .content .item .address{
     font-size: 15px;
-    display: inline;
+    font-style: italic;
 }
 
 #content .content-main .content-main-list .content .item i{
     margin: 5px;
-    margin-left: -5px;
 }
 
 #content .content-main .content-main-list .see-more{
@@ -337,14 +341,14 @@ body{
 }
 
 #content .content-right .list-friends{
-    height: 50%;
+    height: 40%;
     width: 100%;
+    padding-top: 10px;
 }
 
 #content .content-right .list-friends .list-friends-title{
     font-weight: bold;
     color: #000;
-    margin: 10px 0;
 }
 
 #content .content-right .list-friends .list-friends-item{
@@ -381,13 +385,13 @@ body{
 }
 
 #content .content-right .your-profile{
-    height: 50%;
+    height: 60%;
     width: 100%;
+    padding-top: 10px;
 }
 
 #content .content-right .your-profile .title{
     font-weight: bold;
-    margin: 10px 0;
 }
 
 #content .content-right .your-profile-main{
@@ -396,6 +400,7 @@ body{
     background-color: #fff;
     border-radius: 8px;
     box-shadow:  3px 3px 5px 0px #aaaaaa;
+    position: relative;
 }
 
 #content .content-right .your-profile-main .profile{
@@ -424,6 +429,7 @@ body{
 
 #content .content-right .your-profile-main .item{
     height: 80px;
+    position: relative;
 }
 
 #content .content-right .your-profile-main .item .time{
@@ -435,6 +441,15 @@ body{
     font-size: 10px;
     margin: 10px;
 }
+
+#content .content-right .your-profile-main .item .date{
+    font-weight: bold;
+    font-size: 14px;
+    color: #8a8a8a;
+    margin: 0 10px;
+    display: block;
+}
+
 
 #content .content-right .your-profile-main .item .address{
     font-size: 15px;
@@ -451,24 +466,25 @@ body{
 }
 
 #content .content-right .your-profile-main .add{
+    position: absolute;
     background-color: #75ba80;
     display: block;
-    float: right;
     font-size: 40px;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 40px;
     height: 50px;
     width: 50px;
     text-align: center;
     border-radius: 50%;
-    margin-right: 10px;
+    bottom: 0;
+    right: 5px;
 }
 
 .booking-apm{
-    position:absolute;
+    position: fixed;
     display: none;
     background: rgba(0,0,0, 70%);
-    top: 0px;
+    top: 0;
     right: 0;
     left: 0;
     bottom: 0;
@@ -480,8 +496,7 @@ body{
     height: auto;
     width: 800px;
     margin-left: calc(50% - 400px);
-
-    margin-top: 150px;
+    margin-top: 30px;
     border-radius: 10px;
     text-align: center;
 }
@@ -489,6 +504,7 @@ body{
 .booking-apm .content .background{
     width: 100%;
     border-radius: 10px;
+    height: 220px;
 }
 
 .booking-apm .content .ava{
@@ -504,17 +520,20 @@ body{
 
 .booking-apm .infor-apm{
     text-align: left;
-    padding: 0 40px;
-}
-
-.booking-apm .infor-apm iframe{
-    height: 400px;
-    width: 400px;
+    padding: 0 50px;
 }
 
 .booking-apm .infor-apm .title{
     font-weight: bold;
     margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.booking-apm .infor-apm .date{
+    font-weight: bold;
+    color: #373737;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .booking-apm i{
@@ -529,7 +548,6 @@ body{
 .booking-apm .type-location{
     background-color: #75ba80;
     display: inline;
-    margin-right: 50%;
     padding: 6px;
     border-radius: 5px;
     font-weight: bold;
@@ -538,6 +556,12 @@ body{
 
 .booking-apm .type-location{
     background-color: #d35800;
+    color: #fff;
+    display: inline-block;
+}
+
+.booking-apm .list.inline{
+    display: inline-block;
 }
 
 .booking-apm .address,
@@ -546,6 +570,8 @@ body{
     font-weight: bold;
     font-style: italic;
 }
+
+
 
 .booking-apm .exit{
     cursor: pointer;

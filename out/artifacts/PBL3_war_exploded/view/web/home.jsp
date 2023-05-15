@@ -93,40 +93,14 @@
                         </div>
                         <div class="content">
                             <div class="item">
+                                <p class="date">07/05/2023</p>
                                 <p class="time" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                             </div>
                         </div>
                         <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
                     </div>
-                    <div class="booking-apm" id="myDIV">
-                        <div class="content">
-                            <img src="../image/background.png" alt="" class="background">
-                            <button class="exit" onclick="myFunction()">X</button>
-                            <img src="../image/ava1.png" alt="" class="ava">
-                            <h1 class="name">Phúc Tân</h1>
-                            <form class="infor-apm">
-                                <p class="title">Thông tin cuộc hẹn:</p>
-                                <div class="list">
-                                    <i class="fa-solid fa-clock"></i>
-                                    <p class="time">8 A.M - 9 A.M</p>
-                                </div>
-                                <div class="list">
-                                    <i class="fa-solid fa-store"></i>
-                                    <p class="type-location">Coffee</p>
-                                </div>
-                                <div class="list">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <p class="address">60 Nguyen Luong Bang</p>
-                                </div>
-                                <div class="list">
-                                    <i class="fa-solid fa-users"></i>
-                                    <p class="number">3 người khác tham gia</p>
-                                </div>
-                                <input class="submit" type="submit" value="KẾT NỐI NGAY">
-                            </form>
-                        </div>
-                    </div>
+
                 </c:forEach>
                     <form action="<c:url value="/home"/> " id="formPaging" method="get">
                         <ul class="pagination" id="pagination"></ul>
@@ -158,10 +132,19 @@
                                 </div>
                             </c:forEach>--%>
                                 <div class="item">
-                                    <p class="time" id="start">
-
+                                    <p class="date">07/05/2023</p>
+                                    <label class="line"></label>
+                                    <p class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                        15:20 PM - 19:20 PM
                                     </p>
-                                    <p class="address"><i class="fa-solid fa-location-dot"></i>asdd</p>
+                                    <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
+                                </div>
+                                <div class="item">
+                                    <p class="date">07/05/2023</p>
+                                    <p class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                        15:20 PM - 19:20 PM
+                                    </p>
+                                    <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
                                 </div>
                         </div>
                         <p class="add"><a href="">+</a></p>
@@ -169,23 +152,24 @@
                 </div>
             </div>
         
-        <%--<div class="booking-apm" id="myDIV">
+        <div class="booking-apm" id="myDIV">
             <div class="content">
-                <img src="../image/background.png" alt="" class="background">
+                <img src="data:image/jpeg;base64,${user.background}" alt="" class="background">
                 <button class="exit" onclick="myFunction()">X</button>
-                <img src="../image/ava1.png" alt="" class="ava">
+                <img src="data:image/jpeg;base64,${user.avatar}" alt="" class="ava">
                 <h1 class="name">Phúc Tân</h1>
                 <form class="infor-apm">
                     <p class="title">Thông tin cuộc hẹn:</p>
                     <div class="list">
                         <i class="fa-solid fa-clock"></i>
+                        <p class="date">07/05/2023</p>
                         <p class="time">8 A.M - 9 A.M</p>
                     </div>
-                    <div class="list">
+                    <div class="list inline">
                         <i class="fa-solid fa-store"></i>
                         <p class="type-location">Coffee</p>
                     </div>
-                    <div class="list">
+                    <div class="list inline">
                         <i class="fa-solid fa-location-dot"></i>
                         <p class="address">60 Nguyen Luong Bang</p>
                     </div>
@@ -196,7 +180,7 @@
                     <input class="submit" type="submit" value="KẾT NỐI NGAY">
                 </form>
             </div>
-        </div>--%>
+        </div>
     </div>
     <script src="<c:url value="/template/js/Home.js"/>"></script>
 <%--    <script type="text/javascript">
