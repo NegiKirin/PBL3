@@ -56,7 +56,12 @@ body{
     line-height: 46px;
     padding-right: 15px;
 }
-
+#header .header-main-mainbutton{
+    translate: 180px -15px;
+}
+#header .header-main-rightbutton{
+    translate: -170px 30px;
+}
 #header .header-main{
     height: 46px;
     display: inline-flex;
@@ -82,8 +87,8 @@ body{
     transition: all 0.2s ease-in-out;
     transform-origin: center top;
 }
-#header .header-main button:hover{    
-    transform: scale(1.2);
+#header .header-main button:hover{
+     transform: scale(1.2);
 }
 
 #header .header-main i{

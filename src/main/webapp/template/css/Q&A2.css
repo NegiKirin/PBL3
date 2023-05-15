@@ -67,6 +67,12 @@ body{
     position:absolute;
     padding: 0 20%;
 }
+#header .header-main-mainbutton{
+    translate: 180px -15px;
+}
+#header .header-main-rightbutton{
+    translate: -170px 30px;
+}
 
 #header .header-main li{
     list-style: none;

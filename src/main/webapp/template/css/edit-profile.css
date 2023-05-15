@@ -72,6 +72,10 @@ body{
     margin-top: 4px;
     background-color: #fff;
 }
+#header .header-main button:hover{
+    transform: scale(1.2);
+}
+
 
 #header .header-main i{
     font-size: 20px;
@@ -94,7 +98,10 @@ body{
     color: #000;
     font-weight: bold;
 }
-
+#header .header-noti a:hover{
+    transform: scale(1.5);
+    color: white;
+}
 #content {
     height: auto;
     display: flex;
@@ -153,6 +160,7 @@ body{
     display: inline;
     font-weight: bold;
 }
+
 
 .vice-main,
 #content .content-main{
@@ -219,6 +227,7 @@ body{
     font-weight: bold;
     font-size: 20px;
 }
+
 
 .vice-main .edit-infor .list,
 .content-main-edit-infor .item{
@@ -378,6 +387,10 @@ i.checked{
 
 .rate-star form{
     display: inline-block;
+}
+.content-main-edit-infor .status{
+    display: block;
+    text-align: center;
 }
 
 #content .content-right {

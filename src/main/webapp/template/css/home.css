@@ -334,6 +334,7 @@ html body{
     font-weight: bold;
 }
 
+
 #content .content-right {
     height: 100%;
     width: 259px;
@@ -463,6 +464,7 @@ html body{
 #content .content-right .your-profile-main a{
     text-decoration: none;
     color: #fff;
+
 }
 
 #content .content-right .your-profile-main .add{
@@ -479,7 +481,6 @@ html body{
     bottom: 0;
     right: 5px;
 }
-
 .booking-apm{
     position: fixed;
     display: none;

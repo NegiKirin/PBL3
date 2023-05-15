@@ -185,7 +185,7 @@
                             </div>
                         </c:forEach>
                         <c:if test="${fn:length(listAppointment) == 0}">
-                            <div>
+                            <div class="status" >
                                 Trống
                             </div>
                         </c:if>
