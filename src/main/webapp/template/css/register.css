@@ -1,61 +1,5 @@
 @charset "UTF-8";
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html{
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body{
-    background-image: url(../image/anh.png);
-    background-size: 110%;	
-    background-repeat: no-repeat;
-    background-color: #8a8a8a;
-}
-
-.clear{
-    clear: both;
-}
-
-.text-white{
-    color: #fff !important;
-}
-
-#header {
-    height: 46px;
-    background-color: #8a8a8a;
-    opacity: 80%;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-}
-
-#header li{
-    position: relative;
-    list-style: none;
-    display: inline;
-    height: 100%;
-    line-height: 46px;
-    margin: 0 30px;
-}
-
-#header li a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 17px;
-}
-
-#header li a:hover{
-    color: #4b4b4b;
-}
-
-#header i{
-    margin: 5px;
-}
 
 #content{
     display: flex;
@@ -93,6 +37,7 @@ body{
     display: inline;
     padding: 8px;
     font-size: 30px;
+    cursor: pointer;
 }
 
 #content .content-signin-title li:hover{
@@ -116,17 +61,11 @@ body{
     border-radius: 5px;
     border-width: 0px;
     box-shadow: 1px 1px 4px 0px #9a9a9a;
+    transition: 0.25s;
 }
 
 #content form input:hover{
     box-shadow: 3px 3px 6px 0px #9a9a9a;
-}
-
-#content form .signin-remember{
-    padding-top: 20px;
-    color: #7b809a;
-    font-size: 20px;
-    display: inline-block;
 }
 
 #content form .signin-submit-button{
@@ -136,6 +75,8 @@ body{
     font-weight: bold;
     color: #fff;
     box-shadow: 3px 3px 5px 0px #9a9a9a;
+    transition: 0.25s;
+    cursor: pointer;
 }
 
 #content .login-signup{
@@ -146,13 +87,17 @@ body{
     margin-bottom: 28px;
 }
 
-#content .login-signup a{
-    text-decoration: none;
+#content .login-signup button{
+    border: none;
+    background: transparent;
     color: #4caf50;
     font-weight: bold;
+    font-size: 18px;
+    transition: 0.25s;
+    cursor: pointer;
 }
 
-#content .login-signup a:hover{
+#content .login-signup button:hover{
     color: #128515;
 }
 
@@ -165,6 +110,7 @@ div#error_email, div#error_password, #msg{
     padding: 0px 5px;
     font-style: italic;
     margin-top: 10px;
+    transition: 0.25s;
 }
 #password{
 	margin-top: 30px;
@@ -185,4 +131,5 @@ div#error_email, div#error_password, #msg{
     width: auto;
     margin-right: 10px;
     margin-left: 10px;
+    cursor: pointer;
 }
