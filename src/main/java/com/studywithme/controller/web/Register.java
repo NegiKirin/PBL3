@@ -64,7 +64,7 @@ public class Register extends HttpServlet {
 		if(error_email.length()>0 || error_password.length()>0) {
 			request.setAttribute("error_email", error_email);
 			request.setAttribute("error_password", error_password);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/register");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/login.jsp");
 			rd.forward(request, response);
 		}else {
 			User user = new User();
