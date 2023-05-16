@@ -236,7 +236,7 @@ html body{
 
 #content .content-main .content-main-item{
     display: inline-block;
-    height: 300px;
+    height: auto;
     width: 280px;
     background-color: #fff;
     border-radius: 8px;
@@ -247,19 +247,20 @@ html body{
 
 #content .content-main .content-main-list{
 	position: relative;
+    height: calc(100% - 35px);
 }
 
 #content .content-main .content-main-list form{
 	position: absolute;
     display: flex;
-    bottom: 50px;
+    bottom: 20px;
     justify-content: center;
     width: 100%;
 }
 
 #content .content-main .content-main-list .profile{
-    height: 60%;
     width: 100%;
+    position: relative;
 }
 
 #content .content-main .content-main-list .profile .background{
@@ -280,10 +281,15 @@ html body{
     font-weight: bold;
     margin-left: 15px;
     margin-top: 8px;
+    font-size: 18px;
+    position: absolute;
+    bottom: -10px;
+    left: 90px;
 }
 
 #content .content-main .content-main-list .content{
-    height: 90px;
+    margin-top: 20px;
+    margin-left: 10px;
     width: 100%;
 }
 
@@ -296,6 +302,7 @@ html body{
     font-size: 13px;
     color: #8A8a8a;
     margin-bottom: 5px;
+    display: inline;
 }
 
 #content .content-main .content-main-list .content .item .time{
@@ -306,6 +313,7 @@ html body{
     font-weight: bold;
     font-size: 10px;
     margin-bottom: 5px;
+    margin-left: 5px;
 }
 
 #content .content-main .content-main-list .content .item .address{
@@ -325,6 +333,7 @@ html body{
     color: #545454;
     font-weight:bold;
     margin-left: calc(50% - 50px);
+    margin-bottom: 5px;
 }
 
 #content .content-main .content-main-list a{
@@ -622,4 +631,9 @@ html body{
         width: 100%;
     }
     
+}
+
+.page-item.active .page-link{
+    background: #18c0e6;
+    color: white !important
 }
