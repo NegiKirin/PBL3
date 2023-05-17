@@ -131,25 +131,107 @@ html body{
     background-color: #d9d9d94f;
     border-radius: 5px;
     margin: 20px 10px;
-    padding: 5px 0;
+    padding: 5px 5px;
     margin-top: 60px;
     margin-bottom: 80px;
+    position: relative;
+    padding-bottom: 15px;
 }
 
 #content .content-left .calender-title p{
     font-weight: bold;
     padding: 10px 5px;
-    
 }
 
-#content .content-left .calender-main{
-    margin: 5px;
+#content .content-calender .btn{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+    color: #8A8a8a;
 }
 
-#content .content-left .calender-main table tr td{
-    padding-right: 5px;
+#content .content-calender .btn:hover{
+    transform: scale(1.2);
+    font-weight: bold;
+}
+
+#content .content-calender .btn.left{
+    right: 76px;
+}
+
+#content .content-calender .month,
+#content .content-calender .year,
+#content .content-calender .icon{
+    position: absolute;
+    top: 14px;
+    color: #8A8a8a;
+    font-weight: bold;
+    right: 26px;
+    font-size: 15px;
+    transition: 0.25s;
+}
+
+#content .content-calender .icon{
+    right: 64px;
+}
+
+#content .content-calender .month{
+    right: 72px;
+}
+
+#content .content-calender td{
+    width: 32px;
     text-align: center;
-    padding-bottom: 5px;
+    font-size: 14px;
+    height: 31px;
+    border-radius: 50%;
+    transition: 0.25s;
+}
+
+#content .content-calender .tr_1{
+    font-weight: bold;
+}
+
+#content .content-calender a{
+    position: relative;
+    z-index: 2;
+}
+
+.CN{
+    color: #ff0000;
+}
+
+.gray{
+    color: #8a8a8a;
+}
+
+.green{
+    border: solid 1px #4CAF50;
+    display: block;
+    border-radius: 50%;
+}
+
+.green a{
+    color: black;
+    translate: 2px 0;
+    line-height: 28px;
+}
+
+.tr td:hover{
+    background: #4CAF50;
+    border-radius: 50%;
+}
+
+.tr td:hover a{
+    color: white;
+    font-weight: bold;
+}
+
+.black{
+    color: black;
 }
 
 #content .content-left .content-list-meeting{
@@ -170,7 +252,6 @@ html body{
 
 #content .content-left a{
     text-decoration: none;
-    color: #8a8a8a;
 }
 
 #content .content-left .content-list-meeting .content-left-item{

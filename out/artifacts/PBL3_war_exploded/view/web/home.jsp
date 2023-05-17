@@ -27,8 +27,12 @@
                 <div class="calender-title">
                     <p class="Lichcuaban">Lịch của bạn</p>
                 </div>
-                <button id="left"> < </button>
-                <button id="right"> > </button>
+                <button id="left" class="btn left">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="right" class="btn right">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
                 <div class="calender">
 
                 </div>
@@ -40,6 +44,7 @@
                     <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
                     <p class="with">Với</p>
                     <p class="name">Tran Le Nguyen</p>
+                    <input type="hidden" value="2023-05-15 15:22:19.0" name="date">
                 </div>
                 <div class="content-left-item">
                     <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
