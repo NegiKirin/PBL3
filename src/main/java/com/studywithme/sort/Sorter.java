@@ -4,13 +4,14 @@ public class Sorter {
 
     private String sortName;
     private String sortBy;
-
+    private String date;
     public Sorter() {
     }
 
-    public Sorter (String sortName, String sortBy) {
+    public Sorter (String sortName, String sortBy, String date) {
         this.sortName = sortName;
         this.sortBy = sortBy;
+        this.date = date;
     }
 
     public String getSortName() {
@@ -27,5 +28,13 @@ public class Sorter {
 
     public void setSortBy(String sortBy) {
         this.sortBy = sortBy;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

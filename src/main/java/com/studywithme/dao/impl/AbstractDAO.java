@@ -108,7 +108,6 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 	public int count(String hql, Object... parameters) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-			
 			if(sessionFactory!=null) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
@@ -117,7 +116,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 				Long count = (Long) query.uniqueResult();
 				tr.commit();
 				session.close();
-				return  Integer.parseInt(count.toString());
+				return Integer.parseInt(count.toString());
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

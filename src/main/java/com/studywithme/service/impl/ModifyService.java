@@ -6,7 +6,7 @@ import com.studywithme.model.Modify;
 import com.studywithme.model.User;
 import com.studywithme.service.IModifyService;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ModifyService implements IModifyService {
 

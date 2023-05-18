@@ -1,6 +1,7 @@
 package com.studywithme.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +11,11 @@ import jakarta.persistence.*;
 public class Appointment extends AbstractModel{
 
 	private String title;
-	private Date starting_time;
-	private Date ending_time;
+	@Temporal(TemporalType.TIME)
+	private Time starting_time;
+	@Temporal(TemporalType.TIME)
+	private Time ending_time;
+	private Date dateMeeting;
 	private Integer maximum;
 	private Integer status;
 	private Integer totalParticipant;
@@ -78,30 +82,33 @@ public class Appointment extends AbstractModel{
 		this.address = address;
 	}
 
-	public Date getStarting_time() {
+	public Time getStarting_time() {
 		return starting_time;
 	}
 
-
-	public void setStarting_time(Date starting_time) {
+	public void setStarting_time(Time starting_time) {
 		this.starting_time = starting_time;
 	}
 
-
-	public Date getEnding_time() {
+	public Time getEnding_time() {
 		return ending_time;
 	}
 
-
-	public void setEnding_time(Date ending_time) {
+	public void setEnding_time(Time ending_time) {
 		this.ending_time = ending_time;
 	}
 
+	public Date getDateMeeting() {
+		return dateMeeting;
+	}
+
+	public void setDateMeeting(Date dateMeeting) {
+		this.dateMeeting = dateMeeting;
+	}
 
 	public int getMaximum() {
 		return maximum;
 	}
-
 
 	public void setMaximum(int maximum) {
 		this.maximum = maximum;
