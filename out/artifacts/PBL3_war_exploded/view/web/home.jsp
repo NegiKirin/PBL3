@@ -131,7 +131,11 @@
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
                                 </div>
                         </div>
-                        <p class="add"><a href="">+</a></p>
+                        <a>
+                            <button class="add">
+                                <i class="fa-solid fa-gear"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
