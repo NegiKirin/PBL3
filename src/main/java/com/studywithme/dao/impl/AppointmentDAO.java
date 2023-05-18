@@ -12,8 +12,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.Date;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppointmentDAO {
@@ -49,11 +52,23 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
                 StringBuilder hql = new StringBuilder("from Appointment a where a.ending_time > :today");
-                if(pageble.getSorter()!=null){
+//                if(pageble.getDate() != null){
+//                    hql.append(" a.starting_time ");
+//                }
+                if(pageble.getSorter() != null){
+                    if(!pageble.getSorter().getDate().equals("")){
+                            hql.append(" and a.dateMeeting = :date");
+                    }
                     hql.append(" order by a." + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy()+ "");
                 }
                 Query query = session.createQuery(hql.toString());
-                query.setParameter("today",new Date(System.currentTimeMillis()));
+                if(!pageble.getSorter().getDate().equals("")){
+                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDate());
+                    java.sql.Date dateMeeting = new java.sql.Date(date.getTime());
+                    query.setParameter("date",dateMeeting);
+                }
+
+                query.setParameter("today",Time.valueOf(LocalTime.now()));
                 results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
                 for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getHost().getId());
@@ -61,18 +76,19 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 }
                 tr.commit();
                 session.close();
+                return results;
             }
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        return results;
+        return null;
     }
 
     @Override
     public Integer count() {
-        String hql = "select count(*) from Appointment";
-        return count(hql);
+        String hql = "select count(*) from Appointment a where a.ending_time > :today";
+        return count(hql,"today",new Time(System.currentTimeMillis()));
     }
 
     @Override
@@ -92,7 +108,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 Transaction tr = session.beginTransaction();
                 String hql = "from Appointment a left join a.participants p where a.ending_time < :today and (p = :participant or a.host = :participant) order by a.createdDate asc";
                 Query query = session.createQuery(hql);
-                query.setParameter("today",new Date(System.currentTimeMillis()));
+                query.setParameter("today",new Time(System.currentTimeMillis()));
                 query.setParameter("participant",participant);
                 results = query.setFirstResult(0).setMaxResults(maxItem).getResultList();
                 for(int i = 0; i < results.size(); i++){

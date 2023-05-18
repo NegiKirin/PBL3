@@ -1,7 +1,7 @@
 package com.studywithme.model;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 import jakarta.persistence.*;
 

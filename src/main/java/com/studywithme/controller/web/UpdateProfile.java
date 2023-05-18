@@ -10,6 +10,7 @@ import com.studywithme.service.impl.UserService;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,8 @@ public class UpdateProfile extends HttpServlet {
 
 		try {
 			if(!dateOfBirth.equals("null")) {
-				user.setDateOfBirth(new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth));
+				Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+				user.setDateOfBirth(new java.sql.Date(date.getTime()));
 			}
 		} catch (ParseException e) {
 		}

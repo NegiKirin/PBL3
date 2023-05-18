@@ -79,6 +79,7 @@
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
                         <input type="hidden" value="" id="sortName" name="sortName">
                         <input type="hidden" value="" id="sortBy" name="sortBy">
+                        <input type="hidden" value="" id="date" name="date">
                     </form>
             </div>
             </div>
@@ -172,6 +173,7 @@
                         $('#page').val(page);
                         $('#sortName').val('createdDate');
                         $('#sortBy').val('desc');
+                        $('#date').value;
                         $('#formPaging').submit();
                     }
                 }

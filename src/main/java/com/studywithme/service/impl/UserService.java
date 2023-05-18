@@ -4,7 +4,7 @@ package com.studywithme.service.impl;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.Base64;
-import java.util.Date;
+import java.sql.Date;
 
 import com.studywithme.dao.IUserDAO;
 import com.studywithme.dao.impl.UserDAO;

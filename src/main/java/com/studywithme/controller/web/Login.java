@@ -1,6 +1,8 @@
 package com.studywithme.controller.web;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.studywithme.model.User;
 import com.studywithme.service.IUserService;
 import com.studywithme.service.impl.UserService;
+import com.studywithme.util.FormatDate;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -42,7 +45,7 @@ public class Login extends HttpServlet {
 		if(u1!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", u1);
-			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
+			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc&date=" + FormatDate.Format(new Date(System.currentTimeMillis())));
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
 			request.setAttribute("error", error);

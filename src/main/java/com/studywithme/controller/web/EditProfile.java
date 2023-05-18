@@ -1,6 +1,7 @@
 package com.studywithme.controller.web;
 
 import java.io.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -76,7 +77,8 @@ public class EditProfile extends HttpServlet {
 			user.setGender(gender.equals("male")?0:gender.equals("female")?1:2);
 			user.setSchool(schoolService.findByName(school));
 			try {
-				user.setDateOfBirth(new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth));
+				java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+				user.setDateOfBirth(new Date(date.getTime()));
 			} catch (ParseException e) {
 				throw new RuntimeException(e);
 			}
