@@ -122,6 +122,13 @@
                                     </p>
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
                                 </div>
+                                <div class="item">
+                                    <p class="date">07/05/2023</p>
+                                    <p class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                        15:20 PM - 19:20 PM
+                                    </p>
+                                    <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
+                                </div>
                         </div>
                         <p class="add"><a href="">+</a></p>
                     </div>
