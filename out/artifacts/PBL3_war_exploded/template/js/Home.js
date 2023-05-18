@@ -8,18 +8,18 @@ function myFunction() {
 }
 
 function timeStr(t) {
-    var temp = t.split(' ');
-    var time = temp[1].split(':');
-    var hour = Number.parseInt(time[0]);
-    var minute = Number.parseInt(time[1]);
-    var timestr = '';
-    if (hour >= 0 && hour <= 12) {
-        return `${hour}:${minute} AM`;
-    }
-    if (hour >= 12 && hour <= 24) {
-        return `${hour}:${minute} PM`;
-    }
-    return timestr;
+    // var temp = t.split(' ');
+    // var time = temp[1].split(':');
+    // var hour = Number.parseInt(time[0]);
+    // var minute = Number.parseInt(time[1]);
+    // var timestr = '';
+    // if (hour >= 0 && hour <= 12) {
+    //     return `${hour}:${minute} AM`;
+    // }
+    // if (hour >= 12 && hour <= 24) {
+    //     return `${hour}:${minute} PM`;
+    // }
+    // return timestr;
 }
 
 var time = document.querySelectorAll("#content .content-main .content-main-list .content .item .time");
@@ -112,6 +112,7 @@ function update(month,year) {
 
 function calender(month,year){
     var calender = document.querySelector('.calender');
+    console.log(calender);
     var calenderHTML = `<p class="month">${month}</p><p class="icon" >/</p> <p class="year">${year}</p> <table><tr class="tr_1"><td class="CN">CN</td><td>T2</td><td>T3</td><td>T4</td><td>T5</td><td>T6</td><td>T7</td>`;
     var today = update(month,year);
     for(var i = 0; i < today.length; i++){

@@ -52,9 +52,6 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
                 StringBuilder hql = new StringBuilder("from Appointment a where a.ending_time > :today");
-//                if(pageble.getDate() != null){
-//                    hql.append(" a.starting_time ");
-//                }
                 if(pageble.getSorter() != null){
                     if(!pageble.getSorter().getDate().equals("")){
                             hql.append(" and a.dateMeeting = :date");
@@ -67,7 +64,6 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                     java.sql.Date dateMeeting = new java.sql.Date(date.getTime());
                     query.setParameter("date",dateMeeting);
                 }
-
                 query.setParameter("today",Time.valueOf(LocalTime.now()));
                 results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
                 for(int i = 0; i < results.size(); i++){

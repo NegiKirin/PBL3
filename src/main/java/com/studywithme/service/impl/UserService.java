@@ -36,7 +36,7 @@ public class UserService implements IUserService {
 		user.setFullName(firstName+" "+lastName);
 		user.setGender(gender);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
-		String path = "\\Study\\PBL3\\src\\main\\webapp\\template\\image";
+		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
 		try {
 			File avatar = new File(path + File.separator + "avatarDefault.png");
 			byte[] dataAvatar = Files.readAllBytes(avatar.toPath());
