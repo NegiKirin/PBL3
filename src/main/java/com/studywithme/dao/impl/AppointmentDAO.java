@@ -51,10 +51,10 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                StringBuilder hql = new StringBuilder("from Appointment a where a.ending_time > :today");
+                StringBuilder hql = new StringBuilder("from Appointment a where a.ending_time > :now");
                 if(pageble.getSorter() != null){
                     if(!pageble.getSorter().getDate().equals("")){
-                            hql.append(" and a.dateMeeting = :date");
+                            hql.append(" and a.dateMeeting = :today");
                     }
                     hql.append(" order by a." + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy()+ "");
                 }
@@ -62,9 +62,9 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 if(!pageble.getSorter().getDate().equals("")){
                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDate());
                     java.sql.Date dateMeeting = new java.sql.Date(date.getTime());
-                    query.setParameter("date",dateMeeting);
+                    query.setParameter("today",dateMeeting);
                 }
-                query.setParameter("today",Time.valueOf(LocalTime.now()));
+                query.setParameter("now",Time.valueOf(LocalTime.now()));
                 results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
                 for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getHost().getId());

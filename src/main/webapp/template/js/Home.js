@@ -8,6 +8,7 @@ function myFunction() {
 }
 
 function timeStr(t) {
+    console.log(t);
     // var temp = t.split(' ');
     // var time = temp[1].split(':');
     // var hour = Number.parseInt(time[0]);

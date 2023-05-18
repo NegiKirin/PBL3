@@ -66,9 +66,6 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="PBL3/web/Web" />
-      <element id="javaee-facet-resources" facet="PBL3/web/Web2" />
-      <element id="javaee-facet-resources" facet="PBL3/web/Web3" />
-      <element id="javaee-facet-resources" facet="PBL3/web/Web4" />
     </root>
   </artifact>
 </component>
