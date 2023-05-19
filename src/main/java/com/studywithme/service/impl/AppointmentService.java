@@ -18,9 +18,9 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public Integer totalItem() {
+    public Integer totalItem(Pageble pageble) {
         appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.count();
+        return appointmentDAO.count(pageble);
     }
 
     @Override

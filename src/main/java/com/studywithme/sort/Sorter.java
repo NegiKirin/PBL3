@@ -4,14 +4,14 @@ public class Sorter {
 
     private String sortName;
     private String sortBy;
-    private String date;
+    private String dateMeeting;
     public Sorter() {
     }
 
-    public Sorter (String sortName, String sortBy, String date) {
+    public Sorter (String sortName, String sortBy, String dateMeeting) {
         this.sortName = sortName;
         this.sortBy = sortBy;
-        this.date = date;
+        this.dateMeeting = dateMeeting;
     }
 
     public String getSortName() {
@@ -30,11 +30,11 @@ public class Sorter {
         this.sortBy = sortBy;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateMeeting() {
+        return dateMeeting;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateMeeting(String dateMeeting) {
+        this.dateMeeting = dateMeeting;
     }
 }

@@ -24,6 +24,5 @@ public class Test2 {
 //            throw new RuntimeException(e);
 //        }
         AppointmentService appointmentService = new AppointmentService();
-        System.out.println(appointmentService.totalItem());
     }
 }

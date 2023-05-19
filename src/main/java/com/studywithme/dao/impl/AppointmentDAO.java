@@ -13,6 +13,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -52,17 +53,18 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
                 StringBuilder hql = new StringBuilder("from Appointment a where a.ending_time > :now");
+                String dateMeeting = pageble.getSorter().getDateMeeting();
                 if(pageble.getSorter() != null){
-                    if(!pageble.getSorter().getDate().equals("")){
+                    if(dateMeeting != null){
                             hql.append(" and a.dateMeeting = :today");
                     }
                     hql.append(" order by a." + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy()+ "");
                 }
                 Query query = session.createQuery(hql.toString());
-                if(!pageble.getSorter().getDate().equals("")){
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDate());
-                    java.sql.Date dateMeeting = new java.sql.Date(date.getTime());
-                    query.setParameter("today",dateMeeting);
+                if(dateMeeting != null){
+                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDateMeeting());
+                    java.sql.Date dateSQL = new java.sql.Date(date.getTime());
+                    query.setParameter("today",dateSQL);
                 }
                 query.setParameter("now",Time.valueOf(LocalTime.now()));
                 results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
@@ -82,9 +84,25 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     }
 
     @Override
-    public Integer count() {
-        String hql = "select count(*) from Appointment a where a.ending_time > :today";
-        return count(hql,"today",new Time(System.currentTimeMillis()));
+    public Integer count(Pageble pageble) {
+        StringBuilder hql = new StringBuilder("select count(*) from Appointment a");
+        String dateMeeting = pageble.getSorter().getDateMeeting();
+        try {
+            if (dateMeeting == null) {
+                hql.append(" where a.dateMeeting >= :today");
+                Date date = new Date(System.currentTimeMillis());
+                java.sql.Date today = new java.sql.Date(date.getTime());
+                return count(hql.toString(),"today",today);
+            } else {
+                hql.append(" where a.dateMeeting == :today and a.ending_time > :now");
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDateMeeting());
+                java.sql.Date today = new java.sql.Date(date.getTime());
+                return count(hql.toString(),"today", today, "now", Time.valueOf(LocalTime.now()));
+            }
+        }catch (ParseException e){
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

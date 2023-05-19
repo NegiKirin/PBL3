@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IAppointmentDAO extends GenericDAO<Appointment>, InterfaceDAO<Appointment> {
     public List<Appointment> pagingAppointment(Pageble pageble);
-    public Integer count();
+    public Integer count(Pageble pageble);
     public List<Appointment> findByHost(User host);
     public List<Appointment> findByParticipants(User participant,Integer maxItem);
 }
