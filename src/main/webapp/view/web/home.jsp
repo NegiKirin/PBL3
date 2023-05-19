@@ -19,6 +19,7 @@
     <script src="<c:url value="/template/paging/jquery.twbsPagination.js"/> " type="text/javascript"></script>
 </head>
 <body>
+<input type="hidden" value="<c:url value="/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc"/>" id="href">
 <jsp:include page="/common/web/navbar.jsp"></jsp:include>
 <div id="main">
     <div id="content">
