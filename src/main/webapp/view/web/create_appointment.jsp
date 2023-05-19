@@ -9,45 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<c:url value="/template/css/create-appointment.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/css/create_appointment.css"/>">
 </head>
 <body>
 <div id="main">
-    <div id="header">
-        <div class="header-info-user" >
-            <img src="../image/ava.png" alt="">
-            <a href="../edit-infor/edit-infor.html"><p class="header-info-user-name"> Ho va ten </p></a>
-            <i class="fa-solid fa-user-pen"></i>
-        </div>
-        <div class="header-main">
-            <li>
-                <a href="">
-                    <button>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="../home/home.html">
-                    <button class="header-main-mainbutton">
-                        <i class="fa-solid fa-globe"></i>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <button>
-                        <i class="fa-solid fa-book"></i>
-                    </button>
-                </a>
-            </li>
-        </div>
-        <div class="header-noti">
-            <a href="">
-                <i class="fa-sharp fa-regular fa-bell"></i>
-            </a>
-        </div>
-    </div>
+    <jsp:include page="/common/web/navbar.jsp"></jsp:include>
     <div id="content">
         <div class="content-left">
             <div class="content-list-meeting">
@@ -67,129 +33,95 @@
         </div>
         <div class="content-main">
             <h1 class="content-main-title">Chỉnh sửa lịch đặt hẹn của bạn</h1>
-            <div>
-                <div class = create-appointment>
-                    <p class = "your-calender">Lịch của bạn</p>
-                    <p class = "create">Tạo mới các lịch hẹn</p>
-                    <div class="content-main-edit-infor">
-                        <img class="background" src="../image/background.png" alt="">
-                        <img class="ava" src="../image/ava1.png" alt="">
-                        <div class="infor-user">
-                            <p class = "date">Ngày 5/3/2023</p>
-                            <div class="time">8 A.M - 12 A.M</div>
-                            <div class="address">
-                                <i class="fa-solid fa-location-dot"></i>
-                                144 Nguyễn Lương Bằng, Liên Chiểu
-                            </div>
+            <div class="create-appointment">
+                <div class="your-calendar">
+                    <p class = "title">Lịch của bạn</p>
+                    <div class="under-title">
+                        <div class="profile">
+                            <img src="data:image/jpeg;base64,${user.background}" class="background" alt="background"/>
+                            <img src="data:image/jpeg;base64,${user.avatar}" class="avatar" alt="avatar"/>
+                        </div>
+                        <div class="content">
+                            <form class="item">
+                                <p class="date">07/05/2023</p>
+                                <div class="date-content">
+                                    <div class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                        15:20 PM - 19:20 PM
+                                    </div>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <div class="address">123 Nguyễn Lương Bằng</div>
+                                    <button type="submit" class="delete">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <form class="item">
+                                <p class="date">07/05/2023</p>
+                                <div class="date-content">
+                                    <div class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                        15:20 PM - 19:20 PM
+                                    </div>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <div class="address">123 Nguyễn Lương Bằng</div>
+                                    <button type="submit" class="delete">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <form class="item">
+                                <p class="date">07/05/2023</p>
+                                <div class="date-content">
+                                    <div class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                        15:20 PM - 19:20 PM
+                                    </div>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <div class="address">123 Nguyễn Lương Bằng</div>
+                                    <button type="submit" class="delete">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <p class = "time-begin">Giờ bắt đầu:</p>
-                    <p class = "time-end">Giờ kết thúc:</p>
-                    <p class = "palace">Địa điểm:</p>
-
-                    <input type="time" class="text1">
-                    <input type="time" class="text2">
-                    <input type="text" class="text3">
-                    <button class="button">TẠO NGAY</button>
-
+                </div>
+                <div class="create-app">
+                    <p class = "title">Tạo mới các lịch hẹn</p>
+                    <jsp:include page="/common/web/Calender.jsp"></jsp:include>
+                    <form class="create-app-form">
+                        <div class="item">
+                            <p class = "title">Giờ bắt đầu:</p>
+                            <input type="time" class="time-begin"value="00:00">
+                        </div>
+                        <div class="item">
+                            <p class = "title">Giờ kết thúc:</p>
+                            <input type="time" class="time-end" value="00:00">
+                        </div>
+                        <div class="item">
+                            <p class = "title">Địa điểm:</p>
+                            <select class="list-district list" id="list-district" name="district">
+                                <option value="" selected disabled hidden>Chọn quận/huyện</option>
+                                <option>Liên Chiểu</option>
+                                <option>Hải Châu</option>
+                                <option>Sơn Trà</option>
+                            </select>
+                            <select class="list-ward list" id="list-ward" name="ward">
+                                <option value="" selected disabled hidden>Chọn phường/xã</option>
+                                <option>Hòa Khánh Bắc</option>
+                                <option>Hòa Khánh Nam</option>
+                            </select>
+                            <input class="detail-location" type="text" placeholder="Nhập số nhà và tên đường">
+                        </div>
+                        <button class="button" type="submit">TẠO NGAY</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="content-right">
-            <div class="list-friends">
-                <p class="list-friends-title">Danh sách bạn bè</p>
-                <div class="list-friends-item">
-                    <img src="../image/ava.png" alt="">
-                    <p class="name"><a href=""> Ho va ten </a></p>
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-                <div class="list-friends-item">
-                    <img src="../image/ava.png" alt="">
-                    <p class="name"><a href=""> Ho va ten </a></p>
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-                <div class="list-friends-item">
-                    <img src="../image/ava.png" alt="">
-                    <p class="name"><a href=""> Ho va ten </a></p>
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-            </div>
+            <jsp:include page="/common/web/ListFriend.jsp"></jsp:include>
         </div>
     </div>
 </div>
-<div class="vice-main" id="myDIV">
-    <div class="edit-infor">
-        <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
-        <p class="title-edit">Ảnh bìa</p>
-        <form class="edit-background" runat="server">
-            <img id="blah1" src="../image/background.png" alt="your image" />
-            <input class="input-img" accept="image/*" type='file' id="imgInp1" />
-            <button class="submit">Xác nhận thay đổi</button>
-            <script>
-                imgInp1.onchange = evt => {
-                    const [file] = imgInp1.files
-                    if (file) {
-                        blah1.src = URL.createObjectURL(file)
-                    }
-                }
-            </script>
-        </form>
-        <p class="title-edit">Ảnh đại diện</p>
-        <form class="edit-ava" runat="server">
-            <img id="blah2" src="../image/ava1.png" alt="your image" />
-            <input class="input-img" accept="image/*" type='file' id="imgInp2" />
-            <button class="submit">Xác nhận thay đổi</button>
-            <script>
-                imgInp2.onchange = evt => {
-                    const [file] = imgInp2.files
-                    if (file) {
-                        blah2.src = URL.createObjectURL(file)
-                    }
-                }
-            </script>
-        </form>
-        <form action="">
-            <p class="title-edit">Thông tin cá nhân</p>
-            <div class="list">
-                <i class="fa-solid fa-heart"></i>
-                <p class="content">Giới tính:</p>
-                <select class="list-sex" name="" id="">
-                    <option selected>Nam</option>
-                    <option>Nữ</option>
-                    <option>Khác</option>
-                </select>
-            </div>
-            <div class="list">
-                <i class="fa-solid fa-school"></i>
-                <p class="content">Trường học:</p>
-                <input class="list-school" placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice">
-
-                <datalist id="list-school">
-                    <option value="Trường Đại học Bách khoa, Đại học Đà Nẵng">
-                    <option value="Trường Đại học Kinh tế, Đại học Đà Nẵng">
-                    <option value="Trường Đại học Kiến trúc Đà Nẵng">
-                </datalist>
-            </div>
-            <div class="list">
-                <i class="fa-solid fa-cake-candles"></i>
-                <p class="content">Ngày sinh:</p>
-                <input type="date" value="2023-02-02" class="date">
-            </div>
-            <button class="submit">Xác nhận thay đổi</button>
-        </form>
-        <button class="exit" onclick="myFunction()">X</button>
-    </div>
-</div>
-<script>
-    function myFunction() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+<script src="<c:url value="/template/js/Calender.js"/>"></script>
 </body>
 </html>
 

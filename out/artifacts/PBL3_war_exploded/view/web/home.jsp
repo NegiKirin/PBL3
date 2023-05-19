@@ -23,20 +23,7 @@
 <div id="main">
     <div id="content">
         <div class="content-left">
-            <div class="content-calender">
-                <div class="calender-title">
-                    <p class="Lichcuaban">Lịch của bạn</p>
-                </div>
-                <button id="left" class="btn left">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button id="right" class="btn right">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-                <div class="calender">
-
-                </div>
-            </div>
+            <jsp:include page="/common/web/Calender.jsp"></jsp:include>
             <div class="content-list-meeting">
                 <p class="text">Lịch hẹn</p>
                 <p class="all"><a href="">Tất cả</a></p>
@@ -131,7 +118,7 @@
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
                                 </div>
                         </div>
-                        <a>
+                        <a href="<c:url value="/create-appointment"/> ">
                             <button class="add">
                                 <i class="fa-solid fa-gear"></i>
                             </button>
@@ -171,6 +158,7 @@
         </div>
     </div>
     <script src="<c:url value="/template/js/Home.js"/>"></script>
+    <script src="<c:url value="/template/js/Calender.js"/>"></script>
 <%--    <script type="text/javascript">
 
     </script>--%>

@@ -6,6 +6,7 @@
 
 html{
     font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
 }
 
 ul{
@@ -14,6 +15,11 @@ ul{
 
 body{
     background-color: #f5f5f5;
+    height: 100%;
+}
+
+#main{
+    height: 100%;
 }
 
 #header {
@@ -102,8 +108,9 @@ body{
     transform: scale(1.5);
     color: white;
 }
+
 #content {
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -161,110 +168,294 @@ body{
     font-weight: bold;
 }
 
-
-.vice-main,
 #content .content-main{
-    display: inlfline;
+    display: inline;
     width: 1000px;
     height: auto;
 }
 
-.vice-main .edit-infor-title,
 #content .content-main .content-main-title{
     display: block;
     text-align: center;
-    margin-top: 30px;
+    margin: 30px;
     font-size: 18px;
 }
-.create-appointment .your-calender{
-    position: absolute;
-    margin-left: 50px;
-    margin-top: 25px;
+
+.create-appointment{
+    display: flex;
+    flex-flow: row;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+    margin: 0 10px;
+    height: calc(100% - 152px);
+}
+
+.create-appointment .your-calendar{
+    width: 50%;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.create-appointment .title{
+    font-style: italic;
+    margin: 10px 0;
     font-weight: bold;
 }
-.create-appointment .create{
-    position: absolute;
-    margin-left: 500px;
-    margin-top: 25px;
-    font-weight: bold;
+
+.create-appointment .your-calendar .under-title{
+    padding: 10px;
+    box-shadow: 2px 3px 5px 0px #AAABAB;
+    border-radius: 10px;
+    height: calc(100% - 50px);
 }
-.create-appointment .date{
+
+.create-appointment .profile .background{
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.create-appointment .profile .avatar{
+    width: 130px;
+    height: 130px;
+    margin-left: calc(50% - 65px);
+    margin-top: -65px;
+    border-radius: 50%;
+}
+
+.create-appointment .your-calendar .content{
+    margin-top: 20px;
+}
+
+.create-appointment .your-calendar .content .item{
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding-top: 5px;
+    transition: 0.5s;
+}
+
+.create-appointment .your-calendar .content .item:hover{
+    border: solid 1px #d6d3da;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+}
+
+.create-appointment .your-calendar .content .item .date{
     color: #888888;
-    margin: 10px;
+    margin: 5px 10px;
 }
-.create-appointment .time{
+
+.create-appointment .your-calendar .content .item .date-content{
+    display: flex;
+    flex-flow: row;
+}
+
+.create-appointment .your-calendar .content .item .time{
     background-color: #e76f0d;
+    color: white;
     border-radius: 5px;
-    display: inline-block;
     padding: 5px;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     margin: 10px;
 }
-.create-appointment .address{
-    position: absolute;
-    top: 40px;
-    margin-left: 100px;
 
+.create-appointment .your-calendar .content .item .fa-location-dot{
+    margin: auto 0px;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-right: 10px;
 }
-.create-appointment .time-begin{
-    position: absolute;
-    top: 40px;
-    margin-left: 500px;
-    margin-top: 500px;
-    font-weight: bold;
 
+.create-appointment .your-calendar .content .item .address{
+    width: 170px;
+    margin: auto 0px;
 }
-.create-appointment .time-end{
-    position: absolute;
-    top: 40px;
-    margin-left: 500px;
-    margin-top: 530px;
-    font-weight: bold;
 
-}
-.create-appointment .palace{
-    position: absolute;
-    top: 40px;
-    margin-left: 510px;
-    margin-top: 565px;
-    font-weight: bold;
-
-}
-.create-appointment .text1{
-    width: 100px;
-    height: 25px;
+.create-appointment .your-calendar .content .item .delete{
+    height: 33px;
+    width: 43px;
     border-radius: 5px;
-    background-color: #dddddd;
     border: none;
-    padding: 5px;
-    color: #888888;
-    margin-left: 600px;
-    margin-top: 435px;
+    outline: none;
+    margin: auto 0;
+    transition: 0.25s;
+    cursor: pointer;
 }
-.create-appointment .text2{
-    width: 100px;
-    height: 25px;
-    border-radius: 5px;
-    background-color: #dddddd;
-    border: none;
-    padding: 5px;
-    color: #888888;
-    margin-left: 600px;
-    margin-top: 10px;
+
+.create-appointment .your-calendar .content .item .delete:hover{
+    background: #ff0000;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+    color: white;
+}
+
+.create-appointment .create-app{
+    padding: 0 10px;
+    width: 50%;
 
 }
-.create-appointment .text3{
-    width: 250px;
-    height: 25px;
+
+.create-app .content-calender{
+    background-color: #d9d9d94f;
     border-radius: 5px;
-    background-color: #dddddd;
-    border: none;
-    padding: 5px;
-    color: #888888;
-    margin-left: 600px;
-    margin-top: 10px;
+    margin: 12px;
+    padding: 0 13px;
+    position: relative;
+    padding-bottom: 15px;
+    font-size: 17px;
 }
+
+.create-app .content-calender table,
+.create-app .content-calender tbody{
+    width: 100%;
+}
+
+.create-app .calender-title p{
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+.create-app .content-calender .btn{
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    color: #8A8a8a;
+    border: none;
+    outline: none;
+}
+
+.create-app .content-calender .btn:hover{
+    transform: scale(1.2);
+    font-weight: bold;
+}
+
+.create-app .content-calender .btn.left{
+    right: 110px;
+}
+
+.create-app .content-calender .month,
+.create-app .content-calender .year,
+.create-app .content-calender .icon{
+    position: absolute;
+    top: 10px;
+    color: #8A8a8a;
+    font-weight: bold;
+    right: 34px;
+    font-size: 20px;
+    transition: 0.25s;
+}
+
+.create-app .content-calender .icon{
+    right: 83px;
+}
+
+.create-app .content-calender .month{
+    right: 93px;
+}
+
+.create-app .content-calender td{
+    text-align: center;
+    font-size: 16px;
+}
+
+.create-app .content-calender td a{
+    display: flex;
+    height: 36px;
+    width: 36px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.create-app .content-calender .tr_1{
+    font-weight: bold;
+}
+
+.create-app .content-calender a{
+    position: relative;
+    z-index: 2;
+}
+
+.CN{
+    color: #ff0000;
+}
+
+.gray{
+    color: #8a8a8a;
+}
+
+.green{
+    border: solid 1px #4CAF50;
+    display: block;
+    border-radius: 50%;
+}
+
+.green a{
+    color: black;
+    translate: 2px 0;
+    line-height: 28px;
+}
+
+.tr td:hover a{
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.black {
+    color: black;
+}
+
+.create-appointment .create-app .create-app-form .title{
+    display: inline-block;
+    font-style: normal;
+    margin-left: 10px;
+    width: 104px;
+}
+
+.create-appointment .create-app .create-app-form div:last-child{
+    margin-top: 40px;
+}
+
+.create-appointment .create-app .time-begin,
+.create-appointment .create-app .time-end,
+.create-appointment .create-app .location
+{
+    display: inline;
+    height: 30px;
+    width: 110px;
+    background: #8a8a8a;
+    border: none;
+    padding: 0 5px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+.create-appointment .create-app .list,
+.create-appointment .create-app .detail-location
+{
+    height: 30px;
+    width: 160px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: solid 2px #8A8a8a;
+    margin-top: 5px;
+}
+
+.create-appointment .create-app .detail-location{
+    width: 326px;
+    padding: 0 5px;
+    margin-left: 118px;
+}
+
 .create-appointment .button {
     position: absolute;
     width: 153px;
@@ -327,17 +518,7 @@ body{
 .infor-user{
     position: relative;
 }
-.create-appointment{
-    display: block;
-    width: 95%;
-    height: 650px;
-    background-color: white;
-    border-radius: 5px;
-    margin-left: 2.5%;
-    margin-bottom: 10px;
-    box-shadow: 2px 10px 5px rgba(0, 0, 0, 0.2);
 
-}
 .content-main-edit-infor .edit{
     cursor: pointer;
     position: absolute;
