@@ -52,11 +52,13 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                StringBuilder hql = new StringBuilder("from Appointment a where a.ending_time > :now");
+                StringBuilder hql = new StringBuilder("from Appointment a");
                 String dateMeeting = pageble.getSorter().getDateMeeting();
                 if(pageble.getSorter() != null){
                     if(dateMeeting != null){
-                            hql.append(" and a.dateMeeting = :today");
+                        hql.append(" where a.dateMeeting = :dateMeeting");
+                    } else {
+                        hql.append(" where a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now)");
                     }
                     hql.append(" order by a." + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy()+ "");
                 }
@@ -64,9 +66,14 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                 if(dateMeeting != null){
                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDateMeeting());
                     java.sql.Date dateSQL = new java.sql.Date(date.getTime());
+                    query.setParameter("dateMeeting",dateSQL);
+                } else {
+                    Date date = new Date(System.currentTimeMillis());
+                    java.sql.Date dateSQL = new java.sql.Date(date.getTime());
                     query.setParameter("today",dateSQL);
+                    query.setParameter("now",Time.valueOf(LocalTime.now()));
                 }
-                query.setParameter("now",Time.valueOf(LocalTime.now()));
+//                query.setParameter("now",Time.valueOf(LocalTime.now()));
                 results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
                 for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getHost().getId());
@@ -85,17 +92,17 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
     @Override
     public Integer count(Pageble pageble) {
-        StringBuilder hql = new StringBuilder("select count(*) from Appointment a");
+        StringBuilder hql = new StringBuilder("select count(*) from Appointment a where");
         String dateMeeting = pageble.getSorter().getDateMeeting();
         try {
-            if (dateMeeting == null) {
-                hql.append(" where a.dateMeeting >= :today");
-                Date date = new Date(System.currentTimeMillis());
-                java.sql.Date today = new java.sql.Date(date.getTime());
-                return count(hql.toString(),"today",today);
-            } else {
-                hql.append(" where a.dateMeeting == :today and a.ending_time > :now");
+            if (dateMeeting != null) {
+                hql.append(" a.dateMeeting = :dateMeeting");
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(pageble.getSorter().getDateMeeting());
+                java.sql.Date today = new java.sql.Date(date.getTime());
+                return count(hql.toString(),"dateMeeting",today);
+            } else {
+                hql.append(" a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now)");
+                Date date = new Date(System.currentTimeMillis());
                 java.sql.Date today = new java.sql.Date(date.getTime());
                 return count(hql.toString(),"today", today, "now", Time.valueOf(LocalTime.now()));
             }

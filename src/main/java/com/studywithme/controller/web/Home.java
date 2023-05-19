@@ -44,12 +44,12 @@ public class Home extends HttpServlet {
 		Pageble pageble = new PageRequest();
 		pageble = FormUtil.toModel(PageRequest.class, request);
 		pageble.setSorter(FormUtil.toModel(Sorter.class,request));
-
 		int totalPages = (int) Math.ceil((double) appointmentService.totalItem(pageble) / pageble.getMaxPageItem()) ;
 		String listFriend = request.getParameter("listFriend");
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
 		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
 		request.setAttribute("page",pageble.getPage());
+		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("appointments",appointmentService.pagingAppointment(pageble));
 		request.setAttribute("appointmentOf",appointmentService.findByHost(user));

@@ -71,7 +71,9 @@
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
                         <input type="hidden" value="" id="sortName" name="sortName">
                         <input type="hidden" value="" id="sortBy" name="sortBy">
-                        <input type="hidden" value="" id="dateMeeting" name="dateMeeting">
+                        <c:if test="${dateMeeting != null}">
+                            <input type="hidden" value="${dateMeeting}" id="dateMeeting" name="dateMeeting">
+                        </c:if>
                     </form>
             </div>
             </div>
@@ -166,8 +168,7 @@
         var totalPages = ${totalPages};
         var currentPage = ${page};
         var limit = 6;
-        var dateMeeting = document.getElementById("dateMeeting");
-        console.log(dateMeeting.defaultValue);
+        var dateMeeting = "";
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
@@ -179,7 +180,6 @@
                         $('#page').val(page);
                         $('#sortName').val('createdDate');
                         $('#sortBy').val('desc');
-                        $('#dateMeeting').val(dateMeeting.defaultValue);
                         $('#formPaging').submit();
                     }
                 }
