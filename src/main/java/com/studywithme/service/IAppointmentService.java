@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IAppointmentService {
     public List<Appointment> pagingAppointment(Pageble pageble);
-    public Integer totalItem();
+    public Integer totalItem(Pageble pageble);
     public List<Appointment> findByHost(User host);
     public List<Appointment> findByParticipants(User participant,String maxItem);
 }
