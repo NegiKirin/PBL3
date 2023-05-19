@@ -84,7 +84,6 @@ function update(month,year) {
 
 function calender(month,year){
     var calender = document.querySelector('.calender');
-    console.log(calender);
     var calenderHTML = `<p class="month">${month}</p><p class="icon" >/</p> <p class="year">${year}</p> <table><tr class="tr_1"><td class="CN">CN</td><td>T2</td><td>T3</td><td>T4</td><td>T5</td><td>T6</td><td>T7</td>`;
     var today = update(month,year);
     for(var i = 0; i < today.length; i++){

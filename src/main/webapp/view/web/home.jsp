@@ -166,8 +166,8 @@
         var totalPages = ${totalPages};
         var currentPage = ${page};
         var limit = 6;
-        var dateMeeting = ${dateMeeting};
         var dateMeeting = document.getElementById("dateMeeting");
+        console.log(dateMeeting.defaultValue);
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
@@ -179,7 +179,7 @@
                         $('#page').val(page);
                         $('#sortName').val('createdDate');
                         $('#sortBy').val('desc');
-                        $('#dateMeeting').val(dateMeeting)
+                        $('#dateMeeting').val(dateMeeting.defaultValue);
                         $('#formPaging').submit();
                     }
                 }
