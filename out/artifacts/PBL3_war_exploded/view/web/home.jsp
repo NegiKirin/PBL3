@@ -13,6 +13,7 @@
                 integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>--%>
     <link rel="icon" href="<c:url value="/template/image/Study1.png"/>" type="image/icon type">
     <link rel="stylesheet" href="<c:url value="/template/css/home.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
@@ -161,6 +162,7 @@
     </div>
     <script src="<c:url value="/template/js/Home.js"/>"></script>
     <script src="<c:url value="/template/js/Calender.js"/>"></script>
+    <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <%--    <script type="text/javascript">
 
     </script>--%>

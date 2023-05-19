@@ -10,6 +10,7 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value="/template/css/edit-profile.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src='<c:url value="/template/js/JQProfile.js"/>'> </script>
 </head>
@@ -280,6 +281,10 @@
                             </div>
                         </div>--%>
                     </div>
+                    <div class="chance-password">
+                        <p class="title-chance-password">Thay đổi mật khẩu tài khoản</p>
+                        <button class="chance"><i class="fa-solid fa-pen-to-square"></i>Thay đổi</button>
+                    </div>
                 </div>
             </div>
             <div class="content-right">
@@ -357,6 +362,21 @@
             <button class="exit">X</button>
         </div>
     </div>
+
+    <%--div thay doi mat khau--%>
+    <div class="div-chance-pwd hide">
+        <div class="chance-pwd">
+            <p class="title">Thay đổi mật khẩu</p>
+            <form class="chance-pwd-form">
+                <input class="input" type="text" placeholder="Nhập mật khẩu hiện tại">
+                <input class="input" type="text" placeholder="Nhập mật khẩu mới">
+                <input class="input" type="text" placeholder="Nhập lại mật khẩu mới">
+                <input class="submit" type="submit" value="XÁC NHẬN">
+            </form>
+            <button class="exit">X</button>
+        </div>
+    </div>
+    <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script src="<c:url value="/template/js/Profile.js"/>"></script>
 </body>
 </html>

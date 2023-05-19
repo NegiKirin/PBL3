@@ -27,3 +27,5 @@ var time = document.querySelectorAll("#content .content-main .content-main-list 
 time.forEach(function (element) {
     element.innerHTML = timeStr(element.getAttribute("startTime")) + ' - ' + timeStr(element.getAttribute("endTime"));
 })
+
+

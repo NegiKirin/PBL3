@@ -103,3 +103,15 @@ for(var j = 0; j < length; j++){
         groupStar[j].childNodes[i].classList.add('checked');
     }
 }
+
+var chancePwd =document.querySelector('.chance-password .chance')
+var exitChancePwd = document.querySelector('.chance-pwd .exit')
+var divChancePwd = document.querySelector('.div-chance-pwd')
+
+chancePwd.addEventListener('click', function (){
+    divChancePwd.classList.remove('hide')
+})
+
+exitChancePwd.addEventListener('click', function (){
+    divChancePwd.classList.add('hide')
+})

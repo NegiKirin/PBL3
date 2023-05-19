@@ -10,6 +10,7 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value="/template/css/create_appointment.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
 </head>
 <body>
 <div id="main">
@@ -122,6 +123,7 @@
     </div>
 </div>
 <script src="<c:url value="/template/js/Calender.js"/>"></script>
+<script src="<c:url value="/template/js/navbar.js"/>"></script>
 </body>
 </html>
 

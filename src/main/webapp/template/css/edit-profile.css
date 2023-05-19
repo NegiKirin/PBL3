@@ -16,92 +16,6 @@ body{
     background-color: #f5f5f5;
 }
 
-#header {
-    height: 46px;
-    background-color: #18C0e6;
-}
-
-#header .header-info-user{
-    display: inline-block;
-    height: 46px;
-    background-color: #fff;
-    width: 260px;
-}
-
-#header .header-info-user img{
-    float:left;
-    border-radius: 50%;
-    height: 38px;
-    margin: 5px 10px 5px 20px;
-}
-
-#header .header-info-user a{
-    height: 46px;
-    text-decoration: none;
-    color: #000;
-    display: inline-block;
-    line-height: 46px;
-    font-weight: bold;
-}
-
-#header .header-info-user i{
-    float: right;
-    line-height: 46px;
-    padding-right: 15px;
-}
-
-#header .header-main{
-    height: 46px;
-    display: inline-flex;
-    justify-content: center;
-    width: calc(100% - 260px - 259px );
-    min-width: 65%;   
-    position:absolute;
-    padding: 0 20%;
-}
-
-#header .header-main li{
-    list-style: none;
-    display: inline-flex;
-}
-
-#header .header-main button{
-    padding: 10px 30px 9px 30px;
-    border-radius: 5px;
-    border: 0px;
-    margin-top: 4px;
-    background-color: #fff;
-}
-#header .header-main button:hover{
-    transform: scale(1.2);
-}
-
-
-#header .header-main i{
-    font-size: 20px;
-}
-
-#header .header-main .header-main-mainbutton{
-    margin: 0 100px;
-    margin-top: 4px;
-}
-
-#header .header-noti {
-    display: inline-block;
-    float: right;
-    line-height: 46px;
-    margin: 0 20px;
-}
-
-#header .header-noti a{
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-}
-#header .header-noti a:hover{
-    transform: scale(1.5);
-    color: white;
-}
 #content {
     height: auto;
     display: flex;
@@ -184,7 +98,8 @@ body{
     box-shadow:  3px 3px 5px 0px #aaaaaa;
     margin-bottom: 50px;
     margin-top: 20px;
-    border-radius: 25px;
+    border-radius: 10px;
+    padding-bottom: 20px;
 }
 
 .content-main-edit-infor .ava
@@ -200,7 +115,7 @@ body{
 
 .content-main-edit-infor .background{
     width: 100%;
-    border-radius: 25px;
+    border-radius: 10px;
     object-fit: cover;
     height: 300px;
 }
@@ -212,18 +127,33 @@ body{
     margin-top: 20px;
 }
 
-.infor-user{
+.infor-user,
+.list-apm,
+.chance-password{
     position: relative;
+    margin: 20px;
+    padding: 20px 0;
+}
+
+.infor-user::after,
+.list-apm::after{
+    content: "";
+    background: #e4e1e8;
+    height: 3px;
+    width: 848px;
+    border-radius: 50px;
+    display: block;
+    translate: 40px 44px;
 }
 
 .vice-main .edit-infor .title-edit,
 .infor-user .title-infor-user,
-.list-apm .title-list-apm
+.list-apm .title-list-apm,
+.chance-password .title-chance-password
 {
     display: block;
     width: 100%;
     margin-left: 45px;
-    margin-top: 40px;
     font-weight: bold;
     font-size: 20px;
 }
@@ -258,11 +188,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.content-main-edit-infor .edit{
+.content-main-edit-infor .edit,
+.chance-password .chance{
     cursor: pointer;
     position: absolute;
-    top: 0;
-    right: 50px;
+    top: 20px;
+    right: 30px;
     background-color: #e7e7e7;
     border: none;
     padding: 5px 15px;
@@ -273,22 +204,19 @@ body{
 }
 
 .vice-main .edit-infor i,
-.content-main-edit-infor .edit i{
+.content-main-edit-infor .edit i,
+.chance-password .chance i{
     margin-right: 5px;
 }
 
-.content-main-edit-infor .edit:hover{
+.content-main-edit-infor .edit:hover,
+.chance-password .chance:hover{
     background-color: #d5d5d5;
 }
 
-.content-main-edit-infor .edit:active{
+.content-main-edit-infor .edit:active,
+.chance-password .chance:active{
     font-size: 15px;
-}
-
-.content-main-edit-infor .list-apm{
-    display: flow-root;
-    padding-bottom: 30px;
-
 }
 
 .list-apm .item-apm{
@@ -576,6 +504,105 @@ i.checked{
     font-size: 12px;
 }
 
+.div-chance-pwd{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    background: rgba(0, 0, 0, 70%);
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-chance-pwd .chance-pwd{
+    display: block;
+    background: white;
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.div-chance-pwd .chance-pwd .title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form{
+    padding: 20px 50px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form .input{
+    margin-bottom: 30px;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 3px 3px 5px 0px #888888;
+    height: 50px;
+    transition: 0.25s;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form .input::placeholder{
+    color: #d6d3da;
+    font-style: italic;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form .input:hover{
+    border: solid 1px #8A8a8a;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form .submit{
+    height: 40px;
+    width: 100px;
+    border: none;
+    outline: none;
+    background: #0fb8de;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.25s;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form .submit:hover{
+    background: #0aa0c2;
+}
+
+.div-chance-pwd .exit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 26px;
+    width: 35px;
+    border-radius: 7px;
+    font-weight: bold;
+    background: #e84655;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.div-chance-pwd .exit:hover{
+    transform: scale(1.2);
+}
+
+.hide{
+    display: none;
+}
+
 @media only screen and (max-width:63.9375em){
 	#content .content-left{
 	display: none;}
@@ -585,7 +612,6 @@ i.checked{
 	display: none;}
     #header .header-noti {
         display: none;
-        
     }
     #header .header-main{
         width: 100%;

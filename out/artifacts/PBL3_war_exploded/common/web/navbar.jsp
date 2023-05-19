@@ -1,13 +1,13 @@
 <%@include file="/common/taglib.jsp" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <c:if test="${user==null}">
 	<c:redirect url="/login"></c:redirect>
 </c:if>
 <div id="header">
     <div class="header-info-user">
         <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar"/>
-        <a href="<c:url value="/profile?id=${user.id}"/>"><p class="header-info-user-name"> ${user.fullName} </p><i
-                class="fa-solid fa-user-pen"></i></a>
+        <a href="<c:url value="/profile?id=${user.id}"/>"><p class="header-info-user-name"> ${user.fullName} </p></a>
     </div>
 
     <div class="header-main">
@@ -30,7 +30,25 @@
         </a></li>
     </div>
     <div class="header-noti">
-        <a href=""> <i class="fa-sharp fa-regular fa-bell"></i>
-        </a>
+        <button class="noti-btn">
+            <i class="fa-sharp fa-regular fa-bell"></i>
+        </button>
+        <button class="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="header-menu hide" id="header-menu">
+            <a class="item">
+                Đăng xuất
+            </a>
+            <a class="item" href="<c:url value="/profile?id=${user.id}"/>">
+                Thay đổi thông tin tài khoản
+            </a>
+            <a class="item">
+                Đánh giá các cuộc hẹn
+            </a>
+            <a class="item" href="<c:url value="/list-friends"/> ">
+                Xem danh sách bạn bè
+            </a>
+        </div>
     </div>
 </div>

@@ -22,93 +22,6 @@ body{
     height: 100%;
 }
 
-#header {
-    height: 46px;
-    background-color: #18C0e6;
-}
-
-#header .header-info-user{
-    display: inline-block;
-    height: 46px;
-    background-color: #fff;
-    width: 260px;
-}
-
-#header .header-info-user img{
-    float:left;
-    border-radius: 50%;
-    height: 38px;
-    margin: 5px 10px 5px 20px;
-}
-
-#header .header-info-user a{
-    height: 46px;
-    text-decoration: none;
-    color: #000;
-    display: inline-block;
-    line-height: 46px;
-    font-weight: bold;
-}
-
-#header .header-info-user i{
-    float: right;
-    line-height: 46px;
-    padding-right: 15px;
-}
-
-#header .header-main{
-    height: 46px;
-    display: inline-flex;
-    justify-content: center;
-    width: calc(100% - 260px - 259px );
-    min-width: 65%;
-    position:absolute;
-    padding: 0 20%;
-}
-
-#header .header-main li{
-    list-style: none;
-    display: inline-flex;
-}
-
-#header .header-main button{
-    padding: 10px 30px 9px 30px;
-    border-radius: 5px;
-    border: 0px;
-    margin-top: 4px;
-    background-color: #fff;
-}
-#header .header-main button:hover{
-    transform: scale(1.2);
-}
-
-
-#header .header-main i{
-    font-size: 20px;
-}
-
-#header .header-main .header-main-mainbutton{
-    margin: 0 100px;
-    margin-top: 4px;
-}
-
-#header .header-noti {
-    display: inline-block;
-    float: right;
-    line-height: 46px;
-    margin: 0 20px;
-}
-
-#header .header-noti a{
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-}
-#header .header-noti a:hover{
-    transform: scale(1.5);
-    color: white;
-}
-
 #content {
     height: 100%;
     display: flex;
@@ -190,6 +103,8 @@ body{
     box-shadow: 3px 3px 5px 0px #aaaaaa;
     margin: 0 10px;
     height: calc(100% - 152px);
+    min-width: 980px;
+    min-height: 608px;
 }
 
 .create-appointment .your-calendar{
@@ -474,64 +389,6 @@ body{
 .create-appointment .button:hover{
     background: #0aa0c2;
 }
-
-
-.vice-main .edit-infor,
-#content .content-main .content-main-edit-infor{
-    position: absolute;
-    background-color: #fff;
-    height: 550px;
-    width: 450px;
-    margin-left: 1%;
-    box-shadow:  3px 3px 5px 0px #aaaaaa;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    border-radius: 5px;
-}
-
-.content-main-edit-infor .ava
-{
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    margin-left: calc(50% - 90px);
-    margin-top: -100px;
-    border: 1px solid #c4c4c4;
-    object-fit: cover;
-}
-
-.content-main-edit-infor .background{
-    width: 100%;
-    border-radius: 5px;
-    object-fit: cover;
-    height: 200px;
-}
-
-.content-main-edit-infor .name{
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.infor-user{
-    position: relative;
-}
-
-.content-main-edit-infor .edit{
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 50px;
-    background-color: #e7e7e7;
-    border: none;
-    padding: 5px 15px;
-    font-weight: bold;
-    color: #000000;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
 
 #content .content-right {
     height: 100%;
