@@ -83,6 +83,14 @@ function update(month,year) {
 }
 
 function calender(month,year){
+    var href = document.getElementById('href').defaultValue;
+    var dateMeetingElement = document.getElementById('dateMeeting');
+    var dateMeeting = [];
+    if (dateMeetingElement){
+        dateMeeting = dateMeetingElement.defaultValue.split('-');
+    } else {
+        dateMeeting = [0,0,0];
+    }
     var calender = document.querySelector('.calender');
     var calenderHTML = `<p class="month">${month}</p><p class="icon" >/</p> <p class="year">${year}</p> <table><tr class="tr_1"><td class="CN">CN</td><td>T2</td><td>T3</td><td>T4</td><td>T5</td><td>T6</td><td>T7</td>`;
     var today = update(month,year);
@@ -91,25 +99,53 @@ function calender(month,year){
         calenderHTML+='<tr class="tr">';
         for(var j = 0; j < row.length; j++){
             if((i <= 1) && row[j] > 15) {
+                var pMonth = month;
+                var pYear = year;
+                if(pMonth == 1){
+                    pMonth = 12;
+                    pYear -= 1;
+                } else {
+                    pMonth -=1;
+                }
+                if (Number.parseInt(dateMeeting[0]) == pYear && Number.parseInt(dateMeeting[1]) == (pMonth) && Number.parseInt(dateMeeting[2]) == row[j]) {
+                    calenderHTML+= `<td class = "day-chose"> <a href="${href}&dateMeeting=${pYear}-${pMonth}-${row[j]}">${row[j]}</a> </td>`;
+                    continue;
+                }
                 if(checkDate(year, month - 1, row[j])){
-                    calenderHTML+= '<td class = "green"> <a href="">' + row[j] + '</a> </td>';
+                    calenderHTML+= `<td class = "green"> <a href="${href}&dateMeeting=${pYear}-${pMonth}-${row[j]}">${row[j]}</a> </td>`;
                 }else{
-                    calenderHTML+= '<td> <a href="" class = "gray">' + row[j] + '</a> </td>';
+                    calenderHTML+= `<td> <a class = "gray" href="${href}&dateMeeting=${pYear}-${pMonth}-${row[j]}">${row[j]}</a> </td>`;
                 }
             } else if ((i >= today.length - 2) && row[j] < 15){
+                var pMonth = month;
+                var pYear = year;
+                if(pMonth == 12){
+                    pMonth = 1;
+                    pYear += 1;
+                } else {
+                    pMonth +=1;
+                }
+                if (Number.parseInt(dateMeeting[0]) == pYear && Number.parseInt(dateMeeting[1]) == (pMonth) && Number.parseInt(dateMeeting[2]) == row[j]) {
+                    calenderHTML+= `<td class = "day-chose"> <a href="${href}&dateMeeting=${pYear}-${pMonth}-${row[j]}">${row[j]}</a> </td>`;
+                    continue;
+                }
                 if(checkDate(year, month + 1, row[j])){
-                    calenderHTML+= '<td class = "green"> <a href="" >' + row[j] + '</a> </td>';
+                    calenderHTML+= `<td class = "green"> <a href="${href}&dateMeeting=${pYear}-${pMonth}-${row[j]}" >${row[j]}</a> </td>`;
                 }else{
-                    calenderHTML+= '<td> <a href="" class = "gray">' + row[j] + '</a> </td>';
+                    calenderHTML+= `<td> <a class = "gray" href="${href}&dateMeeting=${pYear}-${pMonth}-${row[j]}">${row[j]}</a> </td>`;
                 }
             } else {
+                if (Number.parseInt(dateMeeting[0]) == year && Number.parseInt(dateMeeting[1]) == month && Number.parseInt(dateMeeting[2]) == row[j]) {
+                    calenderHTML+= `<td class = "day-chose"> <a href="${href}&dateMeeting=${year}-${month}-${row[j]}">${row[j]}</a> </td>`;
+                    continue;
+                }
                 if(checkDate(year, month, row[j])){
-                    calenderHTML+= '<td class = "green"> <a href="">' + row[j] + '</a> </td>';
+                    calenderHTML+= `<td class = "green"> <a href="${href}&dateMeeting=${year}-${month}-${row[j]}">${row[j]}</a> </td>`;
                 } else {
                     if(j==0){
-                        calenderHTML+= '<td> <a href="" class="CN">' + row[j] + '</a> </td>';
+                        calenderHTML+= `<td> <a href="${href}&dateMeeting=${year}-${month}-${row[j]}" class="CN">${row[j]}</a> </td>`;
                     }
-                    else calenderHTML+= '<td> <a href="" class = "black">' + row[j] + '</a> </td>';
+                    else calenderHTML+= `<td> <a href="${href}&dateMeeting=${year}-${month}-${row[j]}" class = "black">${row[j]}</a> </td>`;
                 }
             }
         }
@@ -118,9 +154,6 @@ function calender(month,year){
     calenderHTML+='</table>'
     calender.innerHTML = calenderHTML;
 }
-
-var date = new Date();
-calender(date.getMonth() + 1, date.getFullYear());
 
 function checkDate(year,month,day){
     var dateAppointmentArr = [];
@@ -160,4 +193,14 @@ buttonRight.onclick = function (e) {
 
 function getDate(date){
     return date.split(' ')[0];
+}
+
+var dateMeetingElement = document.getElementById('dateMeeting');
+var dateMeeting = [];
+if (dateMeetingElement){
+    dateMeeting = dateMeetingElement.defaultValue.split('-');
+    calender(Number.parseInt(dateMeeting[1]), Number.parseInt(dateMeeting[0]));
+} else {
+    var date = new Date();
+    calender(date.getMonth() + 1, date.getFullYear());
 }
