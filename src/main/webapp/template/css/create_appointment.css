@@ -420,8 +420,8 @@ body{
     width: 104px;
 }
 
-.create-appointment .create-app .create-app-form div:last-child{
-    margin-top: 40px;
+.create-appointment .create-app .create-app-form .item.last{
+    margin-top: 10px;
 }
 
 .create-appointment .create-app .time-begin,
@@ -456,24 +456,23 @@ body{
     margin-left: 118px;
 }
 
-.create-appointment .button {
-    position: absolute;
-    width: 153px;
+.create-appointment .button{
+    width: 150px;
     height: 42px;
-    left: 1000px;
-    top: 670px;
-    font-family: 'Roboto';
-
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #FFFFFF;
+    color: white;
     background-color: #18C0e6;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
+    margin-left: calc(100% - 160px);
+    margin-top: 25px;
+    transition: 0.25s;
+}
+
+.create-appointment .button:hover{
+    background: #0aa0c2;
 }
 
 

@@ -96,7 +96,7 @@
                             <p class = "title">Giờ kết thúc:</p>
                             <input type="time" class="time-end" value="00:00">
                         </div>
-                        <div class="item">
+                        <div class="item last">
                             <p class = "title">Địa điểm:</p>
                             <select class="list-district list" id="list-district" name="district">
                                 <option value="" selected disabled hidden>Chọn quận/huyện</option>
