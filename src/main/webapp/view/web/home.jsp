@@ -32,7 +32,7 @@
                     <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
                     <p class="with">Với</p>
                     <p class="name">Tran Le Nguyen</p>
-                    <input type="hidden" value="2023-05-15 15:22:19.0" name="date">
+                    <input type="hidden" value="2023-05-20 15:22:19.0" name="date">
                 </div>
                 <div class="content-left-item">
                     <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="item">
                                     <p class="date">07/05/2023</p>
-                                    <p class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
+                                    <p class="time" starttime="2023-05-18 15:22:19.0" endtime="2023-05-15 19:22:13.0">
                                         15:20 PM - 19:20 PM
                                     </p>
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
