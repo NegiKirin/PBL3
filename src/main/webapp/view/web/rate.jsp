@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
+    <script src="rate.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./rate.css">
 </head>
 <body>
@@ -64,37 +65,79 @@
         </div>
         <div class="content-main">
             <h1 class="content-main-title">Thực hiện đánh giá</h1>
-            <div>
-                <div class = "crete-rate">
+
+            <div class = "crete-rate">
+                <div class="scrollable-container">
                     <div class="list-rate">
                         <div class="rate">
-                            <p class="ID">ID: SNVV0405</p>
-                            <p class="time-date">Bắt đầu vào: 8 A.M - 9 A.M 08/03/2023</p>
-                            <p class="address">Địa chỉ: <i class="fa-solid fa-location-dot"></i> 60 Nguyen Luong Bang</p>
-                            <button id="myButton" class="show-button"><i class="fa-solid fa-chevron-down"></i></i></button>
-                            <div id="myDiv" class="form">
-                                <div class="list">
-                                    <p class="member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <div class="list">
-                                    <p class="member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <div class="list">
-                                    <p class="member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <button class="rate-button"><i class="fa-solid fa-star"></i> ĐÁNH GIÁ</button>
-                                <script>
-                                    document.getElementById("myButton").addEventListener("click", function() {
-                                        var myDiv = document.getElementById("myDiv");
-                                        myDiv.classList.toggle("form");
+                            <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
+                            <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
+                            <button class="show-button" title="Xem thành viên"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                        </div>
+                        <div class="list" id="myElement">
+                            <p class="content-list">Danh sách thành viên:</p>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
 
-                                        if (myDiv.classList.contains("form")) {
-                                            myDiv.style.backgroundColor = "#f0f0f0";
-                                        } else {
-                                            myDiv.style.backgroundColor = ""; // Hoặc giá trị màu nền mặc định của bạn
-                                        }
-                                    });
-                                </script>
+                            <div class="abc">
+                                <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
+                                <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-rate">
+                        <div class="rate">
+                            <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
+                            <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
+                            <button class="show-button" title="Xem thành viên"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                        </div>
+                        <div class="list" id="myElement">
+                            <p class="content-list">Danh sách thành viên:</p>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="abc">
+                                <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
+                                <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-rate">
+                        <div class="rate">
+                            <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
+                            <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
+                            <button class="show-button" title="Xem thành viên"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                        </div>
+                        <div class="list" id="myElement">
+                            <p class="content-list">Danh sách thành viên:</p>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="member">
+                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="abc">
+                                <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
+                                <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
                             </div>
                         </div>
                     </div>
@@ -196,7 +239,7 @@
         }
     }
 </script>
+<script></script>
 </body>
 </html>
-
 
