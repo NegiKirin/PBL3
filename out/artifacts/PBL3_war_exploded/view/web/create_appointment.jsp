@@ -14,7 +14,6 @@
 </head>
 <body>
 <div id="main">
-    <input type="hidden" value="<c:url value="/create-appointment"/>" id="href">
     <jsp:include page="/common/web/navbar.jsp"></jsp:include>
     <div id="content">
         <div class="content-left">
@@ -89,9 +88,6 @@
                 <div class="create-app">
                     <p class = "title">Tạo mới các lịch hẹn</p>
                     <jsp:include page="/common/web/Calender.jsp"></jsp:include>
-                    <c:if test="${dateMeeting != null}">
-                        <input type="hidden" value="${dateMeeting}" id="dateMeeting" name="dateMeeting">
-                    </c:if>
                     <form class="create-app-form">
                         <div class="item">
                             <p class = "title">Giờ bắt đầu:</p>

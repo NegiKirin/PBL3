@@ -133,16 +133,6 @@ html body{
     border-radius: 50%;
 }
 
-.day-chose{
-    background: #4CAF50;
-    border-radius: 50%;
-    font-weight: bold;
-}
-
-.day-chose a{
-    color: white;
-}
-
 .tr td:hover a{
     color: white;
     font-weight: bold;
