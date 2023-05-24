@@ -247,7 +247,12 @@ body{
     font-size: 15px;
 }
 .fa-caret-down{
+    margin-left: 5px;
     padding-left: 5px;
+    transition: transform 0.3s ease;
+}
+.fa-caret-down.rotate {
+    transform: rotate(180deg);
 }
 .crete-rate .rate .show-button:hover {
     transform: scale(1.1);
@@ -262,7 +267,7 @@ body{
     padding-left: 5px;
 }
 .crete-rate .list{
-    display: inline-block;
+    display: none;
     margin-top: 5px;
     width: 100%;
     height: auto;
@@ -305,7 +310,10 @@ body{
     margin-left: 40%;
     border-radius: 15px;
     box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
-
+}
+.accept-button:hover{
+    transition: 0.25;
+    transform: scale(1.1);
 }
 .denied-button{
     display: inline;
@@ -318,13 +326,17 @@ body{
     border-radius: 15px;
     box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
 }
+.denied-button:hover{
+    transition: 0.25;
+    transform: scale(1.1);
+}
 .abc{
     display: block;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 .scrollable-container {
-    height: 300px; /* Đặt chiều cao của khu vực cuộn */
+    height: 100%; /* Đặt chiều cao của khu vực cuộn */
     overflow: auto; /* Kích hoạt cuộn */
 }
 
