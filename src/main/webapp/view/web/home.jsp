@@ -122,7 +122,7 @@
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
                                 </div>
                         </div>
-                        <a href="<c:url value="/create-appointment"/> ">
+                        <a href="<c:url value="/createAppointment"/> ">
                             <button class="add">
                                 <i class="fa-solid fa-gear"></i>
                             </button>

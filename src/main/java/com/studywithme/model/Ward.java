@@ -18,6 +18,9 @@ public class Ward extends AbstractModel{
 
     public Ward() {
     }
+    public Ward(Integer id) {
+        this.id = id;
+    }
 
     public Ward(String ward, District district) {
         this.ward = ward;

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="main">
-    <input type="hidden" value="<c:url value="/create-appointment"/>" id="href">
+    <input type="hidden" value="<c:url value="/createAppointment?"/>" id="href">
     <jsp:include page="/common/web/navbar.jsp"></jsp:include>
     <div id="content">
         <div class="content-left">
@@ -88,35 +88,63 @@
                 </div>
                 <div class="create-app">
                     <p class = "title">Tạo mới các lịch hẹn</p>
-                    <jsp:include page="/common/web/Calender.jsp"></jsp:include>
-                    <c:if test="${dateMeeting != null}">
-                        <input type="hidden" value="${dateMeeting}" id="dateMeeting" name="dateMeeting">
-                    </c:if>
-                    <form class="create-app-form">
+                    <form class="create-app-form" method="post" action="createAppointment">
+                        <jsp:include page="/common/web/Calender.jsp"></jsp:include>
+                        <label class="error"><p id="errorDate"></p></label>
+                        <c:if test="${dateMeeting != null}">
+                            <input type="hidden" value="${dateMeeting}" id="dateMeeting" name="dateMeeting">
+                        </c:if>
                         <div class="item">
                             <p class = "title">Giờ bắt đầu:</p>
-                            <input type="time" class="time-begin"value="00:00">
+                            <input type="time" class="time-begin" name="startTime" value="00:00">
                         </div>
                         <div class="item">
                             <p class = "title">Giờ kết thúc:</p>
-                            <input type="time" class="time-end" value="00:00">
+                            <input type="time" class="time-end" name="endTime" value="00:00">
                         </div>
+                        <label class="error"><p id="errorTime"></p></label>
+                        <select class="list" id="max" name="max">
+                            <option selected hidden disabled>Số người tối đa</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                        <select class="list" id="addressType" name="addressType">
+                            <option disabled selected hidden>Chọn địa điểm</option>
+                            <c:if test="${addressTypes != null}">
+                                <c:forEach items="${addressTypes}" var="addressType">
+                                    <option value="${addressType.id}">${addressType.type}</option>
+                                </c:forEach>
+                            </c:if>
+                        </select>
                         <div class="item last">
                             <p class = "title">Địa điểm:</p>
-                            <select class="list-district list" id="list-district" name="district">
-                                <option value="" selected disabled hidden>Chọn quận/huyện</option>
-                                <option>Liên Chiểu</option>
-                                <option>Hải Châu</option>
-                                <option>Sơn Trà</option>
+                            <select class="list-district list" id="list-district" name="district" required="required">
+                                <option selected disabled hidden>Chọn quận/huyện</option>
+                                <c:if test="${districts != null}">
+                                    <c:forEach var="district" items="${districts}">
+                                        <option value="${district.district}">${district.district}</option>
+                                    </c:forEach>
+                                </c:if>
                             </select>
-                            <select class="list-ward list" id="list-ward" name="ward">
-                                <option value="" selected disabled hidden>Chọn phường/xã</option>
-                                <option>Hòa Khánh Bắc</option>
-                                <option>Hòa Khánh Nam</option>
+                            <select class="list-ward list" id="list-ward" name="ward" required="required">
+                                <option selected disabled hidden>Chọn phường/xã</option>
+                                <c:if test="${districts != null}">
+                                    <c:forEach var="district" items="${districts}">
+                                        <c:forEach var="ward" items="${district.wards}">
+                                            <option district="${district.district}" value="${ward.id}">${ward.ward}</option>
+                                        </c:forEach>
+                                    </c:forEach>
+                                </c:if>
                             </select>
-                            <input class="detail-location" type="text" placeholder="Nhập số nhà và tên đường">
+                            <label class="error"><p id="errorAddress"></p></label>
+                            <input class="detail-location" type="text" placeholder="Nhập số nhà và tên đường" required="required" name="address">
                         </div>
-                        <button class="button" type="submit">TẠO NGAY</button>
+                        <button class="button" type="button">TẠO NGAY</button>
                     </form>
                 </div>
             </div>
@@ -128,6 +156,7 @@
 </div>
 <script src="<c:url value="/template/js/Calender.js"/>"></script>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
+<script src="<c:url value="/template/js/CreateAppointment.js"/>"></script>
 </body>
 </html>
 

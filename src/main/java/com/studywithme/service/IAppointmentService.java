@@ -11,4 +11,5 @@ public interface IAppointmentService {
     public Integer totalItem(Pageble pageble);
     public List<Appointment> findByHost(User host);
     public List<Appointment> findByParticipants(User participant,String maxItem);
+    public Appointment createAppointment(String dateMeetingStr, String startTimeStr, String endTimeStr,String max, String address, String idAddressType, String idWard, User host);
 }
