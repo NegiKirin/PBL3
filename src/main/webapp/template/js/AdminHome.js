@@ -1,4 +1,4 @@
-var itemUser = document.querySelector('.content-list-user .item')
+var itemUser = document.querySelectorAll('.content-list-user .item')
 var detailDiv = document.querySelector('.detail-div')
 var exitDetailDiv = document.querySelector('.detail-div .exit')
 
