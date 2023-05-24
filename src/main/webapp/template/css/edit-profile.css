@@ -128,15 +128,13 @@ body{
 }
 
 .infor-user,
-.list-apm,
-.chance-password{
+.list-apm{
     position: relative;
     margin: 20px;
     padding: 20px 0;
 }
 
-.infor-user::after,
-.list-apm::after{
+.infor-user::after{
     content: "";
     background: #e4e1e8;
     height: 3px;
@@ -148,8 +146,7 @@ body{
 
 .vice-main .edit-infor .title-edit,
 .infor-user .title-infor-user,
-.list-apm .title-list-apm,
-.chance-password .title-chance-password
+.list-apm .title-list-apm
 {
     display: block;
     width: 100%;
@@ -160,6 +157,7 @@ body{
 
 
 .vice-main .edit-infor .list,
+.chance-password .list,
 .content-main-edit-infor .item{
     display: flex;
     margin: 20px 0;
@@ -174,7 +172,8 @@ body{
 }
 
 .vice-main .edit-infor .list .content,
-.content-main-edit-infor .item .title{
+.content-main-edit-infor .item .title,
+.chance-password .content{
     font-weight: bold;
     width: 150px;
 }
@@ -188,8 +187,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.content-main-edit-infor .edit,
-.chance-password .chance{
+.content-main-edit-infor .edit{
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -204,18 +202,15 @@ body{
 }
 
 .vice-main .edit-infor i,
-.content-main-edit-infor .edit i,
-.chance-password .chance i{
+.content-main-edit-infor .edit i{
     margin-right: 5px;
 }
 
-.content-main-edit-infor .edit:hover,
-.chance-password .chance:hover{
+.content-main-edit-infor .edit:hover{
     background-color: #d5d5d5;
 }
 
-.content-main-edit-infor .edit:active,
-.chance-password .chance:active{
+.content-main-edit-infor .edit:active{
     font-size: 15px;
 }
 
@@ -437,10 +432,15 @@ i.checked{
     font-weight: bold;
     color: #fff;
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .vice-main .edit-infor .submit:hover{
     opacity: 1;
+}
+
+.chance-password .submit:hover{
+    background: #0fb8de;
 }
 
 
@@ -484,7 +484,7 @@ i.checked{
 .vice-main .edit-infor .exit{
     cursor: pointer;
     position: absolute;
-    background-color: #aaaaaa;
+    background-color: #e84655;
     border: none;
     height: 30px;
     width: 50px;
@@ -494,6 +494,11 @@ i.checked{
     font-size: 20px;
     top: 10px;
     right: 10px;
+    color: white;
+}
+
+.vice-main .edit-infor .exit:hover{
+    transform: scale(1.2);
 }
 
 .list-rate-apm {
@@ -519,7 +524,7 @@ i.checked{
     display: block;
     background: white;
     width: 500px;
-    height: 400px;
+    min-height: 400px;
     border-radius: 10px;
     position: relative;
 }
@@ -543,16 +548,25 @@ i.checked{
     font-size: 18px;
     padding: 10px;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     outline: none;
     box-shadow: 3px 3px 5px 0px #888888;
     height: 50px;
     transition: 0.25s;
+    background:#f0f7ff;
+}
+
+.div-chance-pwd .chance-pwd .chance-pwd-form .note{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #8A8a8a;
 }
 
 .div-chance-pwd .chance-pwd .chance-pwd-form .input::placeholder{
-    color: #d6d3da;
+    color: #8a8a8a;
     font-style: italic;
 }
 
@@ -577,6 +591,13 @@ i.checked{
 
 .div-chance-pwd .chance-pwd .chance-pwd-form .submit:hover{
     background: #0aa0c2;
+}
+
+.chance-password .email,
+.chance-password .password{
+    margin-left: 35px;
+    font-family: Calibri;
+    font-style: italic;
 }
 
 .div-chance-pwd .exit{

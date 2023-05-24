@@ -281,10 +281,6 @@
                             </div>
                         </div>--%>
                     </div>
-                    <div class="chance-password">
-                        <p class="title-chance-password">Thay đổi mật khẩu tài khoản</p>
-                        <button class="chance"><i class="fa-solid fa-pen-to-square"></i>Thay đổi</button>
-                    </div>
                 </div>
             </div>
             <div class="content-right">
@@ -359,6 +355,18 @@
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
                 <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
             </form>
+            <div class="chance-password">
+                <p class="title-edit">Thay đổi mật khẩu tài khoản</p>
+                <div class="list">
+                    <p class="content">Email đăng nhập:</p>
+                    <p class="email">Thanhhappy723@gmail.com</p>
+                </div>
+                <div class="list">
+                    <p class="content">Mật khẩu:</p>
+                    <p class="password">************</p>
+                </div>
+                <button class="submit">Đổi mật khẩu</button>
+            </div>
             <button class="exit">X</button>
         </div>
     </div>
@@ -369,6 +377,7 @@
             <p class="title">Thay đổi mật khẩu</p>
             <form class="chance-pwd-form">
                 <input class="input" type="text" placeholder="Nhập mật khẩu hiện tại">
+                <p class="note">*Mật khẩu mới phải trên 8 kí tự.</p>
                 <input class="input" type="text" placeholder="Nhập mật khẩu mới">
                 <input class="input" type="text" placeholder="Nhập lại mật khẩu mới">
                 <input class="submit" type="submit" value="XÁC NHẬN">

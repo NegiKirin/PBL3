@@ -104,7 +104,7 @@ for(var j = 0; j < length; j++){
     }
 }
 
-var chancePwd =document.querySelector('.chance-password .chance')
+var chancePwd =document.querySelector('.chance-password .submit')
 var exitChancePwd = document.querySelector('.chance-pwd .exit')
 var divChancePwd = document.querySelector('.div-chance-pwd')
 
