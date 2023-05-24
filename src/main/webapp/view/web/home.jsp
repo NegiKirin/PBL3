@@ -33,7 +33,7 @@
                     <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
                     <p class="with">Với</p>
                     <p class="name">Tran Le Nguyen</p>
-                    <input type="hidden" value="2023-05-20 15:22:19.0" name="date">
+<%--                    <input type="hidden" value="2023-05-20 15:22:19.0" name="date">--%>
                 </div>
                 <div class="content-left-item">
                     <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="content">
                             <div class="item">
-                                <p class="date">07/05/2023</p>
+                                <p class="date">${appointment.dateMeeting}</p>
                                 <p class="time" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                             </div>
@@ -90,37 +90,18 @@
                             <p class="name">${user.fullName}</p>
                         </div>
                         <div class="content">
-                            <%--<c:forEach items="${appointmentOf}" var="appointment">
-                                <div class="item">
-                                    <p class="time" id="start">
-                                        <input type="time" value="${appointment.starting_time}" disabled="disabled">
-                                        <input type="time" value="${appointment.ending_time}" disabled="disabled">
-                                    </p>
-                                    <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.detail}</p>
-                                </div>
-                            </c:forEach>--%>
-                                <div class="item">
-                                    <p class="date">07/05/2023</p>
-                                    <label class="line"></label>
-                                    <p class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
-                                        15:20 PM - 19:20 PM
-                                    </p>
-                                    <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
-                                </div>
-                                <div class="item">
-                                    <p class="date">07/05/2023</p>
-                                    <p class="time" starttime="2023-05-18 15:22:19.0" endtime="2023-05-15 19:22:13.0">
-                                        15:20 PM - 19:20 PM
-                                    </p>
-                                    <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
-                                </div>
-                                <div class="item">
-                                    <p class="date">07/05/2023</p>
-                                    <p class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
-                                        15:20 PM - 19:20 PM
-                                    </p>
-                                    <p class="address"><i class="fa-solid fa-location-dot"></i>Mô tả</p>
-                                </div>
+                            <c:if test="${appointmentOf != null}">
+                                <c:forEach items="${appointmentOf}" var="appointment">
+                                    <div class="item">
+                                        <p class="date">${appointment.dateMeeting}</p>
+                                        <input type="hidden" value="${appointment.dateMeeting}" name="date">
+                                        <label class="line"></label>
+                                        <p class="time" startTime="${appointment.starting_time}" endTime="${appointment.ending_time}">
+                                        </p>
+                                        <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <a href="<c:url value="/createAppointment"/> ">
                             <button class="add">

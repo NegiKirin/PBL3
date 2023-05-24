@@ -39,7 +39,7 @@
             <i class="fa-solid fa-bars"></i>
         </button>
         <div class="header-menu hide" id="header-menu">
-            <a class="item">
+            <a class="item" href="<c:url value="/logout"/>">
                 Đăng xuất
             </a>
             <a class="item" href="<c:url value="/profile?id=${user.id}"/>">

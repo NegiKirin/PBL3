@@ -116,7 +116,16 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     public List<Appointment> findByHost(User host) {
         String hql = "from Appointment a where a.host = :host";
         List<Appointment> appointments = query(hql,"host",host);
-        return appointments.isEmpty()?null:appointments;
+        return appointments.isEmpty()? null: appointments;
+    }
+
+    @Override
+    public List<Appointment> findByHostCurrent(User host) {
+        String hql = "from Appointment a where a.host = :host and (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now))";
+        Date date = new Date(System.currentTimeMillis());
+        java.sql.Date today = new java.sql.Date(date.getTime());
+        List<Appointment> appointments = query(hql,"today", today, "host", host, "now", Time.valueOf(LocalTime.now()));
+        return appointments.isEmpty() ? null: appointments;
     }
 
     @Override

@@ -295,9 +295,9 @@
         <div class="edit-infor">
             <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
             <p class="title-edit">Ảnh bìa</p>
-            <form class="edit-background" runat="server" action="edit-profile" method="post">
+            <form class="edit-background" enctype="multipart/form-data" action="edit-profile" method="post">
                 <img id="blah1" src="data:image/jpeg;base64,${profileUser.background}" alt="your image" />
-                <input class="input-img" accept="image/*" type='file' id="imgInp1" name="background"/>
+                <input class="input-img" accept="image/*" type="file" id="imgInp1" name="background"/>
                 <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
                 <script>
                     imgInp1.onchange = evt => {
@@ -311,9 +311,9 @@
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
             <p class="title-edit">Ảnh đại diện</p>
-            <form class="edit-ava" action="edit-profile" method="post" enctype='multipart/form-data'>
+            <form class="edit-ava" action="edit-profile" method="post" enctype="multipart/form-data">
                 <img src="data:image/jpeg;base64,${profileUser.avatar}" id="blah2">
-                <input class="input-img" accept="image/*" type='file' id="imgInp2" name="avatar"/>
+                <input class="input-img" accept="image/*" type="file" id="imgInp2" name="avatar"/>
                 <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
                 <script>
                     imgInp2.onchange = evt => {
@@ -326,7 +326,7 @@
                 <input type="hidden" value="editAvatar" name="action">
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
-            <form action="edit-profile" method="post" enctype='multipart/form-data' id="editProfile">
+            <form action="edit-profile" method="post" enctype="multipart/form-data" id="editProfile">
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
                     <i class="fa-solid fa-heart"></i>
