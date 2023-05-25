@@ -50,6 +50,7 @@ public class Home extends HttpServlet {
 		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
 		request.setAttribute("page",pageble.getPage());
 		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
+		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("appointments",appointmentService.pagingAppointment(pageble));
 		request.setAttribute("appointmentOf", appointmentService.findByHostCurrent(user));

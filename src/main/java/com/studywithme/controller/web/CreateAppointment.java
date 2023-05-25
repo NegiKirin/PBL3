@@ -32,11 +32,16 @@ public class CreateAppointment extends HttpServlet {
         districtService = new DistrictService();
         appointmentService = new AppointmentService();
         addressTypeService = new AddressTypeService();
+        HttpSession session = request.getSession();
+        Object obj = session.getAttribute("user");
+        User user = null;
+        user = (User)obj;
         Sorter sorter = new Sorter();
         sorter = FormUtil.toModel(Sorter.class, request);
         request.setAttribute("dateMeeting", sorter.getDateMeeting());
         request.setAttribute("districts",districtService.findAll());
         request.setAttribute("addressTypes",addressTypeService.findAll());
+        request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
         request.setAttribute("totalAppointment", appointmentService.totalItemCurrent());
         request.setAttribute("appointments", appointmentService.appointmentCurrent());
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");

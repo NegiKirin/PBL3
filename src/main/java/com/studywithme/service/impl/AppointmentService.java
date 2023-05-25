@@ -58,6 +58,18 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
+    public List<Appointment> findByParticipantCurrent(User participant) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.findByParticipantCurrent(participant);
+    }
+
+    @Override
+    public Integer countFindByParticipants(User participant) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.countFindByParticipants(participant);
+    }
+
+    @Override
     public Appointment createAppointment(String dateMeetingStr, String startTimeStr, String endTimeStr, String max, String address, String idAddressType, String idWard, User host) {
         java.sql.Date dateMeeting = null;
         try {

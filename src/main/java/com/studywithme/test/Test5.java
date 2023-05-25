@@ -13,8 +13,8 @@ public class Test5 {
     public static void main(String[] args) {
         IUserService userService = new UserService();
         IAppointmentService appointmentService = new AppointmentService();
-        User user = userService.findById(1);
-        List<Appointment> appointments = appointmentService.findByHostCurrent(user);
+        User user = userService.findById(2);
+        List<Appointment> appointments = appointmentService.findByParticipantCurrent(user);
         System.out.println("123");
     }
 }

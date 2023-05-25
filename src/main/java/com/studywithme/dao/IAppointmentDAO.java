@@ -11,5 +11,7 @@ public interface IAppointmentDAO extends GenericDAO<Appointment>, InterfaceDAO<A
     public Integer count(Pageble pageble);
     public List<Appointment> findByHost(User host);
     public List<Appointment> findByHostCurrent(User host);
+    public List<Appointment> findByParticipantCurrent(User participant);
     public List<Appointment> findByParticipants(User participant,Integer maxItem);
+    public Integer countFindByParticipants(User participant);
 }
