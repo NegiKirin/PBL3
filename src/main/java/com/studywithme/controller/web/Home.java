@@ -52,7 +52,7 @@ public class Home extends HttpServlet {
 		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("appointments",appointmentService.pagingAppointment(pageble));
-		request.setAttribute("appointmentOf",appointmentService.findByHost(user));
+		request.setAttribute("appointmentOf", appointmentService.findByHostCurrent(user));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");
 		rd.forward(request, response);
 	}

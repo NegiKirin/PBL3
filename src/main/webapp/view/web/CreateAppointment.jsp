@@ -44,7 +44,24 @@
                             <img src="data:image/jpeg;base64,${user.avatar}" class="avatar" alt="avatar"/>
                         </div>
                         <div class="content">
-                            <form class="item">
+                            <input type="hidden" id="totalAppointment" name="totalAppointment" value="${totalAppointment}">
+                            <c:forEach var="appointment" items="${appointments}">
+                                <form class="item" method="post" action="createAppointment">
+                                    <input type="hidden" value="delete" name="action">
+                                    <input type="hidden" value="${appointment.id}" name="idAppointment">
+                                    <p class="date">${appointment.dateMeeting}</p>
+                                    <div class="date-content">
+                                        <div class="time" startTime="${appointment.starting_time}" endTime="${appointment.ending_time}" name="time">
+                                        </div>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <div class="address">${appointment.address.detail}, ${appointment.address.ward.ward}, ${appointment.address.ward.district.district}</div>
+                                        <button type="submit" class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </c:forEach>
+                            <%--<form class="item">
                                 <p class="date">07/05/2023</p>
                                 <div class="date-content">
                                     <div class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
@@ -69,26 +86,14 @@
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
-                            </form>
-                            <form class="item">
-                                <p class="date">07/05/2023</p>
-                                <div class="date-content">
-                                    <div class="time" starttime="2023-05-15 15:22:19.0" endtime="2023-05-15 19:22:13.0">
-                                        15:20 PM - 19:20 PM
-                                    </div>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <div class="address">123 Nguyễn Lương Bằng</div>
-                                    <button type="submit" class="delete">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </div>
-                            </form>
+                            </form>--%>
                         </div>
                     </div>
                 </div>
                 <div class="create-app">
                     <p class = "title">Tạo mới các lịch hẹn</p>
                     <form class="create-app-form" method="post" action="createAppointment">
+                        <input type="hidden" value="create" name="action">
                         <jsp:include page="/common/web/Calender.jsp"></jsp:include>
                         <label class="error"><p id="errorDate"></p></label>
                         <c:if test="${dateMeeting != null}">
@@ -143,6 +148,7 @@
                             </select>
                             <label class="error"><p id="errorAddress"></p></label>
                             <input class="detail-location" type="text" placeholder="Nhập số nhà và tên đường" required="required" name="address">
+                            <label class="error"><p id="errorAppointment"></p></label>
                         </div>
                         <button class="button" type="button">TẠO NGAY</button>
                     </form>

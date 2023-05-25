@@ -11,7 +11,7 @@ public class Address extends AbstractModel {
     private String detail;
     @OneToMany(mappedBy = "addressModified",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Modify> modifiedBy = new HashSet<>();
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_ward")
     private Ward ward;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)

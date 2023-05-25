@@ -7,8 +7,10 @@ import com.studywithme.dao.impl.AddressDAO;
 import com.studywithme.dao.impl.AddressTypeDAO;
 import com.studywithme.dao.impl.AppointmentDAO;
 import com.studywithme.model.*;
+import com.studywithme.paging.PageRequest;
 import com.studywithme.paging.Pageble;
 import com.studywithme.service.IAppointmentService;
+import com.studywithme.sort.Sorter;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -37,6 +39,12 @@ public class AppointmentService implements IAppointmentService {
     public List<Appointment> findByHost(User host) {
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.findByHost(host);
+    }
+
+    @Override
+    public List<Appointment> findByHostCurrent(User host) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.findByHostCurrent(host);
     }
 
     @Override
@@ -83,5 +91,32 @@ public class AppointmentService implements IAppointmentService {
         appointment.setTotalParticipant(1);
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.insert(appointment);
+    }
+
+    @Override
+    public Integer totalItemCurrent() {
+        Pageble pageble = new PageRequest();
+        pageble.setPage(1);
+        pageble.setMaxPageItem(3);
+        pageble.setSorter(new Sorter());
+        return totalItem(pageble);
+    }
+
+    @Override
+    public List<Appointment> appointmentCurrent() {
+        Pageble pageble = new PageRequest();
+        pageble.setPage(1);
+        pageble.setMaxPageItem(3);
+        Sorter sorter = new Sorter();
+        sorter.setSortBy("desc");
+        sorter.setSortName("createdDate");
+        pageble.setSorter(sorter);
+        return pagingAppointment(pageble);
+    }
+
+    @Override
+    public boolean delete(String id) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.delete(appointmentDAO.findOne(Integer.parseInt(id)));
     }
 }

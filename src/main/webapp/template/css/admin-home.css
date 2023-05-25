@@ -123,6 +123,7 @@ body{
 
 #content .content-main .content-main-search input{
     border: none;
+    outline: none;
 }
 
 #content .content-list-user{
@@ -204,6 +205,7 @@ body{
     font-weight: bold;
     color: #fff;
     transition: 0.25s;
+    cursor: pointer;
 }
 
 #content .content-list-user .item .button:hover{
@@ -218,6 +220,10 @@ body{
 
 #content .content-list-user .item .buttons .remove{
     background-color: #e84655;
+}
+
+#content .content-list-user .item .buttons .lock{
+    background-color: #e8b236;
 }
 
 .panel{
@@ -273,6 +279,25 @@ body{
     width: 100%;
     text-align: center;
     margin-top: 20px;
+}
+
+.detail-div .detail-div-main .role{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.detail-div .detail-div-main .role .title{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.detail-div .detail-div-main .role .list-role{
+    font-style: italic;
+    margin: 0 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
 }
 
 .detail-div .detail-div-main .infor-user .title-edit{
@@ -365,39 +390,42 @@ body{
 }
 
 .confirm-div{
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.confirm-main{
-    height: 100%;
-    text-align: center;
-}
-
-.confirm-main .confirm-delete{
-    margin-top: 250px;
-    margin-left: calc(50% - 150px);
+.confirm-div .confirm-lock,
+.confirm-div .confirm-delete{
     height: 160px;
-    width: 300px;
+    width: 350px;
     background-color: #fff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 2;
+    text-align: center;
+    position: fixed;
+    top: calc(50% - 80px);
 }
 
-.confirm-main .confirm-delete .title{
+.confirm-div .confirm-lock .title,
+.confirm-div .confirm-delete .title{
     line-height: 70px;
     font-weight: bold;
 }
 
-.confirm-main .confirm-delete .list{
+.confirm-div .confirm-lock .list,
+.confirm-div .confirm-delete .list{
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.confirm-main .confirm-delete .list button{
+.confirm-div .confirm-lock .list button,
+.confirm-div .confirm-delete .list button{
     cursor: pointer;
     margin: 10px;
     border: none;
@@ -409,19 +437,183 @@ body{
     transition: 0.25s;
 }
 
-.confirm-main .confirm-delete .list button:hover{
+.confirm-div .confirm-lock .list button:hover,
+.confirm-div .confirm-delete .list button:hover{
     width: 120px;
     box-shadow:  3px 3px 5px 0px #aaaaaa;
 }
 
-.confirm-main .confirm-delete .list .remove{
+.confirm-div .confirm-lock .list .lock,
+.confirm-div .confirm-delete .list .remove{
     background-color: #e33f3f;
 }
 
-.confirm-main .confirm-delete .list .exit{
+.confirm-div .confirm-lock .list .exit,
+.confirm-div .confirm-delete .list .exit{
     background-color: #39b41d;
 }
 
 .hide{
-    display: none;
+    display: none !important;
+}
+
+#content .content-add{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 3px 3px #8A8a8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #0fb8de;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#content .content-add:hover{
+    background: #0fb8de;
+    color: white;
+    transform: scale(1.2);
+}
+
+.add-new-user{
+    display: flex;
+    justify-content: center;
+}
+
+.add-new-user .add-new-user-main{
+    position: fixed;
+    background: white;
+    width: 800px;
+    min-width: 800px;
+    border-radius: 10px;
+    padding: 30px;
+    top: calc(50% - 250px);
+}
+
+.add-new-user .add-new-user-main .title-main{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.add-new-user .add-new-user-main .content-main{
+    display: flex;
+    width: 100%;
+}
+
+.add-new-user-main .account,
+.add-new-user-main .infor{
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+}
+
+.add-new-user-main .title-account,
+.add-new-user-main .title-infor{
+    display: block;
+    font-weight: bold;
+    font-size: 17px;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.add-new-user-main .account input{
+    height: 40px;
+    width: 90%;
+    border-radius: 5px;
+    padding-left: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 3px 0 #8A8a8a;
+}
+
+.add-new-user-main .infor .list{
+    display: flex;
+    margin: 20px 0;
+}
+
+.add-new-user-main .infor .list i{
+    width: 30px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.add-new-user-main .infor .list .content{
+    font-weight: bold;
+    width: 100px;
+}
+
+.add-new-user-main .infor .list .list-sex{
+    width: calc(100% - 150px);
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.add-new-user-main .infor .list-school{
+    margin-left: 10px;
+    border: 1px solid #8A8a8a;
+    font-size: 16px;
+    outline: none;
+    width: 90%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.add-new-user-main .infor .list .date{
+    background-color: #fff;
+    border: none;
+    color: #000;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.add-new-user .add-new-user-main .add{
+    margin-left: calc(50% - 60px);
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: #0fb8de;
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+    width: 120px;
+    font-size: 18px;
+}
+
+.add-new-user .add-new-user-main .add:hover{
+    transform: scale(1.2);
+    box-shadow: 3px 3px 3px 0 #8A8a8a;
+}
+
+.add-new-user .add-new-user-main .exit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 26px;
+    width: 35px;
+    border-radius: 7px;
+    font-weight: bold;
+    background: #e84655;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.add-new-user .add-new-user-main .exit:hover{
+    transform: scale(1.2);
 }

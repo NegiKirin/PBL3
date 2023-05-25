@@ -53,8 +53,6 @@ public class EditProfile extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		Part filePart = request.getPart("avatar");
-		Part filePart1 = request.getPart("background");
 		String action = request.getParameter("action");
 		String profileId = request.getParameter("profileUserId");
 		userService = new UserService();
@@ -65,9 +63,11 @@ public class EditProfile extends HttpServlet {
 		User user = null;
 		user = (User)obj;
 		if (action.equals("editAvatar")) {
+			Part filePart = request.getPart("avatar");
 			user = userService.updateImg(user,filePart,"avatar");
 			modifyService.createModify(user,user,"Chỉnh sửa ảnh đại diên");
 		} else if (action.equals("editBackground")) {
+			Part filePart1 = request.getPart("background");
 			user = userService.updateImg(user,filePart1,"background");
 			modifyService.createModify(user,user,"Chỉnh sửa ảnh bìa");
 		} else if (action.equals("editProfile")) {
