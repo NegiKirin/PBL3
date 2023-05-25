@@ -204,6 +204,7 @@ body{
     font-weight: bold;
     color: #fff;
     transition: 0.25s;
+    cursor: pointer;
 }
 
 #content .content-list-user .item .button:hover{
@@ -218,6 +219,10 @@ body{
 
 #content .content-list-user .item .buttons .remove{
     background-color: #e84655;
+}
+
+#content .content-list-user .item .buttons .lock{
+    background-color: #e8b236;
 }
 
 .panel{
@@ -273,6 +278,25 @@ body{
     width: 100%;
     text-align: center;
     margin-top: 20px;
+}
+
+.detail-div .detail-div-main .role{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.detail-div .detail-div-main .role .title{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.detail-div .detail-div-main .role .list-role{
+    font-style: italic;
+    margin: 0 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
 }
 
 .detail-div .detail-div-main .infor-user .title-edit{
@@ -365,39 +389,42 @@ body{
 }
 
 .confirm-div{
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.confirm-main{
-    height: 100%;
-    text-align: center;
-}
-
-.confirm-main .confirm-delete{
-    margin-top: 250px;
-    margin-left: calc(50% - 150px);
+.confirm-div .confirm-lock,
+.confirm-div .confirm-delete{
     height: 160px;
-    width: 300px;
+    width: 350px;
     background-color: #fff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 2;
+    text-align: center;
+    position: fixed;
+    top: calc(50% - 80px);
 }
 
-.confirm-main .confirm-delete .title{
+.confirm-div .confirm-lock .title,
+.confirm-div .confirm-delete .title{
     line-height: 70px;
     font-weight: bold;
 }
 
-.confirm-main .confirm-delete .list{
+.confirm-div .confirm-lock .list,
+.confirm-div .confirm-delete .list{
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.confirm-main .confirm-delete .list button{
+.confirm-div .confirm-lock .list button,
+.confirm-div .confirm-delete .list button{
     cursor: pointer;
     margin: 10px;
     border: none;
@@ -409,19 +436,99 @@ body{
     transition: 0.25s;
 }
 
-.confirm-main .confirm-delete .list button:hover{
+.confirm-div .confirm-lock .list button:hover,
+.confirm-div .confirm-delete .list button:hover{
     width: 120px;
     box-shadow:  3px 3px 5px 0px #aaaaaa;
 }
 
-.confirm-main .confirm-delete .list .remove{
+.confirm-div .confirm-lock .list .lock,
+.confirm-div .confirm-delete .list .remove{
     background-color: #e33f3f;
 }
 
-.confirm-main .confirm-delete .list .exit{
+.confirm-div .confirm-lock .list .exit,
+.confirm-div .confirm-delete .list .exit{
     background-color: #39b41d;
 }
 
 .hide{
     display: none;
 }
+
+#content .content-add{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 3px 3px #8A8a8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #0fb8de;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#content .content-add:hover{
+    background: #0fb8de;
+    color: white;
+    transform: scale(1.2);
+}
+
+.add-new-user{
+    display: flex;
+    justify-content: center;
+}
+
+.add-new-user .add-new-user-main{
+    position: absolute;
+    top: 0;
+    background: white;
+    width: 800px;
+    min-width: 800px;
+    border-radius: 10px;
+    margin: 30px 0;
+    padding: 30px;
+}
+
+.add-new-user .add-new-user-main .title-main{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.add-new-user .add-new-user-main .content-main{
+    display: flex;
+    width: 100%;
+}
+
+.add-new-user-main .account,
+.add-new-user-main .infor{
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+}
+
+.add-new-user-main .title-account,
+.add-new-user-main .title-infor{
+    display: block;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 40px;
+    font-style: italic;
+}
+
+.add-new-user-main .account input{
+    height: 40px;
+    width: 80%;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
