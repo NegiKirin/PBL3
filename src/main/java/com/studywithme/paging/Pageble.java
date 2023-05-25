@@ -8,5 +8,7 @@ public interface Pageble {
     Integer getLimit();
     Sorter getSorter();
     void setSorter(Sorter sorter);
+    void setMaxPageItem(Integer maxPageItem);
+    void setPage(Integer page);
     Integer getMaxPageItem();
 }

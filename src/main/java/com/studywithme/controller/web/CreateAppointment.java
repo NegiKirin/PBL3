@@ -30,31 +30,44 @@ public class CreateAppointment extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         districtService = new DistrictService();
+        appointmentService = new AppointmentService();
         addressTypeService = new AddressTypeService();
         Sorter sorter = new Sorter();
         sorter = FormUtil.toModel(Sorter.class, request);
         request.setAttribute("dateMeeting", sorter.getDateMeeting());
         request.setAttribute("districts",districtService.findAll());
         request.setAttribute("addressTypes",addressTypeService.findAll());
+        request.setAttribute("totalAppointment", appointmentService.totalItemCurrent());
+        request.setAttribute("appointments", appointmentService.appointmentCurrent());
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");
         rd.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Object obj = session.getAttribute("user");
-        User user = null;
-        user = (User)obj;
-        String dateMeetingStr = request.getParameter("dateMeeting");
-        String startTimeStr = request.getParameter("startTime");
-        String endTimeStr = request.getParameter("endTime");
-        String idWard = request.getParameter("ward");
-        String address = request.getParameter("address");
-        String max = request.getParameter("max");
-        String idAddressType = request.getParameter("addressType");
-        appointmentService = new AppointmentService();
-        appointmentService.createAppointment(dateMeetingStr,startTimeStr,endTimeStr,max,address,idAddressType,idWard,user);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");
-        rd.forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+        if(action.equals("create")){
+            HttpSession session = request.getSession();
+            Object obj = session.getAttribute("user");
+            User user = null;
+            user = (User)obj;
+            String dateMeetingStr = request.getParameter("dateMeeting");
+            String startTimeStr = request.getParameter("startTime");
+            String endTimeStr = request.getParameter("endTime");
+            String idWard = request.getParameter("ward");
+            String address = request.getParameter("address");
+            String max = request.getParameter("max");
+            String idAddressType = request.getParameter("addressType");
+            appointmentService = new AppointmentService();
+            appointmentService.createAppointment(dateMeetingStr,startTimeStr,endTimeStr,max,address,idAddressType,idWard,user);
+        } else if (action.equals("delete")) {
+            String idAppointment = request.getParameter("idAppointment");
+            appointmentService = new AppointmentService();
+            appointmentService.delete(idAppointment);
+        }
+        doGet(request,response);
+//        RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");
+//        rd.forward(request, response);
     }
 }

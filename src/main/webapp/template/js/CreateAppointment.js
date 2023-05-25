@@ -42,6 +42,12 @@ buttonSubmit.addEventListener('click',function (e) {
     var dateMeeting = document.getElementById('dateMeeting');
     var max = document.getElementById('max');
     var addressTypes = document.getElementById('addressType');
+    var totalAppointment = document.getElementById('totalAppointment');
+    if(Number.parseInt(totalAppointment.value) >= 3) {
+        var error = document.getElementById('errorAppointment');
+        error.innerText = 'Chỉ được tạo tối đa 3 cuộc hẹn!';
+        return;
+    }
     if(!dateMeeting) {
         var errorDate = document.getElementById('errorDate');
         errorDate.innerText = 'Chưa chọn ngày';
@@ -82,4 +88,27 @@ buttonSubmit.addEventListener('click',function (e) {
         var errorTime = document.getElementById('errorTime');
         errorTime.innerText = compareTime(startTime.value, endTime.value);
     }
+})
+
+var times = document.getElementsByName('time');
+
+function time(time) {
+    var temp = time.split(':');
+    return `${temp[0]}:${temp[1]}`;
+}
+times.forEach((element,index)=> {
+    var startTime = element.getAttribute("startTime");
+    var endTime = element.getAttribute("endTime");
+    element.innerText = `${time(startTime)} - ${time(endTime)}`;
+})
+
+var dateMeetings = document.querySelectorAll('.create-appointment .your-calendar .content .item .date');
+console.log(dateMeetings);
+
+function date(date) {
+    var temp = date.split('-');
+    return `${temp[2]}-${temp[1]}-${temp[0]}`;
+}
+dateMeetings.forEach((element,index)=>{
+    element.innerText = date(element.innerText);
 })

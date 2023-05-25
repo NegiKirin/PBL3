@@ -266,6 +266,7 @@ html body{
     height: 100px;
     width: 100%;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 #content .content-main .content-main-list .profile .avatar{
@@ -422,6 +423,7 @@ html body{
     width: 100%;
     border-radius: 8px;
     height: 6rem;
+    object-fit: cover;
 }
 
 #content .content-right .your-profile-main .profile .avatar{

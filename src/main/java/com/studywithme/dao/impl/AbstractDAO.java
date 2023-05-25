@@ -33,6 +33,8 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 				query.setParameter((String) parameters[i],(School) parameter);
 			} else if(parameter instanceof User) {
 				query.setParameter((String) parameters[i],(User) parameter);
+			} else if(parameter instanceof java.sql.Date) {
+				query.setParameter((String) parameters[i],(java.sql.Date) parameter);
 			}
 //			else if(parameter instanceof byte[]) {
 //				query.setParameter((String) parameters[i],(byte[]) parameter);
