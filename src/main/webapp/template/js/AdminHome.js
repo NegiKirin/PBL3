@@ -77,3 +77,20 @@ panelLock.addEventListener('click', function (){
 exitConfirmLock.addEventListener('click', function (){
     confirmDivLock.classList.add('hide')
 })
+
+var addNewUser = document.querySelector('.content-add')
+var addNewUserDiv = document.querySelector('.add-new-user')
+var panelAdd = document.querySelector('.add-new-user .panel')
+var exitAddDiv = document.querySelector('.add-new-user .exit')
+
+addNewUser.addEventListener('click', function (){
+    addNewUserDiv.classList.remove('hide')
+})
+
+panelAdd.addEventListener('click', function (){
+    addNewUserDiv.classList.add('hide')
+})
+
+exitAddDiv.addEventListener('click', function (){
+    addNewUserDiv.classList.add('hide')
+})

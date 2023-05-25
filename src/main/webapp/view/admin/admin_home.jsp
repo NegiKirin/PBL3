@@ -217,7 +217,7 @@
         </div>
     </div>
 
-    <div class="add-new-user">
+    <div class="add-new-user hide">
         <div class="panel"></div>
         <div class="add-new-user-main">
             <div class="title-main">Thêm một người dùng mới</div>
@@ -243,13 +243,13 @@
                     <div class="list">
                         <i class="fa-solid fa-school"></i>
                         <p class="content">Trường học:</p>
-                        <select class="list-school" name="school">
-                            <option selected hidden="hidden">Chọn trường học</option>
-                            <c:forEach items="${listSchool}" var="school">
-                                <option idSchool="${school.id}">${school.nameSchool}</option>
-                            </c:forEach>
-                        </select>
                     </div>
+                    <select class="list-school" name="school">
+                        <option selected hidden="hidden">Chọn trường học</option>
+                        <c:forEach items="${listSchool}" var="school">
+                            <option idSchool="${school.id}">${school.nameSchool}</option>
+                        </c:forEach>
+                    </select>
                     <div class="list">
                         <i class="fa-solid fa-cake-candles"></i>
                         <p class="content">Ngày sinh:</p>
@@ -258,6 +258,7 @@
                 </div>
             </div>
             <button class="add">TẠO NGAY</button>
+            <button class="exit">X</button>
         </div>
     </div>
     <script src="<c:url value="/template/js/AdminHome.js"/>"></script>
