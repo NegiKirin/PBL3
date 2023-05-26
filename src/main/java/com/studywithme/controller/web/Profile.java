@@ -38,10 +38,11 @@ public class Profile extends HttpServlet {
 		String id = request.getParameter("id");
 		User user = userService.findById(Integer.parseInt(id));
 		String listFriend = request.getParameter("listFriend");
-		String listAppointment = request.getParameter("listAppointment");
+		String maxItem = request.getParameter("maxItem");
 
-
-		request.setAttribute("listAppointment", appointmentService.findByParticipants(user,listAppointment));
+		request.setAttribute("listAppointment", appointmentService.findByParticipants(user, maxItem));
+		request.setAttribute("totalAppointment", appointmentService.countFindByParticipants(user));
+		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("listSchool", schoolService.findAll());
 		request.setAttribute("profileUser",user);

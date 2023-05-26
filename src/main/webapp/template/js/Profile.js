@@ -72,22 +72,11 @@ for(var i = 0; i < lengthSchool; i++) {
 }
 
 function timeStr(t) {
-    var temp = t.split(' ');
-    var time = temp[1].split(':');
-    var hour = Number.parseInt(time[0]);
-    var minute = Number.parseInt(time[1]);
-    var timestr = '';
-    if (hour >= 0 && hour <= 12) {
-        return `${hour}:${minute} AM`;
-    }
-    if (hour >= 12 && hour <= 24) {
-        return `${hour}:${minute} PM`;
-    }
-    return timestr;
+    var temp = t.split(':');
+    return `${temp[0]}:${temp[1]}`;
 }
 
 var time = document.querySelectorAll(".list-apm .item-apm .times");
-console.log(time);
 time.forEach(function (element) {
     element.innerHTML = timeStr(element.getAttribute("startTime")) + ' - ' + timeStr(element.getAttribute("endTime"));
 })
@@ -115,3 +104,29 @@ chancePwd.addEventListener('click', function (){
 exitChancePwd.addEventListener('click', function (){
     divChancePwd.classList.add('hide')
 })
+
+function dateMeeting(date) {
+    var temp = date.split('-');
+    return `${temp[2]}-${temp[1]}-${temp[0]}`;
+}
+
+var dates = document.querySelectorAll('.item-apm .date div');
+dates.forEach((element,index)=>{
+    element.innerText = dateMeeting(element.innerText);
+})
+
+var buttonSeeMore = document.getElementById('buttonSeeMore');
+console.log(buttonSeeMore);
+if(buttonSeeMore){
+    buttonSeeMore.addEventListener('click', function (e) {
+        var totalItem = document.getElementById('totalItem');
+        var totalAppointment = document.getElementById('totalAppointment');
+        if (Number.parseInt(totalItem.defaultValue) < Number.parseInt(totalAppointment.defaultValue)) {
+            var maxItem = document.getElementById('maxItem');
+            var form = document.getElementById('seeMore');
+            maxItem.defaultValue = Number.parseInt(totalItem.defaultValue) + 100;
+            form.submit();
+        }
+    })
+}
+

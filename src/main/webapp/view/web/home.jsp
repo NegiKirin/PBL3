@@ -29,17 +29,7 @@
             <div class="content-list-meeting">
                 <p class="text">Lịch hẹn</p>
                 <p class="all"><a href="">Tất cả</a></p>
-                <div class="content-left-item">
-                    <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                    <p class="with">Với</p>
-                    <p class="name">Tran Le Nguyen</p>
-<%--                    <input type="hidden" value="2023-05-20 15:22:19.0" name="date">--%>
-                </div>
-                <div class="content-left-item">
-                    <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                    <p class="with">Với</p>
-                    <p class="name">Tran Le Nguyen</p>
-                </div>
+                <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
             </div>
         </div>
         <div class="content-main">
@@ -145,6 +135,7 @@
     <script src="<c:url value="/template/js/Home.js"/>"></script>
     <script src="<c:url value="/template/js/Calender.js"/>"></script>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
+    <script src="<c:url value="/template/js/Appointment.js"/>"></script>
 <%--    <script type="text/javascript">
 
     </script>--%>

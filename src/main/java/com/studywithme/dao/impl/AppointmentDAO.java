@@ -129,6 +129,35 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     }
 
     @Override
+    public List<Appointment> findByParticipantCurrent(User participant) {
+        List<Appointment> results = new ArrayList<>();
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                String hql = "from Appointment a left join a.participants p where (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time < :now)) and (p = :participant) order by a.dateMeeting desc";
+                Query query = session.createQuery(hql);
+                Date date = new Date(System.currentTimeMillis());
+                java.sql.Date today = new java.sql.Date(date.getTime());
+                query.setParameter("today", today);
+                query.setParameter("now",Time.valueOf(LocalTime.now()));
+                query.setParameter("participant",participant);
+                results = query.setFirstResult(0).getResultList();
+                for(int i = 0; i < results.size(); i++){
+                    session.get(User.class,results.get(i).getHost().getId());
+                }
+                tr.commit();
+                session.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return results;
+    }
+
+    @Override
     public List<Appointment> findByParticipants(User participant,Integer maxItem) {
         List<Appointment> results = new ArrayList<>();
         try {
@@ -136,9 +165,9 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from Appointment a left join a.participants p where a.ending_time < :today and (p = :participant or a.host = :participant) order by a.createdDate asc";
+                String hql = "from Appointment a left join a.participants p where (p = :participant or a.host = :participant) order by a.dateMeeting desc";
                 Query query = session.createQuery(hql);
-                query.setParameter("today",new Time(System.currentTimeMillis()));
+//                query.setParameter("today",new Time(System.currentTimeMillis()));
                 query.setParameter("participant",participant);
                 results = query.setFirstResult(0).setMaxResults(maxItem).getResultList();
                 for(int i = 0; i < results.size(); i++){
@@ -158,5 +187,11 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             return null;
         }
         return results;
+    }
+
+    @Override
+    public Integer countFindByParticipants(User participant) {
+        String hql = "select count(*) from Appointment a left join a.participants p where (p = :participant or a.host = :participant)";
+        return count(hql, "participant", participant);
     }
 }

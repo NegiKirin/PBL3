@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <script src="rate.js" crossorigin="anonymous"></script>
+    <script src="./rate.js" ></script>
     <link rel="stylesheet" href="./rate.css">
 </head>
 <body>
@@ -73,19 +74,15 @@
                             <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
                             <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
                             <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
                         </div>
                         <div class="list" id="myElement">
                             <p class="content-list">Danh sách thành viên:</p>
                             <div class="member">
                                 <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                             </div>
-                            <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
+
+
 
                             <div class="abc">
                                 <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
@@ -98,19 +95,16 @@
                             <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
                             <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
                             <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
                         </div>
                         <div class="list" id="myElement">
                             <p class="content-list">Danh sách thành viên:</p>
                             <div class="member">
                                 <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                             </div>
-                            <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
+
+
+
                             <div class="abc">
                                 <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
                                 <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
@@ -122,16 +116,10 @@
                             <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
                             <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
                             <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
                         </div>
                         <div class="list" id="myElement">
                             <p class="content-list">Danh sách thành viên:</p>
-                            <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
                             <div class="member">
                                 <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                             </div>
@@ -141,6 +129,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -229,17 +219,10 @@
         <button class="exit" onclick="myFunction()">X</button>
     </div>
 </div>
-<script>
-    function myFunction() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
-<script></script>
+
+
+
+
 </body>
 </html>
 

@@ -22,16 +22,7 @@
                 <div class="content-list-meeting">
                     <p class="text">Lịch hẹn</p>
                     <p class="all"><a href="">Tất cả</a></p>
-                    <div class="content-left-item">
-                        <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                        <p class="with">Với</p>
-                        <p class="name">Tran Le Nguyen</p>
-                    </div>
-                    <div class="content-left-item">
-                        <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                        <p class="with">Với</p>
-                        <p class="name">Tran Le Nguyen</p>
-                    </div>
+                    <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
                 </div>
             </div>
 
@@ -110,7 +101,7 @@
                                     </div>
                                     <div class="date list">
                                         <p class="title text">Ngày:</p>
-                                        <input type="date" class="date" disabled="disabled" value="" dateTime="${appointment.createdDate}">
+                                        <div class="date">${appointment.dateMeeting}</div>
                                     </div>
                                     <div class="list-rate list text">
                                         <p class="title">Đánh giá<i class="fa-solid fa-chevron-down"></i></p>
@@ -135,6 +126,7 @@
                                                         </div>
                                                     </c:if>
                                                 </c:forEach>
+
                                                 </form>
                                             </c:if>
                                             <c:if test="${appointment.host.id == profileUser.id}">
@@ -163,7 +155,7 @@
                                                                 </div>
                                                             </c:if>
                                                         </c:forEach>
-                                                            <c:if test="${fn:length(appointment.rates) == 0}">
+ <%--                                                       <c:if test="${fn:length(appointment.rates) == 0}">
                                                             <div class="form-group" value="">
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
@@ -171,7 +163,7 @@
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
                                                             </div>
-                                                        </c:if>
+                                                        </c:if>--%>
                                                     </form>
                                                 </div>
                                             </c:if>
@@ -185,6 +177,15 @@
                                 </div>
                             </div>
                         </c:forEach>
+                        <input type="hidden" id="totalItem" value="${fn:length(listAppointment)}">
+                        <input type="hidden" name="totalAppointment" id="totalAppointment" value="${totalAppointment}">
+                        <form action="profile" method="get" id="seeMore">
+                            <input type="hidden" name="id" id="id" value="${profileUser.id}">
+                            <input type="hidden" name="maxItem" id="maxItem" value="">
+                        </form>
+                        <c:if test="${totalAppointment > fn:length(listAppointment)}">
+                            <input type="button" name="seeMore" value="Xem thêm" id="buttonSeeMore">
+                        </c:if>
                         <c:if test="${fn:length(listAppointment) == 0}">
                             <div class="status" >
                                 Trống
@@ -387,5 +388,6 @@
     </div>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script src="<c:url value="/template/js/Profile.js"/>"></script>
+    <script src="<c:url value="/template/js/Appointment.js"/>"></script>
 </body>
 </html>
