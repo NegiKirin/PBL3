@@ -90,13 +90,9 @@ html body{
     right: 72px;
 }
 
-#content .content-calender td   {
+#content .content-calender td{
     width: 32px;
     text-align: center;
-    font-size: 14px;
-    height: 31px;
-    border-radius: 50%;
-    transition: 0.25s;
 }
 
 #content .content-calender .tr_1{
@@ -106,6 +102,11 @@ html body{
 #content .content-calender a{
     position: relative;
     z-index: 2;
+    display: flex;
+    height: 31px;
+    width: 31px;
+    justify-content: center;
+    align-items: center;
 }
 
 .CN{
@@ -119,10 +120,7 @@ html body{
 
 .green a{
     color: black;
-    translate: 2px 0;
-    line-height: 28px;
     border: solid 1px #4CAF50;
-    display: block;
     border-radius: 50%;
 }
 

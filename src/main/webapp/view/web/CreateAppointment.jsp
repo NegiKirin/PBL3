@@ -100,25 +100,24 @@
                             <input type="hidden" value="${dateMeeting}" id="dateMeeting" name="dateMeeting">
                         </c:if>
                         <div class="item">
-                            <p class = "title">Giờ bắt đầu:</p>
+                            <p class = "title">Thời gian: </p>
                             <input type="time" class="time-begin" name="startTime" value="00:00">
                         </div>
                         <div class="item">
-                            <p class = "title">Giờ kết thúc:</p>
+                            <p class = "title"> đến </p>
                             <input type="time" class="time-end" name="endTime" value="00:00">
                         </div>
                         <label class="error"><p id="errorTime"></p></label>
-                        <select class="list" id="max" name="max">
-                            <option selected hidden disabled>Số người tối đa</option>
-                            <option>1</option>
-                            <option>2</option>
+                        <p class="title">Số người tối đa: </p>
+                        <select class="list num" id="max" name="max">
+                            <option selected>2</option>
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
                             <option>6</option>
                             <option>7</option>
                         </select>
-                        <select class="list" id="addressType" name="addressType">
+                        <select class="list type" id="addressType" name="addressType">
                             <option disabled selected hidden>Chọn địa điểm</option>
                             <c:if test="${addressTypes != null}">
                                 <c:forEach items="${addressTypes}" var="addressType">
