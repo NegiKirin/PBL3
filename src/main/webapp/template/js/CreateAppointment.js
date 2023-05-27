@@ -27,10 +27,10 @@ function compareTime(start,end) {
     if (((Number.parseInt(endTime[0])*60 + Number.parseInt(endTime[1])) - (Number.parseInt(startTime[0])*60 + Number.parseInt(startTime[1]))) >= 45 ) {
         return error;
     } else if (((Number.parseInt(endTime[0])*60 + Number.parseInt(endTime[1])) - (Number.parseInt(startTime[0])*60 + Number.parseInt(startTime[1]))) < 0 ) {
-        error = "Thời gian không hợp lệ";
+        error = "Thời gian không hợp lệ!";
         return error;
     } else {
-        error = "Tổng thời gian phải lơn hơn 45 phút";
+        error = "Tổng thời gian phải lơn hơn 45 phút!";
         return error;
     }
 }
@@ -50,7 +50,7 @@ buttonSubmit.addEventListener('click',function (e) {
     }
     if(!dateMeeting) {
         var errorDate = document.getElementById('errorDate');
-        errorDate.innerText = 'Chưa chọn ngày';
+        errorDate.innerText = 'Chưa chọn ngày!';
         return;
     }
     if(max.value === "Số người tối đa"){
