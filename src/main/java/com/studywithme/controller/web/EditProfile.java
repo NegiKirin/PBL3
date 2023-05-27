@@ -11,7 +11,6 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import com.studywithme.model.School;
 import com.studywithme.model.User;
 import com.studywithme.service.*;
 import com.studywithme.service.impl.*;

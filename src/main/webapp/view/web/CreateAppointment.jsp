@@ -50,6 +50,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </div>
+                                    <input type="hidden" value="${appointment.dateMeeting}" name="date">
                                 </form>
                             </c:forEach>
                             <%--<form class="item">

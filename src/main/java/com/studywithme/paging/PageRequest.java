@@ -2,7 +2,7 @@ package com.studywithme.paging;
 
 import com.studywithme.sort.Sorter;
 
-public class PageRequest implements Pageble {
+public class PageRequest implements Pageable {
 
     private Integer page;
     private Integer maxPageItem;

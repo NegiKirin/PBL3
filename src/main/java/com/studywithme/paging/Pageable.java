@@ -2,7 +2,7 @@ package com.studywithme.paging;
 
 import com.studywithme.sort.Sorter;
 
-public interface Pageble {
+public interface Pageable {
     Integer getPage();
     Integer getOffset();
     Integer getLimit();

@@ -3,6 +3,7 @@ package com.studywithme.dao.impl;
 import com.studywithme.dao.IFriendshipDAO;
 import com.studywithme.model.Friendship;
 import com.studywithme.model.User;
+import com.studywithme.paging.Pageable;
 import com.studywithme.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -47,12 +48,12 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
                 String hql = "from  Friendship f WHERE f.friend =: user or f.requester=: user order by  f.createdDate asc ";
                 Query query = session.createQuery(hql);
                 query.setParameter("user",user);
-                results = query.setFirstResult(0).setMaxResults(index*10).getResultList();
+                results = query.setFirstResult(0).setMaxResults(index).getResultList();
                 for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getFriend().getId());
                     session.get(User.class,results.get(i).getRequester().getId());
                 }
-                System.out.println("Lấy danh sách bạn bè");
+//                System.out.println("Lấy danh sách bạn bè");
                 tr.commit();
                 session.close();
             }
@@ -61,5 +62,41 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
             return null;
         }
         return results;
+    }
+
+    @Override
+    public List<Friendship> pagingFriend(Pageable pageable, User user) {
+        List<Friendship> results = new ArrayList<>();
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                StringBuilder hql = new StringBuilder("from Friendship f where (f.friend =: user or f.requester=: user) and f.status = 0");
+                if(pageable.getSorter() != null) {
+                    hql.append(" order by f." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy()+ "");
+                }
+                Query query = session.createQuery(hql.toString());
+                query.setParameter("user",user);
+                results = query.setFirstResult(pageable.getOffset()).setMaxResults(pageable.getLimit()).getResultList();
+                for(int i = 0; i < results.size(); i++){
+                    session.get(User.class,results.get(i).getFriend().getId());
+                    session.get(User.class,results.get(i).getRequester().getId());
+                }
+//                System.out.println("Lấy danh sách bạn bè");
+                tr.commit();
+                session.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return results;
+    }
+
+    @Override
+    public Integer countFriend(User user) {
+        String hql = "select count(*) from Friendship f where (f.friend =: user or f.requester=: user) and f.status = 0";
+        return count(hql, "user", user);
     }
 }

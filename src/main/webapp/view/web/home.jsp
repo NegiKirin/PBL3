@@ -61,10 +61,10 @@
                         <ul class="pagination" id="pagination"></ul>
                         <input type="hidden" value="" id="page" name="page"/>
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
-                        <input type="hidden" value="" id="sortName" name="sortName">
-                        <input type="hidden" value="" id="sortBy" name="sortBy">
+                        <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
+                        <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
                         <c:if test="${dateMeeting != null}">
-                            <input type="hidden" value="${dateMeeting}" id="dateMeeting" name="dateMeeting">
+                            <input type="hidden" value="${pageable.sorter.dateMeeting}" id="dateMeeting" name="dateMeeting">
                         </c:if>
                     </form>
             </div>
@@ -141,7 +141,7 @@
     </script>--%>
     <script type="text/javascript">
         var totalPages = ${totalPages};
-        var currentPage = ${page};
+        var currentPage = ${pageable.page};
         var limit = 6;
         var dateMeeting = "";
         $(function () {
@@ -153,8 +153,6 @@
                     if(currentPage !== page){
                         $('#maxPageItem').val(limit);
                         $('#page').val(page);
-                        $('#sortName').val('createdDate');
-                        $('#sortBy').val('desc');
                         $('#formPaging').submit();
                     }
                 }

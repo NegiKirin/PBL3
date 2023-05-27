@@ -48,7 +48,7 @@
             <a class="item">
                 Đánh giá các cuộc hẹn
             </a>
-            <a class="item" href="<c:url value="/list-friends"/> ">
+            <a class="item" href="<c:url value="/list-friends?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> ">
                 Xem danh sách bạn bè
             </a>
         </div>

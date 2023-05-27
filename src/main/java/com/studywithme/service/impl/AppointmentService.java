@@ -7,10 +7,8 @@ import com.studywithme.dao.impl.AddressDAO;
 import com.studywithme.dao.impl.AddressTypeDAO;
 import com.studywithme.dao.impl.AppointmentDAO;
 import com.studywithme.model.*;
-import com.studywithme.paging.PageRequest;
-import com.studywithme.paging.Pageble;
+import com.studywithme.paging.Pageable;
 import com.studywithme.service.IAppointmentService;
-import com.studywithme.sort.Sorter;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -24,13 +22,13 @@ public class AppointmentService implements IAppointmentService {
     private IAddressDAO addressDAO;
     private IAddressTypeDAO addressTypeDAO;
     @Override
-    public List<Appointment> pagingAppointment(Pageble pageble) {
+    public List<Appointment> pagingAppointment(Pageable pageble) {
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.pagingAppointment(pageble);
     }
 
     @Override
-    public Integer totalItem(Pageble pageble) {
+    public Integer totalItem(Pageable pageble) {
         appointmentDAO = new AppointmentDAO();
         return appointmentDAO.count(pageble);
     }
@@ -106,24 +104,15 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public Integer totalItemCurrent() {
-        Pageble pageble = new PageRequest();
-        pageble.setPage(1);
-        pageble.setMaxPageItem(3);
-        pageble.setSorter(new Sorter());
-        return totalItem(pageble);
+    public Integer totalItemCurrent(User host) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.countByHostCurrent(host);
     }
 
     @Override
-    public List<Appointment> appointmentCurrent() {
-        Pageble pageble = new PageRequest();
-        pageble.setPage(1);
-        pageble.setMaxPageItem(3);
-        Sorter sorter = new Sorter();
-        sorter.setSortBy("desc");
-        sorter.setSortName("createdDate");
-        pageble.setSorter(sorter);
-        return pagingAppointment(pageble);
+    public List<Appointment> appointmentCurrent(User host) {
+        appointmentDAO = new AppointmentDAO();
+        return appointmentDAO.findByHostCurrent(host);
     }
 
     @Override
