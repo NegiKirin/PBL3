@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/profile")
 public class Profile extends HttpServlet {
@@ -39,10 +40,14 @@ public class Profile extends HttpServlet {
 		User user = userService.findById(Integer.parseInt(id));
 		String listFriend = request.getParameter("listFriend");
 		String maxItem = request.getParameter("maxItem");
+		HttpSession session = request.getSession();
+		Object obj = session.getAttribute("user");
+		User me = null;
+		me = (User)obj;
 
 		request.setAttribute("listAppointment", appointmentService.findByParticipants(user, maxItem));
 		request.setAttribute("totalAppointment", appointmentService.countFindByParticipants(user));
-		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
+		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(me));
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("listSchool", schoolService.findAll());
 		request.setAttribute("profileUser",user);

@@ -2,13 +2,13 @@ package com.studywithme.service;
 
 import com.studywithme.model.Appointment;
 import com.studywithme.model.User;
-import com.studywithme.paging.Pageble;
+import com.studywithme.paging.Pageable;
 
 import java.util.List;
 
 public interface IAppointmentService {
-    public List<Appointment> pagingAppointment(Pageble pageble);
-    public Integer totalItem(Pageble pageble);
+    public List<Appointment> pagingAppointment(Pageable pageble);
+    public Integer totalItem(Pageable pageble);
     public List<Appointment> findByHost(User host);
 
     public List<Appointment> findByHostCurrent(User host);
@@ -16,7 +16,7 @@ public interface IAppointmentService {
     public List<Appointment> findByParticipantCurrent(User participant);
     public Integer countFindByParticipants(User participant);
     public Appointment createAppointment(String dateMeetingStr, String startTimeStr, String endTimeStr,String max, String address, String idAddressType, String idWard, User host);
-    public Integer totalItemCurrent();
-    public List<Appointment> appointmentCurrent();
+    public Integer totalItemCurrent(User host);
+    public List<Appointment> appointmentCurrent(User host);
     public boolean delete(String id);
 }

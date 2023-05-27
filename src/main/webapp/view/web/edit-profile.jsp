@@ -360,7 +360,7 @@
                 <p class="title-edit">Thay đổi mật khẩu tài khoản</p>
                 <div class="list">
                     <p class="content">Email đăng nhập:</p>
-                    <p class="email">Thanhhappy723@gmail.com</p>
+                    <p class="email">${profileUser.email}</p>
                 </div>
                 <div class="list">
                     <p class="content">Mật khẩu:</p>

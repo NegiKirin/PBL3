@@ -42,8 +42,8 @@ public class CreateAppointment extends HttpServlet {
         request.setAttribute("districts",districtService.findAll());
         request.setAttribute("addressTypes",addressTypeService.findAll());
         request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
-        request.setAttribute("totalAppointment", appointmentService.totalItemCurrent());
-        request.setAttribute("appointments", appointmentService.appointmentCurrent());
+        request.setAttribute("totalAppointment", appointmentService.totalItemCurrent(user));
+        request.setAttribute("appointments", appointmentService.appointmentCurrent(user));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");
         rd.forward(request, response);
     }

@@ -1,9 +1,8 @@
 package com.studywithme.controller.web;
 
-import com.studywithme.model.Appointment;
 import com.studywithme.model.User;
 import com.studywithme.paging.PageRequest;
-import com.studywithme.paging.Pageble;
+import com.studywithme.paging.Pageable;
 import com.studywithme.service.IAppointmentService;
 import com.studywithme.service.IFriendshipService;
 import com.studywithme.service.impl.AppointmentService;
@@ -12,7 +11,6 @@ import com.studywithme.sort.Sorter;
 import com.studywithme.util.FormUtil;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,15 +39,16 @@ public class Home extends HttpServlet {
 		User user = null;
 		user = (User)obj;
 
-		Pageble pageble = new PageRequest();
+		Pageable pageble = new PageRequest();
 		pageble = FormUtil.toModel(PageRequest.class, request);
 		pageble.setSorter(FormUtil.toModel(Sorter.class, request));
 		int totalPages = (int) Math.ceil((double) appointmentService.totalItem(pageble) / pageble.getMaxPageItem()) ;
 		String listFriend = request.getParameter("listFriend");
+		request.setAttribute("pageable",pageble);
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
-		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
-		request.setAttribute("page",pageble.getPage());
-		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
+//		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
+//		request.setAttribute("page",pageble.getPage());
+//		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
 		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
 		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
 		request.setAttribute("appointments",appointmentService.pagingAppointment(pageble));

@@ -5,7 +5,7 @@ import com.studywithme.model.Address;
 import com.studywithme.model.Appointment;
 import com.studywithme.model.Rate;
 import com.studywithme.model.User;
-import com.studywithme.paging.Pageble;
+import com.studywithme.paging.Pageable;
 import com.studywithme.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,7 +45,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
 
     @Override
-    public List<Appointment> pagingAppointment(Pageble pageble) {
+    public List<Appointment> pagingAppointment(Pageable pageble) {
         List<Appointment> results = new ArrayList<>();
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -91,7 +91,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     }
 
     @Override
-    public Integer count(Pageble pageble) {
+    public Integer count(Pageable pageble) {
         StringBuilder hql = new StringBuilder("select count(*) from Appointment a where");
         String dateMeeting = pageble.getSorter().getDateMeeting();
         try {
@@ -110,6 +110,14 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             e.printStackTrace();
             return 0;
         }
+    }
+
+    @Override
+    public Integer countByHostCurrent(User host) {
+        String hql = "select count(*) from Appointment a where a.host = :host and (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now))";
+        Date date = new Date(System.currentTimeMillis());
+        java.sql.Date today = new java.sql.Date(date.getTime());
+        return count(hql, "today", today, "now", Time.valueOf(LocalTime.now()), "host", host);
     }
 
     @Override
