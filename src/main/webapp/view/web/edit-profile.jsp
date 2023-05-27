@@ -100,7 +100,7 @@
                                         <p class="content text times" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
                                     </div>
                                     <div class="date list">
-                                        <p class="title text">Ngày:</p>
+                                        <p class="title text">Ngày: </p>
                                         <div class="date">${appointment.dateMeeting}</div>
                                     </div>
                                     <div class="list-rate list text">

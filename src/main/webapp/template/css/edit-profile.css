@@ -235,8 +235,9 @@ body{
 }
 
 .list-apm .item-apm .content-apm{
-    display: inline-block;
+    display: flex;
     width: 100%;
+    justify-content: space-between;
 }
 
 .list-apm .item-apm .list,
@@ -260,6 +261,7 @@ body{
 
 .list-apm .item-apm .time{
     width: 200px;
+    font-size: 16px;
 }
 
 .list-apm .item-apm .date{
@@ -267,6 +269,7 @@ body{
     border: none;
     color: #000;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
 }
 
 .list-apm .item-apm .list-rate{
