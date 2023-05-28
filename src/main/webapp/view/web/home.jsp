@@ -51,9 +51,10 @@
                                 <p class="date">${appointment.dateMeeting}</p>
                                 <p class="time" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
+                                <input type="hidden" value="coffee">
                             </div>
                         </div>
-                        <button class="see-more" onclick="myFunction()">Xem chi tiết</button>
+                        <button class="see-more">Xem chi tiết</button>
                     </div>
 
                 </c:forEach>
@@ -63,7 +64,7 @@
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
                         <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
                         <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
-                        <c:if test="${dateMeeting != null}">
+                        <c:if test="${pageable.sorter.dateMeeting != null}">
                             <input type="hidden" value="${pageable.sorter.dateMeeting}" id="dateMeeting" name="dateMeeting">
                         </c:if>
                     </form>
@@ -83,13 +84,14 @@
                             <c:if test="${appointmentOf != null}">
                                 <c:forEach items="${appointmentOf}" var="appointment">
                                     <div class="item">
-                                        <p class="date">${appointment.dateMeeting}</p>
-                                        <input type="hidden" value="${appointment.dateMeeting}" name="date">
-                                        <label class="line"></label>
-                                        <p class="time" startTime="${appointment.starting_time}" endTime="${appointment.ending_time}">
-                                        </p>
+                                        <div class="date-time">
+                                            <p class="date">${appointment.dateMeeting}</p>
+                                            <input type="hidden" value="${appointment.dateMeeting}" name="date">
+                                            <p class="time" startTime="${appointment.starting_time}" endTime="${appointment.ending_time}"></p>
+                                        </div>
                                         <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                                     </div>
+                                    <span class="line"></span>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -101,34 +103,65 @@
                     </div>
                 </div>
             </div>
-        
-        <div class="booking-apm" id="myDIV">
+
+
+
+
+        <div class="booking-apm hide" id="myDIV">
+            <div class="panel"> </div>
             <div class="content">
-                <img src="data:image/jpeg;base64,${user.background}" alt="" class="background">
-                <button class="exit" onclick="myFunction()">X</button>
-                <img src="data:image/jpeg;base64,${user.avatar}" alt="" class="ava">
-                <h1 class="name">Phúc Tân</h1>
+                <img src="" alt="" class="background">
+                <img src="" alt="" class="ava">
+                <h1 class="name">Tên Trống</h1>
                 <form class="infor-apm">
-                    <p class="title">Thông tin cuộc hẹn:</p>
-                    <div class="list">
-                        <i class="fa-solid fa-clock"></i>
-                        <p class="date">07/05/2023</p>
-                        <p class="time">8 A.M - 9 A.M</p>
-                    </div>
-                    <div class="list inline">
-                        <i class="fa-solid fa-store"></i>
-                        <p class="type-location">Coffee</p>
-                    </div>
-                    <div class="list inline">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p class="address">60 Nguyen Luong Bang</p>
-                    </div>
-                    <div class="list">
-                        <i class="fa-solid fa-users"></i>
-                        <p class="number">3 người khác tham gia</p>
+                    <div class="flex">
+                        <div class="infor">
+                            <p class="title">Thông tin cuộc hẹn:</p>
+                            <div class="list">
+                                <i class="fa-solid fa-clock"></i>
+                                <p class="date">01-01-2003</p>
+                                <p class="time">00:00 - 00:00</p>
+                            </div>
+                            <div class="list inline">
+                                <i class="fa-solid fa-store"></i>
+                                <p class="type-location">Trống</p>
+                            </div>
+                            <div class="list">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p class="address">Mặc định</p>
+                            </div>
+                        </div>
+
+                        <div class="list-members">
+                            <p class="title inline">Người đã tham gia: </p>
+                            <p class="number">(<i class="fa-solid fa-users"></i> 3 / 5)</p>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="<c:url value="/template/image/avatarDefault.png"/> ">
+                                    <a class="name">Lê Việt Thanh</a>
+                                </div>
+                                <div class="item">
+                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
+                                    <a class="name">Lê Việt Thanh</a>
+                                </div>
+                                <div class="item">
+                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
+                                    <a class="name">Lê Việt Thanh</a>
+                                </div>
+                                <div class="item">
+                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
+                                    <a class="name">Lê Việt Thanh</a>
+                                </div>
+                                <div class="item">
+                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
+                                    <a class="name">Lê Việt Thanh</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <input class="submit" type="submit" value="KẾT NỐI NGAY">
                 </form>
+                <button class="exit">X</button>
             </div>
         </div>
     </div>

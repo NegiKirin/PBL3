@@ -184,7 +184,7 @@
                             <input type="hidden" name="maxItem" id="maxItem" value="">
                         </form>
                         <c:if test="${totalAppointment > fn:length(listAppointment)}">
-                            <input type="button" name="seeMore" value="Xem thêm" id="buttonSeeMore">
+                            <input class="see-more" type="button" name="seeMore" value="Xem thêm" id="buttonSeeMore">
                         </c:if>
                         <c:if test="${fn:length(listAppointment) == 0}">
                             <div class="status" >

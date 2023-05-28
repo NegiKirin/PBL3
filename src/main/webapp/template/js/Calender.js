@@ -84,7 +84,8 @@ function update(month,year) {
 
 function calender(month,year){
     var href = document.getElementById('href').defaultValue;
-    var dateMeetingElement = document.getElementById('dateMeeting');
+    var dateMeetingElement = document.querySelector('#dateMeeting');
+    console.log(dateMeetingElement)
     var dateMeeting = [];
     if (dateMeetingElement){
         dateMeeting = dateMeetingElement.defaultValue.split('-');

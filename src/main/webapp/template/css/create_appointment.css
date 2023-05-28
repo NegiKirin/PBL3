@@ -306,16 +306,11 @@ body{
     color: #8a8a8a;
 }
 
-.green{
+.green a{
+    color: black;
     border: solid 1px #4CAF50;
     display: block;
     border-radius: 50%;
-}
-
-.green a{
-    color: black;
-    translate: 2px 0;
-    line-height: 28px;
 }
 
 .tr td:hover a{
