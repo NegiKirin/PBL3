@@ -28,8 +28,9 @@
             <jsp:include page="/common/web/Calender.jsp"></jsp:include>
             <div class="content-list-meeting">
                 <p class="text">Lịch hẹn</p>
-                <p class="all"><a href="">Tất cả</a></p>
-                <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
+                <div class="content scroll-style">
+                    <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
+                </div>
             </div>
         </div>
         <div class="content-main">
@@ -135,7 +136,7 @@
                         <div class="list-members">
                             <p class="title inline">Người đã tham gia: </p>
                             <p class="number">(<i class="fa-solid fa-users"></i> 3 / 5)</p>
-                            <div class="list">
+                            <div class="list scroll-style">
                                 <div class="item">
                                     <img src="<c:url value="/template/image/avatarDefault.png"/> ">
                                     <a class="name">Lê Việt Thanh</a>
