@@ -9,7 +9,13 @@ import com.studywithme.service.IModifyService;
 import java.sql.Date;
 
 public class ModifyService implements IModifyService {
-
+    private static IModifyService modifyService;
+    public static IModifyService getInstance(){
+        if (modifyService == null) {
+            modifyService = new ModifyService();
+        }
+        return modifyService;
+    }
     private IModifyDAO modifyDAO;
     @Override
     public Modify createModify(User user, User editor, String detail) {

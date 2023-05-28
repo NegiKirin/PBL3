@@ -16,16 +16,14 @@ import com.studywithme.model.User;
 import com.studywithme.service.IUserService;
 import com.studywithme.service.impl.UserService;
 import com.studywithme.util.FormatDate;
+import com.studywithme.util.SessionUtil;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
     public Login() {
         super();
     }
-    private IUserService userService;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -39,12 +37,10 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		request.setAttribute("email", email);
 		String error = "";
-		userService = new UserService();
 		String url ="";
-		User u1 = userService.findByEmailAndPassword(email, password);
+		User u1 = UserService.getInstance().findByEmailAndPassword(email, password);
 		if(u1!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", u1);
+			SessionUtil.getInstance().putValue(request,"user",u1);
 			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";

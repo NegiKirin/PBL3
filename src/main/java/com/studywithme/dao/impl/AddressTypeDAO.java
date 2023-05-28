@@ -6,6 +6,13 @@ import com.studywithme.model.AddressType;
 import java.util.List;
 
 public class AddressTypeDAO extends AbstractDAO<AddressType> implements IAddressTypeDAO {
+    private static IAddressTypeDAO addressTypeDAO;
+    public static IAddressTypeDAO getInstance(){
+        if (addressTypeDAO == null) {
+            addressTypeDAO = new AddressTypeDAO();
+        }
+        return addressTypeDAO;
+    }
     @Override
     public List<AddressType> findAll() {
         String hql = "FROM AddressType";

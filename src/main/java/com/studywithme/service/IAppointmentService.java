@@ -3,7 +3,6 @@ package com.studywithme.service;
 import com.studywithme.model.Appointment;
 import com.studywithme.model.User;
 import com.studywithme.paging.Pageable;
-
 import java.util.List;
 
 public interface IAppointmentService {

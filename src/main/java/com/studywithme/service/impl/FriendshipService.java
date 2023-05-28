@@ -10,6 +10,13 @@ import com.studywithme.service.IFriendshipService;
 import java.util.List;
 
 public class FriendshipService implements IFriendshipService {
+    private static IFriendshipService friendshipService;
+    public static IFriendshipService getInstance() {
+        if (friendshipService == null) {
+            friendshipService = new FriendshipService();
+        }
+        return friendshipService;
+    }
     private IFriendshipDAO friendshipDAO;
     @Override
     public List<Friendship> listFriend(String index, User user) {

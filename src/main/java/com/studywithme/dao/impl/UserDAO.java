@@ -12,7 +12,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-	public class UserDAO extends AbstractDAO<User> implements IUserDAO {
+public class UserDAO extends AbstractDAO<User> implements IUserDAO {
+	private static IUserDAO userDAO;
+	public static IUserDAO getInstance() {
+		if (userDAO == null) {
+			userDAO = new UserDAO();
+		}
+		return userDAO;
+	}
 
 	@Override
 	public User save(User user) {

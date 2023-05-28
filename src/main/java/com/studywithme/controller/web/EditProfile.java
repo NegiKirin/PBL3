@@ -14,6 +14,7 @@ import javax.servlet.http.*;
 import com.studywithme.model.User;
 import com.studywithme.service.*;
 import com.studywithme.service.impl.*;
+import com.studywithme.util.SessionUtil;
 
 
 @WebServlet("/edit-profile")
@@ -23,19 +24,11 @@ import com.studywithme.service.impl.*;
 )
 public class EditProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private IUserService userService;
-    private ISchoolService schoolService;
-	private IFriendshipService friendshipService;
-	private IModifyService modifyService;
-	private IAppointmentService appointmentService;
     public EditProfile() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		schoolService = new SchoolService();
-		friendshipService = new FriendshipService();
-		appointmentService = new AppointmentService();
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("user");
 		User user = null;
@@ -43,8 +36,8 @@ public class EditProfile extends HttpServlet {
 		String listFriendStr = request.getParameter("listFriend");
 //		String listAppointmentStr = request.getParameter("listAppointment");
 //		request.setAttribute("listAppointment", appointmentService.findByParticipants(user,5));
-		request.setAttribute("listFriend",friendshipService.listFriend(listFriendStr,user));
-		request.setAttribute("listSchool", schoolService.findAll());
+		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriendStr,user));
+		request.setAttribute("listSchool", SchoolService.getInstance().findAll());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}
@@ -54,35 +47,29 @@ public class EditProfile extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		String profileId = request.getParameter("profileUserId");
-		userService = new UserService();
-		modifyService = new ModifyService();
-		schoolService = new SchoolService();
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User user = null;
-		user = (User)obj;
+		User user = (User) SessionUtil.getInstance().getValue(request, "user");
 		if (action.equals("editAvatar")) {
 			Part filePart = request.getPart("avatar");
-			user = userService.updateImg(user,filePart,"avatar");
-			modifyService.createModify(user,user,"Chỉnh sửa ảnh đại diên");
+			user = UserService.getInstance().updateImg(user,filePart,"avatar");
+			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa ảnh đại diên");
 		} else if (action.equals("editBackground")) {
 			Part filePart1 = request.getPart("background");
-			user = userService.updateImg(user,filePart1,"background");
-			modifyService.createModify(user,user,"Chỉnh sửa ảnh bìa");
+			user = UserService.getInstance().updateImg(user,filePart1,"background");
+			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa ảnh bìa");
 		} else if (action.equals("editProfile")) {
 			String gender = request.getParameter("gender");
 			String school = request.getParameter("school");
 			String dateOfBirth = request.getParameter("dateOfBirth");
 			user.setGender(gender.equals("male")?0:gender.equals("female")?1:2);
-			user.setSchool(schoolService.findByName(school));
+			user.setSchool(SchoolService.getInstance().findByName(school));
 			try {
 				java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
 				user.setDateOfBirth(new Date(date.getTime()));
 			} catch (ParseException e) {
 				throw new RuntimeException(e);
 			}
-			userService.update(user);
-			modifyService.createModify(user,user,"Chỉnh sửa thông tin cá nhân");
+			UserService.getInstance().update(user);
+			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa thông tin cá nhân");
 		}
 		response.sendRedirect("/PBL3/profile?id=" +user.getId());
 	}

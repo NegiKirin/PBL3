@@ -6,6 +6,13 @@ import com.studywithme.model.Role;
 import java.util.List;
 
 public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO {
+    private static IRoleDAO roleDAO;
+    public static IRoleDAO getInstance() {
+        if (roleDAO == null) {
+            roleDAO = new RoleDAO();
+        }
+        return roleDAO;
+    }
     @Override
     public List<Role> findAll() {
         String hql = "from Role";

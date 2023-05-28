@@ -6,31 +6,32 @@ import java.nio.file.Files;
 import java.util.Base64;
 import java.sql.Date;
 
-import com.studywithme.dao.IUserDAO;
 import com.studywithme.dao.impl.UserDAO;
 import com.studywithme.model.User;
 import com.studywithme.service.IUserService;
-import com.studywithme.util.maHoa;
+import com.studywithme.util.EncodeUtil;
 
 import javax.servlet.http.Part;
 
 public class UserService implements IUserService {
-
-	private IUserDAO userDAO;
-	
+	private static IUserService userService;
+	public static IUserService getInstance() {
+		if(userService == null) {
+			userService = new UserService();
+		}
+		return userService;
+	}
 	@Override
 	public User findByEmailAndPassword(String email, String password) {
-		userDAO = new UserDAO();
-		password = maHoa.toSHA1(password);
-		return userDAO.findByEmailAndPasswordAndStatus(email, password);
+		password = EncodeUtil.toSHA1(password);
+		return UserDAO.getInstance().findByEmailAndPasswordAndStatus(email, password);
 	}
 
 	@Override
 	public User register(String lastName, String firstName, String email, String password, Integer gender) {
-		userDAO = new UserDAO();
 		User user = new User();
 		user.setEmail(email);
-		user.setPassword(maHoa.toSHA1(password));
+		user.setPassword(EncodeUtil.toSHA1(password));
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setFullName(firstName+" "+lastName);
@@ -53,30 +54,26 @@ public class UserService implements IUserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return userDAO.save(user);
+		return UserDAO.getInstance().save(user);
 	}
 
 	@Override
 	public User findByEmail(String email) {
-		userDAO = new UserDAO();
-		return userDAO.findByEmail(email);
+		return UserDAO.getInstance().findByEmail(email);
 	}
 
 	@Override
 	public User findById(Integer id) {
-		userDAO = new UserDAO();
-		return userDAO.findById(id);
+		return UserDAO.getInstance().findById(id);
 	}
 
 	@Override
 	public User update(User user) {
-		userDAO = new UserDAO();
-		return userDAO.update(user);
+		return UserDAO.getInstance().update(user);
 	}
 
 	@Override
 	public User updateImg(User user, Part filePart, String img) {
-		userDAO = new UserDAO();
 		InputStream fileContent = null;
 		try {
 			fileContent = filePart.getInputStream();
@@ -93,6 +90,6 @@ public class UserService implements IUserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return userDAO.update(user);
+		return UserDAO.getInstance().update(user);
 	}
 }

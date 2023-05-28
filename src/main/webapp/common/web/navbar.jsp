@@ -1,11 +1,6 @@
 <%@include file="/common/taglib.jsp" %>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<c:if test="${user==null}">
-	<c:redirect url="/login"></c:redirect>
-</c:if>
 <div id="header">
     <div class="header-info-user">
         <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar"/>

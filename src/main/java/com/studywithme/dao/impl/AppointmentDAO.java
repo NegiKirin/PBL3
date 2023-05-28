@@ -21,6 +21,13 @@ import java.util.Date;
 import java.util.List;
 
 public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppointmentDAO {
+    private static IAppointmentDAO appointmentDAO;
+    public static IAppointmentDAO getInstance(){
+        if(appointmentDAO == null) {
+            appointmentDAO = new AppointmentDAO();
+        }
+        return appointmentDAO;
+    }
     @Override
     public List<Appointment> findAll() {
         String hql = "FROM Appointment";

@@ -6,6 +6,13 @@ import com.studywithme.model.Rate;
 import java.util.List;
 
 public class RateDAO extends AbstractDAO<Rate> implements IRateDAO {
+    private static IRateDAO rateDAO;
+    public static IRateDAO getInstance() {
+        if (rateDAO == null) {
+            rateDAO = new RateDAO();
+        }
+        return rateDAO;
+    }
     @Override
     public List<Rate> findAll() {
         String hql = "from Rate";
