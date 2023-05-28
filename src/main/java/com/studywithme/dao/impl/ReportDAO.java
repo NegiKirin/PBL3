@@ -6,6 +6,13 @@ import com.studywithme.model.Report;
 import java.util.List;
 
 public class ReportDAO extends AbstractDAO<Report> implements IReportDAO {
+    private static IReportDAO reportDAO;
+    public static IReportDAO getInstance() {
+        if (reportDAO == null) {
+            reportDAO = new ReportDAO();
+        }
+        return reportDAO;
+    }
     @Override
     public List<Report> findAll() {
         String hql = "from Report";

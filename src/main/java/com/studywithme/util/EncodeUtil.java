@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
-public class maHoa {
+public class EncodeUtil {
 	public static String toSHA1(String toEncrypt) {
 	    return toSHA1(toEncrypt, "UTF-8");
 	}

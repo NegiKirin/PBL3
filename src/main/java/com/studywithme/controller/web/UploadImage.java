@@ -19,6 +19,7 @@ import com.studywithme.service.IModifyService;
 import com.studywithme.service.IUserService;
 import com.studywithme.service.impl.ModifyService;
 import com.studywithme.service.impl.UserService;
+import com.studywithme.util.SessionUtil;
 
 
 @MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB 
@@ -28,8 +29,6 @@ import com.studywithme.service.impl.UserService;
 @WebServlet("/upload-image")
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private IUserService userService;
-	private IModifyService modifyService;
 
     public UploadImage() {
         super();
@@ -45,13 +44,7 @@ public class UploadImage extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		Part file = request.getPart("avatar");
 		Part file1 = request.getPart("background");
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User user = null;
-		user = (User)obj;
-		userService = new UserService();
-		modifyService = new ModifyService();
-
+		User user = (User) SessionUtil.getInstance().getValue(request, "user");
 
 
 //		try {

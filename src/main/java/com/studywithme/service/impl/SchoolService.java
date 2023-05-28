@@ -1,14 +1,20 @@
 package com.studywithme.service.impl;
 
-import java.util.List;
-
 import com.studywithme.dao.ISchoolDAO;
 import com.studywithme.dao.impl.SchoolDAO;
 import com.studywithme.model.School;
 import com.studywithme.service.ISchoolService;
 
-public class SchoolService implements ISchoolService {
+import java.util.List;
 
+public class SchoolService implements ISchoolService {
+	private static ISchoolService schoolService;
+	public static ISchoolService getInstance() {
+		if (schoolService == null) {
+			schoolService = new SchoolService();
+		}
+		return schoolService;
+	}
 	private ISchoolDAO schoolDAO;
 	@Override
 	public School save(School school) {

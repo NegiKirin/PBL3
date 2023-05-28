@@ -6,7 +6,13 @@ import com.studywithme.dao.ISchoolDAO;
 import com.studywithme.model.School;
 
 public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO {
-
+	private static ISchoolDAO schoolDAO;
+	public static ISchoolDAO getInstance() {
+		if (schoolDAO == null) {
+			schoolDAO = new SchoolDAO();
+		}
+		return schoolDAO;
+	}
 	@Override
 	public List<School> findAll() {
 		String hql = "from School";

@@ -9,6 +9,7 @@ import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.FriendshipService;
 import com.studywithme.service.impl.SchoolService;
 import com.studywithme.service.impl.UserService;
+import com.studywithme.util.SessionUtil;
 import jakarta.persistence.Id;
 
 import java.io.IOException;
@@ -23,33 +24,23 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/profile")
 public class Profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IFriendshipService friendshipService;
-	private IUserService userService;
-	private ISchoolService schoolService;
-	private IAppointmentService appointmentService;
     public Profile() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		userService = new UserService();
-		schoolService = new SchoolService();
-		friendshipService = new FriendshipService();
-		appointmentService = new AppointmentService();
 		String id = request.getParameter("id");
-		User user = userService.findById(Integer.parseInt(id));
+		User user = UserService.getInstance().findById(Integer.parseInt(id));
 		String listFriend = request.getParameter("listFriend");
 		String maxItem = request.getParameter("maxItem");
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User me = null;
-		me = (User)obj;
+		User me = (User) SessionUtil.getInstance().getValue(request, "user");
 
-		request.setAttribute("listAppointment", appointmentService.findByParticipants(user, maxItem));
-		request.setAttribute("totalAppointment", appointmentService.countFindByParticipants(user));
-		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(me));
-		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
-		request.setAttribute("listSchool", schoolService.findAll());
+
+		request.setAttribute("listAppointment", AppointmentService.getInstance().findByParticipants(user, maxItem));
+		request.setAttribute("totalAppointment", AppointmentService.getInstance().countFindByParticipants(user));
+		request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(me));
+		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
+		request.setAttribute("listSchool", SchoolService.getInstance().findAll());
 		request.setAttribute("profileUser",user);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);

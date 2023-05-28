@@ -6,6 +6,13 @@ import com.studywithme.model.District;
 import java.util.List;
 
 public class DistrictDAO extends AbstractDAO<District> implements IDistrictDAO {
+    private static IDistrictDAO districtDAO;
+    public static IDistrictDAO getInstance() {
+        if (districtDAO == null) {
+            districtDAO = new DistrictDAO();
+        }
+        return districtDAO;
+    }
     @Override
     public List<District> findAll() {
         String hql = "From District";

@@ -6,6 +6,13 @@ import com.studywithme.model.Modify;
 import java.util.List;
 
 public class ModifyDAO extends AbstractDAO<Modify> implements IModifyDAO {
+    private static IModifyDAO modifyDAO;
+    public static IModifyDAO getInstance() {
+        if (modifyDAO == null) {
+            modifyDAO = new ModifyDAO();
+        }
+        return modifyDAO;
+    }
     @Override
     public List<Modify> findAll() {
         String hql = "from Modify";

@@ -6,6 +6,13 @@ import com.studywithme.model.Ward;
 import java.util.List;
 
 public class WardDAO extends AbstractDAO<Ward> implements IWardDAO {
+    private static IWardDAO wardDAO;
+    public static IWardDAO getInstance() {
+        if (wardDAO == null) {
+            wardDAO = new WardDAO();
+        }
+        return wardDAO;
+    }
     @Override
     public List<Ward> findAll() {
         String hql = "from Ward";

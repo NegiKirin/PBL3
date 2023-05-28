@@ -9,6 +9,7 @@ import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.FriendshipService;
 import com.studywithme.sort.Sorter;
 import com.studywithme.util.FormUtil;
+import com.studywithme.util.SessionUtil;
 
 import java.io.IOException;
 
@@ -27,32 +28,24 @@ public class Home extends HttpServlet {
     public Home() {
         super();
     }
-	private IAppointmentService appointmentService;
-	private IFriendshipService friendshipService;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		appointmentService = new AppointmentService();
-		friendshipService = new FriendshipService();
-
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User user = null;
-		user = (User)obj;
+		User user = (User) SessionUtil.getInstance().getValue(request, "user");
 
 		Pageable pageble = new PageRequest();
 		pageble = FormUtil.toModel(PageRequest.class, request);
 		pageble.setSorter(FormUtil.toModel(Sorter.class, request));
-		int totalPages = (int) Math.ceil((double) appointmentService.totalItem(pageble) / pageble.getMaxPageItem()) ;
+		int totalPages = (int) Math.ceil((double) AppointmentService.getInstance().totalItem(pageble) / pageble.getMaxPageItem()) ;
 		String listFriend = request.getParameter("listFriend");
 		request.setAttribute("pageable",pageble);
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
 //		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
 //		request.setAttribute("page",pageble.getPage());
 //		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
-		request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
-		request.setAttribute("listFriend",friendshipService.listFriend(listFriend,user));
-		request.setAttribute("appointments",appointmentService.pagingAppointment(pageble));
-		request.setAttribute("appointmentOf", appointmentService.findByHostCurrent(user));
+		request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
+		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
+		request.setAttribute("appointments", AppointmentService.getInstance().pagingAppointment(pageble));
+		request.setAttribute("appointmentOf", AppointmentService.getInstance().findByHostCurrent(user));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");
 		rd.forward(request, response);
 	}

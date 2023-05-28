@@ -4,11 +4,14 @@ import com.studywithme.model.User;
 import com.studywithme.service.IAddressTypeService;
 import com.studywithme.service.IAppointmentService;
 import com.studywithme.service.IDistrictService;
+import com.studywithme.service.IFriendshipService;
 import com.studywithme.service.impl.AddressTypeService;
 import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.DistrictService;
+import com.studywithme.service.impl.FriendshipService;
 import com.studywithme.sort.Sorter;
 import com.studywithme.util.FormUtil;
+import com.studywithme.util.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,17 +24,16 @@ import java.io.IOException;
 
 @WebServlet("/createAppointment")
 public class CreateAppointment extends HttpServlet {
-    private IDistrictService districtService;
-    private IAppointmentService appointmentService;
-    private IAddressTypeService addressTypeService;
+//    private IDistrictService districtService;
+//    private IAppointmentService appointmentService;
+//    private IAddressTypeService addressTypeService;
+//    private IFriendshipService friendshipService;
     public CreateAppointment() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        districtService = new DistrictService();
-        appointmentService = new AppointmentService();
-        addressTypeService = new AddressTypeService();
+        String listFriendStr = request.getParameter("listFriend");
         HttpSession session = request.getSession();
         Object obj = session.getAttribute("user");
         User user = null;
@@ -39,11 +41,12 @@ public class CreateAppointment extends HttpServlet {
         Sorter sorter = new Sorter();
         sorter = FormUtil.toModel(Sorter.class, request);
         request.setAttribute("dateMeeting", sorter.getDateMeeting());
-        request.setAttribute("districts",districtService.findAll());
-        request.setAttribute("addressTypes",addressTypeService.findAll());
-        request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
-        request.setAttribute("totalAppointment", appointmentService.totalItemCurrent(user));
-        request.setAttribute("appointments", appointmentService.appointmentCurrent(user));
+        request.setAttribute("districts", DistrictService.getInstance().findAll());
+        request.setAttribute("addressTypes", AddressTypeService.getInstance().findAll());
+        request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
+        request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriendStr,user));
+        request.setAttribute("totalAppointment", AppointmentService.getInstance().totalItemCurrent(user));
+        request.setAttribute("appointments", AppointmentService.getInstance().appointmentCurrent(user));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");
         rd.forward(request, response);
     }
@@ -53,10 +56,7 @@ public class CreateAppointment extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if(action.equals("create")){
-            HttpSession session = request.getSession();
-            Object obj = session.getAttribute("user");
-            User user = null;
-            user = (User)obj;
+            User user = (User) SessionUtil.getInstance().getValue(request, "user");
             String dateMeetingStr = request.getParameter("dateMeeting");
             String startTimeStr = request.getParameter("startTime");
             String endTimeStr = request.getParameter("endTime");
@@ -64,12 +64,10 @@ public class CreateAppointment extends HttpServlet {
             String address = request.getParameter("address");
             String max = request.getParameter("max");
             String idAddressType = request.getParameter("addressType");
-            appointmentService = new AppointmentService();
-            appointmentService.createAppointment(dateMeetingStr,startTimeStr,endTimeStr,max,address,idAddressType,idWard,user);
+            AppointmentService.getInstance().createAppointment(dateMeetingStr,startTimeStr,endTimeStr,max,address,idAddressType,idWard,user);
         } else if (action.equals("delete")) {
             String idAppointment = request.getParameter("idAppointment");
-            appointmentService = new AppointmentService();
-            appointmentService.delete(idAppointment);
+            AppointmentService.getInstance().delete(idAppointment);
         }
         doGet(request,response);
 //        RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");

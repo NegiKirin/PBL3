@@ -8,10 +8,15 @@ import com.studywithme.service.IAddressTypeService;
 import java.util.List;
 
 public class AddressTypeService implements IAddressTypeService {
-    private IAddressTypeDAO addressTypeDAO;
+    private static IAddressTypeService addressTypeService;
+    public static IAddressTypeService getInstance() {
+        if (addressTypeService == null) {
+            addressTypeService = new AddressTypeService();
+        }
+        return addressTypeService;
+    }
     @Override
     public List<AddressType> findAll() {
-        addressTypeDAO = new AddressTypeDAO();
-        return addressTypeDAO.findAll();
+        return AddressTypeDAO.getInstance().findAll();
     }
 }

@@ -14,6 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshipDAO {
+    private static IFriendshipDAO friendshipDAO;
+    public static IFriendshipDAO getInstance() {
+        if (friendshipDAO == null) {
+            friendshipDAO = new FriendshipDAO();
+        }
+        return friendshipDAO;
+    }
     @Override
     public List<Friendship> findAll() {
         String hql = "from Friendship";

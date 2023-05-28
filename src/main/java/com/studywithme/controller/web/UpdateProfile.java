@@ -6,6 +6,7 @@ import com.studywithme.service.ISchoolService;
 import com.studywithme.service.IUserService;
 import com.studywithme.service.impl.SchoolService;
 import com.studywithme.service.impl.UserService;
+import com.studywithme.util.SessionUtil;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -26,8 +27,6 @@ public class UpdateProfile extends HttpServlet {
     public UpdateProfile() {
         super();
     }
-	private ISchoolService schoolService;
-	private IUserService userService;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
@@ -39,10 +38,7 @@ public class UpdateProfile extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String school_id = request.getParameter("school_id");
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User user = null;
-		user = (User)obj;
+		User user = (User) SessionUtil.getInstance().getValue(request, "user");
 
 		try {
 			if(!dateOfBirth.equals("null")) {
@@ -63,8 +59,7 @@ public class UpdateProfile extends HttpServlet {
 			School school = new School();
 			user.setSchool(school);
 		}
-		userService = new UserService();
-		userService.update(user);
+		UserService.getInstance().update(user);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
 		rd.forward(request, response);
 	}

@@ -18,53 +18,51 @@ import java.util.Date;
 import java.util.List;
 
 public class AppointmentService implements IAppointmentService {
-    private IAppointmentDAO appointmentDAO;
-    private IAddressDAO addressDAO;
-    private IAddressTypeDAO addressTypeDAO;
+    private static IAppointmentService appointmentService;
+    public static IAppointmentService getInstance() {
+        if (appointmentService == null) {
+            appointmentService = new AppointmentService();
+        }
+        return appointmentService;
+    }
+
     @Override
     public List<Appointment> pagingAppointment(Pageable pageble) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.pagingAppointment(pageble);
+        return AppointmentDAO.getInstance().pagingAppointment(pageble);
     }
 
     @Override
     public Integer totalItem(Pageable pageble) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.count(pageble);
+        return  AppointmentDAO.getInstance().count(pageble);
     }
 
     @Override
     public List<Appointment> findByHost(User host) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.findByHost(host);
+        return  AppointmentDAO.getInstance().findByHost(host);
     }
 
     @Override
     public List<Appointment> findByHostCurrent(User host) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.findByHostCurrent(host);
+        return  AppointmentDAO.getInstance().findByHostCurrent(host);
     }
 
     @Override
     public List<Appointment> findByParticipants(User participant, String maxItem) {
-        appointmentDAO = new AppointmentDAO();
         if (maxItem == null) {
-            return appointmentDAO.findByParticipants(participant,5);
+            return  AppointmentDAO.getInstance().findByParticipants(participant,5);
         } else {
-            return appointmentDAO.findByParticipants(participant,Integer.parseInt(maxItem));
+            return  AppointmentDAO.getInstance().findByParticipants(participant,Integer.parseInt(maxItem));
         }
     }
 
     @Override
     public List<Appointment> findByParticipantCurrent(User participant) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.findByParticipantCurrent(participant);
+        return  AppointmentDAO.getInstance().findByParticipantCurrent(participant);
     }
 
     @Override
     public Integer countFindByParticipants(User participant) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.countFindByParticipants(participant);
+        return  AppointmentDAO.getInstance().countFindByParticipants(participant);
     }
 
     @Override
@@ -79,17 +77,16 @@ public class AppointmentService implements IAppointmentService {
         Time startTime = Time.valueOf(LocalTime.parse(startTimeStr));
         Time endTime = Time.valueOf(LocalTime.parse(endTimeStr));
         Address address1 = new Address();
-        addressTypeDAO = new AddressTypeDAO();
-        addressDAO = new AddressDAO();
+//        addressTypeDAO = new AddressTypeDAO();
         address1.setDetail(address);
         address1.setWard(new Ward(Integer.parseInt(idWard)));
         address1.setCreatedBy(host);
         address1.setCreatedDate(new java.sql.Date(System.currentTimeMillis()));
         address1.setCreatedBy(host);
-        address1.setAddressType(addressTypeDAO.findOne(Integer.parseInt(idAddressType)));
+        address1.setAddressType(AddressTypeDAO.getInstance().findOne(Integer.parseInt(idAddressType)));
 
         Appointment appointment = new Appointment();
-        appointment.setAddress(addressDAO.insert(address1));
+        appointment.setAddress(AddressDAO.getInstance().insert(address1));
         appointment.setStarting_time(startTime);
         appointment.setEnding_time(endTime);
         appointment.setDateMeeting(dateMeeting);
@@ -99,25 +96,21 @@ public class AppointmentService implements IAppointmentService {
         appointment.setStatus(0);
         appointment.setMaximum(Integer.parseInt(max));
         appointment.setTotalParticipant(1);
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.insert(appointment);
+        return  AppointmentDAO.getInstance().insert(appointment);
     }
 
     @Override
     public Integer totalItemCurrent(User host) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.countByHostCurrent(host);
+        return  AppointmentDAO.getInstance().countByHostCurrent(host);
     }
 
     @Override
     public List<Appointment> appointmentCurrent(User host) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.findByHostCurrent(host);
+        return  AppointmentDAO.getInstance().findByHostCurrent(host);
     }
 
     @Override
     public boolean delete(String id) {
-        appointmentDAO = new AppointmentDAO();
-        return appointmentDAO.delete(appointmentDAO.findOne(Integer.parseInt(id)));
+        return  AppointmentDAO.getInstance().delete( AppointmentDAO.getInstance().findOne(Integer.parseInt(id)));
     }
 }

@@ -1,5 +1,7 @@
 package com.studywithme.controller.web;
 
+import com.studywithme.util.SessionUtil;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +20,10 @@ public class Logout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		// Huy bo session
-		session.invalidate();
-		
+//		HttpSession session = request.getSession();
+//		// Huy bo session
+//		session.invalidate();
+		SessionUtil.getInstance().removeValue(request,"user");
 		String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 		+ request.getContextPath();
 		

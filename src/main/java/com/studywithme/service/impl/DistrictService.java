@@ -8,10 +8,15 @@ import com.studywithme.service.IDistrictService;
 import java.util.List;
 
 public class DistrictService implements IDistrictService {
-    private IDistrictDAO districtDAO;
+    private static IDistrictService districtService;
+    public static IDistrictService getInstance() {
+        if (districtService == null) {
+            districtService = new DistrictService();
+        }
+        return districtService;
+    }
     @Override
     public List<District> findAll() {
-        districtDAO = new DistrictDAO();
-        return districtDAO.findAll();
+        return DistrictDAO.getInstance().findAll();
     }
 }

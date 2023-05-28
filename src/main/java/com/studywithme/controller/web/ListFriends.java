@@ -9,6 +9,7 @@ import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.FriendshipService;
 import com.studywithme.sort.Sorter;
 import com.studywithme.util.FormUtil;
+import com.studywithme.util.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,32 +22,25 @@ import java.io.IOException;
 
 @WebServlet("/list-friends")
 public class ListFriends extends HttpServlet {
-    private IAppointmentService appointmentService;
-    private IFriendshipService friendshipService;
     public ListFriends() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        appointmentService = new AppointmentService();
-        friendshipService = new FriendshipService();
-        HttpSession session = request.getSession();
-        Object obj = session.getAttribute("user");
-        User user = null;
-        user = (User)obj;
+        User user = (User) SessionUtil.getInstance().getValue(request, "user");
 
         Pageable pageble = new PageRequest();
         pageble = FormUtil.toModel(PageRequest.class, request);
         pageble.setSorter(FormUtil.toModel(Sorter.class, request));
-        int totalFriend = friendshipService.totalFriend(user);
+        int totalFriend = FriendshipService.getInstance().totalFriend(user);
         int totalPages = (int) Math.ceil((double) totalFriend / pageble.getMaxPageItem());
 
 
         request.setAttribute("totalFriend", totalFriend);
         request.setAttribute("totalPages",totalPages==1?0:totalPages);
         request.setAttribute("pageable", pageble);
-        request.setAttribute("listFriend", friendshipService.pagingFriend(pageble, user));
-        request.setAttribute("appointmentJoined", appointmentService.findByParticipantCurrent(user));
+        request.setAttribute("listFriend", FriendshipService.getInstance().pagingFriend(pageble, user));
+        request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/list-friends.jsp");
         rd.forward(request, response);
     }
