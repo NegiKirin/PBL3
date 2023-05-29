@@ -1,3 +1,6 @@
+<%@include file="/common/taglib.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +10,7 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <script src="./rate.js" ></script>
-    <link rel="stylesheet" href="./rate.css">
+    <link rel="stylesheet" href="../../template/css/rate.css">
 </head>
 <body>
 <div id="main">
@@ -65,72 +67,160 @@
             </div>
         </div>
         <div class="content-main">
-            <h1 class="content-main-title">Thực hiện đánh giá</h1>
+            <h1 class="content-main-title">Danh</h1>
 
             <div class = "crete-rate">
                 <div class="scrollable-container">
                     <div class="list-rate">
                         <div class="rate">
-                            <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
-                            <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
-                            <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                            <p class="ID"><img class="avata-host" src="../../template/image/avatarDefault.png" alt=""></i>  Lê Thanh</p>
+                            <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i> 60 Nguyen Luong Bang</p>
+                            <button class="show-button" title="Xem thành viên"></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
                         </div>
-                        <div class="list" id="myElement">
+                        <form class="list">
                             <p class="content-list">Danh sách thành viên:</p>
                             <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Nguyen Pham Phuc Tan</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Hồ Duy Phúc</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Lê Việt Thanh</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
                             </div>
-
-
-
                             <div class="abc">
-                                <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
-                                <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
+                                <button class="accept button"></i>Xác nhận</button>
+                                <button class="denied button"></i>Hủy</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="list-rate">
                         <div class="rate">
-                            <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
-                            <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
-                            <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                            <p class="ID"><img class="avata-host" src="../../template/image/avatarDefault.png" alt=""></i>  Lê Thanh</p>
+                            <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i> 60 Nguyen Luong Bang</p>
+                            <button class="show-button" title="Xem thành viên" ></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
                         </div>
-                        <div class="list" id="myElement">
+                        <form class="list" >
                             <p class="content-list">Danh sách thành viên:</p>
                             <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Nguyen Pham Phuc Tan</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Hồ Duy Phúc</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Lê Việt Thanh</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
                             </div>
-
-
-
                             <div class="abc">
-                                <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
-                                <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
+                                <button class="accept button"></i>Xác nhận</button>
+                                <button class="denied button"></i>Hủy</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="list-rate">
                         <div class="rate">
-                            <p class="ID"><img class="avata-host" src="../image/ava.png" alt=""></i>  Lê Thanh</p>
-                            <p class="time-date"><i class="fa-solid fa-clock"style="color: white;"></i> 8 A.M - 9 A.M 08/03/2023</p>
-                            <p class="address"><i class="fa-solid fa-location-dot"style="color: white;"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>đánh giá<i class="fa-solid fa-caret-down"></i></button>
+                            <p class="ID"><img class="avata-host" src="../../template/image/avatarDefault.png" alt=""></i>  Lê Thanh</p>
+                            <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i> 60 Nguyen Luong Bang</p>
+                            <button class="show-button" title="Xem thành viên" id="showbtn"></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
                         </div>
-                        <div class="list" id="myElement">
+                        <form class="list" id="myElement">
                             <p class="content-list">Danh sách thành viên:</p>
                             <div class="member">
-                                <img class="avata-member" src="../image/ava.png" alt=""><p class="Name-member">Nguyen Pham Phuc Tan: </p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Nguyen Pham Phuc Tan</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Hồ Duy Phúc</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
+                                    <p class="Name-member">Lê Việt Thanh</p>
+                                    <div class="rate-start">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="abc">
-                                <button class="accept-button" title="Xem thành viên"></i>Xác nhận</i></button>
-                                <button class="denied-button" title="Xem thành viên"></i>Hủy</i></button>
+                                <button class="accept button"></i>Xác nhận</button>
+                                <button class="denied button"></i>Hủy</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -138,17 +228,17 @@
             <div class="list-friends">
                 <p class="list-friends-title">Danh sách bạn bè</p>
                 <div class="list-friends-item">
-                    <img src="../image/ava.png" alt="">
+                    <img src="../../template/image/avatarDefault.png" alt="">
                     <p class="name"><a href=""> Ho va ten </a></p>
                     <i class="fa-solid fa-mug-saucer"></i>
                 </div>
                 <div class="list-friends-item">
-                    <img src="../image/ava.png" alt="">
+                    <img src="../../template/image/avatarDefault.png" alt="">
                     <p class="name"><a href=""> Ho va ten </a></p>
                     <i class="fa-solid fa-mug-saucer"></i>
                 </div>
                 <div class="list-friends-item">
-                    <img src="../image/ava.png" alt="">
+                    <img src="../../template/image/avatarDefault.png" alt="">
                     <p class="name"><a href=""> Ho va ten </a></p>
                     <i class="fa-solid fa-mug-saucer"></i>
                 </div>
@@ -156,73 +246,7 @@
         </div>
     </div>
 </div>
-<div class="vice-main" id="myDIV">
-    <div class="edit-infor">
-        <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
-        <p class="title-edit">Ảnh bìa</p>
-        <form class="edit-background" runat="server">
-            <img id="blah1" src="../image/background.png" alt="your image" />
-            <input class="input-img" accept="image/*" type='file' id="imgInp1" />
-            <button class="submit">Xác nhận thay đổi</button>
-            <script>
-                imgInp1.onchange = evt => {
-                    const [file] = imgInp1.files
-                    if (file) {
-                        blah1.src = URL.createObjectURL(file)
-                    }
-                }
-            </script>
-        </form>
-        <p class="title-edit">Ảnh đại diện</p>
-        <form class="edit-ava" runat="server">
-            <img id="blah2" src="../image/ava1.png" alt="your image" />
-            <input class="input-img" accept="image/*" type='file' id="imgInp2" />
-            <button class="submit">Xác nhận thay đổi</button>
-            <script>
-                imgInp2.onchange = evt => {
-                    const [file] = imgInp2.files
-                    if (file) {
-                        blah2.src = URL.createObjectURL(file)
-                    }
-                }
-            </script>
-        </form>
-        <form action="">
-            <p class="title-edit">Thông tin cá nhân</p>
-            <div class="list">
-                <i class="fa-solid fa-heart"></i>
-                <p class="content">Giới tính:</p>
-                <select class="list-sex" name="" id="">
-                    <option selected>Nam</option>
-                    <option>Nữ</option>
-                    <option>Khác</option>
-                </select>
-            </div>
-            <div class="list">
-                <i class="fa-solid fa-school"></i>
-                <p class="content">Trường học:</p>
-                <input class="list-school" placeholder="Chọn trường" list="list-school" id="school-choice" name="school-choice">
-
-                <datalist id="list-school">
-                    <option value="Trường Đại học Bách khoa, Đại học Đà Nẵng">
-                    <option value="Trường Đại học Kinh tế, Đại học Đà Nẵng">
-                    <option value="Trường Đại học Kiến trúc Đà Nẵng">
-                </datalist>
-            </div>
-            <div class="list">
-                <i class="fa-solid fa-cake-candles"></i>
-                <p class="content">Ngày sinh:</p>
-                <input type="date" value="2023-02-02" class="date">
-            </div>
-            <button class="submit">Xác nhận thay đổi</button>
-        </form>
-        <button class="exit" onclick="myFunction()">X</button>
-    </div>
-</div>
-
-
-
-
+<script src="../../template/js/rate.js" ></script>
 </body>
 </html>
 

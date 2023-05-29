@@ -330,6 +330,12 @@
             <form action="edit-profile" method="post" enctype="multipart/form-data" id="editProfile">
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
+                    <i class="fa-solid fa-user"></i>
+                    <p class="content">Họ và tên: </p>
+                    <input class="first-name" value="${profileUser.firstName}">
+                    <input class="last-name" value="${profileUser.lastName}">
+                </div>
+                <div class="list">
                     <i class="fa-solid fa-heart"></i>
                     <p class="content">Giới tính:</p>
                     <select class="list-sex" name="gender" id="gender" value="${profileUser.gender}">

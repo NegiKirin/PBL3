@@ -431,6 +431,16 @@ i.checked{
     margin-top: 20px;
 }
 
+.vice-main .edit-infor .list .first-name,
+.vice-main .edit-infor .list .last-name{
+    height: 30px;
+    margin-right: 10px;
+    border: solid 2px #8A8a8a;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
 .vice-main .edit-infor .list .list-school,
 .vice-main .edit-infor .list .list-sex{
     border: none;

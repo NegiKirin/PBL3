@@ -28,8 +28,9 @@
             <jsp:include page="/common/web/Calender.jsp"></jsp:include>
             <div class="content-list-meeting">
                 <p class="text">Lịch hẹn</p>
-                <p class="all"><a href="">Tất cả</a></p>
-                <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
+                <div class="content scroll-style">
+                    <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
+                </div>
             </div>
         </div>
         <div class="content-main">
@@ -142,7 +143,7 @@
                         <div class="list-members">
                             <p class="title inline">Người đã tham gia: </p>
                             <p class="number"></p>
-                            <div class="list">
+                            <div class="list scroll-style">
                             </div>
                         </div>
                     </div>

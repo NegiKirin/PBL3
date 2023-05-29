@@ -151,6 +151,25 @@ html body{
 
 #content .content-left .content-list-meeting{
     padding: 10px;
+    height: calc(100% - 350px);
+
+}
+
+#content .content-left .content-list-meeting .content{
+    height: 90%;
+}
+
+.scroll-style{
+    overflow-y: scroll;
+}
+
+.scroll-style::-webkit-scrollbar{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.scroll-style::-webkit-scrollbar-thumb{
+    background-color: #d6d3da;
 }
 
 #content .content-left .content-list-meeting .text{
