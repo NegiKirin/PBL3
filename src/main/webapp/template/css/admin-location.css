@@ -1,0 +1,359 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+ul{
+    list-style: none;
+}
+
+body{
+    background-color: #f5f5f5;
+    height: 100%;
+    position: relative;
+}
+
+#main{
+    height: 100%;
+}
+
+#header {
+    height: 46px;
+    background-color: #18C0e6;
+    display: flex;
+}
+
+#header .header-info-admin{
+    display: flex;
+    align-items: center;
+    height: 46px;
+    background-color: #fff;
+    width: 260px;
+
+
+}
+
+#header .header-info-admin img{
+    border-radius: 50%;
+    height: 38px;
+    margin: auto 20px;
+}
+
+#header .header-info-admin a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    width: 140px;
+
+}
+
+#content {
+    height: 87%;
+    display: flex;
+    width: 100%;
+}
+
+#content .content-left{
+    width: 260px;
+    background-color: #fff;
+    display: block;
+    padding-top: 20px;
+    height: 107%;
+}
+
+.content-left button{
+    width: 100%;
+    background-color: #fff;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    padding: 20px 10px;
+    margin-bottom: 5px;
+    transition: 0.25s;
+}
+
+.content-left .selected{
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+    background-color: #f5f5f5;
+
+}
+
+.content-left button p{
+    display: inline;
+    font-weight: bold;
+}
+
+.content-left button i{
+    float: right;
+    padding-right: 5px;
+}
+
+.content-left button:hover{
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+    background-color: #f5f5f5;
+}
+
+#content .content-main{
+    width: calc(100% - 260px);
+    display: inline;
+    padding: 10px;
+    height: 100%;
+}
+
+#content .title-main{
+    text-align: center;
+    font-size: 22px;
+    padding: 5px;
+
+}
+#content .content-list-location{
+    height: 100%;
+    width: 450px;
+    display: inline-block;
+}
+#delete2.fa-trash{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    float: right;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+#delete2.fa-trash:hover{
+    transform: scale(1.3);
+    color: rgb(244, 60, 60);
+    transition: 0.25s;
+
+}
+.table{
+    display: block;
+    height: 40px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 0px #aaaaaa;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 5px 5px 0 0;
+}
+.item-title1{
+    display: inline;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 117px;
+}
+.item-title2{
+    display: inline;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 440px;
+
+}
+#content .content-list-location .item{
+    display: inline-block;
+    height: 70px;
+    background-color: #f0f7ff;
+    width: 415px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    transition: 0.25s;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px 0px #aaaaaa;
+}
+.selected {
+    border-color: yellow;
+}
+
+#content .content-list-location .item:hover{
+    transform: scale(1.02);
+    transition: 0.25s;
+
+}
+
+.item .district-name{
+    display: inline;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 35%;
+    font-size: 20px;
+    position: relative;
+    top: 15px;
+
+}
+
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    height: 400px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
+
+    align-items: center;
+
+}
+.menu .count{
+    display: none;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 50px;
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgba(165, 164, 164, 0.5);
+    font-size: 20px;
+}
+.menu .count:hover{
+    transform: scale(1.03);
+    transition: 0.25s;
+}
+.mid{
+    display: inline-block;
+    width: 1px; /* Chiều rộng của dấu gạch dọc */
+    height: 100%; /* Chiều cao của dấu gạch dọc */
+    background-color: gray; /* Màu sắc của dấu gạch dọc */
+    box-shadow: 2px 0 4px rgba(207, 205, 205, 0.5);
+
+
+}
+.ward{
+    display: inline-block;
+    float: right;
+    width: 730px;
+    background-color: white;
+    height: 100%;
+    margin-left: 0px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 1px 1px 1px 0px #aaaaaa;
+
+}
+.divider {
+    height: 2px; /* Chiều cao của thanh ngang */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); /* Gradient mờ từ trong suốt đến mờ */
+    width: 650px;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.scrollable-container{
+    height: 100%; /* Đặt chiều cao của khu vực cuộn */
+    overflow-y: scroll; /* Chỉ định việc cuộn dọc */
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+    padding-left: 3px;
+}
+.conlan{
+    height: 100%; /* Đặt chiều cao của khu vực cuộn */
+    width: 100%;
+    overflow-y: scroll; /* Chỉ định việc cuộn dọc */
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+
+}
+.add{
+    margin-top: 20px;
+    margin-left: 30px;
+    display: inline-block;
+}
+.add-title{
+    font-weight: bold;
+    margin-left: 15px;
+}
+.input{
+    display: inline;
+}
+.name-add{
+    margin-top: 15px;
+    height: 25px;
+    width: 250px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+.sl{
+    height: 25px;
+    width: 120px;
+    margin-left: 10px;
+}
+.addbtn{
+    height: 30px;
+    width: 80px;
+    background-color: #18C0e6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-left: 20px;
+}
+.addbtn:hover{
+    transform: scale(1.2);
+    transition: 0.25s;
+}
+#delete1.fa-trash{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    float: right;
+}
+#delete1.fa-trash:hover{
+    transform: scale(1.3);
+    color: rgb(244, 60, 60);
+    transition: 0.25s;
+
+}
+#confirmBox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+#cancelButton{
+    background-color: #FF0000;
+    width: 50px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 40px;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+#confirmButton{
+    background-color: #75BA80;
+    width: 50px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 90px;
+    margin-top: 10px;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+}
+#cancelButton:hover{
+    transform: scale(1.05);
+    transition: 0.25s;
+}
+#confirmButton:hover{
+    transform: scale(1.05);
+    transition: 0.25s;
+}
+#resultMessage {
+    margin-top: 10px;
+}
+
