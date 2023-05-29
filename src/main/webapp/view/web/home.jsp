@@ -51,12 +51,22 @@
                                 <p class="date">${appointment.dateMeeting}</p>
                                 <p class="time" startTime="${appointment.starting_time}" endTime = "${appointment.ending_time}"></p>
                                 <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
-                                <input type="hidden" value="coffee">
+                                <input type="hidden" value="${appointment.address.addressType.type}">
+                                <input type="hidden" value="${appointment.maximum}">
+                                <input type="hidden" value="${fn:length(appointment.participants)}" name="totalParticipants">
+                                <div class="participants">
+                                    <c:forEach var="participant" items="${appointment.participants}">
+                                        <div class="participant">
+                                            <input type="hidden" value="${participant.avatar}">
+                                            <input type="hidden" value="${participant.fullName}">
+                                        </div>
+                                    </c:forEach>
+                                </div>
                             </div>
+                            <input type="hidden" name="idAppointment" value="${appointment.id}">
                         </div>
                         <button class="see-more">Xem chi tiết</button>
                     </div>
-
                 </c:forEach>
                     <form action="<c:url value="/home"/> " id="formPaging" method="get">
                         <ul class="pagination" id="pagination"></ul>
@@ -105,15 +115,13 @@
             </div>
 
 
-
-
         <div class="booking-apm hide" id="myDIV">
             <div class="panel"> </div>
             <div class="content">
                 <img src="" alt="" class="background">
                 <img src="" alt="" class="ava">
                 <h1 class="name">Tên Trống</h1>
-                <form class="infor-apm">
+                <form class="infor-apm" action="home" method="post">
                     <div class="flex">
                         <div class="infor">
                             <p class="title">Thông tin cuộc hẹn:</p>
@@ -131,35 +139,23 @@
                                 <p class="address">Mặc định</p>
                             </div>
                         </div>
-
                         <div class="list-members">
                             <p class="title inline">Người đã tham gia: </p>
-                            <p class="number">(<i class="fa-solid fa-users"></i> 3 / 5)</p>
+                            <p class="number"></p>
                             <div class="list">
-                                <div class="item">
-                                    <img src="<c:url value="/template/image/avatarDefault.png"/> ">
-                                    <a class="name">Lê Việt Thanh</a>
-                                </div>
-                                <div class="item">
-                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
-                                    <a class="name">Lê Việt Thanh</a>
-                                </div>
-                                <div class="item">
-                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
-                                    <a class="name">Lê Việt Thanh</a>
-                                </div>
-                                <div class="item">
-                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
-                                    <a class="name">Lê Việt Thanh</a>
-                                </div>
-                                <div class="item">
-                                    <img src="<c:url value="/template/image/avatarDefault.png"/>">
-                                    <a class="name">Lê Việt Thanh</a>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <input class="submit" type="submit" value="KẾT NỐI NGAY">
+                    <input type="hidden" value="" name="idAppointment">
+                    <input type="hidden" name="action" value="join">
+                    <input type="hidden" value="" id="page" name="page"/>
+                    <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
+                    <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
+                    <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
+                    <c:if test="${pageable.sorter.dateMeeting != null}">
+                        <input type="hidden" value="${pageable.sorter.dateMeeting}" id="dateMeeting" name="dateMeeting">
+                    </c:if>
                 </form>
                 <button class="exit">X</button>
             </div>
@@ -169,9 +165,7 @@
     <script src="<c:url value="/template/js/Calender.js"/>"></script>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script src="<c:url value="/template/js/Appointment.js"/>"></script>
-<%--    <script type="text/javascript">
-
-    </script>--%>
+<%--    <script type="text/javascript"></script>--%>
     <script type="text/javascript">
         var totalPages = ${totalPages};
         var currentPage = ${pageable.page};

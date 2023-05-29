@@ -29,13 +29,8 @@ public class EditProfile extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("user");
-		User user = null;
-		user = (User)obj;
+		User user = (User) SessionUtil.getInstance().getValue(request, "user");
 		String listFriendStr = request.getParameter("listFriend");
-//		String listAppointmentStr = request.getParameter("listAppointment");
-//		request.setAttribute("listAppointment", appointmentService.findByParticipants(user,5));
 		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriendStr,user));
 		request.setAttribute("listSchool", SchoolService.getInstance().findAll());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");

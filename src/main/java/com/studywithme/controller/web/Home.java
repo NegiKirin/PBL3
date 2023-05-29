@@ -39,9 +39,6 @@ public class Home extends HttpServlet {
 		String listFriend = request.getParameter("listFriend");
 		request.setAttribute("pageable",pageble);
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
-//		request.setAttribute("maxPageItem",pageble.getMaxPageItem());
-//		request.setAttribute("page",pageble.getPage());
-//		request.setAttribute("dateMeeting",pageble.getSorter().getDateMeeting());
 		request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
 		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
 		request.setAttribute("appointments", AppointmentService.getInstance().pagingAppointment(pageble));
@@ -50,6 +47,11 @@ public class Home extends HttpServlet {
 		rd.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		if (action.equals("join")) {
+			String idAppointment = request.getParameter("idAppointment");
+
+		}
 		doGet(request, response);
 	}
 }
