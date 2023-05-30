@@ -5,21 +5,18 @@ import com.studywithme.service.IAppointmentService;
 import com.studywithme.service.IFriendshipService;
 import com.studywithme.service.ISchoolService;
 import com.studywithme.service.IUserService;
-import com.studywithme.service.impl.AppointmentService;
-import com.studywithme.service.impl.FriendshipService;
-import com.studywithme.service.impl.SchoolService;
-import com.studywithme.service.impl.UserService;
+import com.studywithme.service.impl.*;
 import com.studywithme.util.SessionUtil;
 import jakarta.persistence.Id;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 @WebServlet("/profile")
 public class Profile extends HttpServlet {
@@ -47,6 +44,39 @@ public class Profile extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
+		String profileId = request.getParameter("profileUserId");
+		User user = (User) SessionUtil.getInstance().getValue(request, "user");
+		if (action.equals("editAvatar")) {
+			Part filePart = request.getPart("avatar");
+			user = UserService.getInstance().updateImg(user,filePart,"avatar");
+			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa ảnh đại diên");
+		} else if (action.equals("editBackground")) {
+			Part filePart1 = request.getPart("background");
+			user = UserService.getInstance().updateImg(user,filePart1,"background");
+			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa ảnh bìa");
+		} else if (action.equals("editProfile")) {
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String gender = request.getParameter("gender");
+			String school = request.getParameter("school");
+			String dateOfBirth = request.getParameter("dateOfBirth");
+			user.setFirstName(firstName);
+			user.setLastName(lastName);
+			user.setFullName(firstName + " " + lastName);
+			user.setGender(gender.equals("male")?0:gender.equals("female")?1:2);
+			user.setSchool(SchoolService.getInstance().findByName(school));
+			try {
+				java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+				user.setDateOfBirth(new Date(date.getTime()));
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+			UserService.getInstance().update(user);
+			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa thông tin cá nhân");
+		}
+		response.sendRedirect("/PBL3/profile?id=" +user.getId());
 	}
 }

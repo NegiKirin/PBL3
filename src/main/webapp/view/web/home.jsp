@@ -102,6 +102,7 @@
                                         </div>
                                         <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                                     </div>
+                                    <input type="hidden" name="idAppointmentOf" value="${appointment.id}">
                                     <span class="line"></span>
                                 </c:forEach>
                             </c:if>
@@ -150,8 +151,8 @@
                     <input class="submit" type="submit" value="KẾT NỐI NGAY">
                     <input type="hidden" value="" name="idAppointment">
                     <input type="hidden" name="action" value="join">
-                    <input type="hidden" value="" id="page" name="page"/>
-                    <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
+                    <input type="hidden" value="${pageable.page}" id="page" name="page"/>
+                    <input type="hidden" value="${pageable.maxPageItem}" id="maxPageItem" name="maxPageItem">
                     <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
                     <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
                     <c:if test="${pageable.sorter.dateMeeting != null}">

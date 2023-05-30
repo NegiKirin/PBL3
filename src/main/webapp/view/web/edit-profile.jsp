@@ -296,7 +296,7 @@
         <div class="edit-infor">
             <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
             <p class="title-edit">Ảnh bìa</p>
-            <form class="edit-background" enctype="multipart/form-data" action="edit-profile" method="post">
+            <form class="edit-background" enctype="multipart/form-data" action="profile" method="post">
                 <img id="blah1" src="data:image/jpeg;base64,${profileUser.background}" alt="your image" />
                 <input class="input-img" accept="image/*" type="file" id="imgInp1" name="background"/>
                 <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
@@ -312,7 +312,7 @@
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
             <p class="title-edit">Ảnh đại diện</p>
-            <form class="edit-ava" action="edit-profile" method="post" enctype="multipart/form-data">
+            <form class="edit-ava" action="profile" method="post" enctype="multipart/form-data">
                 <img src="data:image/jpeg;base64,${profileUser.avatar}" id="blah2">
                 <input class="input-img" accept="image/*" type="file" id="imgInp2" name="avatar"/>
                 <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
@@ -327,13 +327,13 @@
                 <input type="hidden" value="editAvatar" name="action">
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
-            <form action="edit-profile" method="post" enctype="multipart/form-data" id="editProfile">
+            <form action="profile" method="post" enctype="multipart/form-data" id="editProfile">
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
                     <i class="fa-solid fa-user"></i>
                     <p class="content">Họ và tên: </p>
-                    <input class="first-name" value="${profileUser.firstName}">
-                    <input class="last-name" value="${profileUser.lastName}">
+                    <input class="first-name" value="${profileUser.firstName}" name="firstName">
+                    <input class="last-name" value="${profileUser.lastName}" name="lastName">
                 </div>
                 <div class="list">
                     <i class="fa-solid fa-heart"></i>
@@ -382,12 +382,16 @@
     <div class="div-chance-pwd hide">
         <div class="chance-pwd">
             <p class="title">Thay đổi mật khẩu</p>
-            <form class="chance-pwd-form">
-                <input class="input" type="text" placeholder="Nhập mật khẩu hiện tại">
+            <form class="chance-pwd-form" method="post" action="profile">
+                <input class="input" type="text" placeholder="Nhập mật khẩu hiện tại" name="passwordCurrent" id="passwordCurrent">
+                <label><p></p></label>
                 <p class="note">*Mật khẩu mới phải trên 8 kí tự.</p>
-                <input class="input" type="text" placeholder="Nhập mật khẩu mới">
-                <input class="input" type="text" placeholder="Nhập lại mật khẩu mới">
-                <input class="submit" type="submit" value="XÁC NHẬN">
+                <input class="input" type="text" placeholder="Nhập mật khẩu mới" name="newPassword" id="newPassword" onkeyup="checkPassword()" onchange="checkNewPassword(this)">
+                <label><p id="errorNewPassword"></p></label>
+                <input class="input" type="text" placeholder="Nhập lại mật khẩu mới" name="rePassword" id="rePassword" onkeyup="checkPassword()">
+                <label><p id="errorPassword"></p></label>
+                <input class="submit" type="submit" disabled value="XÁC NHẬN">
+                <input type="hidden" value="changePassword" name="action">
             </form>
             <button class="exit">X</button>
         </div>

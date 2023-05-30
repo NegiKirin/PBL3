@@ -7,5 +7,6 @@
         <p class="with">Với</p>
         <p class="name">${appointment.host.fullName}</p>
         <input type="hidden" name="date" value="${appointment.dateMeeting}">
+        <input type="hidden" name="idAppointmentJoin" value="${appointment.id}">
     </div>
 </c:forEach>

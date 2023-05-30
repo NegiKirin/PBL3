@@ -1,12 +1,12 @@
 package com.studywithme.service.impl;
 
-import com.studywithme.dao.IAddressDAO;
-import com.studywithme.dao.IAddressTypeDAO;
-import com.studywithme.dao.IAppointmentDAO;
 import com.studywithme.dao.impl.AddressDAO;
 import com.studywithme.dao.impl.AddressTypeDAO;
 import com.studywithme.dao.impl.AppointmentDAO;
-import com.studywithme.model.*;
+import com.studywithme.model.Address;
+import com.studywithme.model.Appointment;
+import com.studywithme.model.User;
+import com.studywithme.model.Ward;
 import com.studywithme.paging.Pageable;
 import com.studywithme.service.IAppointmentService;
 
@@ -42,6 +42,11 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
+    public Appointment joinAppointment(User user, String idAppointment) {
+        return AppointmentDAO.getInstance().addParticipant(user, Integer.parseInt(idAppointment));
+    }
+
+    @Override
     public List<Appointment> findByHostCurrent(User host) {
         return  AppointmentDAO.getInstance().findByHostCurrent(host);
     }
@@ -49,7 +54,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public List<Appointment> findByParticipants(User participant, String maxItem) {
         if (maxItem == null) {
-            return  AppointmentDAO.getInstance().findByParticipants(participant,5);
+                return  AppointmentDAO.getInstance().findByParticipants(participant,5);
         } else {
             return  AppointmentDAO.getInstance().findByParticipants(participant,Integer.parseInt(maxItem));
         }

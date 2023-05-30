@@ -115,7 +115,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 				Transaction tr = session.beginTransaction();
 				Query query = session.createQuery(hql);
 				setParameters(query, parameters);
-				Long count = (Long) query.uniqueResult();
+				Long count = query.stream().count();
 				tr.commit();
 				session.close();
 				return Integer.parseInt(count.toString());

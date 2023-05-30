@@ -142,4 +142,7 @@ public class Appointment extends AbstractModel{
 		this.participants.remove(user);
 		user.getListAppointmentsJoin().remove(this);
 	}
+	public void addParticipant(User user) {
+		this.participants.add(user);
+	}
 }

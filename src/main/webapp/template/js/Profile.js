@@ -130,3 +130,29 @@ if(buttonSeeMore){
     })
 }
 
+function checkPassword() {
+    var newPassword = document.getElementById('newPassword');
+    var rePassword = document.getElementById('rePassword');
+    var errorPassword = document.getElementById('errorPassword');
+    if (newPassword.value !== rePassword.value) {
+        errorPassword.innerText = 'Mật khẩu không khớp';
+    } else {
+        errorPassword.innerText = '';
+        if (checkNewPassword(newPassword)) {
+            var buttonSubmitChangePassword = document.querySelector('.div-chance-pwd .chance-pwd .chance-pwd-form .submit');
+            buttonSubmitChangePassword.style.backgroundColor = '#0fb8de';
+            buttonSubmitChangePassword.removeAttribute('disabled');
+        }
+    }
+}
+
+function checkNewPassword(element){
+    var errorNewPassword = document.getElementById('errorNewPassword');
+    if(element.value.length < 8) {
+        errorNewPassword.innerText = 'Mật khẩu phải hơn 8 kí tự'
+    } else {
+        errorNewPassword.innerText = '';
+        return true;
+    }
+}
+

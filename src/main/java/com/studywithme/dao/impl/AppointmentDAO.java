@@ -181,7 +181,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from Appointment a left join a.participants p where (p = :participant or a.host = :participant) order by a.dateMeeting desc";
+                String hql = "from Appointment a left join a.participants p where (p = :participant or a.host = :participant) group by a.id order by a.dateMeeting desc";
                 Query query = session.createQuery(hql);
 //                query.setParameter("today",new Time(System.currentTimeMillis()));
                 query.setParameter("participant",participant);
@@ -207,7 +207,27 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
     @Override
     public Integer countFindByParticipants(User participant) {
-        String hql = "select count(*) from Appointment a left join a.participants p where (p = :participant or a.host = :participant)";
+        String hql = "select count(*) from Appointment a left join a.participants p where (p = :participant or a.host = :participant) group by a.id";
         return count(hql, "participant", participant);
+    }
+
+    @Override
+    public Appointment addParticipant(User participant, Integer id) {
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                Appointment appointment = session.get(Appointment.class, id);
+                appointment.addParticipant(participant);
+                session.update(appointment);
+                tr.commit();
+                session.close();
+                return appointment;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

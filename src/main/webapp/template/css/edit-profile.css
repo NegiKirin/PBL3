@@ -608,7 +608,7 @@ i.checked{
     width: 100px;
     border: none;
     outline: none;
-    background: #0fb8de;
+    background: gray;
     border-radius: 5px;
     color: white;
     font-weight: bold;

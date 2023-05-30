@@ -8,6 +8,11 @@ console.log(oppenBookingDiv);
 console.log(bookingDiv);
 oppenBookingDiv.forEach((item, index) =>{
     item.children[2].addEventListener('click', function (){
+        //reset
+        formBooking.children[1].removeAttribute('disabled');
+        formBooking.children[1].defaultValue = 'KẾT NỐI NGAY';
+        formBooking.children[1].style.backgroundColor = '#18C0e6';
+        inforBookingDiv.nextElementSibling.children[2].innerHTML = "";
         //background
         bookingDiv.children[1].children[0].attributes[0].value = item.children[0].children[0].attributes[0].value;
         //avatar
@@ -32,24 +37,36 @@ oppenBookingDiv.forEach((item, index) =>{
         }
         if (listMemberHTML !== "") {
             inforBookingDiv.nextElementSibling.children[2].innerHTML = listMemberHTML;
-        } else {
-            inforBookingDiv.nextElementSibling.children[2].innerHTML = "";
         }
         //idAppointment
-        formBooking.children[1].removeAttribute('disabled');
-        formBooking.children[1].defaultValue = 'KẾT NỐI NGAY';
-        formBooking.children[1].style.backgroundColor = '#18C0e6';
         formBooking.children[2].defaultValue = item.children[1].children[1].defaultValue;
         //submit
+        let idAppointmentOf = document.getElementsByName('idAppointmentOf');
+        let idAppointmentJoin = document.getElementsByName('idAppointmentJoin');
         if (Number.parseInt(item.children[1].children[0].children[5].value) === Number.parseInt(item.children[1].children[0].children[4].value)) {
             formBooking.children[1].setAttribute('disabled','');
             formBooking.children[1].defaultValue = 'Đã full';
+            formBooking.children[1].style.backgroundColor = 'gray';
+        } else if (checkIdAppointment(idAppointmentJoin, item.children[1].children[1].defaultValue)) {
+            formBooking.children[1].setAttribute('disabled', '');
+            formBooking.children[1].style.backgroundColor = 'gray';
+        } else if (checkIdAppointment(idAppointmentOf, item.children[1].children[1].defaultValue)) {
+            formBooking.children[1].setAttribute('disabled', '');
             formBooking.children[1].style.backgroundColor = 'gray';
         }
         //show
         bookingDiv.classList.remove('hide')
     })
 })
+
+function checkIdAppointment(arr, id) {
+    for (let i = 0; i < arr.length; i++) {
+        if (Number.parseInt(arr[i].defaultValue) === Number.parseInt(id)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 closeBookingDiv.addEventListener('click', function (){
     bookingDiv.classList.add('hide')

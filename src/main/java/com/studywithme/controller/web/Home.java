@@ -48,10 +48,22 @@ public class Home extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		Pageable pageble = new PageRequest();
+		pageble = FormUtil.toModel(PageRequest.class, request);
+		pageble.setSorter(FormUtil.toModel(Sorter.class, request));
 		if (action.equals("join")) {
 			String idAppointment = request.getParameter("idAppointment");
-
+			User user = (User) SessionUtil.getInstance().getValue(request, "user");
+			AppointmentService.getInstance().joinAppointment(user, idAppointment);
 		}
-		doGet(request, response);
+		StringBuilder url = new StringBuilder("/PBL3/home?");
+		url.append("page=" + pageble.getPage());
+		url.append("&maxPageItem=" + pageble.getMaxPageItem());
+		url.append("&sortName=" + pageble.getSorter().getSortName());
+		url.append("&sortBy=" + pageble.getSorter().getSortBy());
+		if (pageble.getSorter().getDateMeeting() != null) {
+			url.append("&dateMeeting=" + pageble.getSorter().getDateMeeting());
+		}
+		response.sendRedirect(url.toString());
 	}
 }
