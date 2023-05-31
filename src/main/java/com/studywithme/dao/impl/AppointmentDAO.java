@@ -80,11 +80,12 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
                     query.setParameter("today",dateSQL);
                     query.setParameter("now",Time.valueOf(LocalTime.now()));
                 }
-//                query.setParameter("now",Time.valueOf(LocalTime.now()));
                 results = query.setFirstResult(pageble.getOffset()).setMaxResults(pageble.getLimit()).getResultList();
                 for(int i = 0; i < results.size(); i++){
-                    session.get(User.class,results.get(i).getHost().getId());
-                    session.get(Address.class,results.get(i).getAddress().getId());
+                    session.get(User.class, results.get(i).getHost().getId());
+                    for (User user: results.get(i).getParticipants()) {
+                        session.get(User.class, user.getId());
+                    }
                 }
                 tr.commit();
                 session.close();

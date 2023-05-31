@@ -33,11 +33,10 @@ public class CreateAppointment extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) SessionUtil.getInstance().getValue(request, "user");
+
         String listFriendStr = request.getParameter("listFriend");
-        HttpSession session = request.getSession();
-        Object obj = session.getAttribute("user");
-        User user = null;
-        user = (User)obj;
+
         Sorter sorter = new Sorter();
         sorter = FormUtil.toModel(Sorter.class, request);
         request.setAttribute("dateMeeting", sorter.getDateMeeting());
@@ -70,7 +69,5 @@ public class CreateAppointment extends HttpServlet {
             AppointmentService.getInstance().delete(idAppointment);
         }
         doGet(request,response);
-//        RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/CreateAppointment.jsp");
-//        rd.forward(request, response);
     }
 }
