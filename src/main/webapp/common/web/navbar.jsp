@@ -30,6 +30,38 @@
         <button class="noti-btn">
             <i class="fa-sharp fa-regular fa-bell"></i>
         </button>
+        <div class="noti-content hide">
+            <div class="list">
+                <div class="content">
+                    <img src="data:image/jpeg;base64,${user.avatar}">
+                    <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
+                </div>
+                <div class="buttons">
+                    <button class="yes">Đồng ý</button>
+                    <button class="no">Từ chối</button>
+                </div>
+            </div>
+            <div class="list">
+                <div class="content">
+                    <img src="data:image/jpeg;base64,${user.avatar}">
+                    <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
+                </div>
+                <div class="buttons">
+                    <button class="yes">Đồng ý</button>
+                    <button class="no">Từ chối</button>
+                </div>
+            </div>
+            <div class="list">
+                <div class="content">
+                    <img src="data:image/jpeg;base64,${user.avatar}">
+                    <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
+                </div>
+                <div class="buttons">
+                    <button class="yes">Đồng ý</button>
+                    <button class="no">Từ chối</button>
+                </div>
+            </div>
+        </div>
         <button class="menu-btn">
             <i class="fa-solid fa-bars"></i>
         </button>

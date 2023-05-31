@@ -11,64 +11,22 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../template/css/rate.css">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
 </head>
 <body>
 <div id="main">
-    <div id="header">
-        <div class="header-info-user" >
-            <img src="../image/ava.png" alt="">
-            <a href="../edit-infor/edit-infor.html"><p class="header-info-user-name"> Ho va ten </p></a>
-            <i class="fa-solid fa-user-pen"></i>
-        </div>
-        <div class="header-main">
-            <li>
-                <a href="">
-                    <button>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="../home/home.html">
-                    <button class="header-main-mainbutton">
-                        <i class="fa-solid fa-globe"></i>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <button>
-                        <i class="fa-solid fa-book"></i>
-                    </button>
-                </a>
-            </li>
-        </div>
-        <div class="header-noti">
-            <a href="">
-                <i class="fa-sharp fa-regular fa-bell"></i>
-            </a>
-        </div>
-    </div>
+    <jsp:include page="/common/web/navbar.jsp"></jsp:include>
     <div id="content">
         <div class="content-left">
             <div class="content-list-meeting">
                 <p class="text">Lịch hẹn</p>
-                <p class="all"><a href="">Tất cả</a></p>
-                <div class="content-left-item">
-                    <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                    <p class="with">Với</p>
-                    <p class="name">Tran Le Nguyen</p>
-                </div>
-                <div class="content-left-item">
-                    <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                    <p class="with">Với</p>
-                    <p class="name">Tran Le Nguyen</p>
+                <div class="content scroll-style">
+                    <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
                 </div>
             </div>
         </div>
         <div class="content-main">
-            <h1 class="content-main-title">Danh</h1>
-
+            <h1 class="content-main-title">Danh sách các cuộc hẹn đã tham gia</h1>
             <div class = "crete-rate">
                 <div class="scrollable-container">
                     <div class="list-rate">
@@ -225,27 +183,12 @@
             </div>
         </div>
         <div class="content-right">
-            <div class="list-friends">
-                <p class="list-friends-title">Danh sách bạn bè</p>
-                <div class="list-friends-item">
-                    <img src="../../template/image/avatarDefault.png" alt="">
-                    <p class="name"><a href=""> Ho va ten </a></p>
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-                <div class="list-friends-item">
-                    <img src="../../template/image/avatarDefault.png" alt="">
-                    <p class="name"><a href=""> Ho va ten </a></p>
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-                <div class="list-friends-item">
-                    <img src="../../template/image/avatarDefault.png" alt="">
-                    <p class="name"><a href=""> Ho va ten </a></p>
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-            </div>
+            <jsp:include page="/common/web/ListFriend.jsp"></jsp:include>
         </div>
     </div>
 </div>
+<script src="<c:url value="/template/js/navbar.js"/>"></script>
+<script src="<c:url value="/template/js/Appointment.js"/>"></script>
 <script src="../../template/js/rate.js" ></script>
 </body>
 </html>
