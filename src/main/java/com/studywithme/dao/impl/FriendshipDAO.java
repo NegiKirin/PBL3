@@ -106,4 +106,38 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
         String hql = "select count(*) from Friendship f where (f.friend =: user or f.requester=: user) and f.status = 0";
         return count(hql, "user", user);
     }
+
+    @Override
+    public List<Friendship> getRequests(User user) {
+        List<Friendship> results = new ArrayList<>();
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                String hql = "from Friendship f where f.friend = :user and f.status = 1";
+                Query query = session.createQuery(hql);
+                query.setParameter("user",user);
+                results = query.getResultList();
+                for(int i = 0; i < results.size(); i++){
+                    session.get(User.class,results.get(i).getFriend().getId());
+                    session.get(User.class,results.get(i).getRequester().getId());
+                }
+                tr.commit();
+                session.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return results;
+    }
+
+    @Override
+    public Friendship getRelationship(User user, User otherUser) {
+        String hql = "from Friendship f where (f.friend = :user and f.requester = :otherUser) or (f.friend = :otherUser and f.requester = :user)";
+        List<Friendship> friendships = query(hql, "user", user, "otherUser", otherUser);
+        return friendships.isEmpty()? null : friendships.get(0);
+    }
+
 }

@@ -66,20 +66,41 @@
                             <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Chỉnh sửa</button>
                         </c:if>
                         <c:if test="${user.id != profileUser.id}">
-                            <c:forEach var="friend" items="${listFriend}">
-                                <c:if test="${profileUser.id == friend.requester.id or profileUser.id == friend.friend.id}">
-                                    <c:if test="${friend.status == 0}">
-                                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Bạn bè</button>
+                            <c:if test="${friendship == null}">
+                                <form action="profile" method="post">
+                                    <input type="hidden" name="profileUserId" value="${profileUser.id}">
+                                    <input type="hidden" value="addFriend" name="action">
+                                    <button type="submit"><i class="fa-solid fa-user-plus"></i></i>Kết bạn</button>
+                                </form>
+                            </c:if>
+                            <c:if test="${friendship != null}">
+                                <c:if test="${friendship.status == 0}">
+                                    <button><i class="fa-solid fa-pen-to-square"></i>Bạn bè</button>
+                                    <form class="" method="post" action="profile" id="">
+                                        <input type="hidden" name="profileUserId" value="${profileUser.id}">
+                                        <input type="hidden" name="idFriendship" value="${friendship.id}">
+                                        <input type="hidden" name="action" value="unfriend">
+                                        <input type="submit" value="Hủy kết bạn">
+                                    </form>
+                                </c:if>
+                                <c:if test="${friendship.status == 1}">
+                                    <c:if test="${friendship.friend.id == user.id}">
+                                        <form>
+                                            <button><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
+                                            <button><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
+                                        </form>
                                     </c:if>
-                                    <c:if test="${friend.status == 1}">
-                                        <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Đã gửi lời </button>
+                                    <c:if test="${friendship.requester.id == user.id}">
+                                        <button><i class="fa-solid fa-pen-to-square"></i>Đã gửi lời mời</button>
+                                        <form class="" method="post" action="profile" id="">
+                                            <input type="hidden" name="profileUserId" value="${profileUser.id}">
+                                            <input type="hidden" name="idFriendship" value="${friendship.id}">
+                                            <input type="hidden" name="action" value="unfriend">
+                                            <input type="submit" value="Hủy kết bạn">
+                                        </form>
                                     </c:if>
                                 </c:if>
-                            </c:forEach>
-                            <c:if test="${listFriend == null}">
-                                <form>
-                                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i>Kết bạn</button>
-                                </form>
+
                             </c:if>
                         </c:if>
                     </div>
@@ -373,6 +394,7 @@
                     <p class="password">************</p>
                 </div>
                 <button class="submit">Đổi mật khẩu</button>
+                <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </div>
             <button class="exit">X</button>
         </div>
@@ -384,7 +406,7 @@
             <p class="title">Thay đổi mật khẩu</p>
             <form class="chance-pwd-form" method="post" action="profile">
                 <input class="input" type="text" placeholder="Nhập mật khẩu hiện tại" name="passwordCurrent" id="passwordCurrent">
-                <label><p></p></label>
+                <label><p id="errorChange">${errorChange}</p></label>
                 <p class="note">*Mật khẩu mới phải trên 8 kí tự.</p>
                 <input class="input" type="text" placeholder="Nhập mật khẩu mới" name="newPassword" id="newPassword" onkeyup="checkPassword()" onchange="checkNewPassword(this)">
                 <label><p id="errorNewPassword"></p></label>
