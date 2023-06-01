@@ -152,7 +152,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from Appointment a left join a.participants p where (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time < :now)) and (p = :participant) order by a.dateMeeting desc";
+                String hql = "from Appointment a left join a.participants p where (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now)) and (p = :participant) order by a.dateMeeting desc";
                 Query query = session.createQuery(hql);
                 Date date = new Date(System.currentTimeMillis());
                 java.sql.Date today = new java.sql.Date(date.getTime());
@@ -229,5 +229,26 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public boolean removeParticipant(User participant, Integer id) {
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                Appointment appointment = session.get(Appointment.class, id);
+                User user = session.get(User.class, participant.getId());
+                appointment.removeParticipant(user);
+                session.update(appointment);
+                tr.commit();
+                session.close();
+                return true;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

@@ -55,6 +55,10 @@ public class Home extends HttpServlet {
 			String idAppointment = request.getParameter("idAppointment");
 			User user = (User) SessionUtil.getInstance().getValue(request, "user");
 			AppointmentService.getInstance().joinAppointment(user, idAppointment);
+		} else if (action.equals("leave")) {
+			String idAppointment = request.getParameter("idAppointment");
+			User user = (User) SessionUtil.getInstance().getValue(request, "user");
+			AppointmentService.getInstance().leaveAppointment(user, idAppointment);
 		}
 		StringBuilder url = new StringBuilder("/PBL3/home?");
 		url.append("page=" + pageble.getPage());

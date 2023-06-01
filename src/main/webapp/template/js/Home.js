@@ -9,6 +9,7 @@ console.log(bookingDiv);
 oppenBookingDiv.forEach((item, index) =>{
     item.children[2].addEventListener('click', function (){
         //reset
+        formBooking.children[3].defaultValue = 'join';
         formBooking.children[1].removeAttribute('disabled');
         formBooking.children[1].defaultValue = 'KẾT NỐI NGAY';
         formBooking.children[1].style.backgroundColor = '#18C0e6';
@@ -45,11 +46,11 @@ oppenBookingDiv.forEach((item, index) =>{
         let idAppointmentJoin = document.getElementsByName('idAppointmentJoin');
         if (Number.parseInt(item.children[1].children[0].children[5].value) === Number.parseInt(item.children[1].children[0].children[4].value)) {
             formBooking.children[1].setAttribute('disabled','');
-            formBooking.children[1].defaultValue = 'Đã full';
+            formBooking.children[1].defaultValue = 'Đã đầy';
             formBooking.children[1].style.backgroundColor = 'gray';
         } else if (checkIdAppointment(idAppointmentJoin, item.children[1].children[1].defaultValue)) {
-            formBooking.children[1].setAttribute('disabled', '');
-            formBooking.children[1].style.backgroundColor = 'gray';
+            formBooking.children[3].defaultValue = 'leave';
+            formBooking.children[1].defaultValue = 'Rời';
         } else if (checkIdAppointment(idAppointmentOf, item.children[1].children[1].defaultValue)) {
             formBooking.children[1].setAttribute('disabled', '');
             formBooking.children[1].style.backgroundColor = 'gray';

@@ -47,6 +47,11 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
+    public boolean leaveAppointment(User user, String idAppointment) {
+        return AppointmentDAO.getInstance().removeParticipant(user, Integer.parseInt(idAppointment));
+    }
+
+    @Override
     public List<Appointment> findByHostCurrent(User host) {
         return  AppointmentDAO.getInstance().findByHostCurrent(host);
     }

@@ -10,6 +10,7 @@ public interface IAppointmentService {
     public Integer totalItem(Pageable pageble);
     public List<Appointment> findByHost(User host);
     public Appointment joinAppointment(User user, String idAppointment);
+    public boolean leaveAppointment(User user, String idAppointment);
     public List<Appointment> findByHostCurrent(User host);
     public List<Appointment> findByParticipants(User participant,String maxItem);
     public List<Appointment> findByParticipantCurrent(User participant);
