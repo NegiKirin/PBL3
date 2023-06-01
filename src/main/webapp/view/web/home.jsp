@@ -79,7 +79,7 @@
                             <input type="hidden" value="${pageable.sorter.dateMeeting}" id="dateMeeting" name="dateMeeting">
                         </c:if>
                     </form>
-            </div>
+                </div>
             </div>
             <div class="content-right">
                 <jsp:include page="/common/web/ListFriend.jsp"/>

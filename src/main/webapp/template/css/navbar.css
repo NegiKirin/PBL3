@@ -136,3 +136,84 @@
 .hide{
     display: none !important;
 }
+
+#header .header-noti .noti-content{
+    position: absolute;
+    top: 50px;
+    right: 70px;
+    display: flex;
+    flex-flow: column;
+    width: 240px;
+    border-radius: 5px;
+    background: white;
+    overflow: hidden;
+    transition: 0.3s;
+    padding: 10px 5px;
+}
+
+#header .header-noti .noti-content .list{
+    height: auto;
+    transition: 0.3s;
+    margin: 5px 0;
+}
+
+#header .header-noti .noti-content .list:hover .buttons{
+    display: flex;
+    transition: 0.3s;
+}
+
+#header .header-noti .noti-content .list .content{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 5px 0;
+}
+
+#header .header-noti .noti-content .list img{
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+#header .header-noti .noti-content .list p{
+    margin: 0 5px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+#header .header-noti .noti-content .list p a{
+    font-weight: bold;
+}
+
+#header .header-noti .noti-content .list .buttons{
+    display: none;
+    justify-content: end;
+    transition: 0.3s;
+}
+
+#header .header-noti .noti-content .list button{
+    border: none;
+    outline: none;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    transition: 0.25s;
+}
+
+#header .header-noti .noti-content .list button:hover{
+    padding: 5px 10px;
+    box-shadow: 2px 2px 3px 0 #8A8a8a;
+}
+
+#header .header-noti .noti-content .list .yes{
+    background: #4CAF50;
+}
+
+#header .header-noti .noti-content .list .no{
+    background: #e84655;
+}

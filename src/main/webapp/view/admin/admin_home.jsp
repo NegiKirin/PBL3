@@ -39,6 +39,10 @@
                         <p class="content">Quản lí danh sách Trường học</p>
                         <i class="fa-solid fa-bars"></i>
                     </a>
+                    <a href="./admin_appointment.jsp" class="user-list">
+                        <p class="content">Quản lí danh sách Cuộc hẹn</p>
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
                 </a>
             </div>
             <div class="content-main">
