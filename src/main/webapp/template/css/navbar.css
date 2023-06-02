@@ -78,6 +78,22 @@
     margin: auto;
 }
 
+#header .header-noti .num-noti{
+    font-weight: bold;
+    position: absolute;
+    background: #e84655;
+    color: white;
+    font-size: 10px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 21px;
+    right: 78px;
+}
+
 #header .header-noti .noti-btn,
 #header .header-noti .menu-btn
 {

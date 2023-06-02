@@ -28,7 +28,7 @@
     </div>
     <div class="header-noti">
         <c:if test="${requestFriend != null}">
-            <div>${fn:length(requestFriend)}</div>
+            <div class="num-noti">${fn:length(requestFriend)}</div>
         </c:if>
         <button class="noti-btn">
             <i class="fa-sharp fa-regular fa-bell"></i>
