@@ -178,3 +178,16 @@ buttonDeny.onclick = function (e) {
     var formRely = document.getElementById('formReply');
     formRely.submit();
 }
+
+var replyFriend = document.querySelector('.friend.reply')
+var replyDiv = document.querySelector('.form-reply')
+replyFriend.addEventListener('click', function (e){
+    replyDiv.classList.toggle('hide');
+    e.stopPropagation();
+})
+
+document.addEventListener('click', function (e){
+    if(e.target!==replyDiv){
+        replyDiv.classList.add('hide')
+    }
+})

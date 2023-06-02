@@ -187,6 +187,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.content-main-edit-infor .friend,
 .content-main-edit-infor .edit{
     cursor: pointer;
     position: absolute;
@@ -199,9 +200,52 @@ body{
     color: #000000;
     border-radius: 5px;
     font-size: 16px;
+    transition: 0.3s;
+}
+
+.content-main-edit-infor .friend:hover,
+.content-main-edit-infor .edit:hover{
+    background: #98969f;
+}
+
+.content-main-edit-infor form#formReply{
+    position: absolute;
+    right: 30px;
+    top: 51px;
+    display: flex;
+    flex-flow: column;
+}
+
+.content-main-edit-infor form .reply-btn{
+    border: none;
+    outline: none;
+    width: 180px;
+    height: 33px;
+    text-align: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 1px;
+    transition: 0.3s;
+}
+
+.content-main-edit-infor form .reply-btn i{
+    margin-right: 5px;
+}
+
+.content-main-edit-infor form .reply-btn#agree:hover{
+    background: #4CAF50;
+    font-weight: bold;
+    color: white;
+}
+
+.content-main-edit-infor form .reply-btn#deny:hover{
+    background: #e84655;
+    font-weight: bold;
+    color: white;
 }
 
 .vice-main .edit-infor i,
+.content-main-edit-infor .friend i,
 .content-main-edit-infor .edit i{
     margin-right: 5px;
 }

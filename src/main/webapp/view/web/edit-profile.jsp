@@ -70,27 +70,27 @@
                                 <form action="profile" method="post">
                                     <input type="hidden" name="profileUserId" value="${profileUser.id}">
                                     <input type="hidden" value="addFriend" name="action">
-                                    <button class="addfr" type="submit"><i class="fa-solid fa-user-plus"></i></i>Kết bạn</button>
+                                    <button class="friend" type="submit"><i class="fa-solid fa-user-plus"></i></i>Kết bạn</button>
                                 </form>
                             </c:if>
                             <c:if test="${friendship != null}">
                                 <c:if test="${friendship.status == 0}">
-                                    <button class="friended "><i class="fa-solid fa-pen-to-square"></i>Bạn bè</button>
                                     <form class="" method="post" action="profile" id="">
                                         <input type="hidden" name="profileUserId" value="${profileUser.id}">
                                         <input type="hidden" name="idFriendship" value="${friendship.id}">
                                         <input type="hidden" name="action" value="unfriend">
-                                        <input class="unfr" type="submit" value="Hủy kết bạn">
+                                        <button class="friend" type="submit"><i class="fa-solid fa-xmark"></i>Hủy kết bạn</button>
                                     </form>
                                 </c:if>
                                 <c:if test="${friendship.status == 1}">
                                     <c:if test="${friendship.friend.id == user.id}">
-                                        <form method="post" action="profile" id="formReply">
+                                        <button class="friend reply"><i class="fa-sharp fa-solid fa-user-check"></i>Phản hồi</button>
+                                        <form class="form-reply hide" method="post" action="replyFriend" id="formReply">
                                             <input type="hidden" name="action" value="reply">
                                             <input type="hidden" name="idFriendship" value="${friendship.id}">
                                             <input type="hidden" name="agree" value="" id="reply">
-                                            <button id="agree"><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
-                                            <button id="deny"><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
+                                            <button class="reply-btn" id="agree"><i class="fa-solid fa-check"></i>Chấp nhận</button>
+                                            <button class="reply-btn" id="deny"><i class="fa-solid fa-xmark"></i>Từ chối</button>
                                         </form>
                                     </c:if>
                                     <c:if test="${friendship.requester.id == user.id}">
@@ -98,7 +98,7 @@
                                             <input type="hidden" name="profileUserId" value="${profileUser.id}">
                                             <input type="hidden" name="idFriendship" value="${friendship.id}">
                                             <input type="hidden" name="action" value="unfriend">
-                                            <input class="return" type="submit" value="Hủy lời mời">
+                                            <button class="friend" type="submit"><i class="fa-solid fa-xmark"></i>Hủy lời mời</button>
                                         </form>
                                     </c:if>
                                 </c:if>
