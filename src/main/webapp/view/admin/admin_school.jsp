@@ -31,7 +31,7 @@
                     <p class="content">Quản lí danh sách Admin</p>
                     <i class="fa-solid fa-bars"></i>
                 </a>
-                <a class="user-list">
+                <a href="./admin_location.jsp" class="user-list">
                     <p class="content">Quản lí danh sách Địa điểm</p>
                     <i class="fa-solid fa-bars"></i>
                 </a>

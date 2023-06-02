@@ -264,3 +264,184 @@ body{
     color: white;
     transform: scale(1.2);
 }
+
+.booking-apm{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.panel{
+    position: fixed;
+    background: rgba(0,0,0, 70%);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.booking-apm .content{
+    position: relative;
+    background-color: #fff;
+    height: auto;
+    width: 800px;
+    margin-left: calc(50% - 400px);
+    margin-top: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.5s linear;
+    transform: scale(1);
+}
+
+.booking-apm .content .background{
+    width: 100%;
+    border-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.booking-apm .content .ava{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-top: -70px;
+    object-fit: cover;
+}
+
+.booking-apm .name{
+    margin: 20px 0;
+}
+
+.booking-apm .infor-apm .flex{
+    text-align: left;
+    padding: 0 50px;
+    display: flex;
+}
+
+.booking-apm .infor-apm .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.booking-apm .infor-apm .infor{
+    width: 360px;
+    border-right: solid 3px #8A8a8a;
+}
+
+.booking-apm .infor-apm .list-members{
+    padding: 0 20px;
+}
+
+.booking-apm .infor-apm .list-members .title.inline,
+.booking-apm .infor-apm .list-members .number{
+    display: inline-block;
+}
+
+.booking-apm .infor-apm .date{
+    font-weight: bold;
+    color: #373737;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.booking-apm i{
+    width: 50px;
+    text-align: center;
+    margin: 5px 0;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.booking-apm .time,
+.booking-apm .type-location{
+    background-color: #75ba80;
+    display: inline;
+    padding: 6px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.booking-apm .type-location{
+    background-color: #d35800;
+    color: #fff;
+    display: inline-block;
+}
+
+.booking-apm .list.inline{
+    display: inline-block;
+}
+
+.booking-apm .address,
+.booking-apm .number{
+    display: inline;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.booking-apm .infor-apm .list-members .list{
+    height: 200px;
+    display: flex;
+    flex-flow: column;
+    overflow: auto;
+}
+
+.booking-apm .infor-apm .list-members .list .item{
+    margin-bottom: 20px;
+}
+
+.booking-apm .infor-apm .list-members .list img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.booking-apm .exit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 26px;
+    width: 35px;
+    border-radius: 7px;
+    font-weight: bold;
+    background: #e84655;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.booking-apm .exit:hover{
+    transform: scale(1.2);
+}
+
+.page-item.active .page-link{
+    z-index: 0 !important;
+}
+
+.booking-apm .submit{
+    width: 150px;
+    margin: 30px 0;
+    padding: 10px;
+    border: none;
+    background-color: #18C0e6;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 3px 3px 5px 0px #aaaaaa;
+}
+
+.booking-apm .submit:hover{
+    background-color: #0aa0c2;
+}
+
+.hide{
+    display: none;
+}

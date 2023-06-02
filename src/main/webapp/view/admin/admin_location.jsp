@@ -22,15 +22,25 @@
     </div>
     <div id="content">
         <div class="content-left">
-            <a href="">
-                <button class="user-list ">
-                    <p class="content">Quản lí danh sách User</p>
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="Location-list">
-                    <p class="content">Quản lí danh sách Địa điểm</p>
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+            <a href="./admin_home.jsp" class="user-list">
+                <p class="content">Quản lí danh sách User</p>
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <a href="./admin_list_admin.jsp" class="user-list">
+                <p class="content">Quản lí danh sách Admin</p>
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <a href="./admin_location.jsp" class="user-list  selected">
+                <p class="content">Quản lí danh sách Địa điểm</p>
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <a href="./admin_school.jsp" class="user-list">
+                <p class="content">Quản lí danh sách Trường học</p>
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <a href="./admin_appointment.jsp" class="user-list">
+                <p class="content">Quản lí danh sách Cuộc hẹn</p>
+                <i class="fa-solid fa-bars"></i>
             </a>
         </div>
         <div class="content-main">
