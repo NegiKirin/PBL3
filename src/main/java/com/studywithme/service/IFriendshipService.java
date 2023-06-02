@@ -14,4 +14,5 @@ public interface IFriendshipService {
     public Friendship getFriendship(User user, User me);
     public List<Friendship> getRequest(User me);
     public boolean unFriend(String id);
+    public boolean reply(String id, String action);
 }

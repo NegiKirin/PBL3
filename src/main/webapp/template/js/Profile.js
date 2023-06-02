@@ -164,19 +164,24 @@ if(errorChange.innerText !==""){
 }
 
 var buttonAgree = document.getElementById('agree');
-buttonAgree.onclick = function (e) {
-    var reply = document.getElementById('reply');
-    reply.defaultValue = 'agree';
-    var formRely = document.getElementById('formReply');
-    formRely.submit();
+if (buttonAgree) {
+    buttonAgree.onclick = function (e) {
+        var reply = document.getElementById('reply');
+        reply.defaultValue = 'agree';
+        var formRely = document.getElementById('formReply');
+        formRely.submit();
+    }
 }
 
+
 var buttonDeny = document.getElementById('deny');
-buttonDeny.onclick = function (e) {
-    var reply = document.getElementById('reply');
-    reply.defaultValue = 'deny';
-    var formRely = document.getElementById('formReply');
-    formRely.submit();
+if(buttonDeny) {
+    buttonDeny.onclick = function (e) {
+        var reply = document.getElementById('reply');
+        reply.defaultValue = 'deny';
+        var formRely = document.getElementById('formReply');
+        formRely.submit();
+    }
 }
 
 var replyFriend = document.querySelector('.friend.reply')

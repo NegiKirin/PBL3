@@ -88,7 +88,8 @@
                                         <form class="form-reply hide" method="post" action="replyFriend" id="formReply">
                                             <input type="hidden" name="action" value="reply">
                                             <input type="hidden" name="idFriendship" value="${friendship.id}">
-                                            <input type="hidden" name="agree" value="" id="reply">
+                                            <input type="hidden" name="idRequester" value="${profileUser.id}">
+                                            <input type="hidden" name="reply" value="" id="reply">
                                             <button class="reply-btn" id="agree"><i class="fa-solid fa-check"></i>Chấp nhận</button>
                                             <button class="reply-btn" id="deny"><i class="fa-solid fa-xmark"></i>Từ chối</button>
                                         </form>
@@ -420,8 +421,8 @@
             <button class="exit">X</button>
         </div>
     </div>
-    <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script src="<c:url value="/template/js/Profile.js"/>"></script>
     <script src="<c:url value="/template/js/Appointment.js"/>"></script>
+    <script src="<c:url value="/template/js/navbar.js"/>"></script>
 </body>
 </html>
