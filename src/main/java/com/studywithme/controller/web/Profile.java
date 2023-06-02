@@ -39,7 +39,7 @@ public class Profile extends HttpServlet {
 		request.setAttribute("listAppointment", AppointmentService.getInstance().findByParticipants(user, maxItem));
 		request.setAttribute("totalAppointment", AppointmentService.getInstance().countFindByParticipants(user));
 		request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(me));
-		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
+		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,me));
 		request.setAttribute("friendship", FriendshipService.getInstance().getFriendship(user,me));
 		request.setAttribute("requestFriend", FriendshipService.getInstance().getRequest(me));
 		request.setAttribute("listSchool", SchoolService.getInstance().findAll());
