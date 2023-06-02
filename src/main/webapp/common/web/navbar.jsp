@@ -27,6 +27,9 @@
         </a></li>
     </div>
     <div class="header-noti">
+        <c:if test="${requestFriend != null}">
+            <div>${fn:length(requestFriend)}</div>
+        </c:if>
         <button class="noti-btn">
             <i class="fa-sharp fa-regular fa-bell"></i>
         </button>
@@ -38,13 +41,19 @@
                             <img src="data:image/jpeg;base64,${request.requester.avatar}">
                             <p class="noti"><a href="<c:url value="/profile?id=${request.requester.id}"/>">${request.requester.fullName}</a> vừa gửi lời mời kết bạn cho bạn.</p>
                         </div>
-                        <div class="buttons">
-                            <input type="hidden" name="action" value="">
-                            <button class="yes">Đồng ý</button>
-                            <button class="no">Từ chối</button>
-                        </div>
+                        <form class="buttons" method="post" action="replyFriend" name="formReplyNavbar">
+                            <input type="hidden" name="action" value="reply">
+                            <input type="hidden" name="idFriendship" value="${request.id}">
+                            <input type="hidden" name="idRequester" value="${request.requester.id}">
+                            <input type="hidden" name="reply" value="" id="replyNavbar">
+                            <button class="yes" id="agreeNavbar">Đồng ý</button>
+                            <button class="no" id="denyNavbar">Từ chối</button>
+                        </form>
                     </div>
                 </c:forEach>
+            </c:if>
+            <c:if test="${requestFriend == null}">
+                <p>Không có thông báo!</p>
             </c:if>
 
 <%--            <div class="list">

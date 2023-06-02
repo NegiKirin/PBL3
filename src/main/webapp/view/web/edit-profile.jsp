@@ -85,10 +85,11 @@
                                 </c:if>
                                 <c:if test="${friendship.status == 1}">
                                     <c:if test="${friendship.friend.id == user.id}">
-                                        <form method="post" action="profile" id="formReply">
+                                        <form method="post" action="replyFriend" id="formReply">
                                             <input type="hidden" name="action" value="reply">
                                             <input type="hidden" name="idFriendship" value="${friendship.id}">
-                                            <input type="hidden" name="agree" value="" id="reply">
+                                            <input type="hidden" name="idRequester" value="${profileUser.id}">
+                                            <input type="hidden" name="reply" value="" id="reply">
                                             <button id="agree"><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
                                             <button id="deny"><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
                                         </form>
@@ -420,8 +421,8 @@
             <button class="exit">X</button>
         </div>
     </div>
-    <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script src="<c:url value="/template/js/Profile.js"/>"></script>
     <script src="<c:url value="/template/js/Appointment.js"/>"></script>
+    <script src="<c:url value="/template/js/navbar.js"/>"></script>
 </body>
 </html>

@@ -71,4 +71,20 @@ public class FriendshipService implements IFriendshipService {
     public boolean unFriend(String id) {
         return FriendshipDAO.getInstance().delete(FriendshipDAO.getInstance().findOne(Integer.parseInt(id)));
     }
+
+    @Override
+    public boolean reply(String id, String action) {
+        if (action.equals("agree")) {
+            Friendship friendship = FriendshipDAO.getInstance().findOne(Integer.parseInt(id));
+            friendship.setStatus(0);
+            FriendshipDAO.getInstance().update(friendship);
+            return true;
+        } else if (action.equals("deny")) {
+            Friendship friendship = FriendshipDAO.getInstance().findOne(Integer.parseInt(id));
+            FriendshipDAO.getInstance().delete(friendship);
+            return true;
+        }
+        return false;
+    }
+
 }
