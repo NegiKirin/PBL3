@@ -70,33 +70,32 @@
                                 <form action="profile" method="post">
                                     <input type="hidden" name="profileUserId" value="${profileUser.id}">
                                     <input type="hidden" value="addFriend" name="action">
-                                    <button type="submit"><i class="fa-solid fa-user-plus"></i></i>Kết bạn</button>
+                                    <button class="addfr" type="submit"><i class="fa-solid fa-user-plus"></i></i>Kết bạn</button>
                                 </form>
                             </c:if>
                             <c:if test="${friendship != null}">
                                 <c:if test="${friendship.status == 0}">
-                                    <button><i class="fa-solid fa-pen-to-square"></i>Bạn bè</button>
+                                    <button class="friended "><i class="fa-solid fa-pen-to-square"></i>Bạn bè</button>
                                     <form class="" method="post" action="profile" id="">
                                         <input type="hidden" name="profileUserId" value="${profileUser.id}">
                                         <input type="hidden" name="idFriendship" value="${friendship.id}">
                                         <input type="hidden" name="action" value="unfriend">
-                                        <input type="submit" value="Hủy kết bạn">
+                                        <input class="unfr" type="submit" value="Hủy kết bạn">
                                     </form>
                                 </c:if>
                                 <c:if test="${friendship.status == 1}">
                                     <c:if test="${friendship.friend.id == user.id}">
                                         <form>
-                                            <button><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
-                                            <button><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
+                                            <button class="yes"><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
+                                            <button class="no"><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
                                         </form>
                                     </c:if>
                                     <c:if test="${friendship.requester.id == user.id}">
-                                        <button><i class="fa-solid fa-pen-to-square"></i>Đã gửi lời mời</button>
                                         <form class="" method="post" action="profile" id="">
                                             <input type="hidden" name="profileUserId" value="${profileUser.id}">
                                             <input type="hidden" name="idFriendship" value="${friendship.id}">
                                             <input type="hidden" name="action" value="unfriend">
-                                            <input type="submit" value="Hủy kết bạn">
+                                            <input class="return" type="submit" value="Hủy lời mời">
                                         </form>
                                     </c:if>
                                 </c:if>
