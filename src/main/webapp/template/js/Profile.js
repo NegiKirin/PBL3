@@ -6,10 +6,12 @@ var date2 = dateOfBirth2.getAttribute('date');
 dateOfBirth2.defaultValue = date2.slice(0,10);
 
 var buttonEdit = document.querySelector('.content-main-edit-infor .edit');
-buttonEdit.onclick = function (e){
-    var div = document.querySelector('.vice-main');
-    div.style.display = 'block';
-};
+if(buttonEdit) {
+    buttonEdit.onclick = function (e){
+        var div = document.querySelector('.vice-main');
+        div.style.display = 'block';
+    };
+}
 
 var buttonExit = document.querySelector('.vice-main .edit-infor .exit');
 buttonExit.onclick = function (e) {
@@ -156,3 +158,7 @@ function checkNewPassword(element){
     }
 }
 
+var errorChange = document.getElementById('errorChange');
+if(errorChange.innerText !==""){
+    divChancePwd.classList.remove('hide');
+}

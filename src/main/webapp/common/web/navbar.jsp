@@ -31,7 +31,23 @@
             <i class="fa-sharp fa-regular fa-bell"></i>
         </button>
         <div class="noti-content hide">
-            <div class="list">
+            <c:if test="${requestFriend != null}">
+                <c:forEach items="${requestFriend}" var="request">
+                    <div class="list">
+                        <div class="content">
+                            <img src="data:image/jpeg;base64,${request.requester.avatar}">
+                            <p class="noti"><a href="<c:url value="/profile?id=${request.requester.id}"/>">${request.requester.fullName}</a> vừa gửi lời mời kết bạn cho bạn.</p>
+                        </div>
+                        <div class="buttons">
+                            <input type="hidden" name="action" value="">
+                            <button class="yes">Đồng ý</button>
+                            <button class="no">Từ chối</button>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
+
+<%--            <div class="list">
                 <div class="content">
                     <img src="data:image/jpeg;base64,${user.avatar}">
                     <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
@@ -56,11 +72,12 @@
                     <img src="data:image/jpeg;base64,${user.avatar}">
                     <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
                 </div>
-                <div class="buttons">
+                <form class="buttons" method="post">
+                    <input type="hidden" name="action" value="">
                     <button class="yes">Đồng ý</button>
                     <button class="no">Từ chối</button>
-                </div>
-            </div>
+                </form>
+            </div>--%>
         </div>
         <button class="menu-btn">
             <i class="fa-solid fa-bars"></i>
@@ -78,6 +95,11 @@
             <a class="item" href="<c:url value="/list-friends?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> ">
                 Xem danh sách bạn bè
             </a>
+            <c:if test="${user.role.code == 'ADMIN'}">
+                <a class="item" href="<c:url value="/admin-home"/>">
+                    Đến trang quản lý
+                </a>
+            </c:if>
         </div>
     </div>
 </div>

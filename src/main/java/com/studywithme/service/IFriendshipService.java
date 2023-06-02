@@ -10,4 +10,8 @@ public interface IFriendshipService {
     public List<Friendship> listFriend(String index, User user);
     public List<Friendship> pagingFriend(Pageable pageable, User user);
     public Integer totalFriend(User user);
+    public boolean addFriend(User requester, User friend);
+    public Friendship getFriendship(User user, User me);
+    public List<Friendship> getRequest(User me);
+    public boolean unFriend(String id);
 }

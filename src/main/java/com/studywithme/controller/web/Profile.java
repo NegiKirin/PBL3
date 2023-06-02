@@ -6,6 +6,7 @@ import com.studywithme.service.IFriendshipService;
 import com.studywithme.service.ISchoolService;
 import com.studywithme.service.IUserService;
 import com.studywithme.service.impl.*;
+import com.studywithme.util.EncodeUtil;
 import com.studywithme.util.SessionUtil;
 import jakarta.persistence.Id;
 
@@ -30,13 +31,17 @@ public class Profile extends HttpServlet {
 		User user = UserService.getInstance().findById(Integer.parseInt(id));
 		String listFriend = request.getParameter("listFriend");
 		String maxItem = request.getParameter("maxItem");
+		String ms = request.getParameter("ms");
 		User me = (User) SessionUtil.getInstance().getValue(request, "user");
-
-
+		if(ms != null) {
+			request.setAttribute("errorChange","Mật khẩu không đúng");
+		}
 		request.setAttribute("listAppointment", AppointmentService.getInstance().findByParticipants(user, maxItem));
 		request.setAttribute("totalAppointment", AppointmentService.getInstance().countFindByParticipants(user));
 		request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(me));
-		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,me));
+		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
+		request.setAttribute("friendship", FriendshipService.getInstance().getFriendship(user,me));
+		request.setAttribute("requestFriend", FriendshipService.getInstance().getRequest(me));
 		request.setAttribute("listSchool", SchoolService.getInstance().findAll());
 		request.setAttribute("profileUser",user);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/edit-profile.jsp");
@@ -48,7 +53,9 @@ public class Profile extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		String profileId = request.getParameter("profileUserId");
-		User user = (User) SessionUtil.getInstance().getValue(request, "user");
+		User user = UserService.getInstance().findById(Integer.parseInt(profileId));
+		User me = (User) SessionUtil.getInstance().getValue(request, "user");
+		String errorChange = "";
 		if (action.equals("editAvatar")) {
 			Part filePart = request.getPart("avatar");
 			user = UserService.getInstance().updateImg(user,filePart,"avatar");
@@ -76,7 +83,25 @@ public class Profile extends HttpServlet {
 			}
 			UserService.getInstance().update(user);
 			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa thông tin cá nhân");
+		} else if (action.equals("changePassword")) {
+			String passwordCurrent = request.getParameter("passwordCurrent");
+			if(!EncodeUtil.toSHA1(passwordCurrent).equals(user.getPassword())) {
+				errorChange+="errorChange";
+			} else {
+				String newPassword = request.getParameter("newPassword");
+				user.setPassword(EncodeUtil.toSHA1(newPassword));
+				UserService.getInstance().update(user);
+			}
+		} else if (action.equals("addFriend")) {
+			FriendshipService.getInstance().addFriend(me, user);
+		} else if (action.equals("unfriend")) {
+			String idFriendship = request.getParameter("idFriendship");
+			FriendshipService.getInstance().unFriend(idFriendship);
 		}
-		response.sendRedirect("/PBL3/profile?id=" +user.getId());
+		if (errorChange.equals("")) {
+			response.sendRedirect("/PBL3/profile?id=" +user.getId());
+		} else {
+			response.sendRedirect("/PBL3/profile?id=" +user.getId()+ "&ms=" + errorChange);
+		}
 	}
 }
