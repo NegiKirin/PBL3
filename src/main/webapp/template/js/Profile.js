@@ -162,3 +162,19 @@ var errorChange = document.getElementById('errorChange');
 if(errorChange.innerText !==""){
     divChancePwd.classList.remove('hide');
 }
+
+var buttonAgree = document.getElementById('agree');
+buttonAgree.onclick = function (e) {
+    var reply = document.getElementById('reply');
+    reply.defaultValue = 'agree';
+    var formRely = document.getElementById('formReply');
+    formRely.submit();
+}
+
+var buttonDeny = document.getElementById('deny');
+buttonDeny.onclick = function (e) {
+    var reply = document.getElementById('reply');
+    reply.defaultValue = 'deny';
+    var formRely = document.getElementById('formReply');
+    formRely.submit();
+}

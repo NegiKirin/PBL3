@@ -85,9 +85,12 @@
                                 </c:if>
                                 <c:if test="${friendship.status == 1}">
                                     <c:if test="${friendship.friend.id == user.id}">
-                                        <form>
-                                            <button><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
-                                            <button><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
+                                        <form method="post" action="profile" id="formReply">
+                                            <input type="hidden" name="action" value="reply">
+                                            <input type="hidden" name="idFriendship" value="${friendship.id}">
+                                            <input type="hidden" name="agree" value="" id="reply">
+                                            <button id="agree"><i class="fa-solid fa-pen-to-square"></i>Chấp nhận</button>
+                                            <button id="deny"><i class="fa-solid fa-pen-to-square"></i>Từ chối</button>
                                         </form>
                                     </c:if>
                                     <c:if test="${friendship.requester.id == user.id}">
