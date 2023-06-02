@@ -40,6 +40,7 @@ public class ListFriends extends HttpServlet {
         request.setAttribute("totalPages",totalPages==1?0:totalPages);
         request.setAttribute("pageable", pageble);
         request.setAttribute("listFriend", FriendshipService.getInstance().pagingFriend(pageble, user));
+        request.setAttribute("requestFriend", FriendshipService.getInstance().getRequest(user));
         request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/list-friends.jsp");
         rd.forward(request, response);
