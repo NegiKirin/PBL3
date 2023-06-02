@@ -41,6 +41,7 @@ public class Home extends HttpServlet {
 		request.setAttribute("totalPages",totalPages==1?0:totalPages);
 		request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
 		request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
+		request.setAttribute("requestFriend", FriendshipService.getInstance().getRequest(user));
 		request.setAttribute("appointments", AppointmentService.getInstance().pagingAppointment(pageble));
 		request.setAttribute("appointmentOf", AppointmentService.getInstance().findByHostCurrent(user));
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/home.jsp");

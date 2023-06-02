@@ -191,7 +191,6 @@ if(replyFriend) {
         replyDiv.classList.toggle('hide');
         e.stopPropagation();
     })
-
 }
 if (replyDiv) {
     document.addEventListener('click', function (e){

@@ -98,7 +98,7 @@
             <a class="item" href="<c:url value="/profile?id=${user.id}"/>">
                 Thay đổi thông tin tài khoản
             </a>
-            <a class="item" href="<c:url value="/view/web/rate.jsp"/>">
+            <a class="item" href="<c:url value="/rate"/>">
                 Đánh giá các cuộc hẹn
             </a>
             <a class="item" href="<c:url value="/list-friends?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> ">
