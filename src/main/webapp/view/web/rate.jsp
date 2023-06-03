@@ -10,8 +10,9 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../template/css/rate.css">
+    <link rel="stylesheet" href="<c:url value="/template/css/rate.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
+    <script src="<c:url value="/template/js/JQRate.js"/> " ></script>
 </head>
 <body>
 <div id="main">
@@ -29,57 +30,58 @@
             <h1 class="content-main-title">Danh sách các cuộc hẹn đã tham gia</h1>
             <div class = "crete-rate">
                 <div class="scrollable-container">
-                    <div class="list-rate">
-                        <div class="rate">
-                            <p class="ID"><img class="avata-host" src="../../template/image/avatarDefault.png" alt=""></i>  Lê Thanh</p>
-                            <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
-                            <p class="address"><i class="fa-solid fa-location-dot"></i> 60 Nguyen Luong Bang</p>
-                            <button class="show-button" title="Xem thành viên"></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
-                        </div>
-                        <form class="list">
-                            <p class="content-list">Danh sách thành viên:</p>
-                            <div class="member">
-                                <div class="item">
-                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
-                                    <p class="Name-member">Nguyen Pham Phuc Tan</p>
-                                    <div class="rate-start">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
+                    <c:if test="${appointments != null}">
+                        <c:forEach items="${appointments}" var="appointment">
+                            <div class="list-rate">
+                                <div class="rate">
+                                    <p class="ID"><img class="avata-host" src="data:image/jpeg;base64,${appointment.host.avatar}" alt=""></i>${appointment.host.fullName}</p>
+                                    <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                                    <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
+                                    <button class="show-button" title="Xem thành viên"></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
                                 </div>
-                                <div class="item">
-                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
-                                    <p class="Name-member">Hồ Duy Phúc</p>
-                                    <div class="rate-start">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                <form class="list">
+                                    <p class="content-list">Danh sách thành viên:</p>
+                                    <div class="member">
+                                        <c:if test="${user.id != appointment.host.id}">
+                                            <div class="item">
+                                                <img class="avata-member" src="data:image/jpeg;base64,${appointment.host.avatar}" alt="avatar">
+                                                <p class="Name-member">${appointment.host.fullName}</p>
+                                                <div class="rate-start">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                        <c:forEach items="${appointment.participants}" var="participant">
+                                            <c:if test="${user.id != participant.id}">
+                                                <div class="item">
+                                                    <img class="avata-member" src="data:image/jpeg;base64,${participant.avatar}" alt="avatar">
+                                                    <p class="Name-member">${participant.fullName}</p>
+                                                    <div class="rate-start">
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </c:if>
+                                        </c:forEach>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <img class="avata-member" src="../../template/image/avatarDefault.png" alt="">
-                                    <p class="Name-member">Lê Việt Thanh</p>
-                                    <div class="rate-start">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                    <div class="abc">
+                                        <button class="accept button"></i>Xác nhận</button>
+                                        <button class="denied button"></i>Hủy</button>
                                     </div>
-                                </div>
+                                    <input type="hidden" name="rate" value="">
+                                    <input type="hidden" name="idAppointment" value="${appointment.id}">
+                                </form>
                             </div>
-                            <div class="abc">
-                                <button class="accept button"></i>Xác nhận</button>
-                                <button class="denied button"></i>Hủy</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="list-rate">
+                        </c:forEach>
+                    </c:if>
+                    <%--<div class="list-rate">
                         <div class="rate">
                             <p class="ID"><img class="avata-host" src="../../template/image/avatarDefault.png" alt=""></i>  Lê Thanh</p>
                             <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
@@ -128,8 +130,8 @@
                                 <button class="denied button"></i>Hủy</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="list-rate">
+                    </div>--%>
+                   <%-- <div class="list-rate">
                         <div class="rate">
                             <p class="ID"><img class="avata-host" src="../../template/image/avatarDefault.png" alt=""></i>  Lê Thanh</p>
                             <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
@@ -178,7 +180,7 @@
                                 <button class="denied button"></i>Hủy</button>
                             </div>
                         </form>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
@@ -189,7 +191,7 @@
 </div>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <script src="<c:url value="/template/js/Appointment.js"/>"></script>
-<script src="../../template/js/rate.js" ></script>
+<script src="<c:url value="/template/js/Rate.js"/> " ></script>
 </body>
 </html>
 

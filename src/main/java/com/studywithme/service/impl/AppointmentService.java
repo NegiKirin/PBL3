@@ -123,4 +123,9 @@ public class AppointmentService implements IAppointmentService {
     public boolean delete(String id) {
         return  AppointmentDAO.getInstance().delete( AppointmentDAO.getInstance().findOne(Integer.parseInt(id)));
     }
+
+    @Override
+    public List<Appointment> findAllAppointmentByRate(User user) {
+        return AppointmentDAO.getInstance().findAllAppointmentByRate(user);
+    }
 }

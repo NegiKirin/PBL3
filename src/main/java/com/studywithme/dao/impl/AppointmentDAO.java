@@ -251,4 +251,39 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
         }
         return false;
     }
+
+    @Override
+    public List<Appointment> findAllAppointmentByRate(User user) {
+        List<Appointment> results = new ArrayList<>();
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                String hql = "from Appointment a left join a.participants p where (a.host = :user or p = :user) and (a.dateMeeting < :today or (a.dateMeeting = :today and a.ending_time < :now)) ";
+                Query query = session.createQuery(hql);
+                Date date = new Date(System.currentTimeMillis());
+                java.sql.Date today = new java.sql.Date(date.getTime());
+                query.setParameter("today", today);
+                query.setParameter("now",Time.valueOf(LocalTime.now()));
+                query.setParameter("user",user);
+                results = query.getResultList();
+                for(int i = 0; i < results.size(); i++){
+                    session.get(User.class,results.get(i).getHost().getId());
+                    for (User u : results.get(i).getParticipants()) {
+                        session.get(User.class,u.getId());
+                    }
+                    for (Rate r: results.get(i).getRates()) {
+                        session.get(Rate.class,r.getId());
+                    }
+                }
+                tr.commit();
+                session.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return results;
+    }
 }

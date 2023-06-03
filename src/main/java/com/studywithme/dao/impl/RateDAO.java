@@ -1,8 +1,16 @@
 package com.studywithme.dao.impl;
 
 import com.studywithme.dao.IRateDAO;
+import com.studywithme.model.Appointment;
 import com.studywithme.model.Rate;
+import com.studywithme.model.User;
+import com.studywithme.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RateDAO extends AbstractDAO<Rate> implements IRateDAO {
@@ -34,6 +42,5 @@ public class RateDAO extends AbstractDAO<Rate> implements IRateDAO {
     public boolean deleteId(Integer id) {
         return delete(findOne(id));
     }
-
 
 }

@@ -19,4 +19,5 @@ public interface IAppointmentService {
     public Integer totalItemCurrent(User host);
     public List<Appointment> appointmentCurrent(User host);
     public boolean delete(String id);
+    public List<Appointment> findAllAppointmentByRate (User user);
 }
