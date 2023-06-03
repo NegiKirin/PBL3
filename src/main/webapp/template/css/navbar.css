@@ -21,6 +21,7 @@
     margin: 5px 10px 5px 20px;
 }
 
+#header .header-info-user p,
 #header .header-info-user a{
     height: 46px;
     text-decoration: none;

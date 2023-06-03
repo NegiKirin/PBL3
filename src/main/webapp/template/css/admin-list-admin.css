@@ -23,31 +23,8 @@ body{
     height: 100%;
 }
 
-#header {
-    height: 46px;
-    background-color: #18C0e6;
-    display: flex;
-}
-
-#header .header-info-admin{
-    display: flex;
-    align-items: center;
-    height: 46px;
-    background-color: #fff;
-    width: 260px;
-}
-
-#header .header-info-admin img{
-    border-radius: 50%;
-    height: 38px;
-    margin: auto 20px;
-}
-
-#header .header-info-admin a{
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    width: 140px;
+#header .header-noti{
+    margin: 5px 0 !important;
 }
 
 #content {
