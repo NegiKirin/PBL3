@@ -10,18 +10,12 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <script src="../../template/js/AdminLocation.js"></script>
     <link rel="stylesheet" href="/PBL3/template/css/admin-location.css">
+    <link rel="stylesheet" href="/PBL3/template/css/navbar.css">
 </head>
 <body>
 <div id="main">
-    <div id="header">
-        <div class="header-info-admin">
-            <img src="../image/ava.png" alt="">
-            <a href="../edit-infor/edit-infor.html"><p class="header-info-user-name"> Ho va ten </p></a>
-            <i class="fa-solid fa-user-pen"></i>
-        </div>
-    </div>
+    <jsp:include page="/common/web/admin-navbar.jsp"></jsp:include>
     <div id="content">
         <div class="content-left">
             <a href="<c:url value="/admin-home"/>" class="user-list">
@@ -163,5 +157,6 @@
     })
 
 </script>
+<script src="<c:url value="/template/js/navbar.js"/>"></script>
 </body>
 </html>
