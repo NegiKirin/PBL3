@@ -191,7 +191,7 @@
 </div>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <script src="<c:url value="/template/js/Appointment.js"/>"></script>
-<script src="<c:url value="/template/js/Rate.js"/> " ></script>
+<script src="../../template/js/rate.js" ></script>
 </body>
 </html>
 

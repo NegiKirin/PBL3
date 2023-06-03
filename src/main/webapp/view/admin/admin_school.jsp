@@ -23,20 +23,24 @@
     <div id="content">
         <div class="content-left">
             <a href="">
-                <a href="./admin_home.jsp" class="user-list">
+                <a href="<c:url value="/admin-home"/> " class="user-list">
                     <p class="content">Quản lí danh sách User</p>
                     <i class="fa-solid fa-bars"></i>
                 </a>
-                <a href="./admin_list_admin.jsp" class="user-list">
+                <a href="<c:url value="/admin-list-admin"/> " class="user-list">
                     <p class="content">Quản lí danh sách Admin</p>
                     <i class="fa-solid fa-bars"></i>
                 </a>
-                <a href="./admin_location.jsp" class="user-list">
+                <a href="<c:url value="/admin-location"/> " class="user-list">
                     <p class="content">Quản lí danh sách Địa điểm</p>
                     <i class="fa-solid fa-bars"></i>
                 </a>
-                <a class="user-list selected">
+                <a href="<c:url value="/admin-school"/> " class="user-list selected">
                     <p class="content">Quản lí danh sách Trường học</p>
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+                <a href="<c:url value="/admin-appointment"/> " class="user-list">
+                    <p class="content">Quản lí danh sách Cuộc hẹn</p>
                     <i class="fa-solid fa-bars"></i>
                 </a>
             </a>

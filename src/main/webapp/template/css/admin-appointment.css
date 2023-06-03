@@ -430,16 +430,17 @@ body{
     margin: 30px 0;
     padding: 10px;
     border: none;
-    background-color: #18C0e6;
+    background-color: #e84655;
     font-weight: bold;
     font-size: 15px;
     border-radius: 5px;
     color: #fff;
     box-shadow: 3px 3px 5px 0px #aaaaaa;
+    transition: 0.3s;
 }
 
 .booking-apm .submit:hover{
-    background-color: #0aa0c2;
+    transform: scale(1.2);
 }
 
 .hide{

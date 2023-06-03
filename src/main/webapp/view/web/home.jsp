@@ -45,7 +45,7 @@
                         <div class="profile">
                             <img src="data:image/jpeg;base64,${appointment.host.background}" class="background" alt="background"/>
                             <img src="data:image/jpeg;base64,${appointment.host.avatar}" class="avatar" alt="avatar"/>
-                            <p class="name">${appointment.host.fullName}</p>
+                            <a href="<c:url value="/profile?id=${appointment.host.id}"/> " class="name">${appointment.host.fullName}</a>
                         </div>
                         <div class="content">
                             <div class="item">

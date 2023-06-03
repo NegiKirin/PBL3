@@ -15,11 +15,16 @@ openDetailDiv.forEach((item, index)=>{
         detailDiv.children[1].children[1].attributes[0].value = item.children[0].children[1].attributes[0].value
         //name
         detailDiv.children[1].children[2].childNodes[0].nodeValue = item.children[0].children[2].childNodes[0].nodeValue
-        //date
-        inforDetailDiv.
-        //time
-        //location
 
+        var itemInner = item.children[1].children[0]
+        //date
+        inforDetailDiv.children[1].children[1].childNodes[0].nodeValue = itemInner.children[0].childNodes[0].nodeValue
+        //time
+        inforDetailDiv.children[1].children[2].childNodes[0].nodeValue = itemInner.children[1].childNodes[0].nodeValue
+        //type
+        inforDetailDiv.children[2].children[1].childNodes[0].nodeValue = item.children[1].children[1].value
+        //location
+        inforDetailDiv.children[3].children[1].childNodes[0].nodeValue = itemInner.children[2].childNodes[1].nodeValue
         detailDiv.classList.remove('hide')
     })
 })

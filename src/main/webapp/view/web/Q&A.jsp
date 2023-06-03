@@ -10,59 +10,18 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value="/template/css/Q&A.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
 </head>
 <body>
     <div id="main">
         <jsp:include page="/common/web/navbar.jsp"></jsp:include>
         <div id="content">
             <div class="content-left">
-                <div class="content-calender">
-                    <div class="calender-title">
-                        <p class="Lichcuaban">Lịch của bạn</p>
-                    </div>
-                    <div class="calender-main">
-                    <script type="text/javascript">
-                        var dt= new Date();
-                        var month=dt.getMonth(); // read the current month
-                        var year=dt.getFullYear(); // read the current year
-                        
-                        dt=new Date(year, month, 01);//Year , month,date format
-                        
-                        var first_day=dt.getDay(); //, first day of present month
-                        //document.write("first_day=" + first_day + "<br><br>");
-                        
-                        dt.setMonth(month+1,0); // Set to next month and one day backward.
-                        var last_date=dt.getDate(); // Last date of present month
-                        //document.write(dt); // Last date in full
-                        //document.write("<br><br> Last Date of the month =" + last_date + "<br><br>");
-                        
-                        var dy=1; // day variable for adjustment of starting date.
-                        document.write ("<table><tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thu</td><td>Fri</td><td>Sat</td>");
-                        
-                        for(i=0;i<=41;i++){
-                        if((i%7)==0){document.write("</tr><tr>");} // if week is over then start a new line
-                        if((i>= first_day) && (dy<= last_date)){
-                        document.write("<td>"+ dy +"</td>");
-                        dy=dy+1;
-                        }else {document.write("<td> </td>");} // Blank dates.
-                        } // end of for loop
-                        
-                        document.write("</tr></table>")
-                    </script>
-                    </div>
-                </div>
+                <jsp:include page="/common/web/Calender.jsp"></jsp:include>
                 <div class="content-list-meeting">
                     <p class="text">Lịch hẹn</p>
-                    <p class="all"><a href="">Tất cả</a></p>
-                    <div class="content-left-item">
-                        <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                        <p class="with">Với</p>
-                        <p class="name">Tran Le Nguyen</p>
-                    </div>
-                    <div class="content-left-item">
-                        <p class="time-date"> 8 A.M - 9 A.M 08/03/2023</p>
-                        <p class="with">Với</p>
-                        <p class="name">Tran Le Nguyen</p>
+                    <div class="content scroll-style">
+                        <jsp:include page="/common/web/Appointment.jsp"></jsp:include>
                     </div>
                 </div>
             </div>
@@ -188,5 +147,8 @@
           }
         }
     </script>
+    <script src="<c:url value="/template/js/Calender.js"/>"></script>
+    <script src="<c:url value="/template/js/navbar.js"/>"></script>
+    <script src="<c:url value="/template/js/Appointment.js"/>"></script>
 </body>
 </html>

@@ -301,6 +301,7 @@ html body{
     position: absolute;
     bottom: -10px;
     left: 90px;
+    color: black;
 }
 
 #content .content-main .content-main-list .content{
