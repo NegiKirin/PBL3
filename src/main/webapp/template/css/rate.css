@@ -238,7 +238,7 @@ body{
 }
 
 .abc .button.accept{
-    background-color: #75BA80;
+    background-color: gray;
 }
 
 .abc .button.denied{
