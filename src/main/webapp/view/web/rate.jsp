@@ -39,7 +39,7 @@
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                                     <button class="show-button" title="Xem thành viên"></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
                                 </div>
-                                <form class="list" name="formsRate">
+                                <form class="list" name="formsRate" action="rate" method="post">
                                     <p class="content-list">Danh sách thành viên:</p>
                                     <div class="member">
                                         <c:if test="${user.id != appointment.host.id}">
@@ -76,8 +76,8 @@
                                         </c:forEach>
                                     </div>
                                     <div class="abc">
-                                        <button class="accept button">Xác nhận</button>
-                                        <button class="denied button">Hủy</button>
+                                        <button class="accept button" type="button">Xác nhận</button>
+                                        <button class="denied button" type="button">Hủy</button>
                                     </div>
                                     <input type="hidden" name="rate" value="">
                                     <input type="hidden" name="idAppointment" value="${appointment.id}">

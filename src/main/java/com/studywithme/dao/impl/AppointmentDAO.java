@@ -181,7 +181,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from Appointment a left join a.participants p where (p = :participant or a.host = :participant) group by a.id order by a.dateMeeting desc";
+                String hql = "from Appointment a left join a.participants p where (p = :participant or (a.host = :participant and a.participants is not empty)) group by a.id order by a.dateMeeting desc";
                 Query query = session.createQuery(hql);
 //                query.setParameter("today",new Time(System.currentTimeMillis()));
                 query.setParameter("participant",participant);
@@ -207,7 +207,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
     @Override
     public Integer countFindByParticipants(User participant) {
-        String hql = "select count(*) from Appointment a left join a.participants p where (p = :participant or a.host = :participant) group by a.id";
+        String hql = "select count(*) from Appointment a left join a.participants p where (p = :participant or (a.host = :participant and a.participants is not empty)) group by a.id";
         return count(hql, "participant", participant);
     }
 

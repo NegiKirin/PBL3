@@ -19,8 +19,8 @@ formsRate.forEach((element,index)=> {
                 console.log(checkRate());
                 if (checkRate()) {
                     element.children[2].children[0].style.backgroundColor = '#75BA80';
+                    element.children[2].children[0].setAttribute('type','submit');
                 }
-
             })
         }
     }
@@ -43,9 +43,3 @@ formsRate.forEach((element,index)=> {
         return false;
     }
 });
-
-let start = document.querySelectorAll('.rate-start');
-start.forEach((elenemt, index) => {
-    // console.log(elenemt.children);
-    // for (let i = 1; i <= 5)
-})

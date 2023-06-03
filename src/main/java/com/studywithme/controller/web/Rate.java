@@ -3,6 +3,7 @@ package com.studywithme.controller.web;
 import com.studywithme.model.User;
 import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.FriendshipService;
+import com.studywithme.service.impl.RateService;
 import com.studywithme.util.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,10 @@ public class Rate extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        User user = (User) SessionUtil.getInstance().getValue(request, "user");
+        String idAppointment = request.getParameter("idAppointment");
+        String rate = request.getParameter("rate");
+        RateService.getInstance().createRate(idAppointment, rate, user);
+        response.sendRedirect("/PBL3/rate");
     }
 }
