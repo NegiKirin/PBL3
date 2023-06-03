@@ -10,7 +10,7 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../template/css/rate.css">
+    <link rel="stylesheet" href="<c:url value="/template/css/rate.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
 </head>
 <body>
@@ -189,7 +189,7 @@
 </div>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <script src="<c:url value="/template/js/Appointment.js"/>"></script>
-<script src="../../template/js/rate.js" ></script>
+<script src="<c:url value="/template/js/rate.js"/> " ></script>
 </body>
 </html>
 
