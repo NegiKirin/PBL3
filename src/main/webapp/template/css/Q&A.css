@@ -32,31 +32,128 @@ body{
     background-color: #fff;
     width: 260px;
     height: 100%;
+    position: relative;
 }
+
 
 #content .content-left .content-calender{
     background-color: #d9d9d94f;
     border-radius: 5px;
-    margin: 20px 10px;
-    padding: 5px 0;
-    margin-top: 60px;
-    margin-bottom: 80px;
+    margin: 30px 10px;
+    padding: 5px 5px;
+    position: relative;
+    padding-bottom: 15px;
 }
 
 #content .content-left .calender-title p{
     font-weight: bold;
     padding: 10px 5px;
-    
 }
 
-#content .content-left .calender-main{
-    margin: 5px;
+#content .content-calender .btn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+    color: #8A8a8a;
+    border: none;
 }
 
-#content .content-left .calender-main table tr td{
-    padding-right: 5px;
+#content .content-calender .btn:hover{
+    transform: scale(1.2);
+    font-weight: bold;
+}
+
+#content .content-calender .btn.left{
+    right: 83px;
+}
+
+#content .content-calender .month,
+#content .content-calender .year,
+#content .content-calender .icon{
+    position: absolute;
+    top: 14px;
+    color: #8A8a8a;
+    font-weight: bold;
+    right: 26px;
+    font-size: 15px;
+    transition: 0.25s;
+}
+
+#content .content-calender .icon{
+    right: 64px;
+}
+
+#content .content-calender .month{
+    right: 72px;
+}
+
+#content .content-calender td{
+    width: 32px;
     text-align: center;
-    padding-bottom: 5px;
+}
+
+#content .content-calender .tr_1{
+    font-weight: bold;
+}
+
+#content .content-calender a{
+    position: relative;
+    display: flex;
+    height: 31px;
+    width: 31px;
+    justify-content: center;
+    align-items: center;
+}
+
+.CN{
+    color: #ff0000;
+}
+
+.gray{
+    color: #8a8a8a;
+}
+
+
+.green a{
+    color: black;
+    border: solid 1px #4CAF50;
+    border-radius: 50%;
+}
+
+.tr td:hover a{
+    background: #4CAF50;
+    border-radius: 50%;
+}
+
+.day-chose{
+    background: #4CAF50;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.day-chose a{
+    color: white;
+}
+
+.tr td:hover a{
+    color: white;
+    font-weight: bold;
+}
+
+.black{
+    color: black;
+}
+
+#content .content-left .cal-panel{
+    position: absolute;
+    background: black;
+    top: 69px;
+    height: 229px;
+    width: 100%;
+    opacity: 0;
 }
 
 #content .content-left .content-list-meeting{
@@ -144,105 +241,140 @@ body{
 #content .content-main .content-main-item{
     display: inline-block;
     width: 95% ;
-    height: 158px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 3px 3px 5px 0px #aaaaaa;
     margin: 20px;
-    
+    overflow: hidden;
 }
 
 #content .content-main .content-main-list{
 	position: relative;
 	height: calc(100% - 21.6px - 35px);
-
-}
-
-#content .content-main .content-main-list form{
-	position: absolute;
-    display: flex;
-    bottom: 50px;
-    justify-content: center;
-    width: 100%;
-    
 }
 
 #content .content-main .content-main-list .profile{
-    height: 60%;
-    width: 100%;
-}
-
-#content .content-main .content-main-list .profile .background{
-    height: 100px;
-    width: 100%;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
 }
 
 #content .content-main .content-main-list .profile .avatar{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    margin-top: 9px;
-    margin-left: 9px;
+    margin: 10px;
 }
 
 #content .content-main .content-main-list .profile .name{
-    font-family: Ubuntu;
-    font-weight: 900 ;
-    margin-left: 65px;
-    margin-top: -40px;
+    font-weight: bold;
     font-size: 25px;
-    
 }
+
 #content .content-main .content-main-list .content{
-    height: 40px;
-    width: 91%;
     font-size: 16px;
-    margin-left: 65px;
-    margin-top: -35px;
     font-style: italic;
+    margin: 0 72px;
 }
 
 
-#content .content-main .content-main-list .square1 {
-    background-color: rgb(35, 205, 35);
-    color: black;
-    text-align: center;
-    line-height: 22px;
+#content .content-main .content-main-list .key-word {
+    background-color: #4CAF50;
+    color: white;
     display: inline-block;
-    width: 48px;
-    height: 22px;
     margin-top: 20px;
     margin-left: 40px;
     border-radius: 5px;
+    padding: 2px 8px;
   }
-  #content .content-main .content-main-list .square2 {
-    background-color: rgb(53, 173, 221);
-    color: black;
-    text-align: center;
-    line-height: 22px;
-    width: 97px;
-    height: 22px;
-    margin-top: -22px;
-    margin-left: 100px;
-    border-radius: 5px;
-  }
+
 #content .content-main .content-main-list .see-more{
-    cursor:pointer;
-    width: 200px;
-    border: none;
-    background: none;
+    cursor: pointer;
     color: #545454;
-    font-weight:bold;
-    margin-left: calc(50% - 120px);
-    margin-top: 0px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
 }
 
-#content .content-main .content-main-list a{
-    text-decoration: none;
-    color: #8a8a8a;
-    font-size: 12px;
+.content-main-list .comment{
+    background: #d6d3da;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.content-main-list .comment .item{
+    border-left: solid 2px #8A8a8a;
+    padding-bottom: 10px;
+}
+
+.content-main-list .comment .item .profile-cmt{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
     font-weight: bold;
+}
+
+.content-main-list .comment .item img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.content-main-list .comment .item .content-cmt{
+    margin-left: 50px;
+}
+
+.content-main-list .comment .write-cmt{
+    width: 100%;
+}
+
+.content-main-list .comment .write-cmt input{
+    height: 40px;
+    width: calc(100% - 45px);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.content-main-list .comment .write-cmt input::placeholder{
+    font-style: italic;
+}
+
+.content-main-list .comment .write-cmt button{
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: #4CAF50;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.content-main-list .comment .write-cmt button i{
+    color: white;
+    transition: 0.3s;
+}
+
+.content-main-list .comment .write-cmt button:hover{
+    box-shadow: 3px 3px 3px 0 #8A8a8a;
+}
+
+.content-main-list .comment .write-cmt button:hover i{
+    transform: rotate(360deg);
+}
+
+.content-main-list .comment .hidden{
+    cursor: pointer;
+    color: #545454;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 13px;
+    text-align: center;
 }
 
 #content .content-right {
