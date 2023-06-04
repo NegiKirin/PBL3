@@ -211,6 +211,14 @@ body{
     background-color: #e8b236;
 }
 
+#content .content-list-user .item .buttons .unlock{
+    background: #4CAF50;
+}
+
+.item-lock{
+    opacity: 0.5;
+}
+
 #formPaging{
     position: absolute;
     bottom: 0;
@@ -234,6 +242,11 @@ body{
     height: 100%;
     background: rgba(0, 0, 0, 80%);
     top:0;
+}
+
+.detail-div p,
+.add-new-user p{
+    margin: 0;
 }
 
 .detail-div{
@@ -310,6 +323,19 @@ body{
     font-weight: bold;
     font-size: 20px;
     margin-top: 40px;
+}
+
+.detail-div .detail-div-main .infor-user .first-name{
+    margin-left: 150px;
+}
+
+.detail-div .detail-div-main .infor-user .first-name,
+.detail-div .detail-div-main .infor-user .last-name{
+    padding: 10px 5px;
+    font-weight: bold;
+    border: solid 1px #8A8a8a;
+    border-radius: 5px;
+    outline: none;
 }
 
 .detail-div .detail-div-main .infor-user .list{
@@ -542,6 +568,20 @@ body{
 .add-new-user-main .infor .list{
     display: flex;
     margin: 20px 0;
+}
+
+.add-new-user-main .infor .first-name,
+.add-new-user-main .infor .last-name{
+    padding: 5px;
+    font-weight: bold;
+    border: solid 1px #8A8a8a;
+    border-radius: 5px;
+    outline: none;
+}
+
+.add-new-user-main .infor .last-name{
+    width: 100px;
+    margin-left: 10px;
 }
 
 .add-new-user-main .infor .list i{

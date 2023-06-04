@@ -115,6 +115,7 @@
 }
 
 #header .header-noti .header-menu{
+    z-index: 1;
     position: absolute;
     top: 50px;
     right: 10px;

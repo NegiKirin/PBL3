@@ -29,7 +29,7 @@
                 </div>
                 <div class="content-list-user">
                     <c:forEach items="${users}" var="user">
-                        <div class="item">
+                        <div class="item <c:if test="${user.status == 1}">item-lock</c:if>">
                             <div class="ava-name">
                                 <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar">
                                 <p class="name">${user.fullName}</p>
@@ -55,8 +55,8 @@
                                     </button>
                                 </c:if>
                                 <c:if test="${user.status == 1}">
-                                    <button class="button lock unlock">
-                                        <i class="fa-solid fa-lock"></i>
+                                    <button class="button unlock">
+                                        <i class="fa-solid fa-lock-open"></i>
                                         <p class="button-content">Mở khóa</p>
                                     </button>
                                 </c:if>
@@ -111,8 +111,8 @@
                 </div>
                 <div class="infor-user">
                     <p class="title-edit">Thông tin cá nhân</p>
-                    <input class="" type="text" name="firstName" value="">
-                    <input class="" type="text" name="lastName" value="">
+                    <input class="first-name" type="text" name="firstName" value="">
+                    <input class="last-name" type="text" name="lastName" value="">
                     <div class="list">
                         <i class="fa-solid fa-heart"></i>
                         <p class="content">Giới tính:</p>
@@ -215,8 +215,8 @@
                     <div class="infor">
                         <p class="title-infor">Thông tin cá nhân</p>
                         <div class="list">
-                            <input type="text" name="firstName" value="" placeholder="Họ và tên đệm">
-                            <input type="text" name="lastName" value="" placeholder="Tên">
+                            <input class="first-name" type="text" name="firstName" value="" placeholder="Họ và tên đệm">
+                            <input class="last-name" type="text" name="lastName" value="" placeholder="Tên">
                         </div>
                         <div class="list">
                             <i class="fa-solid fa-heart"></i>
