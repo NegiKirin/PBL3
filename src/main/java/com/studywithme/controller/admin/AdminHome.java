@@ -1,6 +1,7 @@
 package com.studywithme.controller.admin;
 
 import com.studywithme.model.School;
+import com.studywithme.model.User;
 import com.studywithme.paging.PageRequest;
 import com.studywithme.paging.Pageable;
 import com.studywithme.service.impl.RoleService;
@@ -31,6 +32,7 @@ public class AdminHome extends HttpServlet {
         }
         request.setAttribute("pageable", pageble);
         request.setAttribute("roles", RoleService.getInstance().findAll());
+        List<User> users =  UserService.getInstance().findAllUser(pageble);
         request.setAttribute("users", UserService.getInstance().findAllUser(pageble));
         request.setAttribute("listSchool", SchoolService.getInstance().findAll());
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/admin/admin_home.jsp");

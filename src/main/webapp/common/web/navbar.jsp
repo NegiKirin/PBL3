@@ -66,7 +66,7 @@
             <a class="item" href="<c:url value="/profile?id=${user.id}"/>">
                 Thay đổi thông tin tài khoản
             </a>
-            <a class="item" href="<c:url value="/rate?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc"/>">
+            <a class="item" href="<c:url value="/rate?page=1&maxPageItem=7&sortName=createdDate&sortBy=desc"/>">
                 Đánh giá các cuộc hẹn
             </a>
             <a class="item" href="<c:url value="/list-friends?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> ">

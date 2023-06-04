@@ -110,7 +110,7 @@
 <script type="text/javascript">
     var totalPages = ${totalPages};
     var currentPage = ${pageable.page};
-    var limit = 6;
+    var limit = 7;
     var dateMeeting = "";
     $(function () {
         window.pagObj = $('#pagination').twbsPagination({
