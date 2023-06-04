@@ -73,7 +73,7 @@
                 Xem danh sách bạn bè
             </a>
             <c:if test="${user.role.code == 'ADMIN'}">
-                <a class="item" href="<c:url value="/admin-home?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/>">
+                <a class="item" href="<c:url value="/admin-home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc"/>">
                     Đến trang quản lý
                 </a>
             </c:if>

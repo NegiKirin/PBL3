@@ -9,6 +9,7 @@ import java.util.Base64;
 import java.sql.Date;
 import java.util.List;
 
+import com.studywithme.dao.impl.RoleDAO;
 import com.studywithme.dao.impl.UserDAO;
 import com.studywithme.model.Role;
 import com.studywithme.model.School;
@@ -106,6 +107,11 @@ public class UserService implements IUserService {
 	}
 
 	@Override
+	public List<User> findAllAdmin(Pageable pageable) {
+		return UserDAO.getInstance().findAllAdmin(pageable);
+	}
+
+	@Override
 	public boolean editUser(String profileUserId, String idRole, String lastName, String firstName, String gender, String idSchool, String dateOfBirth, String email, String password) {
 		User user = UserDAO.getInstance().findOne(Integer.parseInt(profileUserId));
 		if (!email.equals("")) {
@@ -180,7 +186,7 @@ public class UserService implements IUserService {
 		}
 		try {
 			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-			user.setDateOfBirth(new Date(date.getTime()));
+			newUser.setDateOfBirth(new Date(date.getTime()));
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
 		}
@@ -205,6 +211,10 @@ public class UserService implements IUserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		newUser.setRole(RoleDAO.getInstance().findByCode("USER"));
+		java.util.Date date = new java.util.Date(System.currentTimeMillis());
+		Date today = new Date(date.getTime());
+		newUser.setCreatedDate(today);
 		UserDAO.getInstance().insert(newUser);
 		return true;
 	}

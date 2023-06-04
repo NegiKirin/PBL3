@@ -9,8 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/PBL3/template/css/admin-list-admin.css">
-    <link rel="stylesheet" href="/PBL3/template/css/navbar.css">
+    <link rel="stylesheet" href="<c:url value="/template/css/admin-list-admin.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/> ">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/template/paging/jquery.twbsPagination.js"/> " type="text/javascript"></script>
 </head>
 <body>
 <div id="main">
@@ -24,14 +28,51 @@
                 <input type="text" placeholder="Gõ gì đó để tìm kiếm ...">
             </div>
             <div class="content-list-user">
-                <div class="item">
+                <c:forEach items="${admins}" var="admin">
+                    <div class="item">
+                        <div class="ava-name">
+                            <img src="data:image/jpeg;base64,${admin.avatar}" alt="avatar">
+                            <p class="name">${admin.fullName}</p>
+                        </div>
+                        <div class="sex">
+                            <p class="title">Giới tính:</p>
+                            <c:if test="${user.gender == 0}">
+                                <p class="content">Nam</p>
+                            </c:if>
+                            <c:if test="${user.gender == 1}">
+                                <p class="content">Nữ</p>
+                            </c:if>
+                            <c:if test="${user.gender == 2}">
+                                <p class="content">Khác</p>
+                            </c:if>
+                        </div>
+                        <div class="birth">
+                            <p class="title">Ngày sinh:</p>
+                            <input class="date" type="date" value="${admin.dateOfBirth}" disabled="disabled">
+                        </div>
+                        <div class="buttons">
+                            <form>
+                                <button class="button lock">
+                                    <i class="fa-solid fa-user-xmark"></i>
+                                    <p class="button-content">Gỡ quyền Admin</p>
+                                </button>
+                                <input type="hidden" name="action" value="unSet">
+                                <input type="hidden" name="profileUserId" value="">
+                            </form>
+                        </div>
+                        <input type="hidden" class="school" value="${admin.school.nameSchool}">
+                        <input type="hidden" class="background" value="data:image/jpeg;base64,${admin.background}">
+                    </div>
+                </c:forEach>
+
+                <%--<div class="item">
                     <div class="ava-name">
                         <img src="../../template/image/avatarDefault.png" alt="">
-                        <p class="name">Le Viet Thanh</p>
+                        <p class="name">Họ và tên</p>
                     </div>
                     <div class="sex">
                         <p class="title">Giới tính:</p>
-                        <p class="content">Nam</p>
+                        <p class="content">Nữ</p>
                     </div>
                     <div class="birth">
                         <p class="title">Ngày sinh:</p>
@@ -40,11 +81,13 @@
                     <div class="buttons">
                         <button class="button lock">
                           <i class="fa-solid fa-user-xmark"></i>
-                            <p class="button-content">Gỡ quyền Admin</p>
+                          <p class="button-content">Gỡ quyền Admin</p>
                         </button>
                     </div>
-                    <input type="hidden" class="school" value="Trường Đại học Bách khoa - Đại học Đà Nẵng">
+                    <input type="hidden" value="Trường Đại học Bách khoa - Đại học Đà Nẵng">
                     <input type="hidden" class="background" value="../../template/image/backgroundDefault.png">
+                    <input type="hidden" class="user-name" value="thanhleviet723@gmail.com">
+                    <input type="hidden" class="password" value="123123123">
                 </div>
                 <div class="item">
                     <div class="ava-name">
@@ -69,32 +112,15 @@
                     <input type="hidden" class="background" value="../../template/image/backgroundDefault.png">
                     <input type="hidden" class="user-name" value="thanhleviet723@gmail.com">
                     <input type="hidden" class="password" value="123123123">
-                </div>
-                <div class="item">
-                    <div class="ava-name">
-                        <img src="../../template/image/avatarDefault.png" alt="">
-                        <p class="name">Họ và tên</p>
-                    </div>
-                    <div class="sex">
-                        <p class="title">Giới tính:</p>
-                        <p class="content">Nữ</p>
-                    </div>
-                    <div class="birth">
-                        <p class="title">Ngày sinh:</p>
-                        <input class="date" type="date" value="2023-02-02" disabled="disabled">
-                    </div>
-                    <div class="buttons">
-                        <button class="button lock">
-                          <i class="fa-solid fa-user-xmark"></i>
-                          <p class="button-content">Gỡ quyền Admin</p>
-                        </button>
-                    </div>
-                    <input type="hidden" value="Trường Đại học Bách khoa - Đại học Đà Nẵng">
-                    <input type="hidden" class="background" value="../../template/image/backgroundDefault.png">
-                    <input type="hidden" class="user-name" value="thanhleviet723@gmail.com">
-                    <input type="hidden" class="password" value="123123123">
-                </div>
+                </div>--%>
             </div>
+            <form action="admin-list-admin" method="get" id="formPaging">
+                <ul class="pagination" id="pagination"></ul>
+                <input type="hidden" value="${pageable.page}" id="page" name="page"/>
+                <input type="hidden" value="${pageable.maxPageItem}" id="maxPageItem" name="maxPageItem">
+                <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
+                <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
+            </form>
         </div>
     </div>
 
@@ -137,9 +163,32 @@
             </div>
         </div>
     </div>
-    <script src="<c:url value="/template/js/AdminListAdmin.js"/>"></script>
-    <script src="<c:url value="/template/js/navbar.js"/>"></script>
+
 </div>
+<script src="<c:url value="/template/js/AdminListAdmin.js"/>"></script>
+<script src="<c:url value="/template/js/navbar.js"/>"></script>
+<script type="text/javascript">
+    var totalPages = 2;
+    var currentPage = ${pageable.page};
+    var limit = 6;
+    var dateMeeting = "";
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 10,
+            startPage: currentPage,
+            onPageClick: function (event, page) {
+                if(currentPage !== page){
+                    $('#maxPageItem').val(limit);
+                    $('#page').val(page);
+                    $('#formPaging').submit();
+                }
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
+</script>
 </body>
 </html>
 

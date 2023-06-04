@@ -40,7 +40,6 @@ public class AdminHome extends HttpServlet {
         }
         request.setAttribute("pageable", pageble);
         request.setAttribute("roles", RoleService.getInstance().findAll());
-        List<User> users =  UserService.getInstance().findAllUser(pageble);
         request.setAttribute("users", UserService.getInstance().findAllUser(pageble));
         request.setAttribute("listSchool", SchoolService.getInstance().findAll());
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/admin/admin_home.jsp");
@@ -48,6 +47,8 @@ public class AdminHome extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         Pageable pageble = new PageRequest();
         pageble = FormUtil.toModel(PageRequest.class, request);
