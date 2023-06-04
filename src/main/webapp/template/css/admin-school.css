@@ -217,6 +217,7 @@ body{
     padding: 10px;
     border-radius: 5px;
     border: #8A8a8a solid 1px;
+    resize: none;
 }
 
 .add-new-school-main textarea::placeholder{

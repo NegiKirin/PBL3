@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
 </head>
 <body>
+<input type="hidden" value="<c:url value="/Q&A"/>" id="href">
     <div id="main">
         <jsp:include page="/common/web/navbar.jsp"></jsp:include>
         <div id="content">
             <div class="content-left">
                 <jsp:include page="/common/web/Calender.jsp"></jsp:include>
+                <div class="cal-panel"></div>
                 <div class="content-list-meeting">
                     <p class="text">Lịch hẹn</p>
                     <div class="content scroll-style">
@@ -38,117 +40,58 @@
                             <p class="name">Họ và Tên</p>
                         </div>
                         <div class="content">                                  
-                                    <p class="content1"></i>Mọi người ơi!
+                                    <p class="content1">Mọi người ơi!
                                     <br> Cho em xin công thức tình điện trở toàn phần của mạch hình sao và chứng mình ạ. Em cảm ơn mn ạ.</p>                                                                                                                                      
                         </div>
-                        <div class="square1">
+                        <div class="key-word">
                             Vật lý
                         </div>
-                        <div class="square2">
-                            Công Thức
+                        <p class="see-more">Xem thêm câu trả lời...</p>
+                        <div class="comment hide">
+                            <div class="list-comment">
+                                <div class="item">
+                                    <div class="profile-cmt">
+                                        <img src="../../template/image/avatarDefault.png">
+                                        <p class="name">Le Viet Thanh</p>
+                                    </div>
+                                    <p class="content-cmt">Công thức đây em nhé!</p>
+                                </div>
+                                <div class="item">
+                                    <div class="profile-cmt">
+                                        <img src="../../template/image/avatarDefault.png">
+                                        <p class="name">Le Viet Thanh</p>
+                                    </div>
+                                    <p class="content-cmt">Công thức đây em nhé!</p>
+                                </div>
+                            </div>
+                            <form class="write-cmt">
+                                <input type="text" placeholder="Nhập câu trả lời...">
+                                <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                            </form>
+                            <p class="hidden">Ẩn câu trả lời</p>
                         </div>
-                        <a><button class="see-more" onclick="myFunction()">Xem thêm 5 câu trả lời...</button></a>                             
                     </div>
-                    <div class="content-main-item">
-                        <div class="profile">                            
-                            <img class="avatar" src="../image/ava1.png" alt="">
-                            <p class="name">Họ và Tên</p>
-                        </div>
-                        <div class="content">                                  
-                                    <p class="content1"></i>Mọi người ơi!
-                                    <br> Cho em xin công thức tình điện trở toàn phần của mạch hình sao và chứng mình ạ. Em cảm ơn mn ạ.</p>                                                                                                                                      
-                        </div>
-                        <div class="square1">
-                            Vật lý
-                        </div>
-                        <div class="square2">
-                            Công Thức
-                        </div>
-                        <a><button class="see-more" onclick="myFunction()">Xem thêm 5 câu trả lời...</button></a>                             
-                    </div>
-                    <div class="content-main-item">
-                        <div class="profile">                            
-                            <img class="avatar" src="../image/ava1.png" alt="">
-                            <p class="name">Họ và Tên</p>
-                        </div>
-                        <div class="content">                                  
-                                    <p class="content1"></i>Mọi người ơi!
-                                    <br> Cho em xin công thức tình điện trở toàn phần của mạch hình sao và chứng mình ạ. Em cảm ơn mn ạ.</p>                                                                                                                                      
-                        </div>
-                        <div class="square1">
-                            Vật lý
-                        </div>
-                        <div class="square2">
-                            Công Thức
-                        </div>
-                        <a><button class="see-more" onclick="myFunction()">Xem thêm 5 câu trả lời...</button></a>                             
-                    </div>                                                      
                 </div>               
             </div>
             <div class="content-right">
                 <jsp:include page="/common/web/ListFriend.jsp"/>
-                <div class="your-profile">
+                <form class="add-question">
                     <p class="title">Đặt câu hỏi của bạn</p>
-                    <div class="your-profile-main">
-                        <div class="paper">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>   
-                        </div>
+                    <div class="add-question-main">
+                        <textarea rows="10" placeholder="Nhập nội dung câu hỏi tại đây..."></textarea>
                         <div class="box">
-                            <div class="title">Thêm từ khóa:</div>
-                            <div class="square1"></div>       
+                            <p class="title">Thêm từ khóa:</p>
+                            <input class="add-key-word">
                         </div>
-                        <p class="add"><a href="">+</a></p>
+                        <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="booking-apm" id="myDIV" >
-            <div class="content">
-                <img src="../image/background.png" alt="" class="background">
-                <button class="exit" onclick="myFunction()">X</button> 
-                <img src="../image/ava1.png" alt="" class="ava">
-                <h1 class="name">Phúc Tân</h1>
-                <form class="infor-apm">
-                    <p class="title">Thông tin cuộc hẹn:</p>
-                    <div class="list">
-                        <i class="fa-solid fa-clock"></i><p class="time">8 A.M - 9 A.M</p>
-                    </div>
-                    <div class="list">
-                        <i class="fa-solid fa-store"></i><p class="type-location">Coffee</p>
-                    </div>
-                    <div class="list">
-                        <i class="fa-solid fa-location-dot"></i><p class="address">60 Nguyen Luong Bang</p>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10688.770641389345!2d108.15040840348887!3d16.075210696191036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218d68dff9545%3A0x714561e9f3a7292c!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBLaG9hIC0gxJDhuqFpIGjhu41jIMSQw6AgTuG6tW5n!5e0!3m2!1svi!2s!4v1681118874787!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="list">
-                        <i class="fa-solid fa-users"></i><p class="number">3 người khác tham gia</p>
-                    </div>
-                    <input class="submit" type="submit" value="KẾT NỐI NGAY">
                 </form>
             </div>
         </div>
     </div>
-    <script>
-        function myFunction() {
-          var x = document.getElementById("myDIV");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-    </script>
     <script src="<c:url value="/template/js/Calender.js"/>"></script>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script src="<c:url value="/template/js/Appointment.js"/>"></script>
+    <script src="<c:url value="/template/js/Q&A.js"/>"></script>
 </body>
 </html>

@@ -35,7 +35,6 @@ public class ListFriends extends HttpServlet {
         int totalFriend = FriendshipService.getInstance().totalFriend(user);
         int totalPages = (int) Math.ceil((double) totalFriend / pageble.getMaxPageItem());
 
-
         request.setAttribute("totalFriend", totalFriend);
         request.setAttribute("totalPages",totalPages==1?0:totalPages);
         request.setAttribute("pageable", pageble);
