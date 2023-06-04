@@ -409,12 +409,12 @@
         <div class="chance-pwd">
             <p class="title">Thay đổi mật khẩu</p>
             <form class="chance-pwd-form" method="post" action="profile">
-                <input class="input" type="text" placeholder="Nhập mật khẩu hiện tại" name="passwordCurrent" id="passwordCurrent">
+                <input class="input" type="password" placeholder="Nhập mật khẩu hiện tại" name="passwordCurrent" id="passwordCurrent">
                 <label><p id="errorChange">${errorChange}</p></label>
                 <p class="note">*Mật khẩu mới phải trên 8 kí tự.</p>
-                <input class="input" type="text" placeholder="Nhập mật khẩu mới" name="newPassword" id="newPassword" onkeyup="checkPassword()" onchange="checkNewPassword(this)">
+                <input class="input" type="password" placeholder="Nhập mật khẩu mới" name="newPassword" id="newPassword" onkeyup="checkPassword()" onchange="checkNewPassword(this)">
                 <label><p id="errorNewPassword"></p></label>
-                <input class="input" type="text" placeholder="Nhập lại mật khẩu mới" name="rePassword" id="rePassword" onkeyup="checkPassword()">
+                <input class="input" type="password" placeholder="Nhập lại mật khẩu mới" name="rePassword" id="rePassword" onkeyup="checkPassword()">
                 <label><p id="errorPassword"></p></label>
                 <input class="submit" type="submit" disabled value="XÁC NHẬN">
                 <input type="hidden" value="changePassword" name="action">
