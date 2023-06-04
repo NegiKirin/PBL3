@@ -35,7 +35,7 @@ public class AdminSchool extends HttpServlet {
             response.sendRedirect("/PBL3/admin-school");
         } else if (action.equals("createSchool")) {
             String nameSchool = request.getParameter("nameSchool");
-            if(SchoolService.getInstance().createSchool(nameSchool, user)) {
+            if(!SchoolService.getInstance().createSchool(nameSchool, user)) {
                 response.sendRedirect("/PBL3/admin-school");
             } else {
                 response.sendRedirect("/PBL3/admin-school?error=createSchool");
