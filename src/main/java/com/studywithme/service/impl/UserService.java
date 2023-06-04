@@ -228,7 +228,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public boolean deleteUser(String id) {
-		return UserDAO.getInstance().delete(UserDAO.getInstance().findOne(Integer.parseInt(id)));
+		return UserDAO.getInstance().deleteUser(UserDAO.getInstance().findOne(Integer.parseInt(id)));
 	}
 
 }

@@ -12,4 +12,5 @@ public interface IUserDAO extends GenericDAO<User>, InterfaceDAO<User> {
 	public User findById(Integer id);
 	public List<User> findAllUser(Pageable pageable);
 	public List<User> findAllAdmin(Pageable pageable);
+	public boolean deleteUser(User user);
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.studywithme.dao.IUserDAO;
+import com.studywithme.model.Appointment;
 import com.studywithme.model.School;
 import com.studywithme.model.User;
 import com.studywithme.paging.Pageable;
@@ -144,6 +145,32 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 			return null;
 		}
 		return results;
+	}
+
+	@Override
+	public boolean deleteUser(User user) {
+		List<User> results = new ArrayList();
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				String hql = "from User u where u.id = :id";
+				Query query = session.createQuery(hql);
+				query.setParameter("id",user.getId());
+				results = query.getResultList();
+				for (Appointment appointment: results.get(0).getListAppointmentsJoin()) {
+					appointment.removeParticipant(results.get(0));
+				}
+				session.delete(results.get(0));
+				tr.commit();
+				session.close();
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 
