@@ -14,30 +14,9 @@
 </head>
 <body>
 <div id="main">
-    <jsp:include page="/common/web/admin-navbar.jsp"></jsp:include>
+    <jsp:include page="/common/admin/admin-navbar.jsp"></jsp:include>
     <div id="content">
-        <div class="content-left">
-            <a href="<c:url value="/admin-home"/>" class="user-list">
-                <p class="content">Quản lí danh sách User</p>
-                <i class="fa-solid fa-bars"></i>
-            </a>
-            <a href="<c:url value="/admin-list-admin"/>" class="user-list  selected">
-                <p class="content">Quản lí danh sách Admin</p>
-                <i class="fa-solid fa-bars"></i>
-            </a>
-            <a href="<c:url value="/admin-location"/>" class="user-list">
-                <p class="content">Quản lí danh sách Địa điểm</p>
-                <i class="fa-solid fa-bars"></i>
-            </a>
-            <a href="<c:url value="/admin-school"/>" class="user-list">
-                <p class="content">Quản lí danh sách Trường học</p>
-                <i class="fa-solid fa-bars"></i>
-            </a>
-            <a href="<c:url value="/admin-appointment"/>" class="user-list">
-                <p class="content">Quản lí danh sách Cuộc hẹn</p>
-                <i class="fa-solid fa-bars"></i>
-            </a>
-        </div>
+        <jsp:include page="/common/admin/Sidebar.jsp"></jsp:include>
         <div class="content-main">
             <h1 class="title-main">DANH SÁCH CÁC ADMIN</h1>
             <div class="content-main-search">

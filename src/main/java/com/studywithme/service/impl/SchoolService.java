@@ -15,22 +15,18 @@ public class SchoolService implements ISchoolService {
 		}
 		return schoolService;
 	}
-	private ISchoolDAO schoolDAO;
 	@Override
 	public School save(School school) {
-		schoolDAO = new SchoolDAO();
-		return schoolDAO.insert(school);
+		return SchoolDAO.getInstance().insert(school);
 	}
 
 	@Override
 	public List<School> findAll() {
-		schoolDAO = new SchoolDAO();
-		return schoolDAO.findAll();
+		return SchoolDAO.getInstance().findAll();
 	}
 
 	@Override
 	public School findByName(String schoolName) {
-		schoolDAO = new SchoolDAO();
-		return schoolDAO.findByName(schoolName);
+		return SchoolDAO.getInstance().findByName(schoolName);
 	}
 }

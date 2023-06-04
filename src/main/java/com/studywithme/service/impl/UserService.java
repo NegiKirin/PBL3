@@ -3,11 +3,17 @@ package com.studywithme.service.impl;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.sql.Date;
+import java.util.List;
 
 import com.studywithme.dao.impl.UserDAO;
+import com.studywithme.model.Role;
+import com.studywithme.model.School;
 import com.studywithme.model.User;
+import com.studywithme.paging.Pageable;
 import com.studywithme.service.IUserService;
 import com.studywithme.util.EncodeUtil;
 
@@ -91,5 +97,62 @@ public class UserService implements IUserService {
 			e.printStackTrace();
 		}
 		return UserDAO.getInstance().update(user);
+	}
+
+	@Override
+	public List<User> findAllUser(Pageable pageable) {
+		return UserDAO.getInstance().findAllUser(pageable);
+	}
+
+	@Override
+	public boolean editUser(String profileUserId, String idRole, String lastName, String firstName, String gender, String idSchool, String dateOfBirth, String email, String password) {
+		User user = UserDAO.getInstance().findOne(Integer.parseInt(profileUserId));
+		if (!email.equals("")) {
+			User temp = UserDAO.getInstance().findByEmail(email);
+			if (temp != null) {
+				return false;
+			} else {
+				user.setEmail(email);
+			}
+		}
+		if (!idRole.equals("")) {
+			user.setRole(new Role(Integer.parseInt(idRole)));
+		}
+		if (!lastName.equals("")) {
+			user.setLastName(lastName);
+		}
+		if (!firstName.equals("")) {
+			user.setFirstName(firstName);
+		}
+		user.setFullName(user.getFirstName()+ " " +user.getLastName());
+		if (!gender.equals("")) {
+			if (gender.equals("male")) {
+				user.setGender(0);
+			} else if (gender.equals("female")) {
+				user.setGender(1);
+			} else if (gender.equals("other")) {
+				user.setGender(2);
+			}
+		}
+		if (!idSchool.equals("")) {
+			try {
+				user.setSchool(new School(Integer.parseInt(idSchool)));
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+		if (!dateOfBirth.equals("")){
+			try {
+				java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+				user.setDateOfBirth(new Date(date.getTime()));
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		if (!password.equals("")) {
+			user.setPassword(EncodeUtil.toSHA1(password));
+		}
+		UserDAO.getInstance().update(user);
+		return true;
 	}
 }

@@ -52,8 +52,8 @@
                     </div>
                     <form action="list-friends" method="get" id="formPaging">
                         <ul class="pagination" id="pagination"></ul>
-                        <input type="hidden" value="" id="page" name="page"/>
-                        <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
+                        <input type="hidden" value="${pageable.page}" id="page" name="page"/>
+                        <input type="hidden" value="${pageable.maxPageItem}" id="maxPageItem" name="maxPageItem">
                         <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
                         <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
                     </form>

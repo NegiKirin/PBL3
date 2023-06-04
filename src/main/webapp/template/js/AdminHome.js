@@ -7,31 +7,81 @@ var panelLock = document.querySelector('.confirm-div.lock .panel')
 var detailDivMain = document.querySelector('.detail-div .detail-div-main')
 var detailDivForm = document.querySelector('.detail-div .detail-div-main form')
 var detailDivChancePwd = document.querySelector('.detail-div .detail-div-main form .chance-password')
-console.log(itemUsers);
 itemUsers.forEach((item, index)=> {
     item.addEventListener('click', function (e){
+        //reset
+        Object.assign(detailDivChancePwd.children[3].style, {
+            backgroundColor: 'gray',
+            cursor: 'inherit'
+        })
+        detailDivChancePwd.children[3].setAttribute('type','button');
+        detailDivForm.children[1].children[1].value = "";
+        detailDivForm.children[1].children[2].value = "";
+        detailDivChancePwd.children[1].children[1].value = "";
+        detailDivChancePwd.children[2].children[1].value = "";
+        error.innerText = "";
         //background
         detailDivMain.children[1].attributes[0].value = item.children[5].value
         //avatar
         detailDivMain.children[2].attributes[0].value = item.children[0].children[0].attributes[0].value
         //name
-        detailDivMain.children[3].innerText=item.children[0].children[1].childNodes[0].nodeValue
+        detailDivMain.children[3].innerText = item.children[0].children[1].childNodes[0].nodeValue
+        //firstName
+        detailDivForm.children[1].children[1].setAttribute('placeholder',item.children[7].value);
+        //lastName
+        detailDivForm.children[1].children[2].setAttribute('placeholder',item.children[8].value);
         //sex
-        detailDivForm.children[1].children[2].innerHTML = `<option selected> ${item.children[1].children[1].childNodes[0].nodeValue} </option>`
+        detailDivForm.children[1].children[3].children[2].innerHTML += `<option selected hidden> ${item.children[1].children[1].childNodes[0].nodeValue} </option>`
         //school
-        detailDivForm.children[2].children[2].innerHTML = `<option selected> ${item.children[4].defaultValue} </option>`
+        detailDivForm.children[1].children[4].children[2].innerHTML += `<option selected hidden> ${item.children[4].defaultValue} </option>`
         //birth
-        detailDivForm.children[3].children[2].value = item.children[2].children[1].attributes[2].value
-        //user-name
+        detailDivForm.children[1].children[5].children[2].value = item.children[2].children[1].attributes[2].value
+        //email
         detailDivChancePwd.children[1].children[1].attributes[1].value = item.children[6].value
         //password
-        detailDivChancePwd.children[2].children[1].attributes[1].value = item.children[7].value
+        // detailDivChancePwd.children[2].children[1].attributes[1].value = item.children[7].value
+        //id
+        detailDivForm.children[1].children[8].value = item.children[9].value;
         detailDiv.classList.remove('hide');
-
-        console.log(e.target)
     })
+    if(item.children[10]){
+        //background
+        detailDivMain.children[1].attributes[0].value = item.children[5].value
+        //avatar
+        detailDivMain.children[2].attributes[0].value = item.children[0].children[0].attributes[0].value
+        //name
+        detailDivMain.children[3].innerText = item.children[0].children[1].childNodes[0].nodeValue
+        //firstName
+        detailDivForm.children[1].children[1].setAttribute('placeholder',item.children[7].value);
+        //lastName
+        detailDivForm.children[1].children[2].setAttribute('placeholder',item.children[8].value);
+        //sex
+        detailDivForm.children[1].children[3].children[2].innerHTML += `<option selected hidden> ${item.children[1].children[1].childNodes[0].nodeValue} </option>`
+        //school
+        detailDivForm.children[1].children[4].children[2].innerHTML += `<option selected hidden> ${item.children[4].defaultValue} </option>`
+        //birth
+        detailDivForm.children[1].children[5].children[2].value = item.children[2].children[1].attributes[2].value
+        //email
+        detailDivChancePwd.children[1].children[1].attributes[1].value = item.children[6].value
+        //password
+        // detailDivChancePwd.children[2].children[1].attributes[1].value = item.children[7].value
+        //id
+        detailDivForm.children[1].children[8].value = item.children[9].value;
+        detailDiv.classList.remove('hide');
+    }
 });
-
+detailDivForm.onchange = function (e) {
+    console.log(e.target);
+    detailDivChancePwd.children[3].removeAttribute('style');
+    Object.assign(detailDivChancePwd.children[3].style, {
+        backgroundColor: 'rgb(117, 186, 128)'
+    })
+    detailDivChancePwd.children[3].setAttribute('type','submit');
+}
+var error = document.getElementById('error');
+if(error.innerText !== "") {
+    detailDiv.classList.remove('hide');
+}
 exitDetailDiv.addEventListener('click', function (){
     detailDiv.classList.add('hide');
 } )

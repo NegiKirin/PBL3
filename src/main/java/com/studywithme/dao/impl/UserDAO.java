@@ -6,6 +6,7 @@ import java.util.List;
 import com.studywithme.dao.IUserDAO;
 import com.studywithme.model.School;
 import com.studywithme.model.User;
+import com.studywithme.paging.Pageable;
 import com.studywithme.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,26 +47,6 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 		return user.isEmpty() ? null : user.get(0);
 	}
 
-/*	@Override
-	public boolean update(User user) {
-		String hql = "UPDATE User u set u.firstName = :firstName , u.lastName = :lastName , u.modifiedBy = :modifiedBy , u.modifiedDate = :modifiedDate , u.dateOfBirth = :dateOfBirth , u.email = :email , u.sex = :sex , u.school =: school" 
-					+ " WHERE u.id = :id";
-		return up
-	}
-
-	@Override
-	public boolean updateAvatar(User user) {
-		String hql = "UPDATE User u SET u.avatar = :avatar "
-					+ " WHERE u.id = :id";
-		return update(hql, "avatar", user.getAvatar(), "id", user.getId());
-	}
-	
-	@Override
-	public boolean updateBackground(User user) {
-		String hql = "UPDATE User u SET u.background = :background "
-					+ " WHERE u.id = :id";
-		return update(hql, "background", user.getBackground(), "id", user.getId());
-	}*/
 
 	@Override
 	public int getTotalItem() {
@@ -103,6 +84,36 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 			return null;
 		}
 		return results.isEmpty()?null:results.get(0);
+	}
+
+	@Override
+	public List<User> findAllUser(Pageable pageable) {
+		List<User> results = new ArrayList();
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+//				String hql = "from User u where u.role.code = 'USER'";
+				StringBuilder hql =  new StringBuilder("from User u where u.role.code = 'USER'");
+				if (pageable.getSorter() != null) {
+					hql.append(" order by u." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy());
+				}
+				Query query = session.createQuery(hql.toString());
+				results = query.setFirstResult(pageable.getOffset()).setMaxResults(pageable.getLimit()).getResultList();
+				for (User user: results) {
+					if (user.getSchool() != null) {
+						session.get(School.class,user.getSchool().getId());
+					}
+				}
+				tr.commit();
+				session.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return results;
 	}
 
 	@Override

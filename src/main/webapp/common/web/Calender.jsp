@@ -18,6 +18,5 @@
         <i class="fa-solid fa-chevron-right"></i>
     </button>
     <div class="calender">
-
     </div>
 </div>

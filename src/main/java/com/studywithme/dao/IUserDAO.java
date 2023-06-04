@@ -1,15 +1,14 @@
 package com.studywithme.dao;
 
 import com.studywithme.model.User;
+import com.studywithme.paging.Pageable;
+
+import java.util.List;
 
 public interface IUserDAO extends GenericDAO<User>, InterfaceDAO<User> {
-/*	public boolean save(User user);
-	public User findOne(String id);*/
 	public User findByEmail(String email);
-/*	public boolean update(User user);*/
-/*	public boolean updateAvatar(User user);
-	public boolean updateBackground(User user);*/
 	public int getTotalItem();
 	public User findByEmailAndPasswordAndStatus(String email, String password);
 	public User findById(Integer id);
+	public List<User> findAllUser(Pageable pageable);
 }

@@ -9,35 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/PBL3/template/css/admin-home.css">
-    <link rel="stylesheet" href="/PBL3/template/css/navbar.css">
+    <link rel="stylesheet" href="<c:url value="/template/css/admin-home.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/template/paging/jquery.twbsPagination.js"/> " type="text/javascript"></script>
 </head>
 <body>
     <div id="main">
-        <jsp:include page="/common/web/admin-navbar.jsp"></jsp:include>
+        <jsp:include page="/common/admin/admin-navbar.jsp"></jsp:include>
         <div id="content">
-            <div class="content-left">
-                <a href="<c:url value="/admin-home"/> " class="user-list selected">
-                    <p class="content">Quản lí danh sách User</p>
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-                <a href="<c:url value="/admin-list-admin"/> " class="user-list">
-                    <p class="content">Quản lí danh sách Admin</p>
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-                <a href="<c:url value="/admin-location"/> " class="user-list">
-                    <p class="content">Quản lí danh sách Địa điểm</p>
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-                <a href="<c:url value="/admin-school"/> " class="user-list">
-                    <p class="content">Quản lí danh sách Trường học</p>
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-                <a href="<c:url value="/admin-appointment"/> " class="user-list">
-                    <p class="content">Quản lí danh sách Cuộc hẹn</p>
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-            </div>
+            <jsp:include page="/common/admin/Sidebar.jsp"></jsp:include>
             <div class="content-main">
                 <h1 class="title-main">DANH SÁCH CÁC USER </h1>
                 <div class="content-main-search">
@@ -45,92 +28,55 @@
                     <input type="text" placeholder="Gõ gì đó để tìm kiếm ...">
                 </div>
                 <div class="content-list-user">
-                    <div class="item">
-                        <div class="ava-name">
-                            <img src="../../template/image/avatarDefault.png" alt="">
-                            <p class="name">Le Viet Thanh</p>
+                    <c:forEach items="${users}" var="user">
+                        <div class="item">
+                            <div class="ava-name">
+                                <img src="data:image/jpeg;base64,${user.avatar}" alt="avatar">
+                                <p class="name">${user.fullName}</p>
+                            </div>
+                            <div class="sex">
+                                <p class="title">Giới tính:</p>
+                                <c:if test="${user.gender == 0}">
+                                <p class="content">Nam</p>
+                                </c:if>
+                                <c:if test="${user.gender == 1}">
+                                <p class="content">Nữ</p>
+                                </c:if>
+                            </div>
+                            <div class="birth">
+                                <p class="title">Ngày sinh:</p>
+                                <input class="date" type="date" value="${user.dateOfBirth}" disabled="disabled">
+                            </div>
+                            <div class="buttons">
+                                <button class="button lock">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <p class="button-content">Khóa</p>
+                                </button>
+                                <button class="button remove">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <p class="button-content">Xóa</p>
+                                </button>
+                            </div>
+                            <input type="hidden" class="school" value="${user.school.nameSchool}">
+                            <input type="hidden" class="background" value="data:image/jpeg;base64,${user.background}">
+                            <input type="hidden" class="user-name" value="${user.email}">
+                            <input type="hidden" value="${user.firstName}">
+                            <input type="hidden" value="${user.lastName}">
+                            <input type="hidden" value="${user.id}">
+                            <c:if test="${idUser == user.id}">
+                                <input type="hidden" name="error">
+                            </c:if>
                         </div>
-                        <div class="sex">
-                            <p class="title">Giới tính:</p>
-                            <p class="content">Nam</p>
-                        </div>
-                        <div class="birth">
-                            <p class="title">Ngày sinh:</p>
-                            <input class="date" type="date" value="2023-02-02" disabled="disabled">
-                        </div>
-                        <div class="buttons">
-                            <button class="button lock">
-                                <i class="fa-solid fa-lock"></i>
-                                <p class="button-content">Khóa</p>
-                            </button>
-                            <button class="button remove">
-                                <i class="fa-solid fa-trash"></i>
-                                <p class="button-content">Xóa</p>
-                            </button>
-                        </div>
-                        <input type="hidden" class="school" value="Trường Đại học Bách khoa - Đại học Đà Nẵng">
-                        <input type="hidden" class="background" value="../../template/image/backgroundDefault.png">
-                        <input type="hidden" class="user-name" value="thanhleviet723@gmail.com">
-                        <input type="hidden" class="password" value="123123456">
-                    </div>
-                    <div class="item">
-                        <div class="ava-name">
-                            <img src="../../template/image/avatarDefault.png" alt="">
-                            <p class="name">Họ và tên</p>
-                        </div>
-                        <div class="sex">
-                            <p class="title">Giới tính:</p>
-                            <p class="content">Nữ</p>
-                        </div>
-                        <div class="birth">
-                            <p class="title">Ngày sinh:</p>
-                            <input class="date" type="date" value="2023-02-02" disabled="disabled">
-                        </div>
-                        <div class="buttons">
-                            <button class="button lock">
-                                <i class="fa-solid fa-lock"></i>
-                                <p class="button-content">Khóa</p>
-                            </button>
-                            <button class="button remove">
-                                <i class="fa-solid fa-trash"></i>
-                                <p class="button-content">Xóa</p>
-                            </button>
-                        </div>
-                        <input type="hidden" value="Trường Đại học Bách khoa - Đại học Đà Nẵng">
-                        <input type="hidden" class="background" value="../../template/image/backgroundDefault.png">
-                        <input type="hidden" class="user-name" value="thanhleviet723@gmail.com">
-                        <input type="hidden" class="password" value="123123123">
-                    </div>
-                    <div class="item">
-                        <div class="ava-name">
-                            <img src="../../template/image/avatarDefault.png" alt="">
-                            <p class="name">Họ và tên</p>
-                        </div>
-                        <div class="sex">
-                            <p class="title">Giới tính:</p>
-                            <p class="content">Nam</p>
-                        </div>
-                        <div class="birth">
-                            <p class="title">Ngày sinh:</p>
-                            <input class="date" type="date" value="2023-02-02" disabled="disabled">
-                        </div>
-                        <div class="buttons">
-                            <button class="button lock">
-                                <i class="fa-solid fa-lock"></i>
-                                <p class="button-content">Khóa</p>
-                            </button>
-                            <button class="button remove">
-                                <i class="fa-solid fa-trash"></i>
-                                <p class="button-content">Xóa</p>
-                            </button>
-                        </div>
-                        <input type="hidden" value="Trường Đại học Bách khoa - Đại học Đà Nẵng">
-                        <input type="hidden" class="background" value="../../template/image/backgroundDefault.png">
-                        <input type="hidden" class="user-name" value="thanhleviet723@gmail.com">
-                        <input type="hidden" class="password" value="123123123">
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
+            <form action="admin-home" method="get" id="formPaging">
+                <ul class="pagination" id="pagination"></ul>
+                <input type="hidden" value="${pageable.page}" id="page" name="page"/>
+                <input type="hidden" value="${pageable.maxPageItem}" id="maxPageItem" name="maxPageItem">
+                <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
+                <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
+            </form>
             <div class="content-add"><i class="fa-solid fa-plus"></i></div>
         </div>
     </div>
@@ -146,20 +92,23 @@
             <img src="" class="background" alt="background"/>
             <img src="" class="ava" alt="avatar" loading="lazy"/>
             <h1 class="name" id="name"></h1>
-            <div class="role">
-                <p class="title">Phân quyền:</p>
-                <select class="list-role" name="role" id="role">
-                    <option selected value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </div>
-            <div class="infor-user">
-                <form action="edit-profile" method="post" enctype='multipart/form-data' id="editProfile">
+            <form action="admin-home" method="post" id="editProfile">
+                <div class="role">
+                    <p class="title">Phân quyền:</p>
+                    <select class="list-role" name="role" id="role">
+                        <c:forEach items="${roles}" var="role">
+                            <option value="${role.id}">${role.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="infor-user">
                     <p class="title-edit">Thông tin cá nhân</p>
+                    <input class="" type="text" name="firstName" value="">
+                    <input class="" type="text" name="lastName" value="">
                     <div class="list">
                         <i class="fa-solid fa-heart"></i>
                         <p class="content">Giới tính:</p>
-                        <select class="list-sex" name="gender" value="${profileUser.gender}">
+                        <select class="list-sex" name="gender">
                             <option value="male">Nam</option>
                             <option value="female">Nữ</option>
                             <option value="other">Khác</option>
@@ -168,9 +117,9 @@
                     <div class="list">
                         <i class="fa-solid fa-school"></i>
                         <p class="content">Trường học:</p>
-                        <select class="list-school" id="list-school" name="school" idSchool="${profileUser.school.id}">
+                        <select class="list-school" id="list-school" name="idSchool">
                             <c:forEach items="${listSchool}" var="school">
-                                <option idSchool="${school.id}">${school.nameSchool}</option>
+                                <option value="${school.id}">${school.nameSchool}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -183,22 +132,26 @@
                         <p class="title-edit">Thay đổi mật khẩu tài khoản</p>
                         <div class="list">
                             <p class="content">Email đăng nhập:</p>
-                            <input class="email" placeholder="">
+                            <input class="email" placeholder="" type="email" name="email">
+                            <label><p id="error">${error}</p></label>
                         </div>
                         <div class="list">
                             <p class="content">Mật khẩu:</p>
-                            <input class="password" placeholder="">
+                            <input type="password" class="password" placeholder="" name="password">
                         </div>
                         <button class="submit">Xác nhận thay đổi</button>
                     </div>
                     <input type="hidden" value="editProfile" name="action">
-                    <input type="hidden" value="${profileUser.id}" name="profileUserId">
-                </form>
-                <button class="exit">X</button>
-            </div>
+                    <input type="hidden" value="" name="profileUserId">
+                    <button class="exit" type="button">X</button>
+                    <input type="hidden" value="${pageable.page}" name="page"/>
+                    <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">
+                    <input type="hidden" value="${pageable.sorter.sortName}" name="sortName">
+                    <input type="hidden" value="${pageable.sorter.sortBy}" name="sortBy">
+                </div>
+            </form>
         </div>
     </div>
-
 
     <div class="confirm-div hide delete">
         <div class="panel"></div>
@@ -266,8 +219,29 @@
             <button class="exit">X</button>
         </div>
     </div>
-
     <script src="<c:url value="/template/js/AdminHome.js"/>"></script>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
+    <script type="text/javascript">
+        var totalPages = 2;
+        var currentPage = ${pageable.page};
+        var limit = 8;
+        var dateMeeting = "";
+        $(function () {
+            window.pagObj = $('#pagination').twbsPagination({
+                totalPages: totalPages,
+                visiblePages: 10,
+                startPage: currentPage,
+                onPageClick: function (event, page) {
+                    if(currentPage !== page){
+                        $('#maxPageItem').val(limit);
+                        $('#page').val(page);
+                        $('#formPaging').submit();
+                    }
+                }
+            }).on('page', function (event, page) {
+                console.info(page + ' (from event listening)');
+            });
+        });
+    </script>
 </body>
 </html>

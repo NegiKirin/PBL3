@@ -6,8 +6,8 @@ import com.studywithme.paging.Pageable;
 import java.util.List;
 
 public interface IAppointmentService {
-    public List<Appointment> pagingAppointment(Pageable pageble);
-    public Integer totalItem(Pageable pageble);
+    public List<Appointment> pagingAppointment(Pageable pageable);
+    public Integer totalItem(Pageable pageable);
     public List<Appointment> findByHost(User host);
     public Appointment joinAppointment(User user, String idAppointment);
     public boolean leaveAppointment(User user, String idAppointment);
@@ -19,5 +19,6 @@ public interface IAppointmentService {
     public Integer totalItemCurrent(User host);
     public List<Appointment> appointmentCurrent(User host);
     public boolean delete(String id);
-    public List<Appointment> findAllAppointmentByRate (User user);
+    public List<Appointment> findAllAppointmentByRate (User user, Pageable pageable);
+    public Integer totalFindAllAppointmentByRate (User user);
 }

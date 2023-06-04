@@ -64,14 +64,6 @@ if (selectGender.getAttribute('value')==='0'){
     selectGender.childNodes[5].setAttribute('selected','selected');
 }
 
-var selectSchool = document.querySelector('.vice-main .edit-infor .list .list-school');
-var lengthSchool = selectSchool.children.length;
-var idSchool = selectSchool.getAttribute('idSchool');
-for(var i = 0; i < lengthSchool; i++) {
-    if (selectSchool.children[i].getAttribute('idSchool') === idSchool){
-        selectSchool.children[i].setAttribute('selected','selected');
-    }
-}
 
 function timeStr(t) {
     var temp = t.split(':');

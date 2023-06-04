@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/admin-home")
-public class Home extends HttpServlet {
+@WebServlet("/admin-school")
+public class AdminSchool extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/admin/admin_home.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/admin/admin_school.jsp");
         rd.forward(request, response);
     }
 

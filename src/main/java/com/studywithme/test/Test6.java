@@ -9,8 +9,9 @@ import java.util.List;
 
 public class Test6 {
     public static void main(String[] args) {
-        User user = UserService.getInstance().findById(2);
-        List<Appointment> appointments = AppointmentDAO.getInstance().findAllAppointmentByRate(user);
+        User user = UserService.getInstance().findById(1);
+//        List<Appointment> appointments = AppointmentDAO.getInstance().findAllAppointmentByRate(user);
+        Integer a = AppointmentDAO.getInstance().countFindAllAppointmentByRate(user);
         System.out.println("????");
     }
 }

@@ -21,6 +21,10 @@ public class Role extends AbstractModel{
 	public Role() {
 	}
 
+	public Role(Integer id) {
+		this.id = id;
+	}
+
 	public Role(Integer id, String code, String name) {
 		this.id = id;
 		this.code = code;

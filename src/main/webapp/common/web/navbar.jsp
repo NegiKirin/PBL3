@@ -55,38 +55,6 @@
             <c:if test="${requestFriend == null}">
                 <p>Không có thông báo!</p>
             </c:if>
-
-<%--            <div class="list">
-                <div class="content">
-                    <img src="data:image/jpeg;base64,${user.avatar}">
-                    <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
-                </div>
-                <div class="buttons">
-                    <button class="yes">Đồng ý</button>
-                    <button class="no">Từ chối</button>
-                </div>
-            </div>
-            <div class="list">
-                <div class="content">
-                    <img src="data:image/jpeg;base64,${user.avatar}">
-                    <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
-                </div>
-                <div class="buttons">
-                    <button class="yes">Đồng ý</button>
-                    <button class="no">Từ chối</button>
-                </div>
-            </div>
-            <div class="list">
-                <div class="content">
-                    <img src="data:image/jpeg;base64,${user.avatar}">
-                    <p class="noti"><a>Lê Việt Thanh</a> vừa gửi lời mời kết bạn cho bạn.</p>
-                </div>
-                <form class="buttons" method="post">
-                    <input type="hidden" name="action" value="">
-                    <button class="yes">Đồng ý</button>
-                    <button class="no">Từ chối</button>
-                </form>
-            </div>--%>
         </div>
         <button class="menu-btn">
             <i class="fa-solid fa-bars"></i>
@@ -98,14 +66,14 @@
             <a class="item" href="<c:url value="/profile?id=${user.id}"/>">
                 Thay đổi thông tin tài khoản
             </a>
-            <a class="item" href="<c:url value="/rate"/>">
+            <a class="item" href="<c:url value="/rate?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc"/>">
                 Đánh giá các cuộc hẹn
             </a>
             <a class="item" href="<c:url value="/list-friends?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> ">
                 Xem danh sách bạn bè
             </a>
             <c:if test="${user.role.code == 'ADMIN'}">
-                <a class="item" href="<c:url value="/admin-home"/>">
+                <a class="item" href="<c:url value="/admin-home?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/>">
                     Đến trang quản lý
                 </a>
             </c:if>

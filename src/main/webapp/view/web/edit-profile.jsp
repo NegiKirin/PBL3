@@ -371,7 +371,8 @@
                 <div class="list">
                     <i class="fa-solid fa-school"></i>
                     <p class="content">Trường học:</p>
-                    <select class="list-school" id="list-school" name="school" idSchool="${profileUser.school.id}">
+                    <select class="list-school" id="list-school" name="school">
+                        <option selected hidden>${profileUser.school.nameSchool}</option>
                         <c:forEach items="${listSchool}" var="school">
                             <option idSchool="${school.id}">${school.nameSchool}</option>
                         </c:forEach>

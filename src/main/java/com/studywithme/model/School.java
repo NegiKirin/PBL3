@@ -25,12 +25,12 @@ public class School extends AbstractModel{
 		this.id = id;
 		this.nameSchool = school;
 	}
-	
-	
 	public School(String nameSchool) {
 		this.nameSchool = nameSchool;
 	}
-
+	public School(Integer id){
+		this.id = id;
+	}
 
 	public School() {
 	}

@@ -26,19 +26,4 @@
             </div>
         </c:if>
     </c:forEach>
-    <%--<div class="list-friends-item">
-        <img src="/PBL3/template/image/avatarDefault.jpg" alt="">
-        <p class="name"><a href=""> Ho va ten </a></p>
-        <i class="fa-solid fa-mug-saucer"></i>
-    </div>
-    <div class="list-friends-item">
-        <img src="/PBL3/template/image/avatarDefault.jpg" alt="">
-        <p class="name"><a href=""> Ho va ten </a></p>
-        <i class="fa-solid fa-mug-saucer"></i>
-    </div>
-    <div class="list-friends-item">
-        <img src="/PBL3/template/image/avatarDefault.jpg" alt="">
-        <p class="name"><a href=""> Ho va ten </a></p>
-        <i class="fa-solid fa-mug-saucer"></i>
-    </div>--%>
 </div>

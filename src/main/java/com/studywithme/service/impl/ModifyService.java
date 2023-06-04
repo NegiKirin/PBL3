@@ -16,15 +16,13 @@ public class ModifyService implements IModifyService {
         }
         return modifyService;
     }
-    private IModifyDAO modifyDAO;
     @Override
     public Modify createModify(User user, User editor, String detail) {
         Modify modify = new Modify();
-        modifyDAO = new ModifyDAO();
         modify.setModifyBy(editor);
         modify.setUserModified(user);
         modify.setModifyDate(new Date(System.currentTimeMillis()));
         modify.setDetail(detail);
-        return modifyDAO.save(modify);
+        return ModifyDAO.getInstance().save(modify);
     }
 }

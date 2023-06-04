@@ -10,6 +10,10 @@
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/template/paging/jquery.twbsPagination.js"/> " type="text/javascript"></script>
     <link rel="stylesheet" href="<c:url value="/template/css/rate.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
     <script src="<c:url value="/template/js/JQRate.js"/> " ></script>
@@ -35,7 +39,7 @@
                             <div class="list-rate">
                                 <div class="rate">
                                     <p class="ID"><img class="avata-host" src="data:image/jpeg;base64,${appointment.host.avatar}" alt=""></i>${appointment.host.fullName}</p>
-                                    <p class="time-date"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
+                                    <p class="time-date" endTime="${appointment.ending_time}" startTime="${appointment.starting_time}" dateMeeting="${appointment.dateMeeting}"><i class="fa-solid fa-clock"></i> 8 A.M - 9 A.M 08/03/2023</p>
                                     <p class="address"><i class="fa-solid fa-location-dot"></i>${appointment.address.detail}</p>
                                     <button class="show-button" title="Xem thành viên"></i>Đánh giá<i class="fa-solid fa-caret-down"></i></button>
                                 </div>
@@ -86,6 +90,13 @@
                         </c:forEach>
                     </c:if>
                 </div>
+                <form action="rate" method="get" id="formPaging">
+                    <ul class="pagination" id="pagination"></ul>
+                    <input type="hidden" value="" id="page" name="page"/>
+                    <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
+                    <input type="hidden" value="${pageable.sorter.sortName}" id="sortName" name="sortName">
+                    <input type="hidden" value="${pageable.sorter.sortBy}" id="sortBy" name="sortBy">
+                </form>
             </div>
         </div>
         <div class="content-right">
@@ -96,6 +107,28 @@
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <script src="<c:url value="/template/js/Appointment.js"/>"></script>
 <script src="<c:url value="/template/js/Rate.js"/>" ></script>
+<script type="text/javascript">
+    var totalPages = ${totalPages};
+    var currentPage = ${pageable.page};
+    var limit = 6;
+    var dateMeeting = "";
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 10,
+            startPage: currentPage,
+            onPageClick: function (event, page) {
+                if(currentPage !== page){
+                    $('#maxPageItem').val(limit);
+                    $('#page').val(page);
+                    $('#formPaging').submit();
+                }
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
+</script>
 </body>
 </html>
 

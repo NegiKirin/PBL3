@@ -253,21 +253,27 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
     }
 
     @Override
-    public List<Appointment> findAllAppointmentByRate(User user) {
+    public List<Appointment> findAllAppointmentByRate(User user, Pageable pageable) {
         List<Appointment> results = new ArrayList<>();
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from Appointment a left join a.participants p where ((a.host = :user and a.participants is not empty ) or p = :user) and (a.dateMeeting < :today or (a.dateMeeting = :today and a.ending_time < :now)) except from Appointment a inner join a.rates r where r.rateBy = :user";
-                Query query = session.createQuery(hql);
+                StringBuilder hql = new StringBuilder("from Appointment a");
+                hql.append(" left join a.participants p where ((a.host = :user and a.participants is not empty ) or p = :user) and (a.dateMeeting < :today or (a.dateMeeting = :today and a.ending_time < :now))");
+//                String hql = "from Appointment a left join a.participants p where ((a.host = :user and a.participants is not empty ) or p = :user) and (a.dateMeeting < :today or (a.dateMeeting = :today and a.ending_time < :now)) except from Appointment a inner join a.rates r where r.rateBy = :user";
+                if (pageable.getSorter() != null) {
+                    hql.append(" order by a." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy());
+                }
+                hql.append(" except from Appointment a inner join a.rates r where r.rateBy = :user");
+                Query query = session.createQuery(hql.toString());
                 Date date = new Date(System.currentTimeMillis());
                 java.sql.Date today = new java.sql.Date(date.getTime());
                 query.setParameter("today", today);
                 query.setParameter("now",Time.valueOf(LocalTime.now()));
                 query.setParameter("user",user);
-                results = query.getResultList();
+                results = query.setFirstResult(pageable.getOffset()).setMaxResults(pageable.getLimit()).getResultList();
                 for(int i = 0; i < results.size(); i++){
                     session.get(User.class,results.get(i).getHost().getId());
                     for (User u : results.get(i).getParticipants()) {
@@ -285,5 +291,13 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
             return null;
         }
         return results;
+    }
+
+    @Override
+    public Integer countFindAllAppointmentByRate(User user) {
+        String hql = "from Appointment a left join a.participants p where ((a.host = :user and a.participants is not empty ) or p = :user) and (a.dateMeeting < :today or (a.dateMeeting = :today and a.ending_time < :now)) except from Appointment a inner join a.rates r where r.rateBy = :user";
+        Date date = new Date(System.currentTimeMillis());
+        java.sql.Date today = new java.sql.Date(date.getTime());
+        return count(hql, "user", user, "today", today, "now", Time.valueOf(LocalTime.now()));
     }
 }

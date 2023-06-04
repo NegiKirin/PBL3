@@ -17,5 +17,6 @@ public interface IAppointmentDAO extends GenericDAO<Appointment>, InterfaceDAO<A
     public Integer countFindByParticipants(User participant);
     public Appointment addParticipant(User participant, Integer id);
     public boolean removeParticipant(User participant, Integer id);
-    public List<Appointment> findAllAppointmentByRate(User user);
+    public List<Appointment> findAllAppointmentByRate(User user, Pageable pageable);
+    public Integer countFindAllAppointmentByRate(User user);
 }

@@ -1,7 +1,6 @@
 // 3-5-21-4-44-5
 var formsRate = document.getElementsByName('formsRate');
 formsRate.forEach((element,index)=> {
-
     let items = element.children[1].children;
     for (let i = 0; i < items.length; i++) {
         let start = items[i].children[3].children;
@@ -43,3 +42,16 @@ formsRate.forEach((element,index)=> {
         return false;
     }
 });
+function timeStr(t) {
+    var temp = t.split(':');
+    return `${temp[0]}:${temp[1]}`;
+}
+function dateMeeting(date) {
+    var temp = date.split('-');
+    return `${temp[2]}-${temp[1]}-${temp[0]}`;
+}
+
+var time = document.querySelectorAll('.crete-rate .rate .time-date');
+time.forEach((element, key) => {
+    element.innerHTML = `<i class="fa-solid fa-clock"></i> ${timeStr(element.getAttribute('startTime'))}-${timeStr(element.getAttribute('endTime'))} ${dateMeeting(element.getAttribute('dateMeeting'))}`;
+})

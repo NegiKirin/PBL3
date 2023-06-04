@@ -7,11 +7,11 @@ openHeader.addEventListener('click', function (){
 
 var openNoti = document.querySelector('.noti-btn')
 var notiContent = document.querySelector('.noti-content')
-
-openNoti.addEventListener('click', function (){
-    notiContent.classList.toggle('hide')
-})
-
+if (openNoti){
+    openNoti.addEventListener('click', function (){
+        notiContent.classList.toggle('hide')
+    })
+}
 // var buttonAgreeNavbar = document.getElementById('agreeNavbar');
 // console.log(buttonAgreeNavbar);
 // if (buttonAgreeNavbar) {

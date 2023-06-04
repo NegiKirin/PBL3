@@ -1,9 +1,13 @@
 package com.studywithme.controller.web;
 
 import com.studywithme.model.User;
+import com.studywithme.paging.PageRequest;
+import com.studywithme.paging.Pageable;
 import com.studywithme.service.impl.AppointmentService;
 import com.studywithme.service.impl.FriendshipService;
 import com.studywithme.service.impl.RateService;
+import com.studywithme.sort.Sorter;
+import com.studywithme.util.FormUtil;
 import com.studywithme.util.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -18,8 +22,15 @@ import java.io.IOException;
 public class Rate extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) SessionUtil.getInstance().getValue(request, "user");
+
+        Pageable pageble = new PageRequest();
+        pageble = FormUtil.toModel(PageRequest.class, request);
+        pageble.setSorter(FormUtil.toModel(Sorter.class, request));
+        request.setAttribute("pageable",pageble);
         String listFriend = request.getParameter("listFriend");
-        request.setAttribute("appointments", AppointmentService.getInstance().findAllAppointmentByRate(user));
+        int totalPages = (int) Math.ceil((double) AppointmentService.getInstance().totalFindAllAppointmentByRate(user) / pageble.getMaxPageItem());
+        request.setAttribute("totalPages",totalPages==1?0:totalPages);
+        request.setAttribute("appointments", AppointmentService.getInstance().findAllAppointmentByRate(user, pageble));
         request.setAttribute("appointmentJoined", AppointmentService.getInstance().findByParticipantCurrent(user));
         request.setAttribute("listFriend", FriendshipService.getInstance().listFriend(listFriend,user));
         request.setAttribute("requestFriend", FriendshipService.getInstance().getRequest(user));
