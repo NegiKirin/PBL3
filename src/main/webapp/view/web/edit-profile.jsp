@@ -320,10 +320,10 @@
         <div class="edit-infor">
             <h1 class="edit-infor-title">Chỉnh sửa thông tin cá nhân</h1>
             <p class="title-edit">Ảnh bìa</p>
-            <form class="edit-background" enctype="multipart/form-data" action="profile" method="post">
+            <form class="edit-background" action="profile" method="post" enctype="multipart/form-data">
                 <img id="blah1" src="data:image/jpeg;base64,${profileUser.background}" alt="your image" />
                 <input class="input-img" accept="image/*" type="file" id="imgInp1" name="background"/>
-                <button class="submit" disabled="disabled">Xác nhận thay đổi</button>
+                <button class="submit" disabled="disabled" type="submit">Xác nhận thay đổi</button>
                 <script>
                     imgInp1.onchange = evt => {
                         const [file] = imgInp1.files
@@ -418,12 +418,12 @@
                 <label><p id="errorPassword"></p></label>
                 <input class="submit" type="submit" disabled value="XÁC NHẬN">
                 <input type="hidden" value="changePassword" name="action">
+                <input type="hidden" name="profileUserId" value="${profileUser.id}">
             </form>
             <button class="exit">X</button>
         </div>
     </div>
     <script src="<c:url value="/template/js/Profile.js"/>"></script>
-    <script src="<c:url value="/template/js/Appointment.js"/>"></script>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
 </body>
 </html>
