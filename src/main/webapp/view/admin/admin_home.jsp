@@ -48,10 +48,18 @@
                                 <input class="date" type="date" value="${user.dateOfBirth}" disabled="disabled">
                             </div>
                             <div class="buttons">
-                                <button class="button lock">
-                                    <i class="fa-solid fa-lock"></i>
-                                    <p class="button-content">Khóa</p>
-                                </button>
+                                <c:if test="${user.status == 0}">
+                                    <button class="button lock">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <p class="button-content">Khóa</p>
+                                    </button>
+                                </c:if>
+                                <c:if test="${user.status == 1}">
+                                    <button class="button lock unlock">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <p class="button-content">Mở khóa</p>
+                                    </button>
+                                </c:if>
                                 <button class="button remove">
                                     <i class="fa-solid fa-trash"></i>
                                     <p class="button-content">Xóa</p>
@@ -141,8 +149,8 @@
                         </div>
                         <button class="submit">Xác nhận thay đổi</button>
                     </div>
-                    <input type="hidden" value="editProfile" name="action">
                     <input type="hidden" value="" name="profileUserId">
+                    <input type="hidden" value="editProfile" name="action">
                     <button class="exit" type="button">X</button>
                     <input type="hidden" value="${pageable.page}" name="page"/>
                     <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">

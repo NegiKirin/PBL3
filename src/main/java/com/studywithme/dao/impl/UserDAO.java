@@ -116,6 +116,7 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 		return results;
 	}
 
+
 	@Override
 	public User findByEmail(String email) {
 		String hql = "FROM User u Where u.email = :email";

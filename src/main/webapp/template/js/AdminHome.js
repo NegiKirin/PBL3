@@ -96,6 +96,7 @@ var exitConfirm = document.querySelector('.confirm-delete .list .exit')
 
 deleteBtn.forEach((item, index) =>{
     item.addEventListener('click', function (e){
+        confirmDiv.children[1].children[1].value = item.parentElement.parentElement.children[9].value;
         confirmDiv.classList.remove('hide')
         e.stopPropagation()
     })
@@ -115,6 +116,7 @@ var exitConfirmLock = document.querySelector('.confirm-lock .list .exit')
 
 lockBtn.forEach((item, index) =>{
     item.addEventListener('click', function (e){
+        confirmDivLock.children[1].children[1].value = item.parentElement.parentElement.children[9].value;
         confirmDivLock.classList.remove('hide')
         e.stopPropagation()
     })
