@@ -42,6 +42,7 @@ public class UserService implements IUserService {
 		user.setLastName(lastName);
 		user.setFullName(firstName+" "+lastName);
 		user.setGender(gender);
+		user.setStatus(0);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
 		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
 		try {
@@ -186,6 +187,24 @@ public class UserService implements IUserService {
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
 		newUser.setFullName(firstName + " " + lastName);
+		newUser.setStatus(0);
+		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
+		try {
+			File avatar = new File(path + File.separator + "avatarDefault.png");
+			byte[] dataAvatar = Files.readAllBytes(avatar.toPath());
+			String base64 = Base64.getEncoder().encodeToString(dataAvatar);
+			newUser.setAvatar(base64);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			File avatar = new File(path + File.separator + "backgroundDefault.png");
+			byte[] dataBackground = Files.readAllBytes(avatar.toPath());
+			String base64 = Base64.getEncoder().encodeToString(dataBackground);
+			newUser.setBackground(base64);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		UserDAO.getInstance().insert(newUser);
 		return true;
 	}

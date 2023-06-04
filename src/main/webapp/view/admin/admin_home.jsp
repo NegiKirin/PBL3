@@ -90,8 +90,6 @@
     </div>
 
 
-
-
     <%--    div phụ    --%>
     <div class="detail-div hide">
         <div class="panel"></div>
