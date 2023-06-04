@@ -26,8 +26,16 @@ public class AdminHome extends HttpServlet {
         pageble.setSorter(FormUtil.toModel(Sorter.class, request));
         String error = request.getParameter("error");
         if (error != null) {
-            request.setAttribute("error","Email đã tồn tại");
-            request.setAttribute("idUser",error);
+            if (error.equals("errorCreate")) {
+                request.setAttribute("errorCreate","Email đã tồn tại");
+            }
+            try {
+                Integer.parseInt(error);
+                request.setAttribute("errorEdit","Email đã tồn tại");
+                request.setAttribute("idUser",error);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         request.setAttribute("pageable", pageble);
         request.setAttribute("roles", RoleService.getInstance().findAll());
@@ -56,8 +64,26 @@ public class AdminHome extends HttpServlet {
                 String url = "/PBL3/admin-home?page="+pageble.getPage()+"&maxPageItem="+pageble.getMaxPageItem()+"&sortName="+pageble.getSorter().getSortName()+"&sortBy="+pageble.getSorter().getSortBy()+"&error="+profileUserId;
                 response.sendRedirect(url);
             } else{
-                response.sendRedirect("/PBL3/admin-home?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc");
+                response.sendRedirect("/PBL3/admin-home?page="+pageble.getPage()+"&maxPageItem="+pageble.getMaxPageItem()+"&sortName="+pageble.getSorter().getSortName()+"&sortBy="+pageble.getSorter().getSortBy());
             }
+        } else if (action.equals("createUser")) {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String gender = request.getParameter("gender");
+            String idSchool = request.getParameter("idSchool");
+            String dateOfBirth = request.getParameter("dateOfBirth");
+            if (UserService.getInstance().createUser(email,password,firstName,lastName,gender,idSchool,dateOfBirth)) {
+                response.sendRedirect("/PBL3/admin-home?page="+pageble.getPage()+"&maxPageItem="+pageble.getMaxPageItem()+"&sortName="+pageble.getSorter().getSortName()+"&sortBy="+pageble.getSorter().getSortBy());
+            } else {
+                String url = "/PBL3/admin-home?page="+pageble.getPage()+"&maxPageItem="+pageble.getMaxPageItem()+"&sortName="+pageble.getSorter().getSortName()+"&sortBy="+pageble.getSorter().getSortBy()+"&error="+"errorCreate";
+                response.sendRedirect(url);
+            }
+        } else if (action.equals("lockUser")){
+            String profileUserId = request.getParameter("profileUserId");
+        } else if (action.equals("deleteUser")){
+            String profileUserId = request.getParameter("profileUserId");
         }
     }
 }

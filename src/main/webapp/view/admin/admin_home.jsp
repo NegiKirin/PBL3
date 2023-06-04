@@ -133,7 +133,7 @@
                         <div class="list">
                             <p class="content">Email đăng nhập:</p>
                             <input class="email" placeholder="" type="email" name="email">
-                            <label><p id="error">${error}</p></label>
+                            <label><p id="error">${errorEdit}</p></label>
                         </div>
                         <div class="list">
                             <p class="content">Mật khẩu:</p>
@@ -155,68 +155,96 @@
 
     <div class="confirm-div hide delete">
         <div class="panel"></div>
-        <div class="confirm-delete">
-            <p class="title">Bạn muốn xóa vĩnh viễn tài khoản này?</p>
-            <div class="list">
-                <button class="remove">Xác nhận</button>
-                <button class="exit">Thoát</button>
+        <form action="admin-home" method="post">
+            <div class="confirm-delete">
+                <p class="title">Bạn muốn xóa vĩnh viễn tài khoản này?</p>
+                <div class="list">
+                    <button class="remove" type="submit">Xác nhận</button>
+                    <button class="exit" type="button">Thoát</button>
+                </div>
             </div>
-        </div>
+            <input type="hidden" name="profileUserId" value="">
+            <input type="hidden" name="action" value="deleteUser">
+            <input type="hidden" value="${pageable.page}" name="page"/>
+            <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">
+            <input type="hidden" value="${pageable.sorter.sortName}" name="sortName">
+            <input type="hidden" value="${pageable.sorter.sortBy}" name="sortBy">
+        </form>
     </div>
 
     <div class="confirm-div hide lock">
         <div class="panel"></div>
-        <div class="confirm-lock">
-            <p class="title">Bạn muốn khóa tài khoản này?</p>
-            <div class="list">
-                <button class="lock">Xác nhận</button>
-                <button class="exit">Thoát</button>
+        <form action="admin-home" method="post">
+            <div class="confirm-lock">
+                <p class="title">Bạn muốn khóa tài khoản này?</p>
+                <div class="list">
+                    <button class="lock" type="submit">Xác nhận</button>
+                    <button class="exit" type="button">Thoát</button>
+                </div>
             </div>
-        </div>
+            <input type="hidden" name="profileUserId" value="">
+            <input type="hidden" name="action" value="lockUser">
+            <input type="hidden" value="${pageable.page}" name="page"/>
+            <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">
+            <input type="hidden" value="${pageable.sorter.sortName}" name="sortName">
+            <input type="hidden" value="${pageable.sorter.sortBy}" name="sortBy">
+        </form>
     </div>
 
     <div class="add-new-user hide">
         <div class="panel"></div>
         <div class="add-new-user-main">
             <div class="title-main">Thêm một người dùng mới</div>
-            <div class="content-main">
-                <div class="account">
-                    <p class="title-account">Thông tin tài khoản</p>
-                    <input class="email" placeholder="Nhập tên tài khoản">
-                    <input class="password" placeholder="Nhập mật khẩu">
-                    <input class="re-password" placeholder="Nhập lại mật khẩu">
-                </div>
-                <div class="infor">
-                    <p class="title-infor">Thông tin cá nhân</p>
-                    <div class="list">
-                        <i class="fa-solid fa-heart"></i>
-                        <p class="content">Giới tính:</p>
-                        <select class="list-sex" name="gender">
-                            <option hidden="hidden" selected>Chọn giới tính</option>
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
-                            <option value="other">Khác</option>
+            <form action="admin-home" method="post">
+                <div class="content-main">
+                    <div class="account">
+                        <p class="title-account">Thông tin tài khoản</p>
+                        <input class="email" placeholder="Nhập tên tài khoản" name="email" required value="">
+                        <label><p id="errorCreate">${errorCreate}</p></label>
+                        <input class="password" placeholder="Nhập mật khẩu" name="password" required value="">
+                        <input class="re-password" placeholder="Nhập lại mật khẩu" name="rePassword" required value="">
+                    </div>
+                    <div class="infor">
+                        <p class="title-infor">Thông tin cá nhân</p>
+                        <div class="list">
+                            <input type="text" name="firstName" value="" placeholder="Họ và tên đệm">
+                            <input type="text" name="lastName" value="" placeholder="Tên">
+                        </div>
+                        <div class="list">
+                            <i class="fa-solid fa-heart"></i>
+                            <p class="content">Giới tính:</p>
+                            <select class="list-sex" name="gender" required>
+                                <option hidden="hidden" selected>Chọn giới tính</option>
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="list">
+                            <i class="fa-solid fa-school"></i>
+                            <p class="content">Trường học:</p>
+                        </div>
+                        <select class="list-school" name="idSchool" required>
+                            <option selected hidden="hidden">Chọn trường học</option>
+                            <c:forEach items="${listSchool}" var="school">
+                                <option idSchool="${school.id}">${school.nameSchool}</option>
+                            </c:forEach>
                         </select>
-                    </div>
-                    <div class="list">
-                        <i class="fa-solid fa-school"></i>
-                        <p class="content">Trường học:</p>
-                    </div>
-                    <select class="list-school" name="school">
-                        <option selected hidden="hidden">Chọn trường học</option>
-                        <c:forEach items="${listSchool}" var="school">
-                            <option idSchool="${school.id}">${school.nameSchool}</option>
-                        </c:forEach>
-                    </select>
-                    <div class="list">
-                        <i class="fa-solid fa-cake-candles"></i>
-                        <p class="content">Ngày sinh:</p>
-                        <input type="date" value="2003-01-01" class="date" name="dateOfBirth"/>
+                        <div class="list">
+                            <i class="fa-solid fa-cake-candles"></i>
+                            <p class="content">Ngày sinh:</p>
+                            <input type="date" value="2003-01-01" class="date" name="dateOfBirth" required/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button class="add">TẠO NGAY</button>
-            <button class="exit">X</button>
+                <button class="add">TẠO NGAY</button>
+                <button class="exit">X</button>
+                <input type="hidden" name="action" value="createUser">
+                <input type="hidden" value="${pageable.page}" name="page"/>
+                <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">
+                <input type="hidden" value="${pageable.sorter.sortName}" name="sortName">
+                <input type="hidden" value="${pageable.sorter.sortBy}" name="sortBy">
+            </form>
         </div>
     </div>
     <script src="<c:url value="/template/js/AdminHome.js"/>"></script>

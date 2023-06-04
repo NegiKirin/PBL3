@@ -155,4 +155,35 @@ public class UserService implements IUserService {
 		UserDAO.getInstance().update(user);
 		return true;
 	}
+
+	@Override
+	public boolean createUser(String email, String password,String firstName, String lastName, String gender, String idSchool, String dateOfBirth){
+		User user = UserDAO.getInstance().findByEmail(email);
+		if (user != null) {
+			return false;
+		}
+		User newUser = new User();
+		newUser.setEmail(email);
+		newUser.setPassword(EncodeUtil.toSHA1(password));
+		if (gender.equals("male")) {
+			newUser.setGender(0);
+		} else if (gender.equals("female")) {
+			newUser.setGender(1);
+		} else {
+			newUser.setGender(2);
+		}
+		try {
+			newUser.setSchool(new School(Integer.parseInt(idSchool)));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+			user.setDateOfBirth(new Date(date.getTime()));
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
+		UserDAO.getInstance().insert(newUser);
+		return true;
+	}
 }

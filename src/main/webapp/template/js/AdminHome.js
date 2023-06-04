@@ -71,7 +71,6 @@ itemUsers.forEach((item, index)=> {
     }
 });
 detailDivForm.onchange = function (e) {
-    console.log(e.target);
     detailDivChancePwd.children[3].removeAttribute('style');
     Object.assign(detailDivChancePwd.children[3].style, {
         backgroundColor: 'rgb(117, 186, 128)'
@@ -82,6 +81,7 @@ var error = document.getElementById('error');
 if(error.innerText !== "") {
     detailDiv.classList.remove('hide');
 }
+
 exitDetailDiv.addEventListener('click', function (){
     detailDiv.classList.add('hide');
 } )
@@ -144,3 +144,7 @@ panelAdd.addEventListener('click', function (){
 exitAddDiv.addEventListener('click', function (){
     addNewUserDiv.classList.add('hide')
 })
+var errorCreate = document.getElementById('errorCreate');
+if (errorCreate.innerText !== ""){
+    addNewUserDiv.classList.remove('hide')
+}

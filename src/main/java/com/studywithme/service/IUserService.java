@@ -15,4 +15,5 @@ public interface IUserService {
 	public User updateImg(User user, Part filePart, String image);
 	public List<User> findAllUser(Pageable pageable);
 	public boolean editUser(String profileUserId,String idRole, String lastName, String firstName, String gender, String idSchool, String dateOfBirth, String email, String password);
+	public boolean createUser(String email, String password,String firstName, String lastName, String gender, String idSchool, String dateOfBirth);
 }
