@@ -44,6 +44,7 @@ public class UserService implements IUserService {
 		user.setFullName(firstName+" "+lastName);
 		user.setGender(gender);
 		user.setStatus(0);
+		user.setRole(RoleDAO.getInstance().findByCode("USER"));
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
 		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
 		try {
@@ -231,7 +232,11 @@ public class UserService implements IUserService {
 	@Override
 	public boolean lockUser(String id) {
 		User user = UserDAO.getInstance().findById(Integer.parseInt(id));
-		user.setStatus(1);
+		if (user.getStatus() == 0) {
+			user.setStatus(1);
+		} else {
+			user.setStatus(0);
+		}
 		UserDAO.getInstance().update(user);
 		return false;
 	}
