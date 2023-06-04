@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<c:url value="/template/image/Study1.png"/>" type="image/icon type">
     <title>Study With Me | Ứng dụng tìm kiếm người bạn học cùng</title>
     <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value="/template/css/edit-profile.css"/>">
