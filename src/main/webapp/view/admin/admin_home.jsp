@@ -210,8 +210,9 @@
                         <p class="title-account">Thông tin tài khoản</p>
                         <input class="email" placeholder="Nhập tên tài khoản" name="email" required value="">
                         <label><p id="errorCreate">${errorCreate}</p></label>
-                        <input class="password" placeholder="Nhập mật khẩu" name="password" required value="">
-                        <input class="re-password" placeholder="Nhập lại mật khẩu" name="rePassword" required value="">
+                        <input class="password" placeholder="Nhập mật khẩu" name="password" required value="" type="password" id="password" onkeyup="checkPassword()">
+                        <label class="pwd-not-same"><p id = "msg"></p> </label>
+                        <input class="re-password" placeholder="Nhập lại mật khẩu" name="rePassword" required value="" type="password" id="rePassword" onkeyup="checkPassword()">
                     </div>
                     <div class="infor">
                         <p class="title-infor">Thông tin cá nhân</p>
@@ -246,7 +247,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="add">TẠO NGAY</button>
+                <button class="add" id="create">TẠO NGAY</button>
                 <button class="exit">X</button>
                 <input type="hidden" name="action" value="createUser">
                 <input type="hidden" name="profileUserId" value="">
@@ -281,5 +282,38 @@
             });
         });
     </script>
+<script>
+    function checkPassword(){
+        password = document.getElementById("password").value;
+        re_password = document.getElementById("rePassword").value;
+        register = document.getElementById('create');
+        checkLengthPassword();
+        if(password!=re_password){
+            document.getElementById("msg").innerHTML = "Mật khẩu không khớp";
+            register.setAttribute('disabled','disabled');
+            return false;
+        }
+        else{
+            register.removeAttribute('disabled');
+            document.getElementById("msg").innerHTML = "";
+            checkLengthPassword();
+            return true;
+        }
+
+    }
+    function checkLengthPassword(){
+        register = document.getElementById('create');
+        password = document.getElementById("password").value;
+        if (Number.parseInt(password.length) < 8) {
+            register.setAttribute('disabled','disabled');
+            document.getElementById("msg").innerHTML = "Mật Khẩu Phải có ít nhất 8 kí tự";
+            return false;
+        } else {
+            register.removeAttribute('disabled');
+            document.getElementById("msg").innerHTML= "";
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

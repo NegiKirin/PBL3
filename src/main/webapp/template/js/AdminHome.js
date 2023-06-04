@@ -117,6 +117,16 @@ var exitConfirmLock = document.querySelector('.confirm-lock .list .exit')
 lockBtn.forEach((item, index) =>{
     item.addEventListener('click', function (e){
         confirmDivLock.children[1].children[1].value = item.parentElement.parentElement.children[9].value;
+        confirmDivLock.children[1].children[0].children[0].innerText = "Bạn muốn khóa tài khoản này?";
+        confirmDivLock.classList.remove('hide')
+        e.stopPropagation()
+    })
+})
+var unlLockBtn = document.querySelectorAll('.content-list-user .item .button.unlock');
+unlLockBtn.forEach((item, index) => {
+    item.addEventListener('click', function (e){
+        confirmDivLock.children[1].children[1].value = item.parentElement.parentElement.children[9].value;
+        confirmDivLock.children[1].children[0].children[0].innerText = "Bạn mở muốn khóa tài khoản này?";
         confirmDivLock.classList.remove('hide')
         e.stopPropagation()
     })
@@ -150,3 +160,4 @@ var errorCreate = document.getElementById('errorCreate');
 if (errorCreate.innerText !== ""){
     addNewUserDiv.classList.remove('hide')
 }
+

@@ -19,20 +19,24 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String url = request.getRequestURI();
-        if (url.startsWith("/PBL3/admin")) {
-            User user = (User) SessionUtil.getInstance().getValue(request, "user");
-            if (user != null) {
-                if (user.getRole().getCode().equals("ADMIN")) {
-                    filterChain.doFilter(servletRequest, servletResponse);
-                } else if (user.getRole().getCode().equals("USER")) {
-                    response.sendRedirect(request.getContextPath() + "/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
-                }
-            } else {
-                response.sendRedirect(request.getContextPath() + "/login");
-            }
+        User user = (User) SessionUtil.getInstance().getValue(request, "user");
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
         } else {
-            filterChain.doFilter(servletRequest, servletResponse);
+            if (user.getStatus() == 1) {
+                response.sendRedirect(request.getContextPath() + "/login");
+            } else {
+                String url = request.getRequestURI();
+                if (url.startsWith("/PBL3/admin")) {
+                    if (user.getRole().getCode().equals("ADMIN")) {
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } else if (user.getRole().getCode().equals("USER")) {
+                        response.sendRedirect(request.getContextPath() + "/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
+                    }
+                } else {
+                    filterChain.doFilter(servletRequest, servletResponse);
+                }
+            }
         }
     }
 
