@@ -8,10 +8,10 @@ import java.sql.Date;
 public class Friendship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
-    protected Date createdDate;
+    private Integer id;
+    private Date createdDate;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    protected User createdBy;
+    private User createdBy;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name="friend_id")
     private User friend;
