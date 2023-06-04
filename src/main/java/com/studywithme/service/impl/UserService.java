@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.sql.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import com.studywithme.dao.impl.RoleDAO;
 import com.studywithme.dao.impl.UserDAO;
@@ -28,6 +29,7 @@ public class UserService implements IUserService {
 		}
 		return userService;
 	}
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("url");
 	@Override
 	public User findByEmailAndPassword(String email, String password) {
 		password = EncodeUtil.toSHA1(password);
@@ -46,7 +48,7 @@ public class UserService implements IUserService {
 		user.setStatus(0);
 		user.setRole(RoleDAO.getInstance().findByCode("USER"));
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
-		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
+		String path = resourceBundle.getString("url");
 		try {
 			File avatar = new File(path + File.separator + "avatarDefault.png");
 			byte[] dataAvatar = Files.readAllBytes(avatar.toPath());
@@ -205,7 +207,7 @@ public class UserService implements IUserService {
 		newUser.setLastName(lastName);
 		newUser.setFullName(firstName + " " + lastName);
 		newUser.setStatus(0);
-		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
+		String path = resourceBundle.getString("url");
 		try {
 			File avatar = new File(path + File.separator + "avatarDefault.png");
 			byte[] dataAvatar = Files.readAllBytes(avatar.toPath());

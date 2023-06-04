@@ -58,39 +58,43 @@ public class Profile extends HttpServlet {
 		String errorChange = "";
 		if (action.equals("editAvatar")) {
 			Part filePart = request.getPart("avatar");
-			user = UserService.getInstance().updateImg(user,filePart,"avatar");
+			me = UserService.getInstance().updateImg(user,filePart,"avatar");
 			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa ảnh đại diên");
+			SessionUtil.getInstance().removeValue(request,"user");
+			SessionUtil.getInstance().putValue(request, "user", me);
 		} else if (action.equals("editBackground")) {
 			Part filePart1 = request.getPart("background");
-			user = UserService.getInstance().updateImg(user,filePart1,"background");
+			me = UserService.getInstance().updateImg(user,filePart1,"background");
 			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa ảnh bìa");
+			SessionUtil.getInstance().removeValue(request,"user");
+			SessionUtil.getInstance().putValue(request, "user", me);
 		} else if (action.equals("editProfile")) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			String gender = request.getParameter("gender");
 			String school = request.getParameter("school");
 			String dateOfBirth = request.getParameter("dateOfBirth");
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setFullName(firstName + " " + lastName);
-			user.setGender(gender.equals("male")?0:gender.equals("female")?1:2);
-			user.setSchool(SchoolService.getInstance().findByName(school));
+			me.setFirstName(firstName);
+			me.setLastName(lastName);
+			me.setFullName(firstName + " " + lastName);
+			me.setGender(gender.equals("male")?0:gender.equals("female")?1:2);
+			me.setSchool(SchoolService.getInstance().findByName(school));
 			try {
 				java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-				user.setDateOfBirth(new Date(date.getTime()));
+				me.setDateOfBirth(new Date(date.getTime()));
 			} catch (ParseException e) {
 				throw new RuntimeException(e);
 			}
-			UserService.getInstance().update(user);
-			ModifyService.getInstance().createModify(user,user,"Chỉnh sửa thông tin cá nhân");
+			UserService.getInstance().update(me);
+			ModifyService.getInstance().createModify(me,me,"Chỉnh sửa thông tin cá nhân");
 		} else if (action.equals("changePassword")) {
 			String passwordCurrent = request.getParameter("passwordCurrent");
-			if(!EncodeUtil.toSHA1(passwordCurrent).equals(user.getPassword())) {
+			if(!EncodeUtil.toSHA1(passwordCurrent).equals(me.getPassword())) {
 				errorChange+="errorChange";
 			} else {
 				String newPassword = request.getParameter("newPassword");
-				user.setPassword(EncodeUtil.toSHA1(newPassword));
-				UserService.getInstance().update(user);
+				me.setPassword(EncodeUtil.toSHA1(newPassword));
+				UserService.getInstance().update(me);
 			}
 		} else if (action.equals("addFriend")) {
 			FriendshipService.getInstance().addFriend(me, user);
