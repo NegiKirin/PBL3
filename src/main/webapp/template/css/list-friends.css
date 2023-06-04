@@ -64,6 +64,10 @@ html body{
     margin: 20px 5px 10px;
 }
 
+#content .content-left .content-list-meeting .content-left-item p{
+    margin: 0;
+}
+
 #content .content-left .content-left-item .time-date{
     font-weight: bold;
     font-size: 13px;
@@ -85,6 +89,7 @@ html body{
     display: inline;
     width: 1000px;
     height: auto;
+    position: relative;
 }
 
 #content .content-main .content-main-title{
@@ -168,10 +173,13 @@ html body{
 }
 
 #content .content-right .list-friends .list-friends-item .name{
-    display: inline;
+    display: inline-block;
     padding-bottom: 10px;
     line-height: 46px;
     margin-left: 20px;
+    width: 150px;
+    height: 34px;
+    overflow: hidden;
 }
 
 #content .content-right .list-friends .list-friends-item a{
@@ -185,4 +193,21 @@ html body{
     margin-right: 20px;
     line-height: 46px;
     color: #333333;
+}
+
+#formPaging{
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 80px);
+    display: flex;
+    justify-content: center;
+}
+
+#formPaging a{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#formPaging .page-item.active .page-link{
+    z-index: 0;
 }

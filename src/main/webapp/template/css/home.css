@@ -372,6 +372,7 @@ html body{
     height: 40%;
     width: 100%;
     padding-top: 10px;
+    overflow: hidden;
 }
 
 #content .content-right .list-friends .list-friends-title{
@@ -392,10 +393,13 @@ html body{
 }
 
 #content .content-right .list-friends .list-friends-item .name{
-    display: inline;
+    display: inline-block;
     padding-bottom: 10px;
     line-height: 46px;
     margin-left: 20px;
+    width: 150px;
+    height: 34px;
+    overflow: hidden;
 }
 
 #content .content-right .list-friends .list-friends-item a{

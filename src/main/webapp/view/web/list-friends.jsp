@@ -13,6 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>List Friends</title>
+        <link rel="icon" href="<c:url value="/template/image/Study1.png"/>" type="image/icon type">
         <script src="https://kit.fontawesome.com/5175756225.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="<c:url value="/template/css/list-friends.css"/>">
         <link rel="stylesheet" href="<c:url value="/template/css/navbar.css"/>">
