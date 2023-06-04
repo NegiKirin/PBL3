@@ -75,28 +75,17 @@
             </div>
             <div class="content-right">
                 <jsp:include page="/common/web/ListFriend.jsp"/>
-                <div class="your-profile">
+                <form class="add-question">
                     <p class="title">Đặt câu hỏi của bạn</p>
-                    <div class="your-profile-main">
-                        <div class="paper">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>   
-                        </div>
+                    <div class="add-question-main">
+                        <textarea rows="10" placeholder="Nhập nội dung câu hỏi tại đây..."></textarea>
                         <div class="box">
-                            <div class="title">Thêm từ khóa:</div>
-                            <div class="square1"></div>       
+                            <p class="title">Thêm từ khóa:</p>
+                            <input class="add-key-word">
                         </div>
-                        <p class="add"><a href="">+</a></p>
+                        <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
