@@ -26,16 +26,14 @@ public class Login extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/login.jsp");
 		rd.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-					
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		request.setAttribute("email", email);
+		request.setAttribute("emailLogin", email);
 		String error = "";
 		String url ="";
 		User u1 = UserService.getInstance().findByEmailAndPassword(email, password);
@@ -44,7 +42,7 @@ public class Login extends HttpServlet {
 			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
 		}else {
 			error+="Sai Email hoặc sai mật khẩu";
-			request.setAttribute("error", error);
+			request.setAttribute("errorLogin", error);
 			url = "/view/web/login.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);

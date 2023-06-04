@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.studywithme.model.User;
 import com.studywithme.service.IUserService;
 import com.studywithme.service.impl.UserService;
+import com.studywithme.util.SessionUtil;
 
 @WebServlet("/register")
 public class Register extends HttpServlet {
@@ -22,8 +23,6 @@ public class Register extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    private IUserService userService;
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/web/login.jsp");
@@ -47,8 +46,7 @@ public class Register extends HttpServlet {
 		String error_email = "";
 		
 		String url ="";
-		userService = new UserService();
-		if(userService.findByEmail(email)!=null) {
+		if(UserService.getInstance().findByEmail(email)!=null) {
 			error_email +="Email đã tồn tại";
 		}
 		if(!password.equals(re_password)) {
@@ -68,9 +66,8 @@ public class Register extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			User user = new User();
-			user = userService.register(lastName, firstName, email, password, sex.equals("male") ? 0 : (sex.equals("female") ? 1:2));
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
+			user = UserService.getInstance().register(lastName, firstName, email, password, sex.equals("male") ? 0 : (sex.equals("female") ? 1:2));
+			SessionUtil.getInstance().putValue(request,"user",user);
 			response.sendRedirect("/PBL3/home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc");
 		}
 	}

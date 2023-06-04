@@ -115,7 +115,7 @@
 <script src="<c:url value="/template/js/AdminAppointment.js"/>"></script>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <script type="text/javascript">
-    var totalPages = 2;
+    var totalPages = ${totalPages};
     var currentPage = ${pageable.page};
     var limit = 8;
     var dateMeeting = "";

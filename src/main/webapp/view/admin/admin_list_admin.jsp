@@ -51,13 +51,17 @@
                             <input class="date" type="date" value="${admin.dateOfBirth}" disabled="disabled">
                         </div>
                         <div class="buttons">
-                            <form action="admin-list-admin" method="post">
+                            <form action="admin-list-admin" method="post" name="formUnSet">
                                 <button class="button lock">
                                     <i class="fa-solid fa-user-xmark"></i>
                                     <p class="button-content">Gỡ quyền Admin</p>
                                 </button>
                                 <input type="hidden" name="action" value="unSet">
                                 <input type="hidden" name="profileUserId" value="${admin.id}">
+                                <input type="hidden" value="${pageable.page}" name="page"/>
+                                <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">
+                                <input type="hidden" value="${pageable.sorter.sortName}" name="sortName">
+                                <input type="hidden" value="${pageable.sorter.sortBy}" name="sortBy">
                             </form>
                         </div>
                         <input type="hidden" class="school" value="${admin.school.nameSchool}">
@@ -119,7 +123,7 @@
 <script src="<c:url value="/template/js/AdminListAdmin.js"/>"></script>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 <script type="text/javascript">
-    var totalPages = 2;
+    var totalPages = ${totalPages};
     var currentPage = ${pageable.page};
     var limit = 6;
     var dateMeeting = "";

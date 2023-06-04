@@ -22,6 +22,8 @@ public class AdminAppointment extends HttpServlet {
         pageble = FormUtil.toModel(PageRequest.class, request);
         pageble.setSorter(FormUtil.toModel(Sorter.class, request));
 
+        int totalPages = (int) Math.ceil((double) AppointmentService.getInstance().countAll()/ pageble.getMaxPageItem());
+        request.setAttribute("totalPages",totalPages==1?0:totalPages);
         request.setAttribute("pageable",pageble);
         request.setAttribute("appointments", AppointmentService.getInstance().findAllAppointment(pageble));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/admin/admin_appointment.jsp");

@@ -22,6 +22,8 @@ public class ListAdmin extends HttpServlet {
         pageble = FormUtil.toModel(PageRequest.class, request);
         pageble.setSorter(FormUtil.toModel(Sorter.class, request));
 
+        int totalPages = (int) Math.ceil((double) UserService.getInstance().countFindAllAdmin()/ pageble.getMaxPageItem());
+        request.setAttribute("totalPages",totalPages==1?0:totalPages);
         request.setAttribute("pageable", pageble);
         request.setAttribute("admins", UserService.getInstance().findAllAdmin(pageble));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/admin/admin_list_admin.jsp");

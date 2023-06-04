@@ -249,6 +249,7 @@
                 <button class="add">TẠO NGAY</button>
                 <button class="exit">X</button>
                 <input type="hidden" name="action" value="createUser">
+                <input type="hidden" name="profileUserId" value="">
                 <input type="hidden" value="${pageable.page}" name="page"/>
                 <input type="hidden" value="${pageable.maxPageItem}" name="maxPageItem">
                 <input type="hidden" value="${pageable.sorter.sortName}" name="sortName">
@@ -259,7 +260,7 @@
     <script src="<c:url value="/template/js/AdminHome.js"/>"></script>
     <script src="<c:url value="/template/js/navbar.js"/>"></script>
     <script type="text/javascript">
-        var totalPages = 2;
+        var totalPages = ${totalPages};
         var currentPage = ${pageable.page};
         var limit = 6;
         var dateMeeting = "";

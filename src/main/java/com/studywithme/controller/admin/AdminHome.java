@@ -38,6 +38,8 @@ public class AdminHome extends HttpServlet {
                 System.out.println(e.getMessage());
             }
         }
+        int totalPages = (int) Math.ceil((double) UserService.getInstance().countFindAllUser()/ pageble.getMaxPageItem());
+        request.setAttribute("totalPages",totalPages==1?0:totalPages);
         request.setAttribute("pageable", pageble);
         request.setAttribute("roles", RoleService.getInstance().findAll());
         request.setAttribute("users", UserService.getInstance().findAllUser(pageble));

@@ -118,6 +118,12 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 	}
 
 	@Override
+	public Integer countFindAllUser() {
+		String hql = "from User u where u.role.code = 'USER'";
+		return count(hql);
+	}
+
+	@Override
 	public List<User> findAllAdmin(Pageable pageable) {
 		List<User> results = new ArrayList();
 		try {
@@ -146,6 +152,13 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 		}
 		return results;
 	}
+
+	@Override
+	public Integer countFindAllAdmin() {
+		String hql = "from User u where u.role.code = 'ADMIN'";
+		return count(hql);
+	}
+
 	public boolean removeRelationship(Integer id) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

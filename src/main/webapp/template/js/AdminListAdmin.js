@@ -1,7 +1,5 @@
 var openDetailDiv = document.querySelectorAll('.content-list-user .item')
 var DetailDiv = document.querySelector('.detail-div')
-console.log(DetailDiv);
-console.log(openDetailDiv)
 
 var detailDivMain = document.querySelector('.detail-div .detail-div-main')
 var detailDivForm = document.querySelector('.detail-div form')
@@ -32,3 +30,12 @@ var exitDetailDiv = document.querySelector('.detail-div .exit')
 exitDetailDiv.addEventListener('click', function (){
     DetailDiv.classList.add('hide')
 })
+
+var formUnSet = document.getElementsByName('formUnSet');
+if (formUnSet) {
+    formUnSet.forEach((element, index) => {
+        element.onclick = function (e) {
+            e.stopImmediatePropagation();
+        }
+    })
+}

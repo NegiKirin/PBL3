@@ -41,7 +41,7 @@ itemUsers.forEach((item, index)=> {
         //password
         // detailDivChancePwd.children[2].children[1].attributes[1].value = item.children[7].value
         //id
-        detailDivForm.children[1].children[8].value = item.children[9].value;
+        detailDivForm.children[1].children[7].value = item.children[9].value;
         detailDiv.classList.remove('hide');
     })
     if(item.children[10]){
@@ -66,7 +66,7 @@ itemUsers.forEach((item, index)=> {
         //password
         // detailDivChancePwd.children[2].children[1].attributes[1].value = item.children[7].value
         //id
-        detailDivForm.children[1].children[8].value = item.children[9].value;
+        detailDivForm.children[1].children[7].value = item.children[9].value;
         detailDiv.classList.remove('hide');
     }
 });

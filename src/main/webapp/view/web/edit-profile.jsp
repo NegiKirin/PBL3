@@ -351,7 +351,7 @@
                 <input type="hidden" value="editAvatar" name="action">
                 <input type="hidden" value="${profileUser.id}" name="profileUserId">
             </form>
-            <form action="profile" method="post" enctype="multipart/form-data" id="editProfile">
+            <form action="profile" method="post" id="editProfile">
                 <p class="title-edit">Thông tin cá nhân</p>
                 <div class="list">
                     <i class="fa-solid fa-user"></i>

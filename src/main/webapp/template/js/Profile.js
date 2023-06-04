@@ -77,7 +77,6 @@ time.forEach(function (element) {
 
 var date = document.querySelectorAll(".list-apm .item-apm .date");
 
-
 var groupStar = document.querySelectorAll('.form-group');
 var length = groupStar.length;
 for(var j = 0; j < length; j++){

@@ -138,4 +138,9 @@ public class AppointmentService implements IAppointmentService {
     public List<Appointment> findAllAppointment(Pageable pageable) {
         return AppointmentDAO.getInstance().findAllAppointment(pageable);
     }
+
+    @Override
+    public Integer countAll() {
+        return AppointmentDAO.getInstance().countAll();
+    }
 }

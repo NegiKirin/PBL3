@@ -107,8 +107,18 @@ public class UserService implements IUserService {
 	}
 
 	@Override
+	public Integer countFindAllUser() {
+		return UserDAO.getInstance().countFindAllUser();
+	}
+
+	@Override
 	public List<User> findAllAdmin(Pageable pageable) {
 		return UserDAO.getInstance().findAllAdmin(pageable);
+	}
+
+	@Override
+	public Integer countFindAllAdmin() {
+		return UserDAO.getInstance().countFindAllAdmin();
 	}
 
 	@Override
