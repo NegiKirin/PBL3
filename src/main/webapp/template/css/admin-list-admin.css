@@ -79,6 +79,7 @@ body{
     width: calc(100% - 260px);
     display: inline;
     padding: 40px;
+    position: relative;
 }
 
 #content .title-main{
@@ -147,13 +148,13 @@ body{
 #content .content-list-user .item .ava-name,
 #content .content-list-user .item .birth,
 #content .content-list-user .item .sex{
-    width: 220px;
+    width: 360px;
     display: flex;
     align-items: center;
 }
 
 #content .content-list-user .item .sex{
-    width: 150px;
+    width: 230px;
 }
 
 #content .content-list-user .item .title{
@@ -208,6 +209,23 @@ body{
 
 #content .content-list-user .item .buttons .lock{
     background-color: #e8b236;
+}
+
+#formPaging{
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 80px);
+    display: flex;
+    justify-content: center;
+}
+
+#formPaging a{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#formPaging .page-item.active .page-link{
+    z-index: 0;
 }
 
 .panel{
