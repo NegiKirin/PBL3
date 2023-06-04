@@ -84,8 +84,12 @@ public class AdminHome extends HttpServlet {
             }
         } else if (action.equals("lockUser")){
             String profileUserId = request.getParameter("profileUserId");
+            UserService.getInstance().lockUser(profileUserId);
+            response.sendRedirect("/PBL3/admin-home?page="+pageble.getPage()+"&maxPageItem="+pageble.getMaxPageItem()+"&sortName="+pageble.getSorter().getSortName()+"&sortBy="+pageble.getSorter().getSortBy());
         } else if (action.equals("deleteUser")){
             String profileUserId = request.getParameter("profileUserId");
+            UserService.getInstance().deleteUser(profileUserId);
+            response.sendRedirect("/PBL3/admin-home?page="+pageble.getPage()+"&maxPageItem="+pageble.getMaxPageItem()+"&sortName="+pageble.getSorter().getSortName()+"&sortBy="+pageble.getSorter().getSortBy());
         }
     }
 }

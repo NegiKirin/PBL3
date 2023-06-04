@@ -183,7 +183,23 @@ public class UserService implements IUserService {
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
 		}
+		newUser.setFirstName(firstName);
+		newUser.setLastName(lastName);
+		newUser.setFullName(firstName + " " + lastName);
 		UserDAO.getInstance().insert(newUser);
 		return true;
 	}
+	@Override
+	public boolean lockUser(String id) {
+		User user = UserDAO.getInstance().findById(Integer.parseInt(id));
+		user.setStatus(1);
+		UserDAO.getInstance().update(user);
+		return false;
+	}
+
+	@Override
+	public boolean deleteUser(String id) {
+		return UserDAO.getInstance().delete(UserDAO.getInstance().findOne(Integer.parseInt(id)));
+	}
+
 }
