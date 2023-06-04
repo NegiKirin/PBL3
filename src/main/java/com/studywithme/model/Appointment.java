@@ -31,7 +31,7 @@ public class Appointment extends AbstractModel{
 	private Set<Rate> rates = new HashSet<>();
 	@OneToMany(mappedBy = "appointmentModified", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Modify> modifiedBy = new HashSet<>();
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_address")
 	private Address address;
 	public Appointment() {

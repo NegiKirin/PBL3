@@ -300,4 +300,37 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
         java.sql.Date today = new java.sql.Date(date.getTime());
         return count(hql, "user", user, "today", today, "now", Time.valueOf(LocalTime.now()));
     }
+
+    @Override
+    public List<Appointment> findAllAppointment(Pageable pageable) {
+        List<Appointment> results = new ArrayList<>();
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if(sessionFactory!=null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+                StringBuilder hql = new StringBuilder("from Appointment a");
+                String dateMeeting = pageable.getSorter().getDateMeeting();
+                if(pageable.getSorter() != null){
+                    hql.append(" order by a." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy()+ "");
+                }
+                Query query = session.createQuery(hql.toString());
+                results = query.setFirstResult(pageable.getOffset()).setMaxResults(pageable.getLimit()).getResultList();
+                for(int i = 0; i < results.size(); i++){
+                    session.get(User.class, results.get(i).getHost().getId());
+                    for (User user: results.get(i).getParticipants()) {
+                        session.get(User.class, user.getId());
+                    }
+                }
+                tr.commit();
+                session.close();
+                return results;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
 }

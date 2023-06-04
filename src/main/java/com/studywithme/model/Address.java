@@ -20,7 +20,7 @@ public class Address extends AbstractModel {
     @OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Report> reports = new HashSet<>();
 
-    @OneToMany(mappedBy = "address", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Appointment> appointments = new HashSet<>();
 
     public Address() {

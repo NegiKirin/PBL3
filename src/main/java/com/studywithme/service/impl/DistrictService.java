@@ -19,4 +19,17 @@ public class DistrictService implements IDistrictService {
     public List<District> findAll() {
         return DistrictDAO.getInstance().findAll();
     }
+
+    @Override
+    public boolean createDistrict(String district) {
+        District district1 = new District();
+        district1.setDistrict(district);
+        DistrictDAO.getInstance().insert(district1);
+        return true;
+    }
+
+    @Override
+    public boolean deleteDistrict(String idDistrict) {
+        return DistrictDAO.getInstance().deleteDistrict(DistrictDAO.getInstance().findOne(Integer.parseInt(idDistrict)));
+    }
 }

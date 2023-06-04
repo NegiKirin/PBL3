@@ -13,7 +13,7 @@ public class Ward extends AbstractModel{
     @JoinColumn(name = "id_district")
     private District district;
 
-    @OneToMany(mappedBy = "ward", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ward", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Address> addresses = new HashSet<>();
 
     public Ward() {

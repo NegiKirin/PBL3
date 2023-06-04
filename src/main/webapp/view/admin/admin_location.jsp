@@ -22,99 +22,32 @@
             <h1 class="title-main">DANH SÁCH CÁC ĐỊA ĐIỂM </h1>
 
             <div class="content-list-location">
-
-
-                    <div class="item">
-                        <p class="district-name">Liên Chiểu</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                    <c:forEach items="${districts}" var="district">
+                        <div class="item">
+                            <p class="district-name">${district.district}</p>
+                            <form action="admin-location" method="post">
+                                <input type="hidden" name="action" value="deleteDistrict">
+                                <input type="hidden" name="idDistrict" value="${district.id}">
+                                <button class="fa-solid fa-trash"></button>
                             </form>
+                            <div class="list-ward hide">
+                                <p class="title">Danh sách phường/xã: </p>
+                                <c:forEach items="${district.wards}" var="ward">
+                                    <form action="admin-location" method="post">
+                                        <input type="hidden" name="action" value="deleteWard">
+                                        <input type="hidden" name="idWard" value="${ward.id}">
+                                        <p class="ward-item">${ward.ward}<button class="remove">Xóa</button> </p>
+                                    </form>
+                                </c:forEach>
+                                <form class="add-ward" action="admin-location" method="post">
+                                    <input type="hidden" name="idDistrict" value="${district.id}">
+                                    <input type="hidden" name="action" value="createWard">
+                                    <input type="text" placeholder="Nhập tên phường/xã..." value="" name="ward" required>
+                                    <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <p class="district-name">Hải Châu</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p class="district-name">Hòa Vang</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p class="district-name">Thanh Khê</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p class="district-name">Ngũ Hành Sơn</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p class="district-name">Sơn Trà</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p class="district-name">Cẩm Lệ</p>
-                        <button class="fa-solid fa-trash"></button>
-                        <div class="list-ward hide">
-                            <p class="title">Danh sách phường/xã: </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button> </p>
-                            <p class="ward-item">Hòa Khánh Bắc <button class="remove">Xóa</button></p>
-                            <form class="add-ward">
-                                <input type="text" placeholder="Nhập tên phường/xã...">
-                                <button class="add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                            </form>
-                        </div>
-                    </div>
+                    </c:forEach>
             </div>
             <div class="content-add"><i class="fa-solid fa-plus"></i></div>
         </div>
@@ -122,8 +55,9 @@
 </div>
 <div class="add-new-district-main hide-add-div">
     <p class="title">Nhập tên quận/huyện:</p>
-    <form>
-        <textarea rows="5" placeholder="Hải Châu..."></textarea>
+    <form action="admin-location" method="post">
+        <textarea rows="5" placeholder="Hải Châu..." name="district"></textarea>
+        <input type="hidden" name="action" value="createDistrict">
         <button type="submit">Thêm</button>
     </form>
 </div>

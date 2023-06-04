@@ -146,23 +146,46 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 		}
 		return results;
 	}
-
-	@Override
-	public boolean deleteUser(User user) {
-		List<User> results = new ArrayList();
+	public boolean removeRelationship(Integer id) {
 		try {
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 			if(sessionFactory!=null) {
 				Session session = sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
-				String hql = "from User u where u.id = :id";
+				List<Appointment> result = new ArrayList<>();
+				User user = session.get(User.class, id);
+				String hql = "from Appointment a left join a.participants p where p = :user";
 				Query query = session.createQuery(hql);
-				query.setParameter("id",user.getId());
-				results = query.getResultList();
-				for (Appointment appointment: results.get(0).getListAppointmentsJoin()) {
-					appointment.removeParticipant(results.get(0));
+				query.setParameter("user", user);
+				result = query.getResultList();
+				for (Appointment appointment: result) {
+					appointment.removeParticipant(user);
 				}
-				session.delete(results.get(0));
+				for (Appointment appointment: user.getAppointmentsOf()){
+					session.get(Appointment.class, appointment.getId());
+				}
+				session.update(user);
+				tr.commit();
+				session.close();
+				for (Appointment appointment: user.getAppointmentsOf()){
+					AppointmentDAO.getInstance().delete(appointment);
+				}
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	@Override
+	public boolean deleteUser(User user) {
+		removeRelationship(user.getId());
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				session.delete(user);
 				tr.commit();
 				session.close();
 				return true;

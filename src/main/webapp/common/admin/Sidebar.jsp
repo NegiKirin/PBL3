@@ -24,7 +24,7 @@
     <p class="content">Quản lí danh sách Trường học</p>
     <i class="fa-solid fa-bars"></i>
   </a>
-  <a href="<c:url value="/admin-appointment"/> " class="user-list r5">
+  <a href="<c:url value="/admin-appointment?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> " class="user-list r5">
     <p class="content">Quản lí danh sách Cuộc hẹn</p>
     <i class="fa-solid fa-bars"></i>
   </a>

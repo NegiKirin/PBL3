@@ -24,22 +24,20 @@
                 <input type="text" placeholder="Gõ gì đó để tìm kiếm ...">
             </div>
             <div class="content-list-school">
-                <div class="item">
-                    <i class="fa-solid fa-school"></i>
-                    <p class="name">Trường Đại học Bách khoa - Đại học Đà Nẵng</p>
-                    <button class="delete">
-                        <i class="fa-solid fa-trash"></i>
-                        <p class="button-content">Xóa</p>
-                    </button>
-                </div>
-                <div class="item">
-                    <i class="fa-solid fa-school"></i>
-                    <p class="name">Trường Đại học Kinh tế - Đại học Đà Nẵng</p>
-                    <button class="delete">
-                        <i class="fa-solid fa-trash"></i>
-                        <p class="button-content">Xóa</p>
-                    </button>
-                </div>
+                <c:forEach items="${schools}" var="school">
+                    <div class="item">
+                        <i class="fa-solid fa-school"></i>
+                        <p class="name">${school.nameSchool}</p>
+                        <form action="admin-school" method="post">
+                            <button class="delete">
+                                <i class="fa-solid fa-trash"></i>
+                                <p class="button-content">Xóa</p>
+                            </button>
+                            <input type="hidden" name="idSchool" value="${school.id}">
+                            <input type="hidden" name="action" value="deleteSchool">
+                        </form>
+                    </div>
+                </c:forEach>
             </div>
             <div class="content-add"><i class="fa-solid fa-plus"></i></div>
         </div>
@@ -48,9 +46,11 @@
 
 <div class="add-new-school-main hide-add-div">
     <p class="title">Nhập tên trường:</p>
-    <form>
-        <textarea rows="5" placeholder="Trường Đại học Bách khoa - Đại học Đà Nẵng"></textarea>
+    <form action="admin-school" method="post">
+        <textarea rows="5" placeholder="Trường Đại học Bách khoa - Đại học Đà Nẵng" name="nameSchool"></textarea>
+        <label><p id="error">${error}</p></label>
         <button type="submit">Thêm trường</button>
+        <input type="hidden" name="action" value="createSchool">
     </form>
 </div>
 <script>
@@ -60,7 +60,10 @@
     oppenDiv.addEventListener('click', function (e){
         addDiv.classList.toggle('hide-add-div')
     })
-
+    var error = document.getElementById('error');
+    if (error.innerText !== "") {
+        addDiv.classList.remove('hide-add-div');
+    }
 </script>
 <script src="<c:url value="/template/js/navbar.js"/>"></script>
 </body>

@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.studywithme.dao.ISchoolDAO;
 import com.studywithme.model.School;
+import com.studywithme.model.User;
+import com.studywithme.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO {
 	private static ISchoolDAO schoolDAO;
@@ -50,5 +55,43 @@ public class SchoolDAO extends AbstractDAO<School> implements ISchoolDAO {
 		String hql = "from School where nameSchool =: nameSchool";
 		List<School> school = query(hql,"nameSchool",schoolName);
 		return school.isEmpty() ? null : school.get(0);
+	}
+	public boolean removeRelationship(Integer id){
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				School school =  session.get(School.class, id);
+				for (User user: school.getListUser()) {
+					user.setSchool(null);
+				}
+				session.update(school);
+				tr.commit();
+				session.close();
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	@Override
+	public boolean removeSchool(School school) {
+		removeRelationship(school.getId());
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+				session.delete(school);
+				tr.commit();
+				session.close();
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
