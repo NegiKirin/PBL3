@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <div class="content-left">
-  <a href="<c:url value="/admin-home?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> " class="user-list r1">
+  <a href="<c:url value="/admin-home?page=1&maxPageItem=6&sortName=createdDate&sortBy=desc"/> " class="user-list r1">
     <p class="content">Quản lí danh sách User</p>
     <i class="fa-solid fa-bars"></i>
   </a>
