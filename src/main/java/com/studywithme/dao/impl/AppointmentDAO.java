@@ -100,7 +100,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
     @Override
     public Integer count(Pageable pageble) {
-        StringBuilder hql = new StringBuilder("select count(*) from Appointment a where");
+        StringBuilder hql = new StringBuilder("from Appointment a where");
         String dateMeeting = pageble.getSorter().getDateMeeting();
         try {
             if (dateMeeting != null) {
@@ -122,7 +122,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
     @Override
     public Integer countByHostCurrent(User host) {
-        String hql = "select count(*) from Appointment a where a.host = :host and (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now))";
+        String hql = "from Appointment a where a.host = :host and (a.dateMeeting > :today or (a.dateMeeting = :today and a.ending_time > :now))";
         Date date = new Date(System.currentTimeMillis());
         java.sql.Date today = new java.sql.Date(date.getTime());
         return count(hql, "today", today, "now", Time.valueOf(LocalTime.now()), "host", host);
@@ -207,7 +207,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment> implements IAppoint
 
     @Override
     public Integer countFindByParticipants(User participant) {
-        String hql = "select count(*) from Appointment a left join a.participants p where (p = :participant or (a.host = :participant and a.participants is not empty)) group by a.id";
+        String hql = "from Appointment a left join a.participants p where (p = :participant or (a.host = :participant and a.participants is not empty)) group by a.id";
         return count(hql, "participant", participant);
     }
 

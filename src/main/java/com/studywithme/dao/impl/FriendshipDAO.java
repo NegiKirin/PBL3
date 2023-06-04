@@ -52,7 +52,7 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
             if(sessionFactory!=null) {
                 Session session = sessionFactory.openSession();
                 Transaction tr = session.beginTransaction();
-                String hql = "from  Friendship f WHERE (f.friend =: user or f.requester=: user) and f.status=0 order by  f.createdDate asc ";
+                String hql = "from  Friendship f WHERE (f.friend =: user or f.requester=: user) and f.status = 0 order by  f.createdDate asc ";
                 Query query = session.createQuery(hql);
                 query.setParameter("user",user);
                 results = query.setFirstResult(0).setMaxResults(index).getResultList();
@@ -60,7 +60,6 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
                     session.get(User.class,results.get(i).getFriend().getId());
                     session.get(User.class,results.get(i).getRequester().getId());
                 }
-//                System.out.println("Lấy danh sách bạn bè");
                 tr.commit();
                 session.close();
             }
@@ -90,7 +89,6 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
                     session.get(User.class,results.get(i).getFriend().getId());
                     session.get(User.class,results.get(i).getRequester().getId());
                 }
-//                System.out.println("Lấy danh sách bạn bè");
                 tr.commit();
                 session.close();
             }
@@ -103,7 +101,7 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
 
     @Override
     public Integer countFriend(User user) {
-        String hql = "select count(*) from Friendship f where (f.friend =: user or f.requester=: user) and f.status = 0";
+        String hql = "from Friendship f where (f.friend =: user or f.requester=: user) and f.status = 0";
         return count(hql, "user", user);
     }
 
