@@ -36,4 +36,10 @@ public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO {
     }
 
 
+    @Override
+    public Role findByCode(String code) {
+        String hql = "from Role r where a.code = :code";
+        List<Role> roles = query(hql, "code", code);
+        return roles.isEmpty()?null:roles.get(0);
+    }
 }

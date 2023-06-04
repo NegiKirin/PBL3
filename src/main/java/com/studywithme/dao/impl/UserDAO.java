@@ -116,6 +116,36 @@ public class UserDAO extends AbstractDAO<User> implements IUserDAO {
 		return results;
 	}
 
+	@Override
+	public List<User> findAllAdmin(Pageable pageable) {
+		List<User> results = new ArrayList();
+		try {
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			if(sessionFactory!=null) {
+				Session session = sessionFactory.openSession();
+				Transaction tr = session.beginTransaction();
+//				String hql = "from User u where u.role.code = 'USER'";
+				StringBuilder hql =  new StringBuilder("from User u where u.role.code = 'ADMIN'");
+				if (pageable.getSorter() != null) {
+					hql.append(" order by u." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy());
+				}
+				Query query = session.createQuery(hql.toString());
+				results = query.setFirstResult(pageable.getOffset()).setMaxResults(pageable.getLimit()).getResultList();
+				for (User user: results) {
+					if (user.getSchool() != null) {
+						session.get(School.class,user.getSchool().getId());
+					}
+				}
+				tr.commit();
+				session.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return results;
+	}
+
 
 	@Override
 	public User findByEmail(String email) {

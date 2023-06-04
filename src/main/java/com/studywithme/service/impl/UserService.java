@@ -9,6 +9,7 @@ import java.util.Base64;
 import java.sql.Date;
 import java.util.List;
 
+import com.studywithme.dao.impl.RoleDAO;
 import com.studywithme.dao.impl.UserDAO;
 import com.studywithme.model.Role;
 import com.studywithme.model.School;
@@ -42,6 +43,7 @@ public class UserService implements IUserService {
 		user.setLastName(lastName);
 		user.setFullName(firstName+" "+lastName);
 		user.setGender(gender);
+		user.setStatus(0);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
 		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
 		try {
@@ -102,6 +104,11 @@ public class UserService implements IUserService {
 	@Override
 	public List<User> findAllUser(Pageable pageable) {
 		return UserDAO.getInstance().findAllUser(pageable);
+	}
+
+	@Override
+	public List<User> findAllAdmin(Pageable pageable) {
+		return UserDAO.getInstance().findAllAdmin(pageable);
 	}
 
 	@Override
@@ -179,13 +186,35 @@ public class UserService implements IUserService {
 		}
 		try {
 			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-			user.setDateOfBirth(new Date(date.getTime()));
+			newUser.setDateOfBirth(new Date(date.getTime()));
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
 		}
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
 		newUser.setFullName(firstName + " " + lastName);
+		newUser.setStatus(0);
+		String path = "\\GitHub\\PBL3\\src\\main\\webapp\\template\\image";
+		try {
+			File avatar = new File(path + File.separator + "avatarDefault.png");
+			byte[] dataAvatar = Files.readAllBytes(avatar.toPath());
+			String base64 = Base64.getEncoder().encodeToString(dataAvatar);
+			newUser.setAvatar(base64);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			File avatar = new File(path + File.separator + "backgroundDefault.png");
+			byte[] dataBackground = Files.readAllBytes(avatar.toPath());
+			String base64 = Base64.getEncoder().encodeToString(dataBackground);
+			newUser.setBackground(base64);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		newUser.setRole(RoleDAO.getInstance().findByCode("USER"));
+		java.util.Date date = new java.util.Date(System.currentTimeMillis());
+		Date today = new Date(date.getTime());
+		newUser.setCreatedDate(today);
 		UserDAO.getInstance().insert(newUser);
 		return true;
 	}

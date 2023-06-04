@@ -42,6 +42,9 @@
                                 <c:if test="${user.gender == 1}">
                                 <p class="content">Nữ</p>
                                 </c:if>
+                                <c:if test="${user.gender == 2}">
+                                    <p class="content">Khác</p>
+                                </c:if>
                             </div>
                             <div class="birth">
                                 <p class="title">Ngày sinh:</p>
@@ -88,8 +91,6 @@
             <div class="content-add"><i class="fa-solid fa-plus"></i></div>
         </div>
     </div>
-
-
 
 
     <%--    div phụ    --%>
@@ -235,7 +236,7 @@
                         <select class="list-school" name="idSchool" required>
                             <option selected hidden="hidden">Chọn trường học</option>
                             <c:forEach items="${listSchool}" var="school">
-                                <option idSchool="${school.id}">${school.nameSchool}</option>
+                                <option value="${school.id}">${school.nameSchool}</option>
                             </c:forEach>
                         </select>
                         <div class="list">
@@ -260,7 +261,7 @@
     <script type="text/javascript">
         var totalPages = 2;
         var currentPage = ${pageable.page};
-        var limit = 8;
+        var limit = 6;
         var dateMeeting = "";
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({

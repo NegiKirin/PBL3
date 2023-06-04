@@ -12,7 +12,7 @@
     <p class="content">Quản lí danh sách User</p>
     <i class="fa-solid fa-bars"></i>
   </a>
-  <a href="<c:url value="/admin-list-admin"/> " class="user-list r2">
+  <a href="<c:url value="/admin-list-admin?page=1&maxPageItem=8&sortName=createdDate&sortBy=desc"/> " class="user-list r2">
     <p class="content">Quản lí danh sách Admin</p>
     <i class="fa-solid fa-bars"></i>
   </a>
