@@ -231,4 +231,12 @@ public class UserService implements IUserService {
 		return UserDAO.getInstance().deleteUser(UserDAO.getInstance().findOne(Integer.parseInt(id)));
 	}
 
+	@Override
+	public boolean setRoleUser(String id) {
+		User user = UserDAO.getInstance().findOne(Integer.parseInt(id));
+		user.setRole(RoleDAO.getInstance().findByCode("USER"));
+		UserDAO.getInstance().update(user);
+		return true;
+	}
+
 }

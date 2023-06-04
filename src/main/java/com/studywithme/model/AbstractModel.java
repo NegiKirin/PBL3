@@ -12,7 +12,7 @@ public class AbstractModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected Date createdDate;
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     protected User createdBy;
 
     public Integer getId() {
@@ -38,5 +38,4 @@ public class AbstractModel {
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
     }
-
 }

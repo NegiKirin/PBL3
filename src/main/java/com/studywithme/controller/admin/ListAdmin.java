@@ -29,6 +29,10 @@ public class ListAdmin extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        String action = request.getParameter("action");
+        if (action.equals("unSet")) {
+            String profileUserId = request.getParameter("profileUserId");
+
+        }
     }
 }

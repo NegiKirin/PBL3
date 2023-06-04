@@ -19,4 +19,5 @@ public interface IUserService {
 	public boolean createUser(String email, String password,String firstName, String lastName, String gender, String idSchool, String dateOfBirth);
 	public boolean lockUser(String id);
 	public boolean deleteUser(String id);
+	public boolean setRoleUser(String id);
 }
