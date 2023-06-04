@@ -2,8 +2,16 @@ package com.studywithme.model;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
-public class Friendship extends AbstractModel {
+public class Friendship {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Integer id;
+    protected Date createdDate;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    protected User createdBy;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name="friend_id")
     private User friend;
@@ -16,7 +24,29 @@ public class Friendship extends AbstractModel {
 
     public Friendship() {
     }
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
     public User getFriend() {
         return friend;
     }
