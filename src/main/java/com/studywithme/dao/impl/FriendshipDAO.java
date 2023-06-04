@@ -80,7 +80,7 @@ public class FriendshipDAO extends AbstractDAO<Friendship> implements IFriendshi
                 Transaction tr = session.beginTransaction();
                 StringBuilder hql = new StringBuilder("from Friendship f where (f.friend =: user or f.requester=: user) and f.status = 0");
                 if(pageable.getSorter() != null) {
-                    hql.append(" order by f." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy()+ "");
+//                    hql.append(" order by f." + pageable.getSorter().getSortName() + " " + pageable.getSorter().getSortBy()+ "");
                 }
                 Query query = session.createQuery(hql.toString());
                 query.setParameter("user",user);
