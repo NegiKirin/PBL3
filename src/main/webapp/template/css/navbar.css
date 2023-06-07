@@ -136,6 +136,7 @@
     cursor: pointer;
     color: #16b3e8;
     text-decoration: none;
+    line-height: 1.5;
 }
 
 #header .header-noti .header-menu .item::after{
@@ -167,6 +168,8 @@
     overflow: hidden;
     transition: 0.3s;
     padding: 10px 5px;
+    box-shadow: 1px 1px 7px 0 #8a8a8a;
+    z-index: 1;
 }
 
 #header .header-noti .noti-content .list{

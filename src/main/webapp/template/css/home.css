@@ -204,14 +204,23 @@ html body{
     margin-bottom: 0;
 }
 
+#content .content-left .content-left-item .with-name{
+    display: flex;
+    align-items: start;
+}
+
 #content .content-left .content-left-item .with{
     padding-left: 30px;
     display: inline;
 }
 
 #content .content-left .content-left-item .name{
-    display: inline;
+    display: inline-block;
     font-weight: bold;
+    width: 150px;
+    height: 30px;
+    overflow: hidden;
+    margin-left: 5px;
 }
 
 #content .content-main{
@@ -302,6 +311,9 @@ html body{
     bottom: -10px;
     left: 90px;
     color: black;
+    display: flex;
+    align-items: center;
+    height: 50px;
 }
 
 #content .content-main .content-main-list .content{
