@@ -43,6 +43,6 @@ public class Rate extends HttpServlet {
         String idAppointment = request.getParameter("idAppointment");
         String rate = request.getParameter("rate");
         RateService.getInstance().createRate(idAppointment, rate, user);
-        response.sendRedirect("/PBL3/rate");
+        response.sendRedirect("/PBL3/rate?page=1&maxPageItem=7&sortName=createdDate&sortBy=desc");
     }
 }
